@@ -4,11 +4,14 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -51,6 +54,8 @@ public class User implements Serializable {
 	private String area;
 	@Column(nullable=false,length=20)
 	private String password;
+	@Column(nullable=true)
+	private Long RefId;
 	@ManyToOne
     @JoinColumn(name = "hId")
 	private House house;
@@ -156,6 +161,12 @@ public class User implements Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public Long getRefId() {
+		return RefId;
+	}
+	public void setRefId(Long refId) {
+		RefId = refId;
+	}
 	public House getHouse() {
 		return house;
 	}
@@ -165,9 +176,13 @@ public class User implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	public User() {
+		super();
+	}
 	public User(Long uId, Long aadharNumber, String firstName, String lastName, Long contactNumber, String email,
 			String address, Integer pincode, String city, String state, String country, String gender,
-			String motherTongue, String foodPreference, String profession, String area, String password, House house) {
+			String motherTongue, String foodPreference, String profession, String area, String password, Long refId,
+			House house) {
 		super();
 		this.uId = uId;
 		this.aadharNumber = aadharNumber;
@@ -186,15 +201,14 @@ public class User implements Serializable {
 		this.profession = profession;
 		this.area = area;
 		this.password = password;
+		RefId = refId;
 		this.house = house;
-	}
-	public User() {
-		super();
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((RefId == null) ? 0 : RefId.hashCode());
 		result = prime * result + ((aadharNumber == null) ? 0 : aadharNumber.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((area == null) ? 0 : area.hashCode());
@@ -224,6 +238,11 @@ public class User implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (RefId == null) {
+			if (other.RefId != null)
+				return false;
+		} else if (!RefId.equals(other.RefId))
+			return false;
 		if (aadharNumber == null) {
 			if (other.aadharNumber != null)
 				return false;
@@ -322,6 +341,7 @@ public class User implements Serializable {
 				+ lastName + ", contactNumber=" + contactNumber + ", email=" + email + ", address=" + address
 				+ ", pincode=" + pincode + ", city=" + city + ", state=" + state + ", country=" + country + ", gender="
 				+ gender + ", motherTongue=" + motherTongue + ", foodPreference=" + foodPreference + ", profession="
-				+ profession + ", area=" + area + ", password=" + password + ", house=" + house + "]";
+				+ profession + ", area=" + area + ", password=" + password + ", RefId=" + RefId + ", house=" + house
+				+ "]";
 	}
 }

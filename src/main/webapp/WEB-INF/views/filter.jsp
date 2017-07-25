@@ -73,7 +73,8 @@
              out.println(email+"   <a href=\"logout\" >Logout</a>");
             }  
          else  
-         {
+         { 
+        	 
         %>
             <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
@@ -185,18 +186,15 @@
 	<form class="form" role="form"  action="showFilter2" accept-charset="UTF-8">
 		<div class="col-md-3"><!--3)column for filter-->
         	<div class="well" style="background-color:rgb(243,210,230)"><strong>Location</strong> 
-        <div class="input-group">
 	   	<div class="form-group">
   			<input type="text" name="address"  placeholder="city" class="form-control" id="address" onBlur="javascript: dynamicdropdown(this.value);"/>
             </div><!--form group closed-->
-  		</div><!--input group closed-->
     	</div><!--well class closed-->
        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><!--4)main panel start drom here-->
 
             <!-- first Panel start Here -->
         <div class="well" style="background-color:rgb(243,210,230)">  <!--5)class well-->
-        <strong>Profession</strong> 
-        
+        <strong>Profession</strong>   
            <div class="form-group">
       		<select name="profession" id="profession" class="form-control">
         	<option value="Student">Student</option>
@@ -346,7 +344,7 @@
      </div><!--3)-->
      
     
-  <div id ="showHouse" class="col-md-9" style="height:20px">
+  <div id ="showHouse" class="col-md-9" style="height:20px" >
       <c:forEach items="${house}" var="house" varStatus="itr">
  		<a href="showHouseInfo/${house.hId}"> <div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">
  		 
@@ -483,7 +481,7 @@
 			});
 		});
 	</script>
-	 <script>
+<script>
 function checkLogin()
 {
 	 var email=document.getElementById( "email" ).value;
@@ -510,5 +508,208 @@ function checkLogin()
 }
 </script>
  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAae9SU_6aO359OSvLrFEx27cs4ervdYDU&callback=initMap"></script>
+<!-- Large modal -->
+<button class="btn btn-primary" data-toggle="modal" data-target="#myModal11">
+    Login modal</button>
+<div class="mod" id="myModal11">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close1">&times;</span>
+                <h4 class="modal-title" id="myModalLabel">
+                    Login/Registration - <a href="http://www.jquery2dotnet.com">jquery2dotnet.com</a></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8" style="border-right: 1px dotted #C2C2C2;padding-right: 30px;">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                            <li><a href="#Registration" data-toggle="tab">Registration</a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="Login">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email1" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-sm">
+                                            Submit</button>
+                                        <a href="javascript:;">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane" id="Registration">
+                                <form role="form" class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <select class="form-control">
+                                                    <option>Mr.</option>
+                                                    <option>Ms.</option>
+                                                    <option>Mrs.</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="mobile" class="col-sm-2 control-label">
+                                        Mobile</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="mobile" placeholder="Mobile" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" placeholder="Password" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="button" class="btn btn-primary btn-sm">
+                                            Save & Continue</button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            Cancel</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div id="OR" class="hidden-xs">
+                            OR</div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="row text-center sign-with">
+                            <div class="col-md-12">
+                                <h3>
+                                    Sign in with</h3>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="btn-group btn-group-justified">
+                                    <a href="#" class="btn btn-primary">Facebook</a> <a href="#" class="btn btn-danger">
+                                        Google</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+.mod {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* The Close Button */
+.close1 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close1:hover,
+.close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav-tabs {
+    margin-bottom: 15px;
+}
+.sign-with {
+    margin-top: 25px;
+    padding: 20px;
+}
+div#OR {
+    height: 30px;
+    width: 30px;
+    border: 1px solid #C2C2C2;
+    border-radius: 50%;
+    font-weight: bold;
+    line-height: 28px;
+    text-align: center;
+    font-size: 12px;
+    float: right;
+    position: absolute;
+    right: -16px;
+    top: 40%;
+    z-index: 1;
+    background: #DFDFDF;
+}
+</style>
+<!-- 
+<script type="text/javascript">
+$('#myModal11').modal('show');
+</script>
+ -->
+ <script type="text/javascript">
+ function popup()
+ {
+ var modal = document.getElementById('myModal11');
+ modal.style.display = "block";
+ var span = document.getElementsByClassName("close1")[0];
+ span.onclick = function() {
+	    modal.style.display = "none";
+	}
+ }
+ </script>
+  <% 
+        if(email!=null)
+            {
+            
+            }  
+         else  
+         {  %>
+        	 <script type="text/javascript">
+        	 popup();
+        	 </script>
+         <%   } 
+ %>
 </body>
 </html>

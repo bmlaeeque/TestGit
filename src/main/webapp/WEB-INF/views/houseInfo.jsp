@@ -240,7 +240,10 @@
                            </tbody>
                       </table>
                       <div>
-                      <a href="showRoomInfo"><button type="Rooms Details" class="btn btn-theme pull-left">Rooms Details</button></a>
+                      <form action="showRoomInfo">
+                      <input type="hidden" name="hId" value="${house.hId}">
+                      <button type="Rooms Details" class="btn btn-theme pull-left">Rooms Details</button>
+                      </form>
                       </div>
                      
                       

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.smsone.model.Beds;
 import com.smsone.model.House;
 import com.smsone.model.Owner;
 import com.smsone.model.Room;
@@ -106,7 +107,7 @@ public class UserController {
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public String saveUser(@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("aadharNumber")Long aadharNumber,@RequestParam("motherTounge")String motherTongue,@RequestParam("address")String address,@RequestParam("pincode")Integer pincode,
 			@RequestParam("subcategory1")String state,@RequestParam("password1")String password,@RequestParam("lastName")String lastName,@RequestParam("email")String email,@RequestParam("foodPreference")String foodPreference,@RequestParam("profession")String profession,@RequestParam("city")String city,
-			@RequestParam("subcategory")String area,@RequestParam("subcategory2")String country)
+			@RequestParam("subcategory")String area,@RequestParam("subcategory2")String country,HttpSession session)
 	{
 		User user=new User();
 		user.setFirstName(firstName);
@@ -126,6 +127,16 @@ public class UserController {
 		user.setFoodPreference(foodPreference);
 		user.setAadharNumber(aadharNumber);
 		user.setArea(area);
+		User user1=(User)session.getAttribute("user");
+		if(user1!=null)
+		{
+			Long refId=user1.getuId();
+			user.setRefId(refId);
+		}
+		else
+		{
+			
+		}
 		userService.saveUser(user);
 		
 		return "success";
@@ -294,9 +305,8 @@ public class UserController {
 				@RequestMapping(value = "/saveRoom", method = RequestMethod.POST)
 				public String saveRoom(@RequestParam("houseId")Long hId,@RequestParam("roomId")Long roomId,@RequestParam("roomType")String roomType,@RequestParam("ac")String ac,@RequestParam("wifi")String wifi,
 						@RequestParam("bathroom")String bathroom,@RequestParam("geyser")String geyser,@RequestParam("bed")String bed,@RequestParam("swimmingPool")String swimmingPool,
-						@RequestParam("gym")String gym,@RequestParam("NumberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3) throws IOException
+						@RequestParam("gym")String gym,@RequestParam("NumberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model) throws IOException
 				{
-					//System.out.println(numberOfRooms);
 					Room room=new Room();
 					room.setRoomId(roomId);
 					room.setRoomtype(roomType);
@@ -309,7 +319,6 @@ public class UserController {
 					room.setGym(gym);
 					room.setNumberOfBed(numberOfBed);
 					room.setFoodAvailability(foodAvailability);
-					System.out.println(room);
 					byte[] img11 = img1.getBytes();
 					byte[] img13 = img2.getBytes();
 					byte[] img12 = img3.getBytes();
@@ -317,7 +326,9 @@ public class UserController {
 					room.setImg2(img12);
 					room.setImg3(img13);
 					roomService.saveRoom(room,hId);
-					return "home";
+					model.addAttribute("rId",room.getrId());
+					model.addAttribute("numberOfBed", numberOfBed);
+					return "bedInfo";
 				}
 		
 		//check user mail
@@ -463,30 +474,7 @@ public class UserController {
 					return "payment";
 					
 				}
-				//show room info
-				@RequestMapping(value = "/showHouseInfo/showRoomInfo")
-				public String showRoominfo()
-				{
-					return "redirect:/showRoomInfo";
-				}
 				
-				@RequestMapping(value = "/showRoomInfo")
-				public String showRoominfo1(HttpSession session)
-				{
-					User user=(User)session.getAttribute("user");
-					if(user==null)
-					{
-						return "";
-					}
-					else
-					{
-					return "roomInfo";
-					}
-					
-				}
-				
-			
-
 				//send mail
 				@RequestMapping(value="/sendMail",method = RequestMethod.POST)
 				public String sendMail(@RequestParam("firstName")String firstName,@RequestParam("email")String email,@RequestParam("phoneNumber")String phoneNumber,@RequestParam("message")String message)
@@ -542,7 +530,6 @@ public class UserController {
 					User user=new User();
 					user.setEmail(email);
 					user.setPassword(password);
-					
 					user=userService.checkLogin(user);
 					if(user==null)
 					{
@@ -554,9 +541,7 @@ public class UserController {
 						session.setAttribute("email", email1);
 						session.setAttribute("user",user);
 					}
-					return "home";
-					
-					
+					return "home";	
 				}
 				@RequestMapping("/logout")
 				public String logout(HttpSession session,HttpServletResponse response) {
@@ -569,7 +554,6 @@ public class UserController {
 					session.invalidate();
 				    return "home";
 				}
-				
 				//filter page response with filter
 				@RequestMapping(value="/showFilter3")
 				public String listHouseByFilters(@RequestParam("food") String food,Model model, Integer offset, Integer maxResults,HttpSession session){
@@ -584,7 +568,6 @@ public class UserController {
 					model.addAttribute("url", "showFilter2");
 					return "filter";
 				}
-				
 				//filter page response with filter
 				@RequestMapping(value="/showFilter2")
 				public String listHouseByFilter(@RequestParam("profession") String profession,@RequestParam("language") String language,@RequestParam("subcategory") String area,@RequestParam("food") String food,@RequestParam("price") Double rent,Model model, Integer offset, Integer maxResults,HttpSession session){
@@ -606,7 +589,6 @@ public class UserController {
 					//model.addAttribute("url", "showFilter2");
 					return "filter";
 				}
-				
 				@RequestMapping(value="/showFilterWithFacilities")
 				public String showFilterWithFacilities(@RequestParam("facilities") String facilities[],Model model,Integer offset, Integer maxResults,HttpSession session)
 				{
@@ -634,8 +616,51 @@ public class UserController {
 					model.addAttribute("offset", offset);
 						return "filter";
 					}	
+				@RequestMapping(value="/saveBed")
+				public String saveBed(@RequestParam("bed") String bed,@RequestParam("rid") Long rid)
+				{
+					Beds beds=new Beds();
+					beds.setDirection(bed); 
+					houseService.saveBed(beds,rid);
+					return "bedInfo";
+				}
+				@RequestMapping(value="/showBed")
+				public String saveBed()
+				{
+					
+					
+					return "bedInfo";
+				}
+				//assign bed
+				@RequestMapping("/assignBed")
+				public String assignBed(@RequestParam("uId")Long uId,@RequestParam("bId")Long bId)
+				{
+					User user=new User();
+					Beds beds=new Beds();
+					user.setuId(uId);
+					beds.setbId(bId);
+					roomService.assignBed(user, beds);
+					return "assign";
+				}
 				
+				//show room info
+				//@RequestMapping(value = "/showHouseInfo/showRoomInfo/{hId}")
+				//public String showRoominfo()
+				//{
+					//return "redirect:/showRoomDetails/{hId}";
+				//}
+				
+				@RequestMapping(value="/showHouseInfo/showRoomInfo")
+				public String showRoomDetails(@RequestParam("hId")Long hId,Model model)
+				{
+					System.out.println(hId);
+				model.addAttribute("room",roomService.getAllRoomDetails(hId));
+				model.addAttribute("roomCount",5);
+					return "roomInfo";
+				}
 }				
+
+
 				
 				
 				

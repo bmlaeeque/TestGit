@@ -134,7 +134,7 @@ h6 {
  
   <div class="bs-example">
    <ul class="nav nav-tabs">
-     <c:forEach var="i" begin="1" end="5">
+     <c:forEach var="i" begin="1" end="${roomCount}">
         <li><a data-toggle="tab" href="#section${i}">Room ${i}</a></li>
         </c:forEach>
     </ul>    
@@ -142,7 +142,7 @@ h6 {
     <!--Room 1 Section-->
     <div class="col-sm-5">
       <div class="tab-content">
-       <c:forEach var="i" begin="1" end="5">
+       <c:forEach var="i" begin="1" end="${roomCount}">
    		 <div id="section${i}" class="tab-pane fade in active">
             <h3>Room Details</h3>
               <div class="w3-container">
@@ -155,7 +155,7 @@ h6 {
            </thead>
              <tr class="w3-hover-green">
                 <td>Type of Room</td>
-                <td>${room.roomtype}</td>
+                <td>f</td>
              </tr>
              <tr class="w3-hover-green">
                 <td>No. Of Bed</td>

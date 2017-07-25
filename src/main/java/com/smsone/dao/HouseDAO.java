@@ -2,6 +2,7 @@ package com.smsone.dao;
 
 import java.util.List;
 
+import com.smsone.model.Beds;
 import com.smsone.model.House;
 import com.smsone.model.User;
 
@@ -18,4 +19,5 @@ public interface HouseDAO {
 	public Long countByFilter(House house);
 	public Long countAllFilter(House house);
 	public List<House> listHouseByadvancedFilter(House house,User user,Integer offset, Integer maxResults,String[] facilities);
+	public void saveBed(Beds beds,Long rid);
 }

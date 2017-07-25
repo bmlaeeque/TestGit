@@ -1,14 +1,11 @@
 package com.smsone.dao;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -16,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smsone.model.Beds;
 import com.smsone.model.House;
 import com.smsone.model.Owner;
+import com.smsone.model.Room;
 import com.smsone.model.User;
 @Repository
 @Transactional
@@ -204,5 +203,14 @@ public class HouseDAOImpl implements HouseDAO {
 			Criterion c1=Restrictions.eq("locationArea",house.getLocationArea());
 			
 			return null;
+		}
+
+		public void saveBed(Beds beds,Long rid) {
+			Session session=sessionFactory.openSession();
+			Room room=(Room)session.load(Room.class,rid);
+			beds.setRoom(room);
+			session.save(beds);
+			session.close();
+			
 		}
 }

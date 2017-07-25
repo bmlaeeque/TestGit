@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.smsone.dao.HouseDAO;
+import com.smsone.model.Beds;
 import com.smsone.model.House;
 import com.smsone.model.User;
 
@@ -43,5 +44,9 @@ public class HouseServiceImpl implements HouseService {
 	}
 	public List<House> listHouseByadvancedFilter(House house,User user,Integer offset, Integer maxResults,String[] facilities) {
 		return houseDAO.listHouseByadvancedFilter(house,user,offset,maxResults,facilities);
+	}
+	public void saveBed(Beds beds,Long rid) {
+		houseDAO.saveBed(beds,rid);
+		
 	}
 }

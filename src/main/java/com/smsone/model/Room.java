@@ -2,14 +2,18 @@ package com.smsone.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table
@@ -38,6 +42,8 @@ public class Room implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "hId")
 	private House house;
+	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="room")
+	private Set<Beds> beds;
 	public Long getrId() {
 		return rId;
 	}
@@ -134,6 +140,12 @@ public class Room implements Serializable {
 	public void setHouse(House house) {
 		this.house = house;
 	}
+	public Set<Beds> getBeds() {
+		return beds;
+	}
+	public void setBeds(Set<Beds> beds) {
+		this.beds = beds;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -142,7 +154,7 @@ public class Room implements Serializable {
 	}
 	public Room(Long rId, Long roomId, String roomtype, String ac, String wifi, String bathroom, String geyser,
 			String bed, String swimmingPool, String gym, Integer numberOfBed, String foodAvailability, byte[] img1,
-			byte[] img2, byte[] img3, House house) {
+			byte[] img2, byte[] img3, House house, Set<Beds> beds) {
 		super();
 		this.rId = rId;
 		this.roomId = roomId;
@@ -160,14 +172,7 @@ public class Room implements Serializable {
 		this.img2 = img2;
 		this.img3 = img3;
 		this.house = house;
-	}
-	@Override
-	public String toString() {
-		return "Room [rId=" + rId + ", roomId=" + roomId + ", roomtype=" + roomtype + ", ac=" + ac + ", wifi=" + wifi
-				+ ", bathroom=" + bathroom + ", geyser=" + geyser + ", bed=" + bed + ", swimmingPool=" + swimmingPool
-				+ ", gym=" + gym + ", NumberOfBed=" + NumberOfBed + ", foodAvailability=" + foodAvailability + ", img1="
-				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
-				+ ", house=" + house + "]";
+		this.beds = beds;
 	}
 	@Override
 	public int hashCode() {
@@ -177,6 +182,7 @@ public class Room implements Serializable {
 		result = prime * result + ((ac == null) ? 0 : ac.hashCode());
 		result = prime * result + ((bathroom == null) ? 0 : bathroom.hashCode());
 		result = prime * result + ((bed == null) ? 0 : bed.hashCode());
+		result = prime * result + ((beds == null) ? 0 : beds.hashCode());
 		result = prime * result + ((foodAvailability == null) ? 0 : foodAvailability.hashCode());
 		result = prime * result + ((geyser == null) ? 0 : geyser.hashCode());
 		result = prime * result + ((gym == null) ? 0 : gym.hashCode());
@@ -219,6 +225,11 @@ public class Room implements Serializable {
 			if (other.bed != null)
 				return false;
 		} else if (!bed.equals(other.bed))
+			return false;
+		if (beds == null) {
+			if (other.beds != null)
+				return false;
+		} else if (!beds.equals(other.beds))
 			return false;
 		if (foodAvailability == null) {
 			if (other.foodAvailability != null)
@@ -273,7 +284,13 @@ public class Room implements Serializable {
 			return false;
 		return true;
 	}
-		
+	@Override
+	public String toString() {
+		return "Room [rId=" + rId + ", roomId=" + roomId + ", roomtype=" + roomtype + ", ac=" + ac + ", wifi=" + wifi
+				+ ", bathroom=" + bathroom + ", geyser=" + geyser + ", bed=" + bed + ", swimmingPool=" + swimmingPool
+				+ ", gym=" + gym + ", NumberOfBed=" + NumberOfBed + ", foodAvailability=" + foodAvailability + ", img1="
+				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
+				+ ", house=" + house + ", beds=" + beds + "]";
+	}
 	
-
 }
