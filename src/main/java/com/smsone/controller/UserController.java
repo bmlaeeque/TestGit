@@ -524,16 +524,17 @@ public class UserController {
 				}
 				//login check
 				@RequestMapping(value = "/login", method = RequestMethod.POST)
-				public String login(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session)
+				public String login(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
 				{
 					//String msg=null;
 					User user=new User();
 					user.setEmail(email);
 					user.setPassword(password);
+					
 					user=userService.checkLogin(user);
 					if(user==null)
 					{
-				
+						session.setAttribute("invalid", "invalid");
 					}
 					else
 					{
@@ -541,8 +542,34 @@ public class UserController {
 						session.setAttribute("email", email1);
 						session.setAttribute("user",user);
 					}
-					return "home";	
+					return "home";
+					
+					
 				}
+			
+				//login check popup
+				@RequestMapping(value = "/login1", method = RequestMethod.POST)
+				public @ResponseBody String loginPopup(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session)
+				{
+					//String msg=null;
+					User user=new User();
+					user.setEmail(email);
+					user.setPassword(password);
+					String msg="";
+					user=userService.checkLogin(user);
+					if(user==null)
+					{
+						msg="please enter valid username and password";
+					}
+					else
+					{
+						msg="ghgghgg";
+					}
+					return msg;
+					
+					
+				}
+				
 				@RequestMapping("/logout")
 				public String logout(HttpSession session,HttpServletResponse response) {
 					response.setHeader("Cache-Control","no-cache"); 
@@ -658,6 +685,9 @@ public class UserController {
 				model.addAttribute("roomCount",5);
 					return "roomInfo";
 				}
+				
+			
+			
 }				
 
 

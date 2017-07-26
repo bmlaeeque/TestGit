@@ -242,7 +242,7 @@
                       <div>
                       <form action="showRoomInfo">
                       <input type="hidden" name="hId" value="${house.hId}">
-                      <button type="Rooms Details" class="btn btn-theme pull-left">Rooms Details</button>
+                      <button type="RoomDetails" class="btn btn-theme pull-left">Room Details</button>
                       </form>
                       </div>
                      
