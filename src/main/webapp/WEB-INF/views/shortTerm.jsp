@@ -131,7 +131,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b>Diva Stays</b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000">Diva Stays</font></b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -151,7 +151,7 @@
          {
         %>
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><font color="#000000">Login</font></b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					 <div class="row">
@@ -185,7 +185,7 @@
 								 </form>
 									</div>
 							<div class="bottom text-center">
-								New here ? <a href="showUserReg"><b>Join Us</b></a>
+								New here ? <a href="showUserReg"><b><font color="#000000">Join Us</font></b></a>
 							</div>
 					 </div>
 				</li>
@@ -194,7 +194,7 @@
         <%
         }
         %>	 									
-          <li><a href="showHelp">Help</a></li>
+          <li><a href="showHelp"><font color="#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -204,7 +204,7 @@
 
 <div class="jumbotron" style="background-color:#ffffff">
   <div class="container text-center">
-      <h1 style="color:#FF0000; font-family:Georgia">DivaStays</h1>     
+      <h1 style="color:#000000; font-family:Georgia">DivaStays</h1>     
     <p style="color:#000000; font-family:"Courier New", Courier, monospace;">Your Friendly  neighborhood hostel</p>
     <h5 style="color:#333333;">now in India</h5>
    <a href="showKnowMore"> <button class="button btn-info">Know More</button></a>
@@ -305,7 +305,7 @@
       
   		<div class="col-sm-4"> 
         		     <a href="showDeal1" class="gallery-box" data-toggle="modal" data-src="images/pg_hostel_img1.png">
-                     <img src="images/pg_hostel_img5.png" class="img-responsive" alt="Image 1">
+                     <img src="images/pghostel_img5.jpg" class="img-responsive" alt="Image 1">
                         <div class="gallery-box-caption">
                             <div class="gallery-box-content">
                                 <div>
@@ -362,7 +362,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="margin-top-0 text-primary">Diva Stays for all your needs</h2>
+                    <h2 class="margin-top-0 ">DivaStays For All Your Needs</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -461,7 +461,7 @@
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get in Touch</h2>
+                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get In Touch</h2>
                     <hr class="primary">
                     <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
                 </div>
