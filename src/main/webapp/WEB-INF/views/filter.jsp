@@ -122,7 +122,7 @@
       <li><a href="showHelp">Help</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
-  < /div><!-- /.container-fluid -->
+  </div><!-- /.container-fluid -->
 <hr>
 
   <div class="container-fluid">
