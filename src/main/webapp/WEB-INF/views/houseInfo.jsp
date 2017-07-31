@@ -125,7 +125,7 @@
 			<div class="panel-heading row">
 				<div class="row">
 					<div class="col-xs-6 text-center">
-						<a href="showPaymentPage" class="active" id="book">Book</a>
+						<a href="#" class="active" id="book">Book</a>
 					</div>
 					<div class="col-xs-6 text-center">
 						<a href="#" id="visit">Visit</a>
@@ -137,7 +137,7 @@
 	<div class="panel-body">
 	  <div class="row">
 		<div class="col-lg-12">
-			<form id="login-form" role="form" style="display: block;" action="showPaymentPage">
+			<form id="login-form" role="form" style="display: block;">
                  <h6>
                     To Book, you need to pay a token amount and the remaining before move-in.</h6>
                  <br>
@@ -146,7 +146,7 @@
 	<div class="form-group"> 
 		<div class="row">
 			<div class="col-sm-6 col-sm-offset-3">
-			<button type="submit" class="form-control btn btn-login"  style="color:#FF0000">Book</button>
+			<button type="submit" class="form-control btn btn-login"  style="color:#FF0000" onclick="popup(); return false;">Book</button>
 			</div>
 		</div> 
 	</div>
@@ -526,8 +526,54 @@
     </footer>
   <!--End Of Footer-->
   
-  <!--Script for book and view Code-->
-<script>
+  <div class="mod" id="myModal11" >
+    <div class="modal-dialog modal-sm" >
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close1">&times;</span>
+                <h4 class="modal-title" id="myModalLabel">
+                    Login</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-4">
+                       
+                      
+                       
+                                <form role="form" class="form-vertical">
+                               
+                                  <p  style="text-align:center" display="inline-block">
+     <a class = "btn navbar-btn btn-default" href = "showPaymentPage" style="width:100%" >Self</a>
+     <a class = "btn navbar-btn btn-default" href = "showUserReg" style="width:100%" >Other</a>
+                                 </p>
+                              
+                                </form>
+                          
+                    
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <script type="text/javascript">
+ function popup()
+ {
+ var modal = document.getElementById('myModal11');
+ 
+ modal.style.display = "block";
+
+ var span = document.getElementsByClassName("close1")[0];
+ span.onclick = function() {
+	    modal.style.display = "none";
+	}
+ }
+ </script>
+  
+  <!-- Book and view script code -->
+ <script>
 $(function() {
 
     $('#book').click(function(e) {
@@ -548,6 +594,43 @@ $(function() {
 });
 </script>
 <!--End of Script-->
+
+        
+     <style>
+.mod {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+   width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* The Close Button */
+.close1 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close1:hover,
+.close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav-tabs {
+    margin-bottom: 15px;
+}
+
+</style>   
+
+
 <script src="js/validate.js" type="text/javascript"></script>
 </body>
 </html>

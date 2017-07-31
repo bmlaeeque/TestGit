@@ -664,7 +664,7 @@
                                     <label for="password" class="col-sm-2 control-label">
                                         Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Email" autocomplete="off" />
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="row">

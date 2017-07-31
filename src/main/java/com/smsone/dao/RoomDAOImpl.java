@@ -46,9 +46,9 @@ public class RoomDAOImpl implements RoomDAO {
 		Session session=sessionFactory.openSession();
 		House house=(House)session.load(House.class, hId);
 		Set<Room> room=house.getRooms();
-		List<Room> rooms= new ArrayList<Room>(room);
+		//List<Room> rooms= new ArrayList<Room>(room);
 		session.close();
-		return rooms;
+		return null;
 		//Query qry=session.createQuery("SELECT h.rooms FROM House h WHERE h.hId ="+hId);
 		//List<Room> rooms=qry.list();
 		//String sql = "SELECT * FROM EMPLOYEE";
