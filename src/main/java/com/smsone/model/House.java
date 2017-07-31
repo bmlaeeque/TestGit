@@ -2,6 +2,7 @@ package com.smsone.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -57,9 +58,9 @@ public class House implements Serializable
 	@Column(name="img3",columnDefinition = "LONGBLOB")
 	private byte[] img3;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="house")
-	private Set<User> user;
+	private List<User> user;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="house")
-	private Set<Room> rooms;
+	private List<Room> rooms;
 	@ManyToOne
     @JoinColumn(name = "oId")
 	private Owner owner;
@@ -67,7 +68,6 @@ public class House implements Serializable
 	private Double latitude;
 	@Column(name="longitude",columnDefinition = "Decimal(9,6)")
 	private Double longitude;
-	
 	public Long gethId() {
 		return hId;
 	}
@@ -170,16 +170,16 @@ public class House implements Serializable
 	public void setImg3(byte[] img3) {
 		this.img3 = img3;
 	}
-	public Set<User> getUser() {
+	public List<User> getUser() {
 		return user;
 	}
-	public void setUser(Set<User> user) {
+	public void setUser(List<User> user) {
 		this.user = user;
 	}
-	public Set<Room> getRooms() {
+	public List<Room> getRooms() {
 		return rooms;
 	}
-	public void setRooms(Set<Room> rooms) {
+	public void setRooms(List<Room> rooms) {
 		this.rooms = rooms;
 	}
 	public Owner getOwner() {
@@ -208,7 +208,7 @@ public class House implements Serializable
 	}
 	public House(Long hId, Integer floorNumber, Double rent, Double area, String tenancyType, Integer room,
 			String foodPreference, Double deposit, String houseName, String state, String locationArea, String country,
-			String city, String address, byte[] img1, byte[] img2, byte[] img3, Set<User> user, Set<Room> rooms,
+			String city, String address, byte[] img1, byte[] img2, byte[] img3, List<User> user, List<Room> rooms,
 			Owner owner, Double latitude, Double longitude) {
 		super();
 		this.hId = hId;
@@ -233,16 +233,6 @@ public class House implements Serializable
 		this.owner = owner;
 		this.latitude = latitude;
 		this.longitude = longitude;
-	}
-	@Override
-	public String toString() {
-		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", rent=" + rent + ", area=" + area
-				+ ", tenancyType=" + tenancyType + ", room=" + room + ", foodPreference=" + foodPreference
-				+ ", deposit=" + deposit + ", houseName=" + houseName + ", state=" + state + ", locationArea="
-				+ locationArea + ", country=" + country + ", city=" + city + ", address=" + address + ", img1="
-				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
-				+ ", user=" + user + ", rooms=" + rooms + ", owner=" + owner + ", latitude=" + latitude + ", longitude="
-				+ longitude + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -384,4 +374,16 @@ public class House implements Serializable
 			return false;
 		return true;
 	}
-}
+	@Override
+	public String toString() {
+		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", rent=" + rent + ", area=" + area
+				+ ", tenancyType=" + tenancyType + ", room=" + room + ", foodPreference=" + foodPreference
+				+ ", deposit=" + deposit + ", houseName=" + houseName + ", state=" + state + ", locationArea="
+				+ locationArea + ", country=" + country + ", city=" + city + ", address=" + address + ", img1="
+				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
+				+ ", user=" + user + ", rooms=" + rooms + ", owner=" + owner + ", latitude=" + latitude + ", longitude="
+				+ longitude + "]";
+	}
+	
+	
+	}

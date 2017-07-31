@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -44,26 +43,22 @@ public class RoomDAOImpl implements RoomDAO {
 	@SuppressWarnings("unchecked")
 	public List<Room> getAllRoomDetails(Long hId) {
 		Session session=sessionFactory.openSession();
-		House house=(House)session.load(House.class, hId);
-		Set<Room> room=house.getRooms();
-		List<Room> rooms= new ArrayList<Room>(room);
-		session.close();
-		return rooms;
-		//Query qry=session.createQuery("SELECT h.rooms FROM House h WHERE h.hId ="+hId);
-		//List<Room> rooms=qry.list();
-		//String sql = "SELECT * FROM EMPLOYEE";
-	//SQLQuery query = session.createSQLQuery("select * from room where hId="+hId);
-	//	query.addEntity(Room.class);
-		//List<Room> rooms=query.list();
+		House house=(House)session.load(House.class,hId);
+		List<Room> room=house.getRooms();
+		if(room!=null)
+		{
+		return room;
+		}
+		else
+		{
+			return null;
+		}
 		
 	}
 	public Long countRooms(Long hId) {
 		Session session=sessionFactory.openSession();
 		House house=(House)session.load(House.class, hId);
-		Set<Room> room=house.getRooms();
-	//	SQLQuery query = session.createSQLQuery("SELECT count(*) FROM room");
-	//	query.addEntity(Room.class);
-		//Long count = (Long)query.uniqueResult();
+		List<Room> room=house.getRooms();
 		int count=room.size();
 		Long c=new Long(count);
 		session.close();
