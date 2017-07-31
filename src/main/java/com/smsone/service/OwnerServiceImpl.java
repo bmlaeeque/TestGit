@@ -25,5 +25,9 @@ public class OwnerServiceImpl implements OwnerService {
 	public boolean checkEmail(Owner owner) {
 		return ownerDAO.checkEmail(owner);
 	}
+	public Owner checkOwnerLogin(Owner owner)
+	{
+		return ownerDAO.checkOwnerLogin(owner);
+	}
 
 }

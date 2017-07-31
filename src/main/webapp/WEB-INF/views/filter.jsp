@@ -88,7 +88,7 @@
 								</div>
                                 or
             
-            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+            <form class="form" role="form" method="post" action="loginFilter" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
 											 <input type="email" name="email" class="form-control" id="email" placeholder="Email address" autocomplete="off" required>
@@ -532,7 +532,7 @@ function checkLogin()
                         <!-- Tab panes -->
                         <div class="tab-content">
                        
-                                <form role="form" class="form-horizontal" method="post" action="login">
+                                <form role="form" class="form-horizontal" method="post" action="loginFilter">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
                                         Email</label>
@@ -598,6 +598,20 @@ $('#myModal11').modal('show');
        <%   }
         %>
         
+        <% 
+	String invalid=(String)session.getAttribute("invalid");
+        if(invalid!=null)
+            {%>
+        	 <script type="text/javascript">
+        	 popup();
+        	 </script>
+          <% 
+          session.removeAttribute("invalid");
+          }  
+         else  
+         {
+         }
+        %>
      <style>
 .mod {
     display: none; /* Hidden by default */

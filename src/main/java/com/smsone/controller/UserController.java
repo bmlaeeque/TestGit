@@ -96,12 +96,21 @@ public class UserController {
 	{
 		return "owner";
 	}
+	
 	//show user reg page
 	@RequestMapping(value = "/showUserReg")
-	public String showUserRegistration()
+	public String showUserReg()
 	{
 		return "userRegistration";
 	}
+	@RequestMapping(value = "/showHouseInfo/showUserReg")
+	public String showUserRegistration()
+	{
+		return "redirect:/showUserReg";
+	}
+	
+	
+	
 	//save user
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public String saveUser(@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("aadharNumber")Long aadharNumber,@RequestParam("motherTounge")String motherTongue,@RequestParam("address")String address,@RequestParam("pincode")Integer pincode,
@@ -491,6 +500,7 @@ public class UserController {
 				//show filter with results 
 				@RequestMapping(value="/showFilter")
 				public String list(Model model, Integer offset, Integer maxResults,HttpServletResponse response){
+					System.out.println("hiiiiiiiiiiiiii");
 					response.setHeader("Cache-Control","no-cache"); 
 					response.setHeader("Cache-Control","no-store"); 
 					response.setDateHeader("Expires", 0); 
@@ -531,6 +541,7 @@ public class UserController {
 					user.setPassword(password);
 					
 					user=userService.checkLogin(user);
+					
 					if(user==null)
 					{
 						session.setAttribute("invalid", "invalid");
@@ -542,6 +553,58 @@ public class UserController {
 						session.setAttribute("user",user);
 					}
 					return "home";
+					
+					
+				}
+				//filter page login check
+				@RequestMapping(value = "/loginFilter", method = RequestMethod.POST)
+				public String loginFilter(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
+				{
+					//String msg=null;
+					User user=new User();
+					user.setEmail(email);
+					user.setPassword(password);
+					
+					user=userService.checkLogin(user);
+					
+					if(user==null)
+					{
+						session.setAttribute("invalid", "invalid");
+						return "redirect:/showFilter";
+					}
+					else
+					{
+						String email1=user.getEmail();
+						session.setAttribute("email", email1);
+						session.setAttribute("user",user);
+						return "redirect:/showFilter";
+					}
+					
+					
+					
+				}
+				
+				//owner login check 
+				@RequestMapping(value = "/loginOwner", method = RequestMethod.POST)
+				public String loginOwner(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
+				{
+					//String msg=null;
+					Owner owner=new Owner();
+					owner.setEmail(email);
+					owner.setPassword(password);
+					
+					owner=ownerService.checkOwnerLogin(owner);
+					if(owner==null)
+					{
+						session.setAttribute("invalid", "invalid");
+						return "owner";
+					}
+					else
+					{
+						
+						return "houseRegistration";
+					}
+					
 					
 					
 				}
@@ -684,6 +747,8 @@ public class UserController {
 					 return "redirect:/showRoomInfo/{hId}";
 					
 				}
+				
+				
 				
 			
 			

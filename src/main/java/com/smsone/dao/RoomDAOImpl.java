@@ -54,6 +54,7 @@ public class RoomDAOImpl implements RoomDAO {
 			return null;
 		}
 		
+		
 	}
 	public Long countRooms(Long hId) {
 		Session session=sessionFactory.openSession();

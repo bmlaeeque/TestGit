@@ -76,6 +76,27 @@ public class OwnerDAOImpl implements OwnerDAO {
 		return true;
 		}
 	}
+	
+	public Owner checkOwnerLogin(Owner owner) {
+		Session session=sessionFactory.openSession();
+		Criteria crit=session.createCriteria(Owner.class);
+		Criterion c1=Restrictions.eq("email",owner.getEmail());
+		Criterion c2=Restrictions.eq("password",owner.getPassword());
+		Criterion c3=Restrictions.and(c1,c2);
+		crit.add(c3);
+		@SuppressWarnings("unchecked")
+		List<Owner> list=crit.list();
+		if(list.isEmpty())
+		{
+			return null;
+		}
+		else
+		{
+			owner=(Owner)list.get(0);
+		return owner;
+		}
+		
+	}
 
 }
 

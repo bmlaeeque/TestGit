@@ -166,11 +166,11 @@
             <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-											 <input type="email" name="email" class="form-control" id="email" placeholder="Email address" required>
+											 <input type="email" name="email" class="form-control" id="email" placeholder="Email address" autocomplete="off" required>
 										</div>
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputPassword2">Password</label>
-											 <input type="password" name="password" class="form-control" id="password"  placeholder="Password" required>
+											 <input type="password" name="password" class="form-control" id="password"  placeholder="Password" autocomplete="off" required>
                                              <div class="help-block text-right"><a href="">Forget the password ?</a></div>
                                              <span id="empIdErr" class="errMsg"></span>
 										</div>
@@ -514,6 +514,121 @@
     </section>
     
   <jsp:include page="footer.jsp"></jsp:include>
+  
+        
+<div class="mod" id="myModal11" style="color: black;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: white;">
+                <span class="close1">&times;</span>
+                <h4 class="modal-title" id="myModalLabel">
+                    Login</h4>
+            </div>
+            <div class="modal-body" style="background-color: white;">
+            <h3 style="color: red">Username or Password is incorrect</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                         
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                       
+                                <form role="form" class="form-horizontal" method="post" action="login">
+                                <div class="form-group">
+                                    <label for="email" class="col-sm-2 control-label">
+                                        Email</label>
+                                    <div class="col-sm-10">
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Emaillllll" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-sm-2 control-label">
+                                        Password</label>
+                                    <div class="col-sm-10">
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-2">
+                                    </div>
+                                    <div class="col-sm-10">
+                                        <button type="submit" class="btn btn-primary btn-sm" style="color: black;">
+                                            Submit</button>
+                                        <a href="javascript:;">Forgot your password?</a>
+                                    </div>
+                                </div>
+                                </form>
+                          
+                        </div>
+                    
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+  <script type="text/javascript">
+ function popup()
+ {
+ var modal = document.getElementById('myModal11');
+ modal.style.display = "block";
+ var span = document.getElementsByClassName("close1")[0];
+ span.onclick = function() {
+	    modal.style.display = "none";
+	}
+ }
+ </script>
+  
+    <style>
+.mod {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+/* The Close Button */
+.close1 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close1:hover,
+.close1:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.nav-tabs {
+    margin-bottom: 15px;
+}
+</style>
+    <% 
+	String invalid=(String)session.getAttribute("invalid");
+        if(invalid!=null)
+            {%>
+        	 <script type="text/javascript">
+        	 popup();
+        	 </script>
+          <% 
+          session.removeAttribute("invalid");
+          }  
+         else  
+         {
+         }
+        %>
     
 <!-- Include jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
