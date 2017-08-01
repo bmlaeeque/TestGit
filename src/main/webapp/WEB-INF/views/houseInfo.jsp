@@ -46,7 +46,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b>Divastays</b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000">Divastays</font></b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -54,7 +54,7 @@
      
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="showHelp">Help</a></li>
+        <li><a href="showHelp"><font color="#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

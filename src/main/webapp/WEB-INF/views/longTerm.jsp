@@ -206,7 +206,7 @@
    <div class="header-content" align="center">
       <div class="container text-center">						<!--conatainer center div start -->
           <h1 style="color:#000000; font-family:Georgia;">DivaStays</h1>     
-              <p style="color:#000000; font-family:"Courier New", Courier, monospace;">Your Friendly  neighborhood hostel</p>
+              <p style="color:#000000; font-family:"Courier New", Courier, monospace;">Your Friendly  Neighbourhood Hostel</p>
           <h5 style="color:#000000;">now in India</h5>
           <a href="showKnowMore"> <button class="button btn-info">Know More</button></a>
 		   <div class="container text-center" style="background-color:rgb(243,210,230)" >    
