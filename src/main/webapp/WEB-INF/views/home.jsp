@@ -128,7 +128,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome" onclick="popup(); return false;"><b>DivaStays</a>
+      <a class="navbar-brand" href="showHome" onclick="popup(); return false;"><b><font color="#000000">DivaStays</font></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -136,7 +136,7 @@
      
     
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="showOwnerPage">House Owner</a></li>
+      <li><a href="showOwnerPage"><font color="#000000">House Owner</font></a></li>
          <% 
         String email =  (String)session.getAttribute("email");
         if(email!=null)
@@ -147,7 +147,7 @@
          {
         %>
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><font color="#000000">Login</font></b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					 <div class="row">
@@ -181,16 +181,17 @@
 								 </form>
 									</div>
 							<div class="bottom text-center">
-								New here ? <a href="showUserReg"><b>Join Us</b></a>
+								New here ? <a href="showUserReg"><b><font color="#000000">Join Us</font></b></a>
 							</div>
 					 </div>
 				</li>
+				
 			</ul>
         </li>
         <%
         }
         %>	 									
-        <li><a href="showHelp">Help</a></li>
+        <li><a href="showHelp"><font color="#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -281,7 +282,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="margin-top-0 text-primary">DivaStays For All Your Needs</h2>
+                    <h2 class="margin-top-0 ">DivaStays For All Your Needs</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -380,7 +381,7 @@
     
 <div class="jumbotron">
   <div class="container text-center">
-   <h2 class="margin-top-0 text-primary">Best Places</h2>
+   <h2 class="margin-top-0 ">Best Places</h2>
    <hr class="primary">
 	 <div class="row">
      <div class="col-lg-4 col-md-4 text-center">
@@ -411,7 +412,7 @@
 		<section class="container-fluid" id="four">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4">
-                <h2 class="text-center text-primary">Features</h2>
+                <h2 class="text-center">Features</h2>
                 <hr>
                 <div class="media wow fadeInRight">
                     <h3>Simple</h3>
@@ -575,7 +576,7 @@
 	           	 <div class="text-right-md col-md-4 col-sm-4">
 	              <h2 class="section-title blue lg-line\">Â« A few words<br> about us Â»</h2>
 	            	</div>
-	            <div class="col-md-3col-sm-5">                 We provides a better hostels guide website that really gives you all the 		information you need to find the best hostels., the idea of having a one stop website 	for hostels was born What we got for you: pghostel.com started in 2017.
+	            <div class="col-md-3col-sm-5">                 We provides a better hostels guide website that really gives you all the information you need to find the best hostels., the idea of having a one stop website 	for hostels was born What we got for you: pghostel.com started in 2017.
 	              <p class="text-right text-primary"><i></i></p>
 	            </div>
 	            <div class="col-md-2"></div>
@@ -591,7 +592,7 @@
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get in Touch</h2>
+                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get In Touch</h2>
                     <hr class="primary">
                     <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
                 </div>

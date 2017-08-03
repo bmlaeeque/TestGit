@@ -6,11 +6,49 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/registrationForm.css">
+<link href="css/registrationForm.css" rel="stylesheet"/>
+  <link href="css/bootstrap.min.css" rel="stylesheet">  
+<link href="css/header.css" rel="stylesheet"/>
+	 
 </head>
 <body style="background-image:url(images/formBackground.png)">
+
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="showHome">DivaStays</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+       <% 
+        String ownerEmail =  (String)session.getAttribute("ownerEmail");
+        if(ownerEmail!=null)
+            {
+        	 out.println(ownerEmail+"   <a href=\"logoutOwner\" >Logout</a>");
+            }  
+         else  
+         {
+        
+        
+        }
+        %>	
+         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 	<div class="main-content">
-	  <form class="form-basic" method="post" action="saveHouse" onSubmit="return HouseSubmit()"  enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
+	  <form class="form-basic" method="post" action="saveHouse" onSubmit="return HouseSubmit()" enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
             <div class="form-title-row">
                 <h1>House Details</h1>
             </div>
@@ -65,7 +103,7 @@
                     <span>Area</span>
                     <input type="text" name="area" id="area" placeholder="Area in sq.ft." onBlur="CheckArea(); return false;" autocomplete="off" required>
                 </label> 
-                <br>&nbsp;&nbsp;&nbsp;&nbsp;
+                <br>
                 <label>
                    <span>Upload Photo 1</span>
                  <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" autocomplete="off"  required>
@@ -92,6 +130,7 @@
                     <span>Address</span>
                     <textarea name="address" id="address" placeholder="Address" onBlur="CheckAddress(); return false;" autocomplete="off" required></textarea>
                 </label> 
+                <br>
                 <br>
                  <label>
                  <span>Area Location</span>
