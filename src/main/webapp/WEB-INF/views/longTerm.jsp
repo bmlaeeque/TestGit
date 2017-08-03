@@ -541,7 +541,7 @@
                                     <label for="email" class="col-sm-2 control-label">
                                         Email</label>
                                     <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="email" name="email" placeholder="Emaillllll" autocomplete="off" />
+                                        <input type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="form-group">

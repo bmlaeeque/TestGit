@@ -94,7 +94,20 @@ body {
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-      <li><a href="showOwnerReg"><font color=#000000">Sign Up</font></a></li>
+   
+      
+        <% 
+        String ownerEmail =  (String)session.getAttribute("ownerEmail");
+        if(ownerEmail!=null)
+            {
+        	 out.println(ownerEmail+"   <a href=\"logoutOwner\" >Logout</a>");
+        	 out.println();
+        	 out.println(" <a href=\"showHouseReg\" >House Registration</a>");
+            }  
+         else  
+         {
+        %>
+      
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><font color=#000000">Login</font><span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
@@ -129,6 +142,9 @@ body {
 				</li>
 			</ul>
         </li>
+          <%
+        }
+        %>	 		
         <li><a href="showHelp"><font color=#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -512,7 +528,7 @@ body {
                                     <label for="password" class="col-sm-2 control-label">
                                         Password</label>
                                     <div class="col-sm-10">
-                                        <input type="password" class="form-control" id="password" name="password" placeholder="Email" autocomplete="off" />
+                                        <input type="password" class="form-control" id="password" name="password" placeholder="Password" autocomplete="off" />
                                     </div>
                                 </div>
                                 <div class="row">

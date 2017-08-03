@@ -185,6 +185,7 @@
 							</div>
 					 </div>
 				</li>
+				
 			</ul>
         </li>
         <%
@@ -575,7 +576,7 @@
 	           	 <div class="text-right-md col-md-4 col-sm-4">
 	              <h2 class="section-title blue lg-line\">Â« A few words<br> about us Â»</h2>
 	            	</div>
-	            <div class="col-md-3col-sm-5">                 We provides a better hostels guide website that really gives you all the 		information you need to find the best hostels., the idea of having a one stop website 	for hostels was born What we got for you: pghostel.com started in 2017.
+	            <div class="col-md-3col-sm-5">                 We provides a better hostels guide website that really gives you all the information you need to find the best hostels., the idea of having a one stop website 	for hostels was born What we got for you: pghostel.com started in 2017.
 	              <p class="text-right text-primary"><i></i></p>
 	            </div>
 	            <div class="col-md-2"></div>

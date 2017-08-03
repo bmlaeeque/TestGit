@@ -153,8 +153,11 @@ public class UserController {
 	
 	//show house reg page
 	@RequestMapping(value = "/showHouseReg")
-	public String showHouseRegistration()
+	public String showHouseRegistration(HttpSession session,Model model)
 	{
+		Owner owner1=(Owner)session.getAttribute("owner");
+		Long oId=owner1.getoId();
+		model.addAttribute("oId", oId);
 		return "houseRegistration";
 	}
 	//save house
@@ -200,7 +203,7 @@ public class UserController {
 	//save owner
 		@RequestMapping(value = "/saveOwner", method = RequestMethod.POST)
 		public String saveOwner(@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("password1") String password,
-				@RequestParam("aadharNumber") Long aadharNumber,@RequestParam("lastName") String lastName,@RequestParam("email") String email,Model model)
+				@RequestParam("aadharNumber") Long aadharNumber,@RequestParam("lastName") String lastName,@RequestParam("email") String email,Model model,HttpSession session)
 		{
 			Owner owner=new Owner();
 			owner.setFirstName(firstName);
@@ -209,9 +212,10 @@ public class UserController {
 			owner.setEmail(email);
 			owner.setAadharNumber(aadharNumber);
 			owner.setPassword(password);
+		
 			ownerService.saveOwner(owner);
 			model.addAttribute("oId",owner.getoId());
-			return "houseRegistration";
+			return "owner";
 		}
 	
 	
@@ -602,8 +606,10 @@ public class UserController {
 					}
 					else
 					{
-						
-						return "houseRegistration";
+						String email2=owner.getEmail();
+						session.setAttribute("ownerEmail", email2);
+						session.setAttribute("owner",owner);
+						return "owner";
 					}
 					
 					
@@ -644,6 +650,21 @@ public class UserController {
 					session.invalidate();
 				    return "home";
 				}
+				
+				//Owner Logout Code
+				@RequestMapping("/logoutOwner")
+				public String logoutOwner(HttpSession session,HttpServletResponse response) {
+					response.setHeader("Cache-Control","no-cache"); 
+					response.setHeader("Cache-Control","no-store"); 
+					response.setDateHeader("Expires", 0); 
+					response.setHeader("Pragma","no-cache"); 
+					session.removeAttribute("Owner");
+					session.removeAttribute("ownerEmail");
+					session.invalidate();
+				    return "owner";
+				}
+				
+				
 				//filter page response with filter
 				@RequestMapping(value="/showFilter3")
 				public String listHouseByFilters(@RequestParam("food") String food,Model model, Integer offset, Integer maxResults,HttpSession session){
@@ -753,6 +774,7 @@ public class UserController {
 				
 			
 			
+				
 }				
 
 
