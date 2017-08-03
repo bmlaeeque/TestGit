@@ -21,6 +21,15 @@
                         document.getElementById("subcategory").options[4]=new Option("Vidyanager","Vidyanager");
                        	document.getElementById("subcategory").options[5]=new Option("Shivaji Peth","Shivaji Peth");
 				}
+				else if((/mumbai/.test(listindex))||(/Mumbai/.test(listindex)))
+				{
+						document.getElementById("subcategory").options[0]=new Option("Please select area","");
+                        document.getElementById("subcategory").options[1]=new Option("Shahupari","Shahupuri");
+                        document.getElementById("subcategory").options[2]=new Option("LaxmiPuri","LaxmiPuri");
+                        document.getElementById("subcategory").options[3]=new Option("Rajarampuri","Rajarampuri");
+                        document.getElementById("subcategory").options[4]=new Option("Vidyanager","Vidyanager");
+                       	document.getElementById("subcategory").options[5]=new Option("Shivaji Peth","Shivaji Peth");
+				}
 				
 				
                 return true;

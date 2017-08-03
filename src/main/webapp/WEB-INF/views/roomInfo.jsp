@@ -142,8 +142,8 @@ h6 {
     <!--Room 1 Section-->
     <div class="col-sm-5">
       <div class="tab-content">
-       <c:forEach items="${room}" var="room">
-   		 <div id="section" class="tab-pane fade in active">
+       <c:forEach items="${room}" var="room" varStatus="theCount">
+   		 <div id="section${theCount.count}" class="tab-pane fade in active">
             <h3>Room Details</h3>
               <div class="w3-container">
          <table class="table">
@@ -191,6 +191,7 @@ h6 {
  </div>
 </div>
   </c:forEach> 
+  
 <!--End Room 1 Section-->
   </div>
 </div>

@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smsone.model.Beds;
 import com.smsone.model.House;
@@ -733,19 +734,19 @@ public class UserController {
 				}
 				
 				//show room info
-				@RequestMapping(value="/showRoomInfo/{hId}")
-				public String showRoominfo(@PathVariable("hId") Long hId)
+				@RequestMapping(value="/showRoomInfo")
+				public String showRoominfo(@RequestParam("hId") Long hId,Model model)
 				{
-					//model.addAttribute("room",roomService.getAllRoomDetails(hId));
-					//model.addAttribute("roomCount",roomService.countRooms(hId));
+					model.addAttribute("room",roomService.getAllRoomDetails(hId));
+					model.addAttribute("roomCount",roomService.countRooms(hId));
 					return "roomInfo";
 				}
 				
 				@RequestMapping(value="/showHouseInfo/showRoomInfo")
-				public String showRoomDetails(@RequestParam("hId")Long hId)
+				public String showRoomDetails(@RequestParam("hId")Long hId,RedirectAttributes ra)
 				{
-					 return "redirect:/showRoomInfo/{hId}";
-					
+					 ra.addAttribute("hId",hId);
+					 return "redirect:/showRoomInfo";
 				}
 				
 				
