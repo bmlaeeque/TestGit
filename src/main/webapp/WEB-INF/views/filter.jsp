@@ -58,7 +58,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b>Diva Stays</b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000">Diva Stays</font></b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,7 +76,7 @@
          {
         %>
             <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><font color="#000000">Login</font></b> <span class="caret"></span></a>
 			<ul id="login-dp" class="dropdown-menu">
 				<li>
 					 <div class="row">
@@ -110,7 +110,7 @@
 								 </form>
 									</div>
 							<div class="bottom text-center">
-								New here ? <a href="showUserReg"><b>Join Us</b></a>
+								New here ? <a href="showUserReg"><b><font color="#000000">Join Us</font></b></a>
 							</div>
 					 </div>
 				</li>
@@ -119,7 +119,7 @@
         <%
         }
         %>	 									
-      <li><a href="showHelp">Help</a></li>
+      <li><a href="showHelp"><font color="#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

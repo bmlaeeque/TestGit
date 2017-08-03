@@ -1,9 +1,9 @@
 package com.smsone.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.smsone.model.Beds;
-import com.smsone.model.House;
 import com.smsone.model.Room;
 import com.smsone.model.User;
 

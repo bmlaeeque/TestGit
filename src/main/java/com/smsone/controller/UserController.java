@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
@@ -21,8 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.smsone.model.Beds;
 import com.smsone.model.House;
@@ -755,19 +754,19 @@ public class UserController {
 				}
 				
 				//show room info
-				//@RequestMapping(value = "/showHouseInfo/showRoomInfo/{hId}")
-				//public String showRoominfo()
-				//{
-					//return "redirect:/showRoomDetails/{hId}";
-				//}
+				@RequestMapping(value="/showRoomInfo/{hId}")
+				public String showRoominfo(@PathVariable("hId") Long hId)
+				{
+					//model.addAttribute("room",roomService.getAllRoomDetails(hId));
+					//model.addAttribute("roomCount",roomService.countRooms(hId));
+					return "roomInfo";
+				}
 				
 				@RequestMapping(value="/showHouseInfo/showRoomInfo")
-				public String showRoomDetails(@RequestParam("hId")Long hId,Model model)
+				public String showRoomDetails(@RequestParam("hId")Long hId)
 				{
-					System.out.println(hId);
-				model.addAttribute("room",roomService.getAllRoomDetails(hId));
-				model.addAttribute("roomCount",5);
-					return "roomInfo";
+					 return "redirect:/showRoomInfo/{hId}";
+					
 				}
 				
 				

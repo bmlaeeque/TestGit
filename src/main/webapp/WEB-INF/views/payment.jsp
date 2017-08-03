@@ -39,7 +39,7 @@
   <div class="row">
   
     <div class="bs-example" align="center">
-      <h4><font color="#FF0000">Payment Details</font></h4>
+      <h4><font color="#000000">Payment Details</font></h4>
         <ul class="nav nav-tabs">
          <li class="active"><a data-toggle="tab" href="#creditCard">Credit Card</a></li>
          <li><a data-toggle="tab" href="#debitCard">Debit Card</a></li>
