@@ -132,7 +132,6 @@ public class UserController {
 		user.setEmail(email);
 		user.setCity(city);
 		user.setState(state);
-		//user.setGender(gender);
 		user.setFoodPreference(foodPreference);
 		user.setAadharNumber(aadharNumber);
 		user.setArea(area);
@@ -212,9 +211,7 @@ public class UserController {
 			owner.setEmail(email);
 			owner.setAadharNumber(aadharNumber);
 			owner.setPassword(password);
-		
 			ownerService.saveOwner(owner);
-			model.addAttribute("oId",owner.getoId());
 			return "owner";
 		}
 	
