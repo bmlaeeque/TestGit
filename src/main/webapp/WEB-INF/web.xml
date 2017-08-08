@@ -39,6 +39,12 @@
  </filter>
  <filter-mapping>
   <filter-name>noCacheFilter</filter-name>
-  <url-pattern>/</url-pattern>// urls that not cached 
+  <url-pattern>/showHome</url-pattern>
+  <url-pattern>/showShortTerm</url-pattern>
+  <url-pattern>/login</url-pattern>
+   <url-pattern>/logout</url-pattern>
+    <url-pattern>/showFilter</url-pattern>
+     <url-pattern>/showLongTerm</url-pattern>
+      <url-pattern>/showHouseInfo/showHome</url-pattern>
  </filter-mapping>
 </web-app>

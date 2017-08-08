@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smsone.model.Beds;
@@ -50,45 +52,27 @@ public class UserController {
 	private MailSender mailSender;
 	//show home
 	@RequestMapping(value = "/showHome")
-	public String showHome(HttpServletResponse response)
+	public String showHome()
 	{
-		response.setHeader("Cache-Control","no-cache"); 
-		response.setHeader("Cache-Control","no-store");
-		response.setDateHeader("Expires", 0); 
-		response.setHeader("Pragma","no-cache");
 		return "home";
 	}
-	
 	//show HouseInfo Home
 	@RequestMapping(value = "/showHouseInfo/showHome")
-	public String showHome1(HttpServletResponse response)
+	public String showHome1()
 	{
-		response.setHeader("Cache-Control","no-cache"); 
-		response.setHeader("Cache-Control","no-store"); 
-		response.setDateHeader("Expires", 0); 
-		response.setHeader("Pragma","no-cache"); 
+		
 		return "redirect:/showHome";
 	}
-	
 	//show short term
 	@RequestMapping(value = "/showShortTerm")
-	public String showShortTerm(HttpServletResponse response)
+	public String showShortTerm()
 	{
-		response.setHeader("Cache-Control","no-cache"); 
-		response.setHeader("Cache-Control","no-store"); 
-		response.setDateHeader("Expires", 0); 
-		response.setHeader("Pragma","no-cache"); 
 		return "shortTerm";
 	}
-	
 	//show long term
 	@RequestMapping(value = "/showLongTerm")
-	public String showLongTerm(HttpServletResponse response)
+	public String showLongTerm()
 	{
-		response.setHeader("Cache-Control","no-cache");
-		response.setHeader("Cache-Control","no-store"); 
-		response.setDateHeader("Expires", 0); 
-		response.setHeader("Pragma","no-cache");
 		return "longTerm";
 	}
 	//show Owner page
@@ -109,9 +93,6 @@ public class UserController {
 	{
 		return "redirect:/showUserReg";
 	}
-	
-	
-	
 	//save user
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
 	public String saveUser(@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("aadharNumber")Long aadharNumber,@RequestParam("motherTounge")String motherTongue,@RequestParam("address")String address,@RequestParam("pincode")Integer pincode,
@@ -149,7 +130,6 @@ public class UserController {
 		
 		return "success";
 	}
-	
 	//show house reg page
 	@RequestMapping(value = "/showHouseReg")
 	public String showHouseRegistration(HttpSession session,Model model)
@@ -164,7 +144,6 @@ public class UserController {
 		public String saveHouse(@RequestParam("ownerId")Long oId,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
 		@RequestParam("address")String address,@RequestParam("subcategory")String locationArea,@RequestParam("subcategory2")String country,@RequestParam("deposit")Double deposit,@RequestParam("foodPreference")String foodPreference,@RequestParam("latitude")Double latitude,@RequestParam("longitude")Double longitude,@RequestParam("img3")MultipartFile img3,Model model) throws IOException,SerialException
 		{
-			System.out.println(latitude);
 			House house=new House();
 			house.setAddress(address);
 			house.setArea(area);
@@ -521,12 +500,7 @@ public class UserController {
 				
 				//show filter with results 
 				@RequestMapping(value="/showFilter")
-				public String list(Model model, Integer offset, Integer maxResults,HttpServletResponse response){
-					System.out.println("hiiiiiiiiiiiiii");
-					response.setHeader("Cache-Control","no-cache"); 
-					response.setHeader("Cache-Control","no-store"); 
-					response.setDateHeader("Expires", 0); 
-					response.setHeader("Pragma","no-cache"); 
+				public String list(Model model, Integer offset, Integer maxResults,HttpServletResponse response){ 
 					model.addAttribute("house", houseService.list(offset, maxResults));
 					model.addAttribute("count", houseService.count());
 					model.addAttribute("offset", offset);
@@ -557,7 +531,6 @@ public class UserController {
 				@RequestMapping(value = "/login", method = RequestMethod.POST)
 				public String login(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
 				{
-					//String msg=null;
 					User user=new User();
 					user.setEmail(email);
 					user.setPassword(password);
@@ -582,7 +555,6 @@ public class UserController {
 				@RequestMapping(value = "/loginFilter", method = RequestMethod.POST)
 				public String loginFilter(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
 				{
-					//String msg=null;
 					User user=new User();
 					user.setEmail(email);
 					user.setPassword(password);
@@ -610,7 +582,6 @@ public class UserController {
 				@RequestMapping(value = "/loginOwner", method = RequestMethod.POST)
 				public String loginOwner(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
 				{
-					//String msg=null;
 					Owner owner=new Owner();
 					owner.setEmail(email);
 					owner.setPassword(password);
@@ -637,7 +608,6 @@ public class UserController {
 				@RequestMapping(value = "/login1", method = RequestMethod.POST)
 				public @ResponseBody String loginPopup(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session)
 				{
-					//String msg=null;
 					User user=new User();
 					user.setEmail(email);
 					user.setPassword(password);
@@ -657,11 +627,7 @@ public class UserController {
 				}
 				
 				@RequestMapping("/logout")
-				public String logout(HttpSession session,HttpServletResponse response) {
-					response.setHeader("Cache-Control","no-cache"); 
-					response.setHeader("Cache-Control","no-store"); 
-					response.setDateHeader("Expires", 0); 
-					response.setHeader("Pragma","no-cache"); 
+				public String logout(HttpSession session) {
 					session.removeAttribute("User");
 					session.removeAttribute("email");
 					session.invalidate();
@@ -786,6 +752,7 @@ public class UserController {
 					 ra.addAttribute("hId",hId);
 					 return "redirect:/showRoomInfo";
 				}
+				 
 				
 				
 				

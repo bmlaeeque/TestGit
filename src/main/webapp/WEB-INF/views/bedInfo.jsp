@@ -18,10 +18,6 @@
     <br />
 </c:forEach>
 
-
-
-
-
 <form action="assignBed">
 <input type="text" name="uId">
 <input type="text" name="bId">
