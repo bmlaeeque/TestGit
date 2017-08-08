@@ -38,6 +38,7 @@ public class RoomDAOImpl implements RoomDAO {
 	}
 	public List<User> getAllBedDetails() {
 		Session session=sessionFactory.openSession();	
+		
 		return null;
 	}
 	@SuppressWarnings("unchecked")
