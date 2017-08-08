@@ -161,9 +161,11 @@
               <input type="file" name="img3" id="img3" onBlur="CheckImg3(); return false;" autocomplete="off"  required>
            </label>
         </div>
-            <div class="form-row" style="width:50%;"  style="background-color: #6caee0;">
+            <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">
                 <button type="submit" value="Submit" >Submit</button>
             </div>		
+            <input type="hidden" name="room" value="${room}">
+              <input type="hidden" name="i" value="${i}">
         </form>
 </div>
 <script src="js/room.js" type="text/javascript"></script>  

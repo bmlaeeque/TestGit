@@ -159,6 +159,11 @@ function RoomSubmit()
 			return false;
 		}
 }
+    
+    for(var i=1;i<=house1.getRoom();i++)
+    	{
+    	   return "roomReg";
+    	}
 }
 
 

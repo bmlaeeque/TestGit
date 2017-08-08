@@ -191,6 +191,7 @@ public class UserController {
 			houseService.saveHouse(house,oId);
 			model.addAttribute("hId",house.gethId());
 			model.addAttribute("room",room);
+			model.addAttribute("i",  new Integer(1));
 			return "roomReg";
 		}
 	
@@ -206,15 +207,15 @@ public class UserController {
 				@RequestParam("aadharNumber") Long aadharNumber,@RequestParam("lastName") String lastName,@RequestParam("email") String email,Model model,HttpSession session)
 		{
 			Owner owner=new Owner();
+			
 			owner.setFirstName(firstName);
 			owner.setLastName(lastName);
 			owner.setContactNumber(contactNumber);
 			owner.setEmail(email);
 			owner.setAadharNumber(aadharNumber);
 			owner.setPassword(password);
-		
-			ownerService.saveOwner(owner);
-			model.addAttribute("oId",owner.getoId());
+	        ownerService.saveOwner(owner);
+        	model.addAttribute("oId",owner.getoId());
 			return "owner";
 		}
 	
@@ -312,13 +313,15 @@ public class UserController {
 		@RequestMapping(value = "/showRoomReg")
 		public String showRoomReg()
 			{
+			
 				return "roomReg";
+		
 			}
 		//save room details
 				@RequestMapping(value = "/saveRoom", method = RequestMethod.POST)
 				public String saveRoom(@RequestParam("houseId")Long hId,@RequestParam("roomId")Long roomId,@RequestParam("roomType")String roomType,@RequestParam("ac")String ac,@RequestParam("wifi")String wifi,
 						@RequestParam("bathroom")String bathroom,@RequestParam("geyser")String geyser,@RequestParam("bed")String bed,@RequestParam("swimmingPool")String swimmingPool,
-						@RequestParam("gym")String gym,@RequestParam("NumberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model) throws IOException
+						@RequestParam("gym")String gym,@RequestParam("NumberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model,@RequestParam("room")Integer numberOfRoom,@RequestParam("i")Integer i) throws IOException
 				{
 					Room room=new Room();
 					room.setRoomId(roomId);
@@ -341,10 +344,23 @@ public class UserController {
 					roomService.saveRoom(room,hId);
 					model.addAttribute("rId",room.getrId());
 					model.addAttribute("numberOfBed", numberOfBed);
-					return "bedInfo";
+					i++;
+					if(i>numberOfRoom)
+					{
+						return "success1";
+					}
+					else
+					{
+						model.addAttribute("hId", hId);
+						model.addAttribute("room", numberOfRoom);
+						model.addAttribute("i", i);
+						return "roomReg";
+					}
+					
 				}
 		
 		//check user mail
+				
 		@RequestMapping(value = "/checkUserMail")
 		public @ResponseBody String checkEmail(@RequestParam("email") String email)
 		{
