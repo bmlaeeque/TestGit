@@ -725,7 +725,7 @@ box--
 			</div>
 		</div>
 	</div>
-	<section></section> <jsp:include page="footer.jsp"></jsp:include> <!--Popup  for invalid username and password-->
+<jsp:include page="footer.jsp"></jsp:include> <!--Popup  for invalid username and password-->
 	<div class="mod" id="myModal11" style="color: black;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">

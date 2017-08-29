@@ -69,7 +69,6 @@ public class UserController {
 		}
 		String hashcode = UUID.randomUUID().toString();
 		String link="http://localhost:2018/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
-
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
@@ -78,11 +77,8 @@ public class UserController {
 		simpleMailMessage.setSubject(" Divastays Email Verification Link");
 		simpleMailMessage.setText("Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link);
 		mailSender.send(simpleMailMessage);
-		System.out.println(date);
 		return "success";
 	}
-
-
 	@RequestMapping(value = "/emailVerify")
 	public String emailVerify(@RequestParam(required = false, defaultValue = "hashcode", value="hashcode") String hashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
 	{
@@ -108,7 +104,7 @@ public class UserController {
 
 		}
 		model.addAttribute("email", email);
-		return "home";
+		return "redirect:/showHome";
 	}
 
 	@RequestMapping(value = "/emailExpirePopup",method = RequestMethod.POST)
@@ -117,7 +113,7 @@ public class UserController {
 		User user=new User();
 		user.setEmail(email);
 		user=userService.sendNewLink(user);
-		return "home";
+		return "redirect:/showHome";
 	}
 	@RequestMapping(value = "/showUserReg")
 	public String showUserRegistration()
@@ -151,7 +147,7 @@ public class UserController {
 		boolean flag=userService.checkEmail(user);
 		if(flag==true)
 		{
-			msg="alreday used mail id";
+			msg="allreday used mail id";
 		}
 		else
 		{
@@ -181,16 +177,13 @@ public class UserController {
 	@RequestMapping(value="/sendMail",method = RequestMethod.POST)
 	public String sendMail(@RequestParam("firstName")String firstName,@RequestParam("email")String email,@RequestParam("phoneNumber")String phoneNumber,@RequestParam("message")String message)
 	{
-
-
-
 		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
 		simpleMailMessage.setTo("randivemayuri123@gmail.com");
 		simpleMailMessage.setFrom("swapnildesai162@gmail.com");
 		simpleMailMessage.setSubject("for contact us");
 		simpleMailMessage.setText("first name:"+firstName+" email:"+email+" phoneNumber:"+phoneNumber+" message:"+message);
 		mailSender.send(simpleMailMessage);
-		return "success";
+		return "redirect:/showHome";
 	}
 	//login check
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -200,9 +193,7 @@ public class UserController {
 		User user=new User();
 		user.setEmail(email);
 		user.setPassword(password);
-
 		user=userService.checkLogin(user);
-
 		if(user==null)
 		{
 			session.setAttribute("invalid", "invalid");
@@ -213,9 +204,7 @@ public class UserController {
 			session.setAttribute("email", email1);
 			session.setAttribute("user",user);
 		}
-		return "home";
-
-
+		return "redirect:/showHome";
 	}
 	//filter page login check
 	@RequestMapping(value = "/loginFilter", method = RequestMethod.POST)
@@ -231,17 +220,14 @@ public class UserController {
 		if(user==null)
 		{
 			session.setAttribute("invalid", "invalid");
-			return "redirect:/showFilter";
 		}
 		else
 		{
 			String email1=user.getEmail();
 			session.setAttribute("email", email1);
 			session.setAttribute("user",user);
-			return "redirect:/showFilter";
 		}
-
-
+		return "redirect:/showFilter";
 
 	}
 
@@ -250,7 +236,7 @@ public class UserController {
 		session.removeAttribute("User");
 		session.removeAttribute("email");
 		session.invalidate();
-		return "home";
+		return "redirect:/showHome";
 	}	
 }				
 

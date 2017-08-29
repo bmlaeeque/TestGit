@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.smsone.model.Owner;
-import com.smsone.model.User;
 import com.smsone.service.OwnerService;
 
 @Controller
@@ -65,8 +64,6 @@ public class OwnerController {
 					simpleMailMessage.setSubject(" Divastays Email Verification Link");
 					simpleMailMessage.setText("Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link);
 					mailSender.send(simpleMailMessage);
-				    System.out.println(date);
-			        
 		        	model.addAttribute("oId",owner.getoId());
 					return "owner";
 				}
@@ -95,7 +92,7 @@ public class OwnerController {
 					   
 					}
 					model.addAttribute("email", email);
-					return "home";
+					return "redirect:/showHome";
 				}
 				@RequestMapping(value = "/ownerEmailExpirePopup",method = RequestMethod.POST)
 				public String ownerExpirePopup(@RequestParam("email") String email)
@@ -103,7 +100,7 @@ public class OwnerController {
 					Owner owner=new Owner();
 					owner.setEmail(email);
 					owner=ownerService.sendNewLink(owner);
-					return "home";
+					return "redirect:/showHome";
 				}
 				//check owner aadhar Number
 				@RequestMapping(value = "/checkOwnerAadharNumber1")

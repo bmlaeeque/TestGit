@@ -124,7 +124,7 @@ public class HouseController {
 			{
 				String profeesion=(String)session.getAttribute("profession");
 				String language=(String)session.getAttribute("language");
-				String food=(String)session.getAttribute("food");
+				//String food=(String)session.getAttribute("food");
 				String area=(String)session.getAttribute("area");
 				Double rent=(Double)session.getAttribute("rent");
 				User user=new User();
