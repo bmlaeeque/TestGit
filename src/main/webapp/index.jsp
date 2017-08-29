@@ -6,7 +6,7 @@
 <title>DivaStay</title>
 </head>
 <body>
-<jsp:forward page="showHome"></jsp:forward>
+<jsp:forward page="showOwnerReg"></jsp:forward>
 
 </body>
 </html>

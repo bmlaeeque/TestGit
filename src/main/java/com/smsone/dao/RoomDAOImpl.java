@@ -1,9 +1,6 @@
 package com.smsone.dao;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -24,6 +21,14 @@ public class RoomDAOImpl implements RoomDAO {
 		House house=(House)session.load(House.class,hId);
 		room.setHouse(house);
 		session.save(room);
+		for(int i=1;i<=room.getNumberOfBed();i++)
+		{
+			Beds beds=new Beds();
+			beds.setBedId(new Long(i));
+			Room room1=(Room)session.load(Room.class,room.getrId());
+			beds.setRoom(room1);
+			session.save(beds);
+		}
 		session.close();
 	}
 	public void assignBed(User user, Beds beds) {
@@ -54,9 +59,8 @@ public class RoomDAOImpl implements RoomDAO {
 		{
 			return null;
 		}
-		
-		
 	}
+	
 	public Long countRooms(Long hId) {
 		Session session=sessionFactory.openSession();
 		House house=(House)session.load(House.class, hId);
@@ -66,4 +70,31 @@ public class RoomDAOImpl implements RoomDAO {
 		session.close();
 		return c;
 	}
+	public Long countBeds(Long rId) {
+		Session session=sessionFactory.openSession();
+		Room room=(Room)session.load(Room.class, rId);
+		List<Beds> beds=room.getBeds();
+		int count=beds.size();
+		Long bedCount=new Long(count);
+		session.close();
+		return bedCount;
+	}
+	
+	public User getUser(Long bId) {
+		Session session=sessionFactory.openSession();
+		Beds beds=(Beds)session.load(Beds.class,bId);
+		User user1=beds.getUser();
+		if(user1!=null)
+		{
+		return user1;
+		}
+		else
+		{
+			return null;
+		}
+		
+	}
+	
+	
+	
 }

@@ -8,5 +8,7 @@ public interface UserService {
 	public boolean checkContactNumber(User user);
 	public boolean checkAadharNumber(User user);
 	public User checkLogin(User user);
+	public User verifyUserAccount(User user);
+	public User sendNewLink(User user);
 
 }

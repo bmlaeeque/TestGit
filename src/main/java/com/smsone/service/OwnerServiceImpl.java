@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.smsone.dao.OwnerDAO;
 import com.smsone.model.Owner;
+import com.smsone.model.User;
 
 @Service
 public class OwnerServiceImpl implements OwnerService {
@@ -28,6 +29,12 @@ public class OwnerServiceImpl implements OwnerService {
 	public Owner checkOwnerLogin(Owner owner)
 	{
 		return ownerDAO.checkOwnerLogin(owner);
+	}
+	public Owner verifyOwnerAccount(Owner owner) {
+		return ownerDAO.verifyOwnerAccount(owner);
+	}
+	public Owner sendNewLink(Owner owner) {
+		return ownerDAO.sendNewLink(owner);
 	}
 
 }

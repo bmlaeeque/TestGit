@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Succeed</h1>
+<h1>Activated</h1>
 </body>
 </html>

@@ -23,6 +23,7 @@
  padding-bottom:.5em;
  }
  </style>
+  
 </head>
 <body>
 <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
@@ -143,10 +144,15 @@
         <span>Room ID</span>
             <input type="text" name="roomId" id="roomId" placeholder="Room ID" onBlur="CheckRoomID(); return false;" autocomplete="off" required>
      </label>
-            <label>
-        <span>Number Of Bed</span>
-            <input type="text" name="NumberOfBed" id="bed" placeholder="Bed" onBlur="CheckBed(); return false;" autocomplete="off" required>
-      </label>
+           <label>
+                    <span>Number Of Bed</span>
+                 <select name="numberOfBed" id="numberOfBed" class="form-control selectpicker" required>
+                        <option value="">Select Your Bed</option>
+                         <option value="1">1</option>
+                        <option value="2">2</option>
+                  </select>
+            </label>
+                  
          
            <label>
              <span>Upload Photo 1</span>
@@ -169,5 +175,6 @@
         </form>
 </div>
 <script src="js/room.js" type="text/javascript"></script>  
+
 </body>
 </html>

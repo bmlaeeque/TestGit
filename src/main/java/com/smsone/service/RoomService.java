@@ -11,6 +11,9 @@ public interface RoomService {
 	public void assignBed(User user,Beds beds);
 	public List<Room> getAllRoomDetails(Long hId);
 	public Long countRooms(Long hId);
+	public Long countBeds(Long rId);
+	public User getUser(Long bId);
+	
 
 
 }

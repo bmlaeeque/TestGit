@@ -32,4 +32,14 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.countRooms(hId);
 	}
 
+	public Long countBeds(Long rId) {
+		return roomDAO.countBeds(rId);
+	}
+
+	public User getUser(Long bId) {
+		return roomDAO.getUser(bId);
+	}
+
+	
+	
 }

@@ -1,6 +1,8 @@
 package com.smsone.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table
@@ -59,6 +63,17 @@ public class User implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "hId")
 	private House house;
+	@Column(name="userImg",columnDefinition = "LONGBLOB")
+	private byte[] userImg;
+	@Column(nullable=false,length=50)
+	private String hashcode;
+	@Column(length=20)
+	private Long attempts;
+	@Column(length=20)
+	private String status;
+	@Column(name="CREATION_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date userCreation_date;
 	public Long getuId() {
 		return uId;
 	}
@@ -173,36 +188,38 @@ public class User implements Serializable {
 	public void setHouse(House house) {
 		this.house = house;
 	}
+	public byte[] getUserImg() {
+		return userImg;
+	}
+	public void setUserImg(byte[] userImg) {
+		this.userImg = userImg;
+	}
+	public String getHashcode() {
+		return hashcode;
+	}
+	public void setHashcode(String hashcode) {
+		this.hashcode = hashcode;
+	}
+	public Long getAttempts() {
+		return attempts;
+	}
+	public void setAttempts(Long attempts) {
+		this.attempts = attempts;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public Date getUserCreation_date() {
+		return userCreation_date;
+	}
+	public void setUserCreation_date(Date userCreation_date) {
+		this.userCreation_date = userCreation_date;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-	public User() {
-		super();
-	}
-	public User(Long uId, Long aadharNumber, String firstName, String lastName, Long contactNumber, String email,
-			String address, Integer pincode, String city, String state, String country, String gender,
-			String motherTongue, String foodPreference, String profession, String area, String password, Long refId,
-			House house) {
-		super();
-		this.uId = uId;
-		this.aadharNumber = aadharNumber;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.contactNumber = contactNumber;
-		this.email = email;
-		this.address = address;
-		this.pincode = pincode;
-		this.city = city;
-		this.state = state;
-		this.country = country;
-		this.gender = gender;
-		this.motherTongue = motherTongue;
-		this.foodPreference = foodPreference;
-		this.profession = profession;
-		this.area = area;
-		this.password = password;
-		RefId = refId;
-		this.house = house;
 	}
 	@Override
 	public int hashCode() {
@@ -212,6 +229,7 @@ public class User implements Serializable {
 		result = prime * result + ((aadharNumber == null) ? 0 : aadharNumber.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((area == null) ? 0 : area.hashCode());
+		result = prime * result + ((attempts == null) ? 0 : attempts.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
@@ -219,6 +237,7 @@ public class User implements Serializable {
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((foodPreference == null) ? 0 : foodPreference.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + ((hashcode == null) ? 0 : hashcode.hashCode());
 		result = prime * result + ((house == null) ? 0 : house.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((motherTongue == null) ? 0 : motherTongue.hashCode());
@@ -226,7 +245,10 @@ public class User implements Serializable {
 		result = prime * result + ((pincode == null) ? 0 : pincode.hashCode());
 		result = prime * result + ((profession == null) ? 0 : profession.hashCode());
 		result = prime * result + ((state == null) ? 0 : state.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((uId == null) ? 0 : uId.hashCode());
+		result = prime * result + ((userCreation_date == null) ? 0 : userCreation_date.hashCode());
+		result = prime * result + Arrays.hashCode(userImg);
 		return result;
 	}
 	@Override
@@ -257,6 +279,11 @@ public class User implements Serializable {
 			if (other.area != null)
 				return false;
 		} else if (!area.equals(other.area))
+			return false;
+		if (attempts == null) {
+			if (other.attempts != null)
+				return false;
+		} else if (!attempts.equals(other.attempts))
 			return false;
 		if (city == null) {
 			if (other.city != null)
@@ -293,6 +320,11 @@ public class User implements Serializable {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
+		if (hashcode == null) {
+			if (other.hashcode != null)
+				return false;
+		} else if (!hashcode.equals(other.hashcode))
+			return false;
 		if (house == null) {
 			if (other.house != null)
 				return false;
@@ -328,10 +360,22 @@ public class User implements Serializable {
 				return false;
 		} else if (!state.equals(other.state))
 			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
+			return false;
 		if (uId == null) {
 			if (other.uId != null)
 				return false;
 		} else if (!uId.equals(other.uId))
+			return false;
+		if (userCreation_date == null) {
+			if (other.userCreation_date != null)
+				return false;
+		} else if (!userCreation_date.equals(other.userCreation_date))
+			return false;
+		if (!Arrays.equals(userImg, other.userImg))
 			return false;
 		return true;
 	}
@@ -342,6 +386,44 @@ public class User implements Serializable {
 				+ ", pincode=" + pincode + ", city=" + city + ", state=" + state + ", country=" + country + ", gender="
 				+ gender + ", motherTongue=" + motherTongue + ", foodPreference=" + foodPreference + ", profession="
 				+ profession + ", area=" + area + ", password=" + password + ", RefId=" + RefId + ", house=" + house
-				+ "]";
+				+ ", userImg=" + Arrays.toString(userImg) + ", hashcode=" + hashcode + ", attempts=" + attempts
+				+ ", status=" + status + ", userCreation_date=" + userCreation_date + "]";
 	}
+	public User(Long uId, Long aadharNumber, String firstName, String lastName, Long contactNumber, String email,
+			String address, Integer pincode, String city, String state, String country, String gender,
+			String motherTongue, String foodPreference, String profession, String area, String password, Long refId,
+			House house, byte[] userImg, String hashcode, Long attempts, String status, Date userCreation_date) {
+		super();
+		this.uId = uId;
+		this.aadharNumber = aadharNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contactNumber = contactNumber;
+		this.email = email;
+		this.address = address;
+		this.pincode = pincode;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+		this.gender = gender;
+		this.motherTongue = motherTongue;
+		this.foodPreference = foodPreference;
+		this.profession = profession;
+		this.area = area;
+		this.password = password;
+		RefId = refId;
+		this.house = house;
+		this.userImg = userImg;
+		this.hashcode = hashcode;
+		this.attempts = attempts;
+		this.status = status;
+		this.userCreation_date = userCreation_date;
+	}
+	public User() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }

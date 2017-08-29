@@ -39,6 +39,19 @@
  </filter>
  <filter-mapping>
   <filter-name>noCacheFilter</filter-name>
-  <url-pattern>/</url-pattern>// urls that not cached 
+  <url-pattern>/showHome</url-pattern>
+  <url-pattern>/showShortTerm</url-pattern>
+  <url-pattern>/login</url-pattern>
+  <url-pattern>/logout</url-pattern>
+  <url-pattern>/showFilter</url-pattern>
+  <url-pattern>/showLongTerm</url-pattern>
+  <url-pattern>/showHouseInfo/showHome</url-pattern>
+  <url-pattern>/showOwnerPage</url-pattern>
+  <url-pattern>/showHouseInfo/{hId}</url-pattern>
+  <url-pattern>/showHouseInfo/showPaymentPage</url-pattern>
+  <url-pattern>/showPaymentPage</url-pattern>
+  <url-pattern>/logoutOwner</url-pattern>
+  <url-pattern>/showHouseReg</url-pattern>
+  <url-pattern>/showRoomReg</url-pattern>
  </filter-mapping>
 </web-app>

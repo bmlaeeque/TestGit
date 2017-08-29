@@ -1,6 +1,7 @@
 package com.smsone.model;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table
@@ -36,6 +39,15 @@ public class Owner implements Serializable
 	private String password;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="owner")
 	private Set<House> house;
+	@Column(nullable=false,length=50)
+	private String ownerHashcode;
+	@Column(length=20)
+	private Long attempts;
+	@Column(length=20)
+	private String ownerStatus;
+	@Column(name="CREATION_DATE")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date ownerCreation_date;
 	public Long getoId() {
 		return oId;
 	}
@@ -84,41 +96,48 @@ public class Owner implements Serializable
 	public void setHouse(Set<House> house) {
 		this.house = house;
 	}
+	public String getownerHashcode() {
+		return ownerHashcode;
+	}
+	public void setownerHashcode(String ownerHashcode) {
+		this.ownerHashcode = ownerHashcode;
+	}
+	public Long getAttempts() {
+		return attempts;
+	}
+	public void setAttempts(Long attempts) {
+		this.attempts = attempts;
+	}
+	public String getOwnerStatus() {
+		return ownerStatus;
+	}
+	public void setOwnerStatus(String ownerStatus) {
+		this.ownerStatus = ownerStatus;
+	}
+	public Date getOwnerCreation_date() {
+		return ownerCreation_date;
+	}
+	public void setOwnerCreation_date(Date ownerCreation_date) {
+		this.ownerCreation_date = ownerCreation_date;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-	public Owner() {
-		super();
-	}
-	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
-			String password, Set<House> house) {
-		super();
-		this.oId = oId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.aadharNumber = aadharNumber;
-		this.contactNumber = contactNumber;
-		this.password = password;
-		this.house = house;
-	}
-	@Override
-	public String toString() {
-		return "Owner [oId=" + oId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", aadharNumber=" + aadharNumber + ", contactNumber=" + contactNumber + ", password=" + password
-				+ ", house=" + house + "]";
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((aadharNumber == null) ? 0 : aadharNumber.hashCode());
+		result = prime * result + ((attempts == null) ? 0 : attempts.hashCode());
 		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((house == null) ? 0 : house.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((oId == null) ? 0 : oId.hashCode());
+		result = prime * result + ((ownerCreation_date == null) ? 0 : ownerCreation_date.hashCode());
+		result = prime * result + ((ownerStatus == null) ? 0 : ownerStatus.hashCode());
+		result = prime * result + ((ownerHashcode == null) ? 0 : ownerHashcode.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -135,6 +154,11 @@ public class Owner implements Serializable
 			if (other.aadharNumber != null)
 				return false;
 		} else if (!aadharNumber.equals(other.aadharNumber))
+			return false;
+		if (attempts == null) {
+			if (other.attempts != null)
+				return false;
+		} else if (!attempts.equals(other.attempts))
 			return false;
 		if (contactNumber == null) {
 			if (other.contactNumber != null)
@@ -166,6 +190,21 @@ public class Owner implements Serializable
 				return false;
 		} else if (!oId.equals(other.oId))
 			return false;
+		if (ownerCreation_date == null) {
+			if (other.ownerCreation_date != null)
+				return false;
+		} else if (!ownerCreation_date.equals(other.ownerCreation_date))
+			return false;
+		if (ownerStatus == null) {
+			if (other.ownerStatus != null)
+				return false;
+		} else if (!ownerStatus.equals(other.ownerStatus))
+			return false;
+		if (ownerHashcode == null) {
+			if (other.ownerHashcode != null)
+				return false;
+		} else if (!ownerHashcode.equals(other.ownerHashcode))
+			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
@@ -173,8 +212,36 @@ public class Owner implements Serializable
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Owner [oId=" + oId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", aadharNumber=" + aadharNumber + ", contactNumber=" + contactNumber + ", password=" + password
+				+ ", house=" + house + ", ownerHashcode=" + ownerHashcode + ", attempts=" + attempts + ", ownerStatus="
+				+ ownerStatus + ", ownerCreation_date=" + ownerCreation_date + "]";
+	}
+	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
+			String password, Set<House> house, String ownerHashcode, Long attempts, String ownerStatus,
+			Date ownerCreation_date) {
+		super();
+		this.oId = oId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.aadharNumber = aadharNumber;
+		this.contactNumber = contactNumber;
+		this.password = password;
+		this.house = house;
+		this.ownerHashcode = ownerHashcode;
+		this.attempts = attempts;
+		this.ownerStatus = ownerStatus;
+		this.ownerCreation_date = ownerCreation_date;
+	}
+	public Owner() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 	
-		
+	
 	
 }

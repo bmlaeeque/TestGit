@@ -506,11 +506,14 @@ function UserSubmit()
 	 
 	 var Password1 = document.getElementById('password1').value;
      var Password2 = document.getElementById('password2').value;
-	
-	
-    if (FirstName != '' && LastName != '' && Contact != '' && Email != '' && AadharNumber != '' && Pincode != '' && Address1 != '' && Password1 != '' && Password2 != '')
+     var userImg = document.getElementById('userImg').value;
+     var decimalUserImage = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/;
+     var UserImgSize1= document.getElementById("userImg");
+     var UserImgSize =UserImgSize1.files[0].size;
+     
+    if (FirstName != '' && LastName != '' && Contact != '' && Email != '' && AadharNumber != '' && Pincode != '' && Address1 != '' && Password1 != '' && Password2 != '' && userImg != '')
 	{
-		if (FirstName.match(decimalFirstName) && LastName.match(decimalLastName) && Contact.match(decimalContactNumber) && Email.match(decimalEmail) && AadharNumber.match(decimalAadharNumber) && Pincode.match(decimalPincode) && Address1.match(decimalAddress1) && Password1.value == Password2.value)
+		if (FirstName.match(decimalFirstName) && LastName.match(decimalLastName) && Contact.match(decimalContactNumber) && Email.match(decimalEmail) && AadharNumber.match(decimalAadharNumber) && Pincode.match(decimalPincode) && Address1.match(decimalAddress1) && Password1.value == Password2.value && userImg.match(decimalUserImage))
 		{
 			return true;
 		}
@@ -591,6 +594,24 @@ if(img3 .value.match(decimal) && fileSize3 < 1048576)
 else  
 {   
  img3.style.backgroundColor = badColor;
+}  
+}  
+
+//Upload User Photo 
+function CheckUserImg()   
+{  
+  var userImg = document.getElementById('userImg');
+  var decimal = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpeg|.jpg|.gif)$/;
+    var UserImgSize =userImg.files[0].size;
+  var goodColor = "#82E0AA";
+  var badColor = "#E74C3C";
+if(userImg .value.match(decimal) && UserImgSize < 1048576)   
+{   
+	userImg.style.backgroundColor = goodColor;
+}  
+else  
+{   
+	userImg.style.backgroundColor = badColor;
 }  
 }  
 

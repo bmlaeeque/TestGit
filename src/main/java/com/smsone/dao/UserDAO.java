@@ -1,4 +1,4 @@
-package com.smsone.dao;
+ package com.smsone.dao;
 
 import com.smsone.model.User;
 
@@ -8,4 +8,6 @@ public interface UserDAO {
 	public boolean checkContactNumber(User user);
 	public boolean checkAadharNumber(User user);
 	public User checkLogin(User user);
+	public User verifyUserAccount(User user);
+	public User sendNewLink(User user);
 }

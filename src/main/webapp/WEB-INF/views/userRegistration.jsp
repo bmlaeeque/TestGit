@@ -35,7 +35,7 @@
   </div><!-- /.container-fluid -->
 </nav>
    <div class="main-content">
-		<form class="form-basic" method="post" action="saveUser" onSubmit="return UserSubmit()" style="background-color: rgb(243,210,230);">
+		<form class="form-basic" method="post" action="saveUser" onSubmit="return UserSubmit()" enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
 
             <div class="form-title-row">
                 <h1>User Registration Form</h1>
@@ -92,7 +92,12 @@
                 <label>
                     <span>Password</span>
                     <input type="password" name="password1" id="password1" placeholder="Password" onBlur="CheckPassword(); return false;" autocomplete="off" required>
-                </label>    
+                </label>
+                <label>
+                   <span>Upload Photo</span>
+                 <input type="file" name="userImg" id="userImg" onBlur="CheckUserImg(); return false;" autocomplete="off"  required>
+                </label>
+                    
                
              </div>
 
@@ -153,11 +158,11 @@
                     <span>Confirm Password</span>
                     <input type="password" name="password2" id="password2" placeholder="Confirm Password" onBlur="CheckPass(); return false;" autocomplete="off" required>
                 </label>
-                
-             </div>
+                             </div>
             <div class="form-row" style="width:50%;">
                <button type="submit" value="Submit">Submit</button>   
             </div>
+    
 
 					
         </form>

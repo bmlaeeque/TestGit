@@ -26,5 +26,11 @@ public class UserServiceImpl implements UserService {
 	public User checkLogin(User user) {
 		return userDAO.checkLogin(user);
 	}
-
+	public User verifyUserAccount(User user) {
+		return userDAO.verifyUserAccount(user);
+	}
+	public User sendNewLink(User user) {
+		return userDAO.sendNewLink(user);
+	}
+	
 }

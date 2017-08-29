@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +19,7 @@ public class Beds implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long bId;
-	@Column(nullable=false,length=20)
-	private String direction;
+	private Long bedId;
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "uId")
 	private User user;
@@ -34,11 +32,11 @@ public class Beds implements Serializable {
 	public void setbId(Long bId) {
 		this.bId = bId;
 	}
-	public String getDirection() {
-		return direction;
+	public Long getBedId() {
+		return bedId;
 	}
-	public void setDirection(String direction) {
-		this.direction = direction;
+	public void setBedId(Long bedId) {
+		this.bedId = bedId;
 	}
 	public User getUser() {
 		return user;
@@ -55,10 +53,10 @@ public class Beds implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public Beds(Long bId, String direction, User user, Room room) {
+	public Beds(Long bId, Long bedId, User user, Room room) {
 		super();
 		this.bId = bId;
-		this.direction = direction;
+		this.bedId = bedId;
 		this.user = user;
 		this.room = room;
 	}
@@ -66,11 +64,15 @@ public class Beds implements Serializable {
 		super();
 	}
 	@Override
+	public String toString() {
+		return "Beds [bId=" + bId + ", bedId=" + bedId + ", user=" + user + ", room=" + room + "]";
+	}
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((bId == null) ? 0 : bId.hashCode());
-		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
+		result = prime * result + ((bedId == null) ? 0 : bedId.hashCode());
 		result = prime * result + ((room == null) ? 0 : room.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -89,10 +91,10 @@ public class Beds implements Serializable {
 				return false;
 		} else if (!bId.equals(other.bId))
 			return false;
-		if (direction == null) {
-			if (other.direction != null)
+		if (bedId == null) {
+			if (other.bedId != null)
 				return false;
-		} else if (!direction.equals(other.direction))
+		} else if (!bedId.equals(other.bedId))
 			return false;
 		if (room == null) {
 			if (other.room != null)
@@ -106,10 +108,7 @@ public class Beds implements Serializable {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Beds [bId=" + bId + ", direction=" + direction + ", user=" + user + ", room=" + room + "]";
-	}
+	
 	
 	
 	

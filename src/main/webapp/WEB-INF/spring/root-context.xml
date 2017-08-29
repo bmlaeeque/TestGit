@@ -20,7 +20,7 @@
 </property>
 <property name="hibernateProperties">
 <props>
-<prop key="hibernate.hbm2ddl.auto">update</prop>
+<prop key="hibernate.hbm2ddl.auto">create</prop>
 <prop key="hibernate.dialect">${hibernate.dialect}</prop>
 <prop key="hibernate.show_sql">true</prop>
 </props>
@@ -35,8 +35,8 @@
 <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
-		<property name="username" value="swapnildesai162@gmail.com" />
-		<property name="password" value="swapnil@14" />
+		<property name="username" value="randivemayuri123@gmail.com"/>
+		<property name="password" value="mayarag68" />
 		
  
 		<!-- The name of the property, following JavaBean naming conventions -->

@@ -4,6 +4,7 @@ function dynamicdropdown(listindex)
   document.getElementById("subcategory").length = 0;
    document.getElementById("subcategory1").length = 0;
     document.getElementById("subcategory2").length = 0;
+  
    
 if((/pune/.test(listindex))||(/Pune/.test(listindex)))
 	{
@@ -53,5 +54,12 @@ if((/pune/.test(listindex))||(/Pune/.test(listindex)))
 						 document.getElementById("subcategory1").options[0]=new Option("Maharashtra","Maharashtra");
 						   document.getElementById("subcategory2").options[0]=new Option("India","India");
 				}
-                return true;
+				
+				        
+            return true;
             }
+
+
+
+
+
