@@ -1,149 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>home</title>
-<meta charset="utf-8" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/default.css" rel="stylesheet">
 <link href="css/header.css" rel="stylesheet" />
-
-
-<!-- Inline CSS based on choices in "Settings" tab -->
-<style type="text/css">
-.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p,
-	.bootstrap-iso form {
-	font-family: Arial, Helvetica, sans-serif;
-	color: black
-}
-
-.bootstrap-iso form button, .bootstrap-iso form button:hover {
-	color: white !important;
-}
-
-.asteriskField {
-	color: red;
-}
-</style>
-
-
-
-<style type="text/css">
-#first {
-	height: 500px;
-}
-</style>
-<style type="text/css">
-.button {
-	background-color: rgb(243, 210, 230); /* Green */
-	border: none;
-	color: white;
-	padding: 5px 10px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	-webkit-transition-duration: 0.4s; /* Safari */
-	transition-duration: 0.4s;
-	cursor: pointer;
-}
-
-.button1 {
-	background-color: white;
-	color: black;
-	border: 2px solid #4CAF50;
-}
-
-.button1:hover {
-	background-color: #009900;
-	color: white;
-}
-
-/* Dropdown Button */
-.dropbtn {
-	background-color: #4CAF50;
-	color: white;
-	padding: 16px;
-	font-size: 16px;
-	border: none;
-	cursor: pointer;
-}
-
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #FFFFFF;
-	min-width: 160px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-	background-color: #0000CC
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-	background-color: #006699;
-}
-
-<!--
-start search box-->.search {
-	margin-top: -25%;
-}
-
-.search .form-section {
-	background: rgba(0, 0, 0, 0.6);
-	border: 2px solid #414141;
-	border-radius: 5px;
-	padding: 10px;
-}
-<!--
-end
-
- 
-
-search
-
- 
-
-box--
->
-</style>
-
+<link href="css/font-awesome.min.css" rel="stylesheet">
 </head>
-
-<link
-	href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"
-	rel="stylesheet">
-<head></head>
 <body onload="initialize()">
 	<nav class="navbar navbar-default navbar-inverse" role="navigation"
 		style="background-color: rgb(243,210,230);">
@@ -169,11 +38,14 @@ box--
 				<li><a href="showOwnerPage"><font color="#000000">House
 							Owner</font></a></li>
 				<%
-					String email = (String) session.getAttribute("email");
-					if (email != null) {
+				String email = (String) session.getAttribute("email");
+					if (email != null) {%>
+					 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
+					<% 
 						out.println(email + "   <a href=\"logout\" >Logout</a>");
 					} else {
 				%>
+				
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
 						<span class="caret"></span></a>
@@ -972,5 +844,6 @@ box--
  	}
  	}
  %> <!--  Owner email popup code end     --> </nav>
+
 </body>
 </html>

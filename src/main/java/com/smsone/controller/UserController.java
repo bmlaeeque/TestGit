@@ -200,8 +200,8 @@ public class UserController {
 		}
 		else
 		{
-			String email1=user.getEmail();
-			session.setAttribute("email", email1);
+			session.setAttribute("email",user.getEmail());
+			//session.setAttribute("userImg", user.getUserImg());
 			session.setAttribute("user",user);
 		}
 		return "redirect:/showHome";

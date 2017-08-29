@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,15 +33,12 @@
       <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
        <% 
         String ownerEmail =  (String)session.getAttribute("ownerEmail");
-        if(ownerEmail!=null)
+        if(ownerEmail!=null)%>
+		 <img src="<ui:image img='${sessionScope.owner.ownerImg}'></ui:image>" alt="..." style="height:30px" />
+		<% 
             {
         	 out.println(ownerEmail+"   <a href=\"logoutOwner\" >Logout</a>");
             }  
-         else  
-         {
-        
-        
-        }
         %>	
          <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
