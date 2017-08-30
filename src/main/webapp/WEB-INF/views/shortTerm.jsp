@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -45,7 +46,7 @@
         if(email!=null){%>
 		 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
 		<% 
-             out.println(email+"   <a href=\"logout\" >Logout</a>");
+             out.println(email+"   <a href=\"logoutShortTerm\" >Logout</a>");
             }  
          else  
          {
@@ -63,7 +64,7 @@
 								</div>
                                 or
             
-            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+            <form class="form" role="form" method="post" action="loginShortTerm" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
 											 <input type="email" name="email" class="form-control" id="email" placeholder="Email address" autocomplete="off" required>
@@ -423,7 +424,7 @@
                         <!-- Tab panes -->
                         <div class="tab-content">
                        
-                                <form role="form" class="form-horizontal" method="post" action="login">
+                                <form role="form" class="form-horizontal" method="post" action="loginShortTerm">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
                                         Email</label>
@@ -501,22 +502,11 @@
     margin-bottom: 15px;
 }
 </style>
-  
-  <% 
-	String invalid=(String)session.getAttribute("invalid");
-        if(invalid!=null)
-            {%>
-        	 <script type="text/javascript">
-        	 popup();
-        	 </script>
-          <% 
-          session.removeAttribute("invalid");
-          }  
-         else  
-         {
-         }
-        %>
-
+   <c:if test="${invalid==400}">
+   <script type="text/javascript">
+    popup();
+    </script>
+</c:if>
 <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
 <!-- Include jQuery -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>

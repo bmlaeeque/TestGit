@@ -2,13 +2,12 @@
 package com.smsone.controller;
 
 import java.io.IOException;
-
 import java.util.Date;
 import java.util.UUID;
 
-
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -19,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.smsone.model.User;
 import com.smsone.service.UserService;
 
@@ -29,6 +30,7 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private MailSender mailSender;
+
 
 	//save user
 	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
@@ -185,61 +187,68 @@ public class UserController {
 		mailSender.send(simpleMailMessage);
 		return "redirect:/showHome";
 	}
+	// user logout
+	@RequestMapping(value ={"/logoutHome","/logoutShortTerm","/logoutLongTerm"})
+	public String logout(HttpSession session,HttpServletRequest request) {
+		session.removeAttribute("User");
+		session.removeAttribute("email");
+		session.invalidate();
+		if(request.getRequestURI().equals("/PGHOSTEL/logoutHome"))
+		{
+			return "redirect:/showHome";
+		}
+		else if(request.getRequestURI().equals("/PGHOSTEL/logoutShortTerm"))
+		{
+			return "redirect:/showShortTerm";
+		}
+		else if(request.getRequestURI().equals("/PGHOSTEL/logoutLongTerm"))
+		{
+			return "redirect:/showLongTerm";
+		}
+		else
+		{
+			return "redirect:/showHome";
+		}
+
+	}	
 	//login check
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
+	@RequestMapping(value ={"/loginHome","/loginShortTerm","/loginLongTerm"}, method = RequestMethod.POST)
+	public String login(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletRequest request,RedirectAttributes ra)
 	{
-		//String msg=null;
 		User user=new User();
 		user.setEmail(email);
 		user.setPassword(password);
 		user=userService.checkLogin(user);
+		ra.addAttribute("invalid",400);
 		if(user==null)
 		{
-			session.setAttribute("invalid", "invalid");
+			ra.addAttribute("invalid",400);
 		}
 		else
 		{
 			session.setAttribute("email",user.getEmail());
-			//session.setAttribute("userImg", user.getUserImg());
 			session.setAttribute("user",user);
+			ra.addAttribute("invalid",0000);
 		}
-		return "redirect:/showHome";
-	}
-	//filter page login check
-	@RequestMapping(value = "/loginFilter", method = RequestMethod.POST)
-	public String loginFilter(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
-	{
-		//String msg=null;
-		User user=new User();
-		user.setEmail(email);
-		user.setPassword(password);
-
-		user=userService.checkLogin(user);
-
-		if(user==null)
+		if(request.getRequestURI().equals("/PGHOSTEL/loginHome"))
 		{
-			session.setAttribute("invalid", "invalid");
+			return "redirect:/showHome1";
+		}
+		else if(request.getRequestURI().equals("/PGHOSTEL/loginShortTerm"))
+		{
+			return "redirect:/showShortTerm1";
+		}
+		else if(request.getRequestURI().equals("/PGHOSTEL/loginLongTerm"))
+		{
+			return "redirect:/showLongTerm1";
 		}
 		else
 		{
-			String email1=user.getEmail();
-			session.setAttribute("email", email1);
-			session.setAttribute("user",user);
+			return "redirect:/showFilter";
 		}
-		return "redirect:/showFilter";
-
+		
 	}
-
-	@RequestMapping("/logout")
-	public String logout(HttpSession session) {
-		session.removeAttribute("User");
-		session.removeAttribute("email");
-		session.invalidate();
-		return "redirect:/showHome";
-	}	
-}				
-
+}
 
 
 

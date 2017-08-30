@@ -42,7 +42,7 @@
 					if (email != null) {%>
 					 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
 					<% 
-						out.println(email + "   <a href=\"logout\" >Logout</a>");
+						out.println(email + "   <a href=\"logoutHome\" >Logout</a>");
 					} else {
 				%>
 				
@@ -61,7 +61,7 @@
 									</div>
 									or
 
-									<form class="form" role="form" method="post" action="login"
+									<form class="form" role="form" method="post" action="loginHome"
 										accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											<label class="sr-only" for="exampleInputEmail2">Email
@@ -805,16 +805,13 @@
 	margin-bottom: 15px;
 }
 </style>
-	<%
-		String invalid = (String) session.getAttribute("invalid");
-		if (invalid != null) {
-	%> <script type="text/javascript">
-													popup();
-												</script> <%
- 	session.removeAttribute("invalid");
- 	} else {
- 	}
- %> <!-- User email popup code --> <c:set var="status"
+	<c:if test="${invalid==400}">
+   <script type="text/javascript">
+    popup();
+    </script>
+</c:if>
+ 
+ <!-- User email popup code --> <c:set var="status"
 		value="${status}" /> <%
  	//	String status="${status}";
  	String status = (String) pageContext.getAttribute("status");

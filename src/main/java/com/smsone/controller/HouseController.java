@@ -148,7 +148,7 @@ public class HouseController {
 			}	
 			//show filter with results 
 			@RequestMapping(value="/showFilter")
-			public String list(Model model, Integer offset, Integer maxResults,HttpServletResponse response){ 
+			public String list(Model model, Integer offset, Integer maxResults){ 
 				model.addAttribute("house", houseService.list(offset, maxResults));
 				model.addAttribute("count", houseService.count());
 				model.addAttribute("offset", offset);
@@ -158,7 +158,7 @@ public class HouseController {
 			
 			//filter page response with only address
 			@RequestMapping(value="/showFilter1")
-			public String listHouse(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults,HttpSession session){
+			public String listHouse(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){
 				if(address.isEmpty())
 				{
 					 return "redirect:/showFilter";

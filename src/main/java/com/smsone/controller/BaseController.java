@@ -1,7 +1,9 @@
 package com.smsone.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BaseController {
@@ -11,18 +13,37 @@ public class BaseController {
 	{
 		return "home";
 	}
+	@RequestMapping(value = "/showHome1")
+	public String showHome1(@RequestParam("invalid") Long invalid,Model model)
+	{
+		model.addAttribute("invalid", invalid);
+		return "home";
+	}
 	//show short term
 	@RequestMapping(value = "/showShortTerm")
 	public String showShortTerm()
 	{
 		return "shortTerm";
 	}
+	@RequestMapping(value = "/showShortTerm1")
+	public String showShortTerm1(@RequestParam("invalid") Long invalid,Model model)
+	{
+		model.addAttribute("invalid", invalid);
+		return "shortTerm";
+	}
 	//show long term
 	@RequestMapping(value = "/showLongTerm")
 	public String showLongTerm()
 	{
+		return "longtTerm";
+	}
+	@RequestMapping(value = "/showLongTerm1")
+	public String showLongTerm1(@RequestParam("invalid") Long invalid,Model model)
+	{
+		model.addAttribute("invalid", invalid);
 		return "longTerm";
 	}
+	
 	//show help page
 	@RequestMapping(value = "/showHelp")
 	public String showHelp()
