@@ -10,6 +10,7 @@
 <meta charset="utf-8">
 <link href="css/bootstrap.min.css" rel="stylesheet" /> 
 <link href="css/header.css" rel="stylesheet" />  
+ <link href="css/popup.css" rel="stylesheet">
 <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" /><!-- this is for the filter.etc icons-->
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <style>
@@ -65,61 +66,66 @@
    
       <ul class="nav navbar-nav navbar-right">
      
-        <% 
-        String email =  (String)session.getAttribute("email");
-        if(email!=null){%>
-		 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-		<% 
-             out.println(email+"   <a href=\"logout\" >Logout</a>");
-            }  
-         else  
-         {
-        %>
-            <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b><font color="#000000">Login</font></b> <span class="caret"></span></a>
-			<ul id="login-dp" class="dropdown-menu">
-				<li>
-					 <div class="row">
-							<div class="col-md-12">
-								Login via
-								<div class="social-buttons">
-									<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
-								</div>
-                                or
-            
-            <form class="form" role="form" method="post" action="loginFilter" accept-charset="UTF-8" id="login-nav">
+    <c:choose>
+    <c:when test="${sessionScope.user!=null}">
+     <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
+      <a href=logoutFilter >Logout</a>
+    </c:when>    
+    <c:otherwise>
+      <li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
+						<span class="caret"></span></a>
+					<ul id="login-dp" class="dropdown-menu">
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+									Login via
+									<div class="social-buttons">
+										<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
+											Facebook</a> <a href="#" class="btn btn-tw"><i
+											class="fa fa-twitter"></i> Twitter</a>
+									</div>
+									or
+
+									<form class="form" role="form" method="post" action="loginFilter"
+										accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
-											 <label class="sr-only" for="exampleInputEmail2">Email address</label>
-											 <input type="email" name="email" class="form-control" id="email" placeholder="Email address" autocomplete="off" required>
+											<label class="sr-only" for="exampleInputEmail2">Email
+												address</label> <input type="email" name="email"
+												class="form-control" id="email" placeholder="Email address"
+												autocomplete="off" required>
 										</div>
 										<div class="form-group">
-											 <label class="sr-only" for="exampleInputPassword2">Password</label>
-											 <input type="password" name="password" class="form-control" id="password" autocomplete="off" placeholder="Password" required>
-                                             <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                                             <span id="empIdErr" class="errMsg"></span>
+											<label class="sr-only" for="exampleInputPassword2">Password</label>
+											<input type="password" name="password" class="form-control"
+												id="password" placeholder="Password" autocomplete="off"
+												required>
+											<div class="help-block text-right">
+												<a href="verificationlink">Forget the password ?</a>
+											</div>
+											<span id="empIdErr" class="errMsg"></span>
 										</div>
 										<div class="form-group">
-											 <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+											<button type="submit" class="btn btn-primary btn-block"
+												onclick="checkLogin();">Sign in</button>
 										</div>
 										<div class="checkbox">
-											 <label>
-											 <input type="checkbox"> keep me logged-in
-											 </label>
+											<label> <input type="checkbox"> keep me
+												logged-in
+											</label>
 										</div>
-								 </form>
-									</div>
-							<div class="bottom text-center">
-								New here ? <a href="showUserReg"><b><font color="#000000">Join Us</font></b></a>
+									</form>
+								</div>
+								<div class="bottom text-center">
+									New here ? <a href="showUserReg"><b><font
+											color="#000000">Join Us</font></b></a>
+								</div>
 							</div>
-					 </div>
-				</li>
-			</ul>
-        </li>
-        <%
-        }
-        %>	 									
-      <li><a href="showHelp"><font color="#000000">Help</font></a></li>
+						</li>
+
+					</ul></li>
+    </c:otherwise>
+</c:choose>	      <li><a href="showHelp"><font color="#000000">Help</font></a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -467,6 +473,7 @@
 <script src="js/dynamicdropdownfilter.js" type="text/javascript"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	<script src="js/popup.js"></script>
 <script>
 		$(function() {
 			$("#address").autocomplete({
@@ -484,32 +491,7 @@
 			});
 		});
 	</script>
-<script>
-function checkLogin()
-{
-	 var email=document.getElementById( "email" ).value;
-	 var password=document.getElementById( "password" ).value;
 
-	 $.ajax({
-			url:"login",
-			 type: 'POST',
-			data:"email="+email+"&password="+password,
-			success:function(resText){
-				if(resText!=""){
-					alert(resText);
-				}
-				
-				if(resText!=""){
-					$("#email").val("");
-					$("#email").focus();
-					$("#password").val("");
-					$("#password").focus();
-				}
-			}
-			
-		});
-}
-</script>
  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAae9SU_6aO359OSvLrFEx27cs4ervdYDU&callback=initMap"></script>
 <!-- Large modal -->
 
@@ -568,82 +550,13 @@ function checkLogin()
     </div>
 </div>
 
-<!-- 
-<script type="text/javascript">
-$('#myModal11').modal('show');
-</script>
- -->
+
+ <c:if test="${invalid==400}">
  <script type="text/javascript">
- function popup()
- {
- var modal = document.getElementById('myModal11');
+  popup();
+  </script>
+</c:if>
  
- modal.style.display = "block";
-
- var span = document.getElementsByClassName("close1")[0];
- span.onclick = function() {
-	    modal.style.display = "none";
-	}
- }
- </script>
-  <% 
-        if(email!=null)
-            {
-            }  
-         else  
-         {%>
-        	 <script type="text/javascript">
-        	 popup();
-        	 </script>
-       <%   }
-        %>
-        
-        <% 
-	String invalid=(String)session.getAttribute("invalid");
-        if(invalid!=null)
-            {%>
-        	 <script type="text/javascript">
-        	 popup();
-        	 </script>
-          <% 
-          session.removeAttribute("invalid");
-          }  
-         else  
-         {
-         }
-        %>
-     <style>
-.mod {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-   width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-/* The Close Button */
-.close1 {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-.close1:hover,
-.close1:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-.nav-tabs {
-    margin-bottom: 15px;
-}
-
-</style>    
+   
 </body>
 </html>

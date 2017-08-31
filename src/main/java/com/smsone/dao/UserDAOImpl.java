@@ -2,8 +2,6 @@ package com.smsone.dao;
 
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,8 +9,6 @@ import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Repository;
 
 import com.smsone.model.User;
@@ -20,9 +16,6 @@ import com.smsone.model.User;
 public class UserDAOImpl implements UserDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Autowired
-	private MailSender mailSender;
-
 	//save user
 	public void saveUser(User user) {
 		Session session=sessionFactory.openSession();
@@ -42,11 +35,11 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{
-		return true;
+			return true;
 		}
 	}
 	public boolean checkContactNumber(User user) {
-		
+
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(User.class);
 		Criterion c1=Restrictions.eq("contactNumber",user.getContactNumber());
@@ -59,7 +52,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{
-		return true;
+			return true;
 		}
 	}
 	public boolean checkAadharNumber(User user) {
@@ -75,7 +68,7 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{
-		return true;
+			return true;
 		}
 	}
 	public User checkLogin(User user) {
@@ -93,11 +86,12 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{
-		user=(User)list.get(0);
-		return user;
+			user=(User)list.get(0);
+			return user;
 		}
-		
+
 	}
+	
 	public User verifyUserAccount(User user) {
 		Date date=new Date(); 
 		Session session=sessionFactory.openSession();
@@ -114,27 +108,39 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{	
-		user=(User)list.get(0);
-		  Date userDate=user.getUserCreation_date();
-		  long duration=date.getTime()-userDate.getTime();
-		  Transaction tx=session.beginTransaction();
-		  if(duration>60000)
-		  {
-			  user.setStatus("Expired");
-		  }
-		  else
-		  {
-			  user.setStatus("Activated");
-		  }
-		  session.save(user);
-		  tx.commit();
-		  session.close();
-		return user;
+			user=(User)list.get(0);
+			Date userDate=user.getUserCreation_date();
+			long duration=date.getTime()-userDate.getTime();
+			Transaction tx=session.beginTransaction();
+			String status=user.getStatus();
+			if(status==null)
+			{
+				if(duration>60000)
+			   {
+				user.setStatus("Expired");
+			   }
+			   else
+			   {
+				user.setStatus("Activated");
+			   }
+			}
+			else if(status.equals("Activated"))
+			{
+				
+			}
+			else
+			{
+				user.setStatus("Expired");
+			}
+			session.save(user);
+			tx.commit();
+			session.close();
+			return user;
 		}
 	}
-	
+
 	public User sendNewLink(User user) {
-		
+		Date date=new Date();
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(User.class);
 		Criterion c1=Restrictions.eq("email",user.getEmail());
@@ -147,22 +153,33 @@ public class UserDAOImpl implements UserDAO {
 		}
 		else
 		{	
-			user=(User)list.get(0);
-			String newHashcode = UUID.randomUUID().toString();
-			String newLink="http://localhost:2018/PGHOSTEL/emailVerify"+"?newHashcode="+newHashcode+"&email="+user.getEmail();		
-			SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
-			simpleMailMessage.setTo(user.getEmail());
-			simpleMailMessage.setSubject(" Divastays Email Verification Link");
-			simpleMailMessage.setText("Thank You For Your ..\r\n"+ "Your account"+" " +user.getEmail()+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+newLink);
-			mailSender.send(simpleMailMessage);
-		  	Transaction tx=session.beginTransaction();
-			user.setHashcode(newHashcode);
-			session.save(user);
+			User user1=(User)list.get(0);
+			Transaction tx=session.beginTransaction();
+			if(user.getEmailResendTime()!=null)
+			{
+
+				user1.setHashcode(user.getHashcode());
+				user1.setEmailResendTime(user.getEmailResendTime());
+			}
+			else
+			{
+				Date emailResendDate=user1.getEmailResendTime();
+				long duration=date.getTime()-emailResendDate.getTime();
+
+				if(duration>60000)
+				{
+					user1.setStatus("Expired");
+				}
+				else
+				{
+					user1.setStatus("Activated");
+				}
+			}	
+			session.save(user1);
 			tx.commit();
 			session.close();
+			return user1;
 		}
-		
-		return user;
 	}
 
 }

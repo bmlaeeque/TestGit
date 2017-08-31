@@ -12,8 +12,9 @@
 <link href="css/default.css" rel="stylesheet">
 <link href="css/header.css" rel="stylesheet" />
 <link href="css/font-awesome.min.css" rel="stylesheet">
+ <link href="css/popup.css" rel="stylesheet">
 </head>
-<body onload="initialize()">
+<body onLoad="initialize()">
 	<nav class="navbar navbar-default navbar-inverse" role="navigation"
 		style="background-color: rgb(243,210,230);">
 	<div class="container-fluid">
@@ -37,16 +38,14 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="showOwnerPage"><font color="#000000">House
 							Owner</font></a></li>
-				<%
-				String email = (String) session.getAttribute("email");
-					if (email != null) {%>
-					 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-					<% 
-						out.println(email + "   <a href=\"logoutHome\" >Logout</a>");
-					} else {
-				%>
-				
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+							
+	<c:choose>
+    <c:when test="${sessionScope.user!=null}">
+     <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
+      <a href=logoutHome >Logout</a>
+    </c:when>    
+    <c:otherwise>
+      <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
 						<span class="caret"></span></a>
 					<ul id="login-dp" class="dropdown-menu">
@@ -98,10 +97,8 @@
 						</li>
 
 					</ul></li>
-				<%
-					}
-				%>
-				<li><a href="showHelp"><font color="#000000">Help</font></a></li>
+    </c:otherwise>
+</c:choose>				<li><a href="showHelp"><font color="#000000">Help</font></a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -717,101 +714,20 @@
 			</div>
 		</div>
 	</div>
-	<!--  End of email-verification link expired popup code--> <!-- Extra JavaScript/CSS added manually in "Settings" tab -->
-	<!-- Include jQuery --> <script type="text/javascript"
-		src="https://code.jquery.com/jquery-1.11.3.min.js"></script> <script
-		src="js/bootstrap.min.js" type="text/javascript"></script> <script
-		src="js/cbpHorizontalMenu.js" type="text/javascript"></script> <script
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>	
+	 <script src="js/bootstrap.min.js" type="text/javascript"></script> 
+	<script src="js/cbpHorizontalMenu.js" type="text/javascript"></script>
+	<script src="js/userFormVerify.js" type="text/javascript"></script> 
+	<script src="js/popup.js"></script>
+	 <script
 		type="text/javascript">
 			$(function() {
 				cbpHorizontalMenu.init();
 			});
-		</script> <!----get in touch validation---> <script src="js/userFormVerify.js"
-		type="text/javascript"></script> <script
-		src="http://code.jquery.com/jquery-1.11.2.min.js"
-		type="text/javascript"></script> <script type="text/javascript">
-			function logout() {
-				$.ajax({
-					url : "logout",
-					success : function(resText) {
-						if (resText != "") {
-						}
-					}
+		</script> 
+		 
 
-				});
-			}
-		</script> <script src="http://code.jquery.com/jquery-1.11.2.min.js"
-		type="text/javascript"></script> <!-- user email expire popup function-->
-	<script type="text/javascript">
-		function emailExpirePopup() {
-			var modal = document.getElementById('userEmailExpire');
-			modal.style.display = "block";
-			var span = document.getElementsByClassName("close1")[1];
-			span.onclick = function() {
-				modal.style.display = "none";
-			}
-		}
-	</script> <!--end user email expire popup code --> <!-- owner email expire popup function-->
-	<script type="text/javascript">
-		function ownerEmailExpirePopup() {
-			var modal = document.getElementById('ownerEmailExpire');
-			modal.style.display = "block";
-			var span = document.getElementsByClassName("close1")[1];
-			span.onclick = function() {
-				modal.style.display = "none";
-			}
-		}
-	</script> <!--end owner email expire popup code --> <!--User Login popup function-->
-	<script type="text/javascript">
-		function popup() {
-			var modal = document.getElementById('myModal11');
-			modal.style.display = "block";
-			var span = document.getElementsByClassName("close1")[0];
-			span.onclick = function() {
-				modal.style.display = "none";
-			}
-		}
-	</script> <!--User Login popup code end-->
-
-	<style type="text/css">
-.mod {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 100px; /* Location of the box */
-	left: 0;
-	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0, 0, 0); /* Fallback color */
-	background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
-}
-/* The Close Button */
-.close1 {
-	color: #aaaaaa;
-	float: right;
-	font-size: 28px;
-	font-weight: bold;
-}
-
-.close1:hover, .close1:focus {
-	color: #000;
-	text-decoration: none;
-	cursor: pointer;
-}
-
-.nav-tabs {
-	margin-bottom: 15px;
-}
-</style>
-	<c:if test="${invalid==400}">
-   <script type="text/javascript">
-    popup();
-    </script>
-</c:if>
- 
- <!-- User email popup code --> <c:set var="status"
+  <c:set var="status"
 		value="${status}" /> <%
  	//	String status="${status}";
  	String status = (String) pageContext.getAttribute("status");
@@ -841,6 +757,14 @@
  	}
  	}
  %> <!--  Owner email popup code end     --> </nav>
-
+ 
+ <!--  popup call from jsp    -->
+<c:if test="${invalid==400}">
+ <script type="text/javascript">
+  popup();
+  </script>
+</c:if>
+ 
+ 
 </body>
 </html>

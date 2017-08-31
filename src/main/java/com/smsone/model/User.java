@@ -6,14 +6,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -74,6 +71,9 @@ public class User implements Serializable {
 	@Column(name="CREATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date userCreation_date;
+	@Column(name="Email_ResendTime")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date emailResendTime;
 	public Long getuId() {
 		return uId;
 	}
@@ -218,6 +218,12 @@ public class User implements Serializable {
 	public void setUserCreation_date(Date userCreation_date) {
 		this.userCreation_date = userCreation_date;
 	}
+	public Date getEmailResendTime() {
+		return emailResendTime;
+	}
+	public void setEmailResendTime(Date emailResendTime) {
+		this.emailResendTime = emailResendTime;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -234,6 +240,7 @@ public class User implements Serializable {
 		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((emailResendTime == null) ? 0 : emailResendTime.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((foodPreference == null) ? 0 : foodPreference.hashCode());
 		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
@@ -304,6 +311,11 @@ public class User implements Serializable {
 			if (other.email != null)
 				return false;
 		} else if (!email.equals(other.email))
+			return false;
+		if (emailResendTime == null) {
+			if (other.emailResendTime != null)
+				return false;
+		} else if (!emailResendTime.equals(other.emailResendTime))
 			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
@@ -387,12 +399,14 @@ public class User implements Serializable {
 				+ gender + ", motherTongue=" + motherTongue + ", foodPreference=" + foodPreference + ", profession="
 				+ profession + ", area=" + area + ", password=" + password + ", RefId=" + RefId + ", house=" + house
 				+ ", userImg=" + Arrays.toString(userImg) + ", hashcode=" + hashcode + ", attempts=" + attempts
-				+ ", status=" + status + ", userCreation_date=" + userCreation_date + "]";
+				+ ", status=" + status + ", userCreation_date=" + userCreation_date + ", emailResendTime="
+				+ emailResendTime + "]";
 	}
 	public User(Long uId, Long aadharNumber, String firstName, String lastName, Long contactNumber, String email,
 			String address, Integer pincode, String city, String state, String country, String gender,
 			String motherTongue, String foodPreference, String profession, String area, String password, Long refId,
-			House house, byte[] userImg, String hashcode, Long attempts, String status, Date userCreation_date) {
+			House house, byte[] userImg, String hashcode, Long attempts, String status, Date userCreation_date,
+			Date emailResendTime) {
 		super();
 		this.uId = uId;
 		this.aadharNumber = aadharNumber;
@@ -418,11 +432,13 @@ public class User implements Serializable {
 		this.attempts = attempts;
 		this.status = status;
 		this.userCreation_date = userCreation_date;
+		this.emailResendTime = emailResendTime;
 	}
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
 	
 	
 	

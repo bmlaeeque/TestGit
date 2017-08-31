@@ -3,7 +3,6 @@ package com.smsone.controller;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smsone.model.Owner;
 import com.smsone.service.OwnerService;
@@ -26,11 +26,17 @@ public class OwnerController {
 	private OwnerService ownerService;
 	@Autowired
 	private MailSender mailSender;
-
 	//show Owner page
 	@RequestMapping(value = "/showOwnerPage")
 	public String showOwnerPage()
 	{
+		return "owner";
+	}
+	@RequestMapping(value = "/showOwnerPage1")
+	public String showOwnerPage1(@RequestParam("invalid") Long invalid,Model model)
+	{
+		model.addAttribute("invalid", invalid);
+		model.addAttribute("LoginMsg","Please enter valid email and password");
 		return "owner";
 	}
 
@@ -55,23 +61,29 @@ public class OwnerController {
 		owner.setAadharNumber(aadharNumber);
 		owner.setPassword(password);
 		String ownerHashcode = UUID.randomUUID().toString();
-		String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
-		owner.setownerHashcode(ownerHashcode);
+		owner.setOwnerHashcode(ownerHashcode);
 		owner.setOwnerCreation_date(date);
 		ownerService.saveOwner(owner);
+		String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
+		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
+		//sendDivastaysMail(email,msg,"Divastays Email Activation Link");
+    	model.addAttribute("oId",owner.getoId());
+		return "success";
+	}
+	public String sendDivastaysMail(String email,String message,String subject)
+	{
 		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
 		simpleMailMessage.setTo(email);
-		simpleMailMessage.setSubject(" Divastays Email Verification Link");
-		simpleMailMessage.setText("Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link);
+		simpleMailMessage.setSubject(subject);
+		simpleMailMessage.setText(message);
 		mailSender.send(simpleMailMessage);
-		model.addAttribute("oId",owner.getoId());
-		return "redirect:/showOwnerPage";
+		return "success";
 	}
 	@RequestMapping(value = "/ownerEmailVerify")
-	public String emailVerify(@RequestParam(required = false, defaultValue = "ownerHashcode", value="ownerHashcode") String ownerHashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
+	public String ownerEmailVerify(@RequestParam(required = false, defaultValue = "ownerHashcode", value="ownerHashcode") String ownerHashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
 	{
 		Owner owner=new Owner();					
-		owner.setownerHashcode(ownerHashcode);
+		owner.setOwnerHashcode(ownerHashcode);
 		owner.setEmail(email);
 		owner=ownerService.verifyOwnerAccount(owner);
 		if(owner==null)
@@ -89,19 +101,55 @@ public class OwnerController {
 			{
 				model.addAttribute("ownerStatus", "Expired");
 			}
+		   
+		}
+		model.addAttribute("email", email);
+		return "home";
+	}
+	@RequestMapping(value = "/resendOwnerEmailVerify")
+	public String resendEmailVerify(@RequestParam(required = false, defaultValue = "ownerHashcode", value="ownerHashcode") String ownerHashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
+	{
+		Owner owner=new Owner();
+		owner.setOwnerHashcode(ownerHashcode);
+		owner.setEmail(email);
+		owner=ownerService.sendNewLink(owner);
+		if(owner==null)
+		{	
+			model.addAttribute("status", "InvalidUser");
+		}
+		else
+		{
+			String status=owner.getOwnerStatus();
+			if(status.equals("Activated"))
+			{
+				model.addAttribute("status", "Activated");
+			}
+			else
+			{
+				model.addAttribute("status", "Expired");
+			}
 
 		}
 		model.addAttribute("email", email);
-		return "redirect:/showHome";
+		return "home";
 	}
 	@RequestMapping(value = "/ownerEmailExpirePopup",method = RequestMethod.POST)
-	public String ownerExpirePopup(@RequestParam("email") String email)
+	public String ownerEmailExpirePopup(@RequestParam("email") String email)
 	{
+		Date date=new Date();
 		Owner owner=new Owner();
+		String ownerHashcode = UUID.randomUUID().toString();
+		owner.setEmailResendTime(date);
+		owner.setOwnerHashcode(ownerHashcode);
 		owner.setEmail(email);
 		owner=ownerService.sendNewLink(owner);
-		return "redirect:/showHome";
+		String newLink="http://localhost:2018/PGHOSTEL/resendOwnerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;	
+		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+newLink;
+		sendDivastaysMail(email, msg," Divastays Email Verification Link");
+		return "home";
 	}
+	
+	
 	//check owner aadhar Number
 	@RequestMapping(value = "/checkOwnerAadharNumber1")
 	public @ResponseBody String checkOwnerAadharNumber1(@RequestParam("aadharNumber") Long aadharNumber)
@@ -161,27 +209,24 @@ public class OwnerController {
 
 	//owner login check 
 	@RequestMapping(value = "/loginOwner", method = RequestMethod.POST)
-	public String loginOwner(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,Model model,HttpServletResponse response)
+	public String loginOwner(@RequestParam("email") String email,@RequestParam("password") String password,HttpSession session,RedirectAttributes ra)
 	{
 		Owner owner=new Owner();
 		owner.setEmail(email);
 		owner.setPassword(password);
-
 		owner=ownerService.checkOwnerLogin(owner);
 		if(owner==null)
 		{
-			session.setAttribute("invalid", "invalid");
+			ra.addAttribute("invalid",400);
 		}
 		else
 		{
-			String email2=owner.getEmail();
-			session.setAttribute("ownerEmail", email2);
+			ra.addAttribute("invalid",0000);
 			session.setAttribute("owner",owner);
 
 		}
-		return "redirect:/showOwnerPage";
+		return "redirect:/showOwnerPage1";
 	}
-
 	//Owner Logout Code
 	@RequestMapping("/logoutOwner")
 	public String logoutOwner(HttpSession session) {

@@ -17,6 +17,7 @@ public class BaseController {
 	public String showHome1(@RequestParam("invalid") Long invalid,Model model)
 	{
 		model.addAttribute("invalid", invalid);
+		model.addAttribute("LoginMsg","Please enter valid email and password");
 		return "home";
 	}
 	//show short term
@@ -35,7 +36,7 @@ public class BaseController {
 	@RequestMapping(value = "/showLongTerm")
 	public String showLongTerm()
 	{
-		return "longtTerm";
+		return "longTerm";
 	}
 	@RequestMapping(value = "/showLongTerm1")
 	public String showLongTerm1(@RequestParam("invalid") Long invalid,Model model)
@@ -43,14 +44,12 @@ public class BaseController {
 		model.addAttribute("invalid", invalid);
 		return "longTerm";
 	}
-	
 	//show help page
 	@RequestMapping(value = "/showHelp")
 	public String showHelp()
 	{
 		return "help";
 	}
-	
 	//show HouseInfo help
 	@RequestMapping(value = "/showHouseInfo/showHelp")
 	public String showHelp1()
@@ -61,10 +60,8 @@ public class BaseController {
 	@RequestMapping(value = "/showHouseInfo/showTermsAndCondition")
 	public String showTermsAndCondition1()
 	{
-		
 		return "redirect:/showTermsAndCondition";
 	}
-	
 	//show  Terms and condition page
 	@RequestMapping(value = "/showTermsAndCondition")
 	public String showTermsAndCondition()

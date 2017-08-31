@@ -44,20 +44,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
       <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
-       <% 
-        String ownerEmail =  (String)session.getAttribute("ownerEmail");
-        if(ownerEmail!=null){%>
-		 <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-		<% 
-          
-        	 out.println(ownerEmail+"   <a href=\"logoutOwner\" >Logout</a>");
-            }  
-         else  
-         {
-        
-        
-        }
-        %>	
+         <li><a href="logoutOwner" ><b style="color:#000000;">Logout</b></a></li> 
          <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->

@@ -90,7 +90,7 @@ public class RoomController {
 	@RequestMapping(value = "/saveRoom", method = RequestMethod.POST)
 	public String saveRoom(@RequestParam("houseId")Long hId,@RequestParam("roomId")Long roomId,@RequestParam("roomType")String roomType,@RequestParam("ac")String ac,@RequestParam("wifi")String wifi,
 							@RequestParam("bathroom")String bathroom,@RequestParam("geyser")String geyser,@RequestParam("bed")String bed,@RequestParam("swimmingPool")String swimmingPool,
-							@RequestParam("gym")String gym,@RequestParam("NumberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model,@RequestParam("room")Integer numberOfRoom,@RequestParam("i")Integer i,HttpSession session) throws IOException
+							@RequestParam("gym")String gym,@RequestParam("numberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model,@RequestParam("room")Integer numberOfRoom,@RequestParam("i")Integer i,HttpSession session) throws IOException
 	{
 		Room room=new Room();
 		room.setRoomId(roomId);

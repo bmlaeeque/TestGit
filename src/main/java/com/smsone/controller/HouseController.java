@@ -156,6 +156,16 @@ public class HouseController {
 				return "filter";
 				}
 			
+			@RequestMapping(value="/showFilter1")
+			public String list1(@RequestParam("invalid") Long invalid,Model model, Integer offset, Integer maxResults){ 
+				model.addAttribute("house", houseService.list(offset, maxResults));
+				model.addAttribute("count", houseService.count());
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "showFilter");
+				model.addAttribute("invalid", invalid);
+				model.addAttribute("LoginMsg","Please enter valid email and password");
+				return "filter";
+				}
 			//filter page response with only address
 			@RequestMapping(value="/showFilter1")
 			public String listHouse(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){

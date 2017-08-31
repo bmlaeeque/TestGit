@@ -48,6 +48,9 @@ public class Owner implements Serializable
 	@Column(name="CREATION_DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date ownerCreation_date;
+	@Column(name="Email_ResendTime")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date emailResendTime;
 	public Long getoId() {
 		return oId;
 	}
@@ -96,10 +99,10 @@ public class Owner implements Serializable
 	public void setHouse(Set<House> house) {
 		this.house = house;
 	}
-	public String getownerHashcode() {
+	public String getOwnerHashcode() {
 		return ownerHashcode;
 	}
-	public void setownerHashcode(String ownerHashcode) {
+	public void setOwnerHashcode(String ownerHashcode) {
 		this.ownerHashcode = ownerHashcode;
 	}
 	public Long getAttempts() {
@@ -120,6 +123,12 @@ public class Owner implements Serializable
 	public void setOwnerCreation_date(Date ownerCreation_date) {
 		this.ownerCreation_date = ownerCreation_date;
 	}
+	public Date getEmailResendTime() {
+		return emailResendTime;
+	}
+	public void setEmailResendTime(Date emailResendTime) {
+		this.emailResendTime = emailResendTime;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -131,13 +140,14 @@ public class Owner implements Serializable
 		result = prime * result + ((attempts == null) ? 0 : attempts.hashCode());
 		result = prime * result + ((contactNumber == null) ? 0 : contactNumber.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((emailResendTime == null) ? 0 : emailResendTime.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((house == null) ? 0 : house.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
 		result = prime * result + ((oId == null) ? 0 : oId.hashCode());
 		result = prime * result + ((ownerCreation_date == null) ? 0 : ownerCreation_date.hashCode());
-		result = prime * result + ((ownerStatus == null) ? 0 : ownerStatus.hashCode());
 		result = prime * result + ((ownerHashcode == null) ? 0 : ownerHashcode.hashCode());
+		result = prime * result + ((ownerStatus == null) ? 0 : ownerStatus.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -170,6 +180,11 @@ public class Owner implements Serializable
 				return false;
 		} else if (!email.equals(other.email))
 			return false;
+		if (emailResendTime == null) {
+			if (other.emailResendTime != null)
+				return false;
+		} else if (!emailResendTime.equals(other.emailResendTime))
+			return false;
 		if (firstName == null) {
 			if (other.firstName != null)
 				return false;
@@ -195,15 +210,15 @@ public class Owner implements Serializable
 				return false;
 		} else if (!ownerCreation_date.equals(other.ownerCreation_date))
 			return false;
-		if (ownerStatus == null) {
-			if (other.ownerStatus != null)
-				return false;
-		} else if (!ownerStatus.equals(other.ownerStatus))
-			return false;
 		if (ownerHashcode == null) {
 			if (other.ownerHashcode != null)
 				return false;
 		} else if (!ownerHashcode.equals(other.ownerHashcode))
+			return false;
+		if (ownerStatus == null) {
+			if (other.ownerStatus != null)
+				return false;
+		} else if (!ownerStatus.equals(other.ownerStatus))
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -217,11 +232,12 @@ public class Owner implements Serializable
 		return "Owner [oId=" + oId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
 				+ ", aadharNumber=" + aadharNumber + ", contactNumber=" + contactNumber + ", password=" + password
 				+ ", house=" + house + ", ownerHashcode=" + ownerHashcode + ", attempts=" + attempts + ", ownerStatus="
-				+ ownerStatus + ", ownerCreation_date=" + ownerCreation_date + "]";
+				+ ownerStatus + ", ownerCreation_date=" + ownerCreation_date + ", emailResendTime=" + emailResendTime
+				+ "]";
 	}
 	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
 			String password, Set<House> house, String ownerHashcode, Long attempts, String ownerStatus,
-			Date ownerCreation_date) {
+			Date ownerCreation_date, Date emailResendTime) {
 		super();
 		this.oId = oId;
 		this.firstName = firstName;
@@ -235,13 +251,12 @@ public class Owner implements Serializable
 		this.attempts = attempts;
 		this.ownerStatus = ownerStatus;
 		this.ownerCreation_date = ownerCreation_date;
+		this.emailResendTime = emailResendTime;
 	}
 	public Owner() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	
 }
