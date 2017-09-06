@@ -1,18 +1,21 @@
 package com.smsone.controller;
 
 import java.io.IOException;
-import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.smsone.model.House;
 import com.smsone.model.Owner;
 import com.smsone.model.User;
@@ -40,15 +43,14 @@ public class HouseController {
 		}
 		else
 		{
-			Long oId=owner1.getoId();
-			model.addAttribute("oId", oId);
+			model.addAttribute("oId",owner1.getoId());
 			return "houseRegistration";
 		}
 			
 	}
 		//save house
 		@RequestMapping(value = "/saveHouse",method = RequestMethod.POST)
-		public String saveHouse(@RequestParam("ownerId")Long oId,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
+		public String saveHouse(@RequestParam("ownerId")Long oId,@RequestParam("accommodationType")String accommodationType,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
 		@RequestParam("address")String address,@RequestParam("subcategory")String locationArea,@RequestParam("subcategory2")String country,@RequestParam("deposit")Double deposit,@RequestParam("foodPreference")String foodPreference,@RequestParam("latitude")Double latitude,@RequestParam("longitude")Double longitude,@RequestParam("img3")MultipartFile img3,Model model,HttpSession session) throws IOException,SerialException
 		{
 			House house=new House();
@@ -64,6 +66,7 @@ public class HouseController {
 			house.setCountry(country);
 			house.setLocationArea(locationArea);
 			house.setTenancyType(tenancyType);
+			house.setAccommodationType(accommodationType);
 			house.setLatitude(latitude);
 			house.setLongitude(longitude);
 			byte[] img11 = img1.getBytes();
@@ -87,6 +90,39 @@ public class HouseController {
 				return "roomReg";
 			}
 		}	
+		//show payment page
+		@RequestMapping(value = "/showHouseInfo/showPaymentPage")
+		public String showPaymentPage1()
+		{
+			return "redirect:/showPaymentPage";
+			
+		}
+		@RequestMapping(value = "showPaymentPage")
+		public String showPaymentPage()
+		{
+			return "payment";
+			
+		}	
+	//show house info
+	@RequestMapping(value = "/showHouseInfo/{hId}")
+	public String showHouseInfo(@PathVariable("hId") Long hId,Model model,HttpSession session)
+	{
+		User user=(User)session.getAttribute("user");
+		if(user!=null)
+		{
+			House house=new House();
+			house.sethId(hId);
+			house=houseService.getHouse(house);
+			model.addAttribute("house",house);
+			return "houseInfo";
+		}
+		else
+		{
+			return "redirect:/showFilter";
+		}
+		
+	}
+	
 			//filter page response with filter
 			@RequestMapping(value="/showFilter3")
 			public String listHouseByFilters(@RequestParam("food") String food,Model model, Integer offset, Integer maxResults,HttpSession session){
@@ -98,46 +134,6 @@ public class HouseController {
 				model.addAttribute("url", "showFilter2");
 				return "filter";
 			}
-			//filter page response with filter
-			@RequestMapping(value="/showFilter2")
-			public String listHouseByFilter(@RequestParam("profession") String profession,@RequestParam("language") String language,@RequestParam("subcategory") String area,@RequestParam("food") String food,@RequestParam("price") Double rent,Model model, Integer offset, Integer maxResults,HttpSession session){
-				House house=new House();
-				User user=new User();
-				user.setProfession(profession);
-				user.setMotherTongue(language);
-				house.setLocationArea(area);
-				house.setRent(rent);
-				session.setAttribute("profession", profession);
-				session.setAttribute("language", language);
-				session.setAttribute("food", food);
-				session.setAttribute("area", area);
-				session.setAttribute("rent",rent);
-				house.setFoodPreference(food);
-				model.addAttribute("house", houseService.listHouseByFilter(house,offset, maxResults));
-				model.addAttribute("count", houseService.count());
-				model.addAttribute("offset", offset);
-				//model.addAttribute("url", "showFilter2");
-				return "filter";
-			}
-			@RequestMapping(value="/showFilterWithFacilities")
-			public String showFilterWithFacilities(@RequestParam("facilities") String facilities[],Model model,Integer offset, Integer maxResults,HttpSession session)
-			{
-				String profeesion=(String)session.getAttribute("profession");
-				String language=(String)session.getAttribute("language");
-				//String food=(String)session.getAttribute("food");
-				String area=(String)session.getAttribute("area");
-				Double rent=(Double)session.getAttribute("rent");
-				User user=new User();
-				user.setProfession(profeesion);
-				user.setMotherTongue(language);
-				House house=new House();
-				house.setRent(rent);
-				house.setLocationArea(area);
-				model.addAttribute("house", houseService.listHouseByadvancedFilter(house,user,offset,maxResults,facilities));
-				model.addAttribute("count", houseService.count());
-				model.addAttribute("offset", offset);
-				return "filter";
-			}
 			//sort record
 			@RequestMapping(value="/sortPrice")
 			public String Sortist(@RequestParam("priceSort")String priceSort,Model model, Integer offset, Integer maxResults){
@@ -146,15 +142,7 @@ public class HouseController {
 				model.addAttribute("offset", offset);
 					return "filter";
 			}	
-			//show filter with results 
-			@RequestMapping(value="/showFilter")
-			public String list(Model model, Integer offset, Integer maxResults){ 
-				model.addAttribute("house", houseService.list(offset, maxResults));
-				model.addAttribute("count", houseService.count());
-				model.addAttribute("offset", offset);
-				model.addAttribute("url", "showFilter");
-				return "filter";
-				}
+			
 			
 			@RequestMapping(value="/showFilter1")
 			public String list1(@RequestParam("invalid") Long invalid,Model model, Integer offset, Integer maxResults){ 
@@ -166,57 +154,6 @@ public class HouseController {
 				model.addAttribute("LoginMsg","Please enter valid email and password");
 				return "filter";
 				}
-			//filter page response with only address
-			@RequestMapping(value="/showFilter1")
-			public String listHouse(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){
-				if(address.isEmpty())
-				{
-					 return "redirect:/showFilter";
-				}
-				else
-				{
-				House house=new House();
-				house.setAddress(address);
-				model.addAttribute("house", houseService.listHouse(house,offset, maxResults));
-				model.addAttribute("count", houseService.countByFilter(house));
-				model.addAttribute("offset", offset);
-				model.addAttribute("url", "showFilter1");
-				return "filter";
-				}
-			}
-			
-			//show payment page
-			@RequestMapping(value = "/showHouseInfo/showPaymentPage")
-			public String showPaymentPage1()
-			{
-				return "redirect:/showPaymentPage";
-				
-			}
-			@RequestMapping(value = "showPaymentPage")
-			public String showPaymentPage()
-			{
-				return "payment";
-				
-			}	
-		//show house info
-		@RequestMapping(value = "/showHouseInfo/{hId}")
-		public String showHouseInfo(@PathVariable("hId") Long hId,Model model,HttpSession session)
-		{
-			User user=(User)session.getAttribute("user");
-			if(user!=null)
-			{
-				House house=new House();
-				house.sethId(hId);
-				house=houseService.getHouse(house);
-				model.addAttribute("house",house);
-				return "houseInfo";
-			}
-			else
-			{
-				return "redirect:/showFilter";
-			}
-			
-		}
 			
 			//show filter based on requirements
 			@RequestMapping(value = "/showFilter111")
@@ -225,17 +162,98 @@ public class HouseController {
 			{
 				return "filter";
 			}	
-			@RequestMapping(value = "/showHomeResult")
-			public String showHomeResult()
-			{
+			
+			
+			//filter page response with only address
+			@RequestMapping(value="/showFilterLongTerm")
+			public String showFilterLongTerm(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){
+				House house=new House();
+				house.setAccommodationType("longTerm");
+				if(address.isEmpty())
+				{
+					house.setAddress("pune");
+				}
+				else
+				{
+					house.setAddress(address);
+				}
+				model.addAttribute("house", houseService.listHouseByAddressLongTerm(house,offset, maxResults));
+				model.addAttribute("count", houseService.countHouseByAddressLongTerm(house));
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "showFilterLongTerm");
 				return "filter";
-			}	
-			@RequestMapping(value = "/showHeader")
-			public String showHeader()
-			{
-				return "header";
 			}
-					
-				
-
+			@RequestMapping(value="/showFilterShortTerm")
+			public String showFilterShortTerm(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){
+				House house=new House();
+				house.setAccommodationType("shortTerm");
+				if(address.isEmpty())
+				{
+					house.setAddress("pune");
+				}
+				else
+				{
+					house.setAddress(address);
+				}
+				model.addAttribute("house", houseService.listHouseByAddressShortTerm(house, offset, maxResults));
+				model.addAttribute("count", houseService.countHouseByAddressLongTerm(house));
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "showFilterShortTerm");
+				return "filter";
+			}
+			
+			//show filter with results 
+			@RequestMapping(value="/showFilter")
+			public @ResponseBody String list(Model model, Integer offset, Integer maxResults){ 
+				model.addAttribute("house", houseService.list(offset, maxResults));
+				model.addAttribute("count", houseService.count());
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "showFilter");
+				return "h";
+			}
+			
+			//filter page response with filter
+			@RequestMapping(value="/mainFilter")
+			public String listHouseByMainFilter(@RequestParam("profession") String profession,@RequestParam("motherTongue") String motherTongue,@RequestParam("subcategory") String locationArea,@RequestParam("foodPreference") String foodPreference,@RequestParam("rent") Double rent,Model model, Integer offset, Integer maxResults,HttpSession session){
+				session.setAttribute("profession", profession);
+				session.setAttribute("motherTongue", motherTongue);
+				session.setAttribute("locationArea", locationArea);
+				session.setAttribute("foodPreference", foodPreference);
+				session.setAttribute("rent", rent);
+				House house=new House();
+				User user=new User();
+				user.setProfession(profession);
+				user.setMotherTongue(motherTongue);
+				user.setFoodPreference(foodPreference);
+				house.setLocationArea(locationArea);
+				house.setRent(rent);
+				model.addAttribute("house", houseService.listHouseByMainFilter(house,user,offset, maxResults));
+				model.addAttribute("count", houseService.listHouseByMainFilterCount(house,user));
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "mainFilter");
+				return "filter";
+			}
+			//showFilterWithFacilities
+			@RequestMapping(value="/showFilterWithFacilities")
+			public String showFilterWithFacilities(@RequestParam("facilities") String facilities[],Model model,Integer offset, Integer maxResults,HttpSession session)
+			{
+				String profession=(String)session.getAttribute("profession");
+				String motherTongue=(String)session.getAttribute("motherTongue");
+				String foodPreference=(String)session.getAttribute("foodPreference");
+				String locationArea=(String)session.getAttribute("locationArea");
+				Double rent=(Double)session.getAttribute("rent");
+				User user=new User();
+				user.setProfession(profession);
+				user.setMotherTongue(motherTongue);
+				user.setFoodPreference(foodPreference);
+				House house=new House();
+				house.setRent(rent);
+				house.setLocationArea(locationArea);
+				model.addAttribute("house", houseService.listHouseByadvancedFilter(house,user,facilities,maxResults,offset));
+				model.addAttribute("count",houseService.listHouseByadvancedFilterCount(house,user,facilities));
+				model.addAttribute("offset", offset);
+				model.addAttribute("url", "showFilterWithFacilities");
+				return "filter";
+			}
+			
 }

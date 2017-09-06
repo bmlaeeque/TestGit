@@ -126,7 +126,7 @@
             <div class="col-md-12 col-md-offset-1">
               <div class="form-section">
                 <div class="row">
-                    <form role="form" action="showFilter1">
+                    <form role="form" action="showFilterShortTerm">
                       <div class="col-md-4">
                         <div class="form-group">
                           <label class="sr-only" for="location">Location</label>

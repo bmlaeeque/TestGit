@@ -34,6 +34,8 @@ public class House implements Serializable
 	@Column(nullable=false,length=20)
 	private String tenancyType;
 	@Column(nullable=false,length=20)
+	private String accommodationType;
+	@Column(nullable=false,length=20)
 	private Integer room;
 	@Column(nullable=false,length=20)
 	private String foodPreference;
@@ -97,6 +99,12 @@ public class House implements Serializable
 	}
 	public void setTenancyType(String tenancyType) {
 		this.tenancyType = tenancyType;
+	}
+	public String getAccommodationType() {
+		return accommodationType;
+	}
+	public void setAccommodationType(String accommodationType) {
+		this.accommodationType = accommodationType;
 	}
 	public Integer getRoom() {
 		return room;
@@ -206,16 +214,17 @@ public class House implements Serializable
 	public House() {
 		super();
 	}
-	public House(Long hId, Integer floorNumber, Double rent, Double area, String tenancyType, Integer room,
-			String foodPreference, Double deposit, String houseName, String state, String locationArea, String country,
-			String city, String address, byte[] img1, byte[] img2, byte[] img3, List<User> user, List<Room> rooms,
-			Owner owner, Double latitude, Double longitude) {
+	public House(Long hId, Integer floorNumber, Double rent, Double area, String tenancyType, String accommodationType,
+			Integer room, String foodPreference, Double deposit, String houseName, String state, String locationArea,
+			String country, String city, String address, byte[] img1, byte[] img2, byte[] img3, List<User> user,
+			List<Room> rooms, Owner owner, Double latitude, Double longitude) {
 		super();
 		this.hId = hId;
 		this.floorNumber = floorNumber;
 		this.rent = rent;
 		this.area = area;
 		this.tenancyType = tenancyType;
+		this.accommodationType = accommodationType;
 		this.room = room;
 		this.foodPreference = foodPreference;
 		this.deposit = deposit;
@@ -235,9 +244,20 @@ public class House implements Serializable
 		this.longitude = longitude;
 	}
 	@Override
+	public String toString() {
+		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", rent=" + rent + ", area=" + area
+				+ ", tenancyType=" + tenancyType + ", accommodationType=" + accommodationType + ", room=" + room
+				+ ", foodPreference=" + foodPreference + ", deposit=" + deposit + ", houseName=" + houseName
+				+ ", state=" + state + ", locationArea=" + locationArea + ", country=" + country + ", city=" + city
+				+ ", address=" + address + ", img1=" + Arrays.toString(img1) + ", img2=" + Arrays.toString(img2)
+				+ ", img3=" + Arrays.toString(img3) + ", user=" + user + ", rooms=" + rooms + ", owner=" + owner
+				+ ", latitude=" + latitude + ", longitude=" + longitude + "]";
+	}
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((accommodationType == null) ? 0 : accommodationType.hashCode());
 		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((area == null) ? 0 : area.hashCode());
 		result = prime * result + ((city == null) ? 0 : city.hashCode());
@@ -271,6 +291,11 @@ public class House implements Serializable
 		if (getClass() != obj.getClass())
 			return false;
 		House other = (House) obj;
+		if (accommodationType == null) {
+			if (other.accommodationType != null)
+				return false;
+		} else if (!accommodationType.equals(other.accommodationType))
+			return false;
 		if (address == null) {
 			if (other.address != null)
 				return false;
@@ -374,16 +399,6 @@ public class House implements Serializable
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", rent=" + rent + ", area=" + area
-				+ ", tenancyType=" + tenancyType + ", room=" + room + ", foodPreference=" + foodPreference
-				+ ", deposit=" + deposit + ", houseName=" + houseName + ", state=" + state + ", locationArea="
-				+ locationArea + ", country=" + country + ", city=" + city + ", address=" + address + ", img1="
-				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
-				+ ", user=" + user + ", rooms=" + rooms + ", owner=" + owner + ", latitude=" + latitude + ", longitude="
-				+ longitude + "]";
-	}
 	
 	
-	}
+}

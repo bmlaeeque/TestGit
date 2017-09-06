@@ -229,8 +229,7 @@
             	<div class="col-md-13 col-md-offset-1">
               	   <div class="form-section">
                 	  <div class="row">
-                         <form role="form" action="showFilter1" method="post">
-                    
+                         <form role="form" action="showFilterLongTerm" method="post">
                   <div class="col-md-2"></div>
                       <div class="col-md-5">
                         <div class="form-group">

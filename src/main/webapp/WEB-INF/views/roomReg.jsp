@@ -87,42 +87,42 @@
       <tbody style="background-color: rgb(243,210,230);">
           <tr>
            <td>AC</td>
-           <td><input type="radio" name="ac" ><span>Yes&nbsp;&nbsp;&nbsp;</span></td>
-           <td><input type="radio" name="ac" ><span>No</span></td>
+           <td><input type="radio" name="ac" value="ac"><span>Yes&nbsp;&nbsp;&nbsp;</span></td>
+           <td><input type="radio" name="ac" value="not available"><span>No</span></td>
           </tr>
          <tr>
            <td>Wifi</td>
-           <td><input type="radio" name="wifi" ><span>Yes</span></td>
+           <td><input type="radio" name="wifi" value="wifi" ><span>Yes</span></td>
            <td><input type="radio" name="wifi" ><span>No</span></td>
           </tr>
          <tr>
            <td>Bathroom</td>
-           <td><input type="radio" name="bathroom"  ><span>Yes</span></td>
+           <td><input type="radio" name="bathroom" value="bathroom"><span>Yes</span></td>
            <td><input type="radio" name="bathroom" ><span>No</span></td>
         </tr>
          <tr>
            <td>Geyser</td>
-           <td><input type="radio" name="geyser" ><span>Yes</span></td>
+           <td><input type="radio" name="geyser" value="geyser">><span>Yes</span></td>
            <td><input type="radio" name="geyser" ><span>No</span></td>
          </tr>
          <tr>
            <td>Bed</td>
-           <td><input type="radio" name="bed"  ><span>Yes</span></td>
+           <td><input type="radio" name="bed" value="bed">><span>Yes</span></td>
            <td><input type="radio" name="bed" ><span>No</span></td>
          </tr>
          <tr>
            <td>Swimming Pool&nbsp;&nbsp;&nbsp;&nbsp;</td>
-           <td><input type="radio" name="swimmingPool"  ><span>Yes</span></td>
+           <td><input type="radio" name="swimmingPool" value="swimmingPool"> ><span>Yes</span></td>
            <td><input type="radio" name="swimmingPool" ><span>No</span></td>
          </tr>
           <tr>
            <td>Parking</td>
-           <td><input type="radio" name="parking"  ><span>Yes</span></td>
+           <td><input type="radio" name="parking"  value="parking">><span>Yes</span></td>
            <td><input type="radio" name="parking" ><span>No</span></td>
          </tr>
           <tr>
            <td>Gym</td>
-           <td><input type="radio" name="gym"  ><span>Yes</span></td>
+           <td><input type="radio" name="gym"  value="gym">><span>Yes</span></td>
            <td><input type="radio" name="gym" ><span>No</span></td>
           </tr>
      </tbody>

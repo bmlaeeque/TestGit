@@ -36,6 +36,10 @@ public class RoomDAOImpl implements RoomDAO {
 		Transaction tx=session.beginTransaction();
 		User user1=(User)session.get(User.class,user.getuId());
 		Beds beds1=(Beds)session.get(Beds.class,beds.getbId());
+		Room room=beds1.getRoom();
+		House house=room.getHouse();
+		user1.setHouse(house);
+		session.save(user1);
 		beds1.setUser(user1);
 		session.save(beds1);
 		tx.commit();

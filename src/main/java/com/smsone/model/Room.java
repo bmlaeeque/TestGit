@@ -34,6 +34,7 @@ public class Room implements Serializable {
 	private String gym;
 	private Integer numberOfBed;
 	private String foodAvailability;
+	
 	@Column(name="img1",columnDefinition = "LONGBLOB")
 	private byte[] img1;
 	@Column(name="img2",columnDefinition = "LONGBLOB")

@@ -12,11 +12,19 @@ public interface HouseService {
 	public List<House> list(Integer offset, Integer maxResults);
 	public Long count();
 	public House getHouse(House house);
-	public List<House> listHouse(House house,Integer offset, Integer maxResults);
-	public List<House> listHouseByFilter(House house,Integer offset, Integer maxResults);
+
+	
 	public List<House> listHouseByFilters(House house,Integer offset, Integer maxResults);
 	public boolean checkAadharNumber(House house);
 	public Long countByFilter(House house);
-	public List<House> listHouseByadvancedFilter(House house,User user,Integer offset, Integer maxResults,String[] facilities);
+	//public List<House> listHouseByadvancedFilter(House house,User user,Integer offset, Integer maxResults,String[] facilities);
 	public void saveBed(Beds beds,Long rid);
+	
+	public List<House> listHouseByAddressLongTerm(House house,Integer offset, Integer maxResults);
+	public Long countHouseByAddressLongTerm(House house);
+	public List<House> listHouseByAddressShortTerm(House house,Integer offset, Integer maxResults);
+	public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults);
+	public List<House> listHouseByadvancedFilter(House house,User user,String[] facilities,Integer offset, Integer maxResults);
+	public Long listHouseByadvancedFilterCount(House house,User user,String[] facilities);
+	public Long listHouseByMainFilterCount(House house,User user);
 }

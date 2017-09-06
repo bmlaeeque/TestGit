@@ -57,7 +57,7 @@ public class RoomController {
 	{
 		
 		
-		return "bedInfo";
+		return "success";
 	}
 	//assign bed
 	@RequestMapping("/assignBed")
