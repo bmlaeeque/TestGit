@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,24 +32,30 @@ public class RoomController {
 	private HouseService houseService;
 	//show room info
 	@RequestMapping(value="/showRoomInfo")
-	public String showRoominfo(@RequestParam("hId") Long hId,Model model)
+	public String showRoominfo(@RequestParam("rId") Long rId,Model model)
 	{
-		model.addAttribute("room",roomService.getAllRoomDetails(hId));
-		model.addAttribute("roomCount",roomService.countRooms(hId));
+		Room r=roomService.getRoom(rId);
+		model.addAttribute("room",r);
+		model.addAttribute("beds",r.getBeds());
+		//List<Beds> beds=roomService.getAllBedDetails(rId);
+		//List<User> users=new ArrayList<User>();
+		//for(Beds beds1:beds)
+		//{
+			//users.add(beds1.getUser());
+		//}
+	//	model.addAttribute("users",users);
 		return "roomInfo";
 	}
-	
-	@RequestMapping(value="/showHouseInfo/showRoomInfo")
-	public String showRoomDetails(@RequestParam("hId")Long hId,RedirectAttributes ra)
+	@RequestMapping(value="/showHouseInfo/showRoomInfo/{rId}")
+	public String showRoomDetails(@PathVariable("rId")Long rId,RedirectAttributes ra)
 	{
-		 ra.addAttribute("hId",hId);
+		 ra.addAttribute("rId",rId);
 		 return "redirect:/showRoomInfo";
 	}
 	@RequestMapping(value="/saveBed")
 	public String saveBed(@RequestParam("bed") String bed,@RequestParam("rid") Long rid)
 	{
 		Beds beds=new Beds();
-		//beds.setDirection(bed); 
 		houseService.saveBed(beds,rid);
 		return "bedInfo";
 	}

@@ -12,7 +12,9 @@ public interface RoomService {
 	public List<Room> getAllRoomDetails(Long hId);
 	public Long countRooms(Long hId);
 	public Long countBeds(Long rId);
-	public User getUser(Long bId);
+	public List<User> getUsers(List<Beds> beds);
+	public Room getRoom(Long rId);
+	public List<Beds> getAllBedDetails(Long rId);
 	
 
 

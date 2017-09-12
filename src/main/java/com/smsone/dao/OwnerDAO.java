@@ -1,7 +1,6 @@
 package com.smsone.dao;
 
 import com.smsone.model.Owner;
-import com.smsone.model.User;
 
 
 public interface OwnerDAO {

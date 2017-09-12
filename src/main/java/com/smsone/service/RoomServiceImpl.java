@@ -1,8 +1,6 @@
 package com.smsone.service;
 
 import java.util.List;
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,8 +34,16 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.countBeds(rId);
 	}
 
-	public User getUser(Long bId) {
-		return roomDAO.getUser(bId);
+	public List<User> getUsers(List<Beds> beds) {
+		return roomDAO.getUsers(beds);
+	}
+
+	public Room getRoom(Long rId) {
+		return roomDAO.getRoom(rId);
+	}
+
+	public List<Beds> getAllBedDetails(Long rId) {
+		return roomDAO.getAllBedDetails(rId);
 	}
 
 	

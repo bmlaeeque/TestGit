@@ -1,9 +1,14 @@
 package com.smsone.dao;
 
 import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -45,12 +50,20 @@ public class RoomDAOImpl implements RoomDAO {
 		tx.commit();
 		session.close();
 	}
-	public List<User> getAllBedDetails() {
+	@SuppressWarnings("unchecked")
+	public List<Beds> getAllBedDetails(Long rId) {
 		Session session=sessionFactory.openSession();	
+		//Query query=session.createQuery("select beds.bId from Beds beds where beds.room=:rId"); 
+		//query.setLong("rId", rId);
+		Criteria crit = session.createCriteria(Beds.class);
+	    ProjectionList projList = Projections.projectionList();
+	    projList.add(Projections.property("Id"));
+	    projList.add(Projections.property("name"));
+	    crit.setProjection(projList);
+		List<Object[]> beds = crit.list();
 		
 		return null;
 	}
-	@SuppressWarnings("unchecked")
 	public List<Room> getAllRoomDetails(Long hId) {
 		Session session=sessionFactory.openSession();
 		House house=(House)session.load(House.class,hId);
@@ -83,22 +96,18 @@ public class RoomDAOImpl implements RoomDAO {
 		session.close();
 		return bedCount;
 	}
-	
-	public User getUser(Long bId) {
+	@SuppressWarnings("unchecked")
+	public List<User> getUsers(List<Beds> beds) {
 		Session session=sessionFactory.openSession();
-		Beds beds=(Beds)session.load(Beds.class,bId);
-		User user1=beds.getUser();
-		if(user1!=null)
-		{
-		return user1;
-		}
-		else
-		{
-			return null;
-		}
-		
+		Query query=session.createQuery("from Beds beds where beds in(:beds)"); 
+		query.setParameterList("beds",beds);
+		List<Beds> beds1=query.list();
+		System.out.println(beds1);
+		return null;
 	}
-	
-	
-	
+	public Room getRoom(Long rId) {
+		Session session=sessionFactory.openSession();
+		Room room=(Room)session.load(Room.class,rId);
+		return room;
+	}	
 }

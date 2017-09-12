@@ -299,36 +299,18 @@
  <div class="container">
  	<div class="row">
     	<div class="col-md-8">
-  <h4><font color="#FF0000">Monthly Expenses</font></h4>
+  <h4><font color="#FF0000">Rooms details</font></h4>
   <p>Apart from rent, the following are additional expenses you may incur every month when living in this house.</p>
   <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
   <div id="demo" class="collapse">
        <table class="table">
        			<tbody>
-                      <tr>
-                          <td>AC Costs(Based on Seasonality)</td>
-                          <td>₹ 999.0</td>
-                      </tr>
-                       <tr>
-                           <td>Electricity(without AC)</td>
-                           <td> ₹ 340.0</td>
-                       </tr>
-                        <tr>
-                              <td>Drinking Water</td>
-                              <td>₹ 200.0</td>
-                        </tr>
-   						<tr>
-                              <td>WifI</td>
-                              <td> ₹ 300.0</td>
-                        </tr>
-                         <tr>
-                              <td>Cook</td>
-                              <td> ₹ 1000.0</td>
-                         </tr>
-                         <tr>
-                              <td>DTH</td>
-                              <td> ₹ 60.0</td>
-                         </tr>
+       			   <c:forEach items="${room}" var="room" varStatus="theCount">
+                     <tr>
+                           <td><a href="showRoomInfo/${room.rId}">${room.roomId}</a></td>
+                          <td><a href="showRoomInfo/${room.rId}"><img src="<ui:image img='${room.img1}'></ui:image>" alt="Image" style="height:50px";/></a></td>
+                      </tr> 
+                       </c:forEach>
                   </tbody>
          </table>
 			</div>

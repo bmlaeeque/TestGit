@@ -47,7 +47,7 @@
 }
  </style>
 </head>
-<body >
+<body onload="javascript: dynamicdropdown('pune')">
 		<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(243,210,230)">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->

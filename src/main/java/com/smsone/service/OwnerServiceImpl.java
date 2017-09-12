@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.smsone.dao.OwnerDAO;
 import com.smsone.model.Owner;
-import com.smsone.model.User;
 
 @Service
 public class OwnerServiceImpl implements OwnerService {
