@@ -542,6 +542,9 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+window.onload = dynamicdropdown("${address}");
+  </script>
  <c:if test="${invalid==400}">
  <script type="text/javascript">
   popup();

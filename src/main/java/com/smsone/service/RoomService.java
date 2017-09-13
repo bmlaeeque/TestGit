@@ -1,5 +1,6 @@
 package com.smsone.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.smsone.model.Beds;
@@ -15,6 +16,9 @@ public interface RoomService {
 	public List<User> getUsers(List<Beds> beds);
 	public Room getRoom(Long rId);
 	public List<Beds> getAllBedDetails(Long rId);
+	
+	
+	
 	
 
 

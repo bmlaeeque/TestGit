@@ -139,7 +139,7 @@
          						<i class="fa fa-calendar">
                                  </i>
        						 </div>
-       				 		<input class="form-control" id="dpd1" name="dpd1" placeholder="Check In" type="text"/>
+       				 		<input class="form-control" id="dpd1" name="checkIn" placeholder="Check In" type="text"/>
       					 </div>
       				</div>
                       <div class="col-md-2">
@@ -148,7 +148,7 @@
          						<i class="fa fa-calendar">
                                  </i>
        						 </div>
-       				 		<input class="form-control" id="dpd2" name="dpd2" placeholder="Check Out" type="text"/>
+       				 		<input class="form-control" id="dpd2" name="checkOut" placeholder="Check Out" type="text"/>
       					 </div>
       				</div>
                     

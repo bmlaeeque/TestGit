@@ -1,11 +1,13 @@
 package com.smsone.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -181,10 +183,13 @@ public class HouseController {
 				model.addAttribute("count", houseService.countHouseByAddressLongTerm(house));
 				model.addAttribute("offset", offset);
 				model.addAttribute("url", "showFilterLongTerm");
+				model.addAttribute("address", address);
 				return "filter";
 			}
 			@RequestMapping(value="/showFilterShortTerm")
-			public String showFilterShortTerm(@RequestParam("address") String address,Model model, Integer offset, Integer maxResults){
+			public String showFilterShortTerm(@RequestParam("address") String address,@RequestParam("checkIn")@DateTimeFormat(pattern="yyyy-MM-dd") Date checkIn,@RequestParam("checkOut")@DateTimeFormat(pattern="yyyy-MM-dd") Date checkOut,Model model, Integer offset, Integer maxResults){
+				System.out.println(checkIn);
+				System.out.println(checkOut);
 				House house=new House();
 				house.setAccommodationType("shortTerm");
 				if(address.isEmpty())
@@ -199,6 +204,7 @@ public class HouseController {
 				model.addAttribute("count", houseService.countHouseByAddressLongTerm(house));
 				model.addAttribute("offset", offset);
 				model.addAttribute("url", "showFilterShortTerm");
+				model.addAttribute("address", address);
 				return "filter";
 			}
 			
