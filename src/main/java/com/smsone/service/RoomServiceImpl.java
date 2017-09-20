@@ -56,6 +56,11 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.getAllBedDetails(rId);
 	}
 
+	public User getUser(Long bId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 	

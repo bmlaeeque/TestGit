@@ -119,15 +119,11 @@ public class UserController {
 			{
 				model.addAttribute("status", "Expired");
 			}
-			 hashcode = UUID.randomUUID().toString();
-			user.setHashcode(hashcode);
-			user.setUserCreation_date(date);
-			userService.saveUser(user);		
-			String link="http://localhost:2018/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
-			String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
-			sendDivastaysMail(email,msg,"Divastays Email Activation Link");
-			return "success";
+
 		}
+		model.addAttribute("email", email);
+		return "home";
+	}
 		//save user
 				@RequestMapping(value = "/saveEditedUser", method = RequestMethod.POST)
 				public String saveEditedUser(@RequestParam("uId") Long uId,@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("aadharNumber")Long aadharNumber,@RequestParam("motherTounge")String motherTongue,@RequestParam("address")String address,@RequestParam("pincode")Integer pincode,
