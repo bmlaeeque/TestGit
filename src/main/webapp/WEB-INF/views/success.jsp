@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Your Record Inserted Successfully..</h4>
+<form action="assignBed">
+uId<input type="text" name="uId"><br>
+bId<input type="text" name="bId">
+<input type="submit" value="submit">
+</form>
 </body>
 </html>

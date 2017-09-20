@@ -100,13 +100,15 @@ body {
       
       <c:choose>
     <c:when test="${sessionScope.owner!=null}">
+    	<li><a href="showHouseReg"><font color=#000000">List your House</font></a></li>
+    	<li><a href="showHouseReg"><font color=#000000">your Houses</font></a></li>
        <li><a href="logoutOwner"><font color=#000000">Logout</font></a></li>
        <li><a href="editOwnerProfile/${owner.oId}"><font color=#000000">Edit Your Profile</font></a></li>
        <li><a href="ownerHouse"><font color=#000000">Your Homes</font></a></li>
        <li><a href="showHouseReg"><font color=#000000">House Registration</font></a></li>
        
     </c:when>    
-    <c:otherwise>
+    <c:otherwise> 
       <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
 						<span class="caret"></span></a>

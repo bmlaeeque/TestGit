@@ -11,6 +11,7 @@
                        	document.getElementById("subcategory").options[5]=new Option("Hadapsar","Hadapsar");
 						document.getElementById("subcategory").options[6]=new Option("Aundh","Aundh");
 						document.getElementById("subcategory").options[7]=new Option("Katarj","Katraj");
+						document.getElementById("subcategory").options[8]=new Option("pune","pune");
 				}
 				else if((/Kolhapur/.test(listindex))||(/kolhapur/.test(listindex)))
 				{
@@ -20,6 +21,7 @@
                         document.getElementById("subcategory").options[3]=new Option("Rajarampuri","Rajarampuri");
                         document.getElementById("subcategory").options[4]=new Option("Vidyanager","Vidyanager");
                        	document.getElementById("subcategory").options[5]=new Option("Shivaji Peth","Shivaji Peth");
+                       	document.getElementById("subcategory").options[6]=new Option("Kolhapur","Kolhapur");
 				}
 				else if((/mumbai/.test(listindex))||(/Mumbai/.test(listindex)))
 				{

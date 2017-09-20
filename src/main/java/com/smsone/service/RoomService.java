@@ -1,5 +1,6 @@
 package com.smsone.service;
 
+import java.util.Date;
 import java.util.List;
 
 import com.smsone.model.Beds;
@@ -13,8 +14,18 @@ public interface RoomService {
 	public List<Room> getAllRoomDetails(Long hId);
 	public Long countRooms(Long hId);
 	public Long countBeds(Long rId);
+	
 	public User getUser(Long bId);
 	public Room getRoom(Room room);
 	public void updateRoom(Room room);
+	public List<User> getUsers(List<Beds> beds);
+	public Room getRoom(Long rId);
+	public List<Beds> getAllBedDetails(Long rId);
+	
+	
+	
+	
+
+
 
 }

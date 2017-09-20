@@ -1,9 +1,9 @@
 package com.smsone.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 @Entity
 @Table
 public class Beds implements Serializable {
@@ -26,6 +28,10 @@ public class Beds implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "rId")
 	private Room room;
+	@Temporal(TemporalType.DATE)
+	private Date checkIn ;
+	@Temporal(TemporalType.DATE)
+	private Date checkOut ;
 	public Long getbId() {
 		return bId;
 	}
@@ -50,22 +56,37 @@ public class Beds implements Serializable {
 	public void setRoom(Room room) {
 		this.room = room;
 	}
+	public Date getCheckIn() {
+		return checkIn;
+	}
+	public void setCheckIn(Date checkIn) {
+		this.checkIn = checkIn;
+	}
+	public Date getCheckOut() {
+		return checkOut;
+	}
+	public void setCheckOut(Date checkOut) {
+		this.checkOut = checkOut;
+	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public Beds(Long bId, Long bedId, User user, Room room) {
+	public Beds() {
+		super();
+	}
+	public Beds(Long bId, Long bedId, User user, Room room, Date checkIn, Date checkOut) {
 		super();
 		this.bId = bId;
 		this.bedId = bedId;
 		this.user = user;
 		this.room = room;
-	}
-	public Beds() {
-		super();
+		this.checkIn = checkIn;
+		this.checkOut = checkOut;
 	}
 	@Override
 	public String toString() {
-		return "Beds [bId=" + bId + ", bedId=" + bedId + ", user=" + user + ", room=" + room + "]";
+		return "Beds [bId=" + bId + ", bedId=" + bedId + ", user=" + user + ", room=" + room + ", checkIn=" + checkIn
+				+ ", checkOut=" + checkOut + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -73,6 +94,8 @@ public class Beds implements Serializable {
 		int result = 1;
 		result = prime * result + ((bId == null) ? 0 : bId.hashCode());
 		result = prime * result + ((bedId == null) ? 0 : bedId.hashCode());
+		result = prime * result + ((checkIn == null) ? 0 : checkIn.hashCode());
+		result = prime * result + ((checkOut == null) ? 0 : checkOut.hashCode());
 		result = prime * result + ((room == null) ? 0 : room.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
@@ -95,6 +118,16 @@ public class Beds implements Serializable {
 			if (other.bedId != null)
 				return false;
 		} else if (!bedId.equals(other.bedId))
+			return false;
+		if (checkIn == null) {
+			if (other.checkIn != null)
+				return false;
+		} else if (!checkIn.equals(other.checkIn))
+			return false;
+		if (checkOut == null) {
+			if (other.checkOut != null)
+				return false;
+		} else if (!checkOut.equals(other.checkOut))
 			return false;
 		if (room == null) {
 			if (other.room != null)

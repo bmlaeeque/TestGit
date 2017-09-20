@@ -3,8 +3,6 @@ package com.smsone.model;
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,6 +32,7 @@ public class Room implements Serializable {
 	private String gym;
 	private Integer numberOfBed;
 	private String foodAvailability;
+	
 	@Column(name="img1",columnDefinition = "LONGBLOB")
 	private byte[] img1;
 	@Column(name="img2",columnDefinition = "LONGBLOB")

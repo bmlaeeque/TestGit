@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,7 +17,6 @@
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <style>
 	.ui-autocomplete { font-size: 10px; }
-	
 }
 </style>
 <!--this for the img-->
@@ -44,10 +45,9 @@
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
-
  </style>
 </head>
-<body >
+<body onload="javascript: dynamicdropdown('pune')">
 		<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(243,210,230)">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -191,18 +191,18 @@
 
 <div class="container"><!--1)main container for filter-->
 	<div class="row"><!--2)row -->
-	<form class="form" role="form"  action="showFilter2" accept-charset="UTF-8">
+	<form class="form" role="form" id="house" action="showFilterShortTerm" accept-charset="UTF-8">
 		<div class="col-md-3"><!--3)column for filter-->
         	<div class="well" style="background-color:rgb(243,210,230)"><strong>Location</strong> 
       
 	   	<div class="form-group">
-  			<input type="text" name="address"  placeholder="city" class="form-control" id="address" onBlur="javascript: dynamicdropdown(this.value);"/>
+  			<input type="text" name="address"  placeholder="city" class="form-control" id="address" onBlur="javascript: dynamicdropdown(this.value);submitForm();"/>
             </div><!--form group closed-->
   	
     	</div><!--well class closed-->
-  
+  </form>
        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><!--4)main panel start drom here-->
-
+<form class="form" role="form"  action="mainFilter" accept-charset="UTF-8">
             <!-- first Panel start Here -->
         <div class="well" style="background-color:rgb(243,210,230)">  <!--5)class well-->
         <strong>Profession</strong> 
@@ -216,7 +216,7 @@
         
        		 <div class="form-group">
       		<label>Mother Toung</label>
-       		<select id="language" name="language" class="form-control">
+       		<select id="motherTongue" name="motherTongue" class="form-control">
                               <option value="hindi">हिंदी (hindi)</option>
                               <option value="marathi">मराठी (marathi)</option>
                               <option value="english">English</option>
@@ -236,19 +236,12 @@
                 document.write('<select name="subcategory" id="subcategory" class="form-control"><option value="">Please select Area</option></select>')
             </script>
     </div><!--form group-->
-    
-    	<div class="form-group">
-   	   <label>Accomadation for</label>
-    		  <select id="accomodation" class="form-control" name="accomodation">
-        	<option value="Girls">Girls</option>
-       
-      	</select>
-    	</div><!--form group-->
+   
     		<div class="form-group">
       <label>Food Type</label>
-      <select id="food" class="form-control" name="food">
-      <option value="Both">Both</option>
-        <option value="Veg">Veg</option>
+      <select id="foodPreference" class="form-control" name="foodPreference">
+      <option value="both">Both</option>
+        <option value="veg">Veg</option>
         <option value="Non-Veg">non-veg</option>
       </select>
     </div><!--form-group closed-->
@@ -266,19 +259,19 @@
                 <div class="panel-body">
                   <div class="list-group">
                   <div class="checkbox">
-                      <label><input type="radio" value="100" name="price" checked="checked">All</label>
+                      <label><input type="radio" value="100" name="rent" checked="checked">All</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="radio" value="1000" name="price">Below ₹1000</label>
+                      <label><input type="radio" value="1000" name="rent">Below ₹1000</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="radio" value="1500" name="price">₹1000-₹2000</label>
+                      <label><input type="radio" value="1500" name="rent">₹1000-₹2000</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="radio" value="2500" name="price">₹2000-₹3000</label>
+                      <label><input type="radio" value="2500" name="rent">₹2000-₹3000</label>
                     </div>
                     <div class="checkbox">
-                      <label><input type="radio" value="3000" name="price">>₹3000</label>
+                      <label><input type="radio" value="3000" name="rent">>₹3000</label>
 					</div>
               </div>
                    </div>
@@ -290,7 +283,7 @@
 		<div class align="center"><button type="submit" class="btn btn-info" style="">Search</button>
 		</div><br>
           <button type="reset" class="btn btn-info">Reset All</button>&nbsp;&nbsp;&nbsp;
-          </form>
+          </form>    
                 
      <form action="showFilterWithFacilities" role="form">   
           <button type="button" data-toggle="modal" data-target="#myModal" >Advance Filter</button>
@@ -374,7 +367,7 @@
                           </tr>
                             <tr>
                              <td><h5 style="color:#000000">Area</h5></td>
-                             <td><h5 style="color:#000000">${house.address}</h5></td>
+                             <td><h5 style="color:#000000">${house.address} ${house.city}</h5></td>
                           </tr>
                             <tr>
                               <td><h5 style="color:#000000">Avalability</h5></td>
@@ -476,7 +469,7 @@
 <script src="js/dynamicdropdownfilter.js" type="text/javascript"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-	<script src="js/popup.js"></script>
+<script src="js/popup.js"></script>
 <script>
 		$(function() {
 			$("#address").autocomplete({
@@ -552,14 +545,18 @@
         </div>
     </div>
 </div>
-
-
+<script type="text/javascript">
+window.onload = dynamicdropdown("${address}");
+  </script>
  <c:if test="${invalid==400}">
  <script type="text/javascript">
   popup();
   </script>
 </c:if>
- 
-   
+<script>
+function submitForm1() {
+    document.getElementById("house").submit();
+}
+</script>
 </body>
 </html>

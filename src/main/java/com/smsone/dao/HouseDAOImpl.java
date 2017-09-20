@@ -46,17 +46,6 @@ public class HouseDAOImpl implements HouseDAO {
 		House loadHouse=(House)session.load(House.class,house.gethId());
 		return loadHouse;
 	}
-	public List<House> listHouse(House house, Integer offset, Integer maxResults) {
-		Session session=sessionFactory.openSession();
-		Criteria criteria = session.createCriteria(House.class);
-		criteria.setFirstResult(offset!=null?offset:0);
-		criteria.setMaxResults(maxResults!=null?maxResults:10);
-		criteria.add(Restrictions.like("city","%"+house.getAddress()+"%"));
-		@SuppressWarnings("unchecked")
-		List<House> house1 = criteria.list();
-		
-		return house1;
-	}
 	public boolean checkAadharNumber(House house) {
 			Session session=sessionFactory.openSession();
 			Criteria crit=session.createCriteria(House.class);
@@ -131,11 +120,7 @@ public class HouseDAOImpl implements HouseDAO {
 			
 			return house1;
 		}
-		public List<House> listHouseByadvancedFilter(String[] facilities) {
-			Session session=sessionFactory.openSession();
-			Query query=session.createQuery("from Job where id not in (select hId from Room where )");
-			return null;
-		}
+		
 		//save house with owner
 		public void saveHouse(House house,Long oId) {
 			Session session=sessionFactory.openSession();
@@ -144,6 +129,7 @@ public class HouseDAOImpl implements HouseDAO {
 			session.save(house);
 			session.close();
 		}
+
 		public List<House> listHouseByFilter(House house, Integer offset, Integer maxResults) {
 			Criterion c3=null;
 			Session session=sessionFactory.openSession();
@@ -192,6 +178,7 @@ public class HouseDAOImpl implements HouseDAO {
 			Criterion c1=Restrictions.eq("locationArea",house.getLocationArea());			
 			return null;
 		}
+
 		public void saveBed(Beds beds,Long rid) {
 			Session session=sessionFactory.openSession();
 			Room room=(Room)session.load(Room.class,rid);
@@ -230,8 +217,233 @@ public class HouseDAOImpl implements HouseDAO {
 			return room;
 		}
 
-		public List<House> applySorting(House house,User user) {
-			
-			return null;
+		
+		//list house by address
+		public List<House> listHouseByAddressLongTerm(House house, Integer offset, Integer maxResults) {
+			Session session=sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(House.class);
+			criteria.setFirstResult(offset!=null?offset:0);
+			criteria.setMaxResults(maxResults!=null?maxResults:10);
+			String[] splitAddress = house.getAddress().split("\\s*(=>|,|\\s)\\s*");
+			Criterion c1=Restrictions.in("city", splitAddress);
+			//Criterion c1=Restrictions.eq("city",house.getAddress());
+			Criterion c2=Restrictions.ne("accommodationType","shortTerm");
+			Criterion c3=Restrictions.and(c1,c2);
+			criteria.add(c3);
+			@SuppressWarnings("unchecked")
+			List<House> house1 = criteria.list();
+			session.close();
+			return house1;
+		}
+		//list house by address count
+		public Long countHouseByAddressLongTerm(House house) {
+			Session session=sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(House.class);
+			String[] splitAddress = house.getAddress().split("\\s*(=>|,|\\s)\\s*");
+			Criterion c1=Restrictions.in("city", splitAddress);
+			//Criterion c1=Restrictions.eq("city",house.getAddress());
+			Criterion c2;
+			if(house.getAccommodationType().equals("longTerm"))
+			{
+				c2=Restrictions.ne("accommodationType","shortTerm");
+			}
+			else
+			{
+				c2=Restrictions.ne("accommodationType","longTerm");
+			}
+			Criterion c3=Restrictions.and(c1,c2);
+			criteria.add(c3);
+			criteria.setProjection(Projections.rowCount());
+			Long count = (Long)criteria.uniqueResult();
+			return count;
+		}
+
+		public List<House> listHouseByAddressShortTerm(House house, Integer offset, Integer maxResults) {
+			Session session=sessionFactory.openSession();
+			Criteria criteria = session.createCriteria(House.class);
+			criteria.setFirstResult(offset!=null?offset:0);
+			criteria.setMaxResults(maxResults!=null?maxResults:10);
+			String[] splitAddress = house.getAddress().split("\\s*(=>|,|\\s)\\s*");
+			//Criterion c1=Restrictions.ilike("city", house.getAddress(), MatchMode.ANYWHERE);
+			Criterion c1=Restrictions.in("city", splitAddress);
+			Criterion c2=Restrictions.ne("accommodationType","longTerm");
+			Criterion c3=Restrictions.and(c1,c2);
+			criteria.add(c3);
+			@SuppressWarnings("unchecked")
+			List<House> house1 = criteria.list();
+			session.close();
+			return house1;
+		}
+		
+		@SuppressWarnings("unchecked")
+		public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults) {
+			Session session=sessionFactory.openSession();
+			Query query=session.createQuery("from House house where house.locationArea=:locationArea and house.rent>=:LowerRent and house.rent<=:HigherRent"); 
+			query.setString("locationArea",house.getLocationArea());
+			if(house.getRent()==1000)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(1000));
+			}
+			else if(house.getRent()==1500)
+			{
+				query.setDouble("LowerRent",new Double(1000));
+				query.setDouble("HigherRent",new Double(2000));
+			}
+			else if(house.getRent()==2500)
+			{
+				query.setDouble("LowerRent",new Double(2000));
+				query.setDouble("HigherRent",new Double(3000));
+				
+			}
+			else if(house.getRent()==3000)
+			{
+				query.setDouble("LowerRent",new Double(3000));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			else if(house.getRent()==100)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			Query query1 = session.createQuery("SELECT user.house FROM User user WHERE user.profession=:profession and user.motherTongue=:motherTongue and user.foodPreference=:foodPreference and user.house in(:houses)");
+			query1.setFirstResult(offset!=null?offset:0);
+			query1.setMaxResults(maxResults!=null?maxResults:10);
+			query1.setString("profession",user.getProfession());
+			query1.setString("motherTongue",user.getMotherTongue());
+			query1.setString("foodPreference",user.getFoodPreference());
+			query1.setParameterList("houses",query.list());
+			List<House> house1 = query1.list();
+			return house1;
+		}
+		
+public Long listHouseByMainFilterCount(House house, User user) {
+	
+	Session session=sessionFactory.openSession();
+	Query query=session.createQuery("from House house where house.locationArea=:locationArea and house.rent>=:LowerRent and house.rent<=:HigherRent"); 
+	query.setString("locationArea",house.getLocationArea());
+	if(house.getRent()==1000)
+	{
+		query.setDouble("LowerRent",new Double(0));
+		query.setDouble("HigherRent",new Double(1000));
+	}
+	else if(house.getRent()==1500)
+	{
+		query.setDouble("LowerRent",new Double(1000));
+		query.setDouble("HigherRent",new Double(2000));
+	}
+	else if(house.getRent()==2500)
+	{
+		query.setDouble("LowerRent",new Double(2000));
+		query.setDouble("HigherRent",new Double(3000));
+		
+	}
+	else if(house.getRent()==3000)
+	{
+		query.setDouble("LowerRent",new Double(3000));
+		query.setDouble("HigherRent",new Double(10000));
+	}
+	else if(house.getRent()==100)
+	{
+		query.setDouble("LowerRent",new Double(0));
+		query.setDouble("HigherRent",new Double(10000));
+	}
+	Query query1 = session.createQuery("SELECT user.house FROM User user WHERE user.profession=:profession and user.motherTongue=:motherTongue and user.foodPreference=:foodPreference and user.house in(:houses)");
+	query1.setString("profession",user.getProfession());
+	query1.setString("motherTongue",user.getMotherTongue());
+	query1.setString("foodPreference",user.getFoodPreference());
+	query1.setParameterList("houses",query.list());
+	Long count = (Long)query1.uniqueResult();
+	return count;
+		}
+		
+
+		public List<House> listHouseByadvancedFilter(House house, User user,String[] facilities, Integer offset, Integer maxResults) {
+			Session session=sessionFactory.openSession();
+			Query query=session.createQuery("from House house where house.locationArea=:locationArea and house.rent>=:LowerRent and house.rent<=:HigherRent"); 
+			query.setString("locationArea",house.getLocationArea());
+			if(house.getRent()==1000)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(1000));
+			}
+			else if(house.getRent()==1500)
+			{
+				query.setDouble("LowerRent",new Double(1000));
+				query.setDouble("HigherRent",new Double(2000));
+			}
+			else if(house.getRent()==2500)
+			{
+				query.setDouble("LowerRent",new Double(2000));
+				query.setDouble("HigherRent",new Double(3000));
+				
+			}
+			else if(house.getRent()==3000)
+			{
+				query.setDouble("LowerRent",new Double(3000));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			else if(house.getRent()==100)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			Query query1 = session.createQuery("SELECT user.house FROM User user WHERE user.profession=:profession and user.motherTongue=:motherTongue and user.foodPreference=:foodPreference and user.house in(:houses)");
+			query1.setString("profession",user.getProfession());
+			query1.setString("motherTongue",user.getMotherTongue());
+			query1.setString("foodPreference",user.getFoodPreference());
+			query1.setParameterList("houses",query.list());
+			//List<House> house1 = query1.list();
+			Query query3=session.createQuery("select room.house from Room room where (room.ac in(:facilities) or room.wifi in(:facilities) or room.bathroom in(:facilities) or room.geyser in(:facilities) or room.bed in(:facilities) or room.swimmingPool in(:facilities)or room.gym in(:facilities))and (room.house in(:houses))");
+			query3.setFirstResult(offset!=null?offset:0);
+			query3.setMaxResults(maxResults!=null?maxResults:10);
+			query3.setParameterList("facilities",facilities);
+			query3.setParameterList("houses",query1.list());
+			@SuppressWarnings("unchecked")
+			List<House> house1 = query3.list();
+			return house1;
+		}
+
+		public Long listHouseByadvancedFilterCount(House house, User user, String[] facilities) {
+			Session session=sessionFactory.openSession();
+			Query query=session.createQuery("from House house where house.locationArea=:locationArea and house.rent>=:LowerRent and house.rent<=:HigherRent"); 
+			query.setString("locationArea",house.getLocationArea());
+			if(house.getRent()==1000)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(1000));
+			}
+			else if(house.getRent()==1500)
+			{
+				query.setDouble("LowerRent",new Double(1000));
+				query.setDouble("HigherRent",new Double(2000));
+			}
+			else if(house.getRent()==2500)
+			{
+				query.setDouble("LowerRent",new Double(2000));
+				query.setDouble("HigherRent",new Double(3000));
+				
+			}
+			else if(house.getRent()==3000)
+			{
+				query.setDouble("LowerRent",new Double(3000));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			else if(house.getRent()==100)
+			{
+				query.setDouble("LowerRent",new Double(0));
+				query.setDouble("HigherRent",new Double(10000));
+			}
+			Query query1 = session.createQuery("SELECT user.house FROM User user WHERE user.profession=:profession and user.motherTongue=:motherTongue and user.foodPreference=:foodPreference and user.house in(:houses)");
+			query1.setString("profession",user.getProfession());
+			query1.setString("motherTongue",user.getMotherTongue());
+			query1.setString("foodPreference",user.getFoodPreference());
+			query1.setParameterList("houses",query.list());
+			//List<House> house1 = query1.list();
+			Query query3=session.createQuery("select room.house from Room room where (room.ac in(:facilities) or room.wifi in(:facilities) or room.bathroom in(:facilities) or room.geyser in(:facilities) or room.bed in(:facilities) or room.swimmingPool in(:facilities)or room.gym in(:facilities))and (room.house in(:houses))");
+			query3.setParameterList("facilities",facilities);
+			query3.setParameterList("houses",query1.list());
+			Long count = (Long)query3.uniqueResult();
+			return count;
 		}
 }

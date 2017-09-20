@@ -1,6 +1,9 @@
 
 package com.smsone.controller;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -85,6 +88,14 @@ public class BaseController {
 	@RequestMapping(value = "/showDeal1")
 	public String showDeal1()
 	{
+		return "deal1";
+	}
+	
+	
+	@RequestMapping(value = "/checkdate")
+	public String checkdate(@RequestParam("date")@DateTimeFormat(pattern="yyyy-MM-dd") Date date)
+	{
+				
 		return "deal1";
 	}
 }

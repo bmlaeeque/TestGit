@@ -1,7 +1,6 @@
 package com.smsone.service;
 
 import com.smsone.model.Owner;
-import com.smsone.model.User;
 public interface OwnerService {
 	public void saveOwner(Owner owner);
 	public void updateOwner(Owner owner);

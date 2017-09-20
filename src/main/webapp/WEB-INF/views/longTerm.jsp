@@ -13,7 +13,6 @@
   <link href="css/default.css" rel="stylesheet">
   <link href="css/header.css" rel="stylesheet">
    <link href="css/popup.css" rel="stylesheet">
-   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
   <!-- for google api-->
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
@@ -164,6 +163,7 @@
 											class="fa fa-twitter"></i> Twitter</a>
 									</div>
 									or
+
 									<form class="form" role="form" method="post" action="loginLongTerm"
 										accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
@@ -216,17 +216,20 @@
           <h1 style="color:#000000; font-family:Georgia;">DivaStays</h1>     
               <p style="color:#000000; font-family:"Courier New", Courier, monospace;">Your Friendly  Neighbourhood Hostel</p>
           <h5 style="color:#000000;">now in India</h5>
-          <a href="showKnowMore"> <button class="btn btn-info">Know More</button></a>
+          <a href="showKnowMore"> <button class="button btn-info">Know More</button></a>
           <br>
           <br>
             <br>
 		   <div class="container text-center" style="background-color:rgb(243,210,230)" >    
-  				<h3 align="center" style="color:#000000;">Stay with us and enjoy life</h3>   
+  				<h3 align="center" style="color:#000000;">Stay with us and enjoy life</h3>
+  					
+                    
+                
              <div class="row">
             	<div class="col-md-13 col-md-offset-1">
               	   <div class="form-section">
                 	  <div class="row">
-                         <form role="form" action="showFilter1" method="post">   
+                         <form role="form" action="showFilterLongTerm" method="post">
                   <div class="col-md-2"></div>
                       <div class="col-md-5">
                         <div class="form-group">
@@ -234,35 +237,61 @@
                           <input type="text" class="form-control" name="address" id="address" placeholder="Where ?"/>
                         </div>
                         </div>
+               
                       <div class="col-md-1">
                       <button type="submit" class="btn btn-info">Search</button>
+
                         <!--<button type="submit" class="btn btn-default btn-primary">Search</button>-->
-                      </div>				
+                      </div>
+      
+      						
       				</form>
                       </div>
                       </div>
-                      </div>          
-                      </div>                
+                      </div>
+            
+                      </div>
+                      
+                   
                     </div>
-                    <!-- two more tag add for  puppose is to contain in one-->		
+                    
+                    
+                 
+    
+                    <!-- two more tag add for  puppose is to contain in one-->
+                 
+			
     <br>
       <br>      
+                  
+                    
+                
+  
+  
   <!-- search box start -->
+ 				
                   <div class="col-md-12 text-center">
 				 <!-here we are add the map ->   
-             		<div>   
+             		<div>
+             		   
            			<div class="map">
            <h2 class="service-title pad-bt15">Hostels In Pune</h2>
            <hr class="bottom-line">
 				<div id="google-map">
+        		
 <iframe src="https://www.google.com/maps/d/embed?mid=1c-xBCOm4KzrFzL7o24ZlWuwAhSg" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>               
         	</div>
-        </div>     
+        </div>
+        
    </div></div>
 </div>
-<br>  
+
+
+<br>
+  
   </div>
-</div> 
+</div>
+  
   <!-- search box end -->
 <div class="container">
         <div class="row">
@@ -270,11 +299,15 @@
             <h2 class="service-title pad-bt15">Limited Deals</h2>
             <hr class="bottom-line">
           </div>
+      
+
   		<a href="showDeal1"><div class="col-sm-4">
       		<div class="panel panel-primary">
+       
       	 	 	<div class="panel-heading">Hinjewadi</div>
        			 <div class="panel-body"><img src="images/longterm_deal_hinjewadi.png" class="img-responsive" style="width:100%" alt="Image"></div>
-       	 		<div class="panel-footer" style="color:#000000">best deal</div>  	 		
+       	 		<div class="panel-footer" style="color:#000000">best deal</div>
+       	 		
       	</div>
     </div>
 		</a>
@@ -291,10 +324,16 @@
         	<div class="panel-body"><img src="images/longterm_chinchwad.png" class="img-responsive" style="width:100%" alt="Image"></div>
         	<div class="panel-footer" style="color:#000000">best deal</div>
       </div>
-    	</div>     
+    	</div>
+      
+    	    
+
+
+        
    	  </div>
   </div>
 </div>
+
 <section id="three" class="no-padding">
         <div class="container-fluid">
         <div class="container">
@@ -305,6 +344,7 @@
                 </div>
             </div>
         </div>
+
             <div class="row no-gutter">           
               <div class="col-lg-4 col-sm-6">
                     <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./assets/deer.png">
@@ -388,8 +428,21 @@
                         </div>
                     </a>
                 </div>
-        </div>    
-    </section> 
+
+                
+             
+             
+	
+        </div>
+        
+    </section>
+
+
+
+
+
+
+    
 <div class="jumbotron">
   <div class="container text-center">
   <H2 style="color:#000000;">What do you have to do?Pick a house you like</H2>
@@ -407,7 +460,10 @@
 					</div>
                 </div>
 				</div>
-            </div>    
+            </div>
+
+        
+        
         <div class="col-sm-3">
     		<H3>Visit</H3>
      		 <h5>Find a place the fit all your preferences.</h5>
@@ -419,11 +475,15 @@
         <div class="col-sm-3">
     		<H3>Move-In</H3>
      		 <h5>Let's move to your home enjoy!.</h5>
-    	</div>       
+    	</div>
+        
       </div>
 	  </div>
-</div>				
+</div>
+					
 				 <!--  from here get in touch -->
+    
+    
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
@@ -463,7 +523,10 @@
             </div>
         </div>
     </section>
+    
   <jsp:include page="footer.jsp"></jsp:include>
+  
+        
 <div class="mod" id="myModal11" style="color: black;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -478,10 +541,12 @@
                     <div class="col-md-6">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>                       
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
+                         
                         </ul>
                         <!-- Tab panes -->
-                        <div class="tab-content">                     
+                        <div class="tab-content">
+                       
                                 <form role="form" class="form-horizontal" method="post" action="login">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
@@ -506,9 +571,12 @@
                                         <a href="javascript:;">Forgot your password?</a>
                                     </div>
                                 </div>
-                                </form>                          
-                        </div>                   
-                    </div>               
+                                </form>
+                          
+                        </div>
+                    
+                    </div>
+                  
                 </div>
             </div>
         </div>
@@ -520,6 +588,7 @@
 <script src="js/userFormVerify.js"></script>
 <script src="js/popup.js"></script>
 <script src="js/cbpHorizontalMenu.js" type="text/javascript"></script>
+
 <script>
 	$(document).ready(function(){
 		var date_input=$('input[name="date"]'); //our date input has the name "date"

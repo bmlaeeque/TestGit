@@ -12,95 +12,11 @@
   <script src="js/bootstrap.min.js"></script>
   
   
-<style>
-/* Popup code */
-.popup {
-    position: relative;
-  
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-/* The actual popup */
-.popup .popuptext {
-    visibility: hidden;
-    width: 160px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 8px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 50%;
-    margin-left: -80px;
-}
-/* Popup arrow */
-.popup .popuptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #555 transparent transparent transparent;
-}
-/* Toggle this class - hide and show the popup */
-.popup .show {
-    visibility: visible;
-    -webkit-animation: fadeIn 1s;
-    animation: fadeIn 1s;
-}
-/* Add animation (fade in the popup) */
-@-webkit-keyframes fadeIn {
-    from {opacity: 0;} 
-    to {opacity: 1;}
-}
 
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity:1 ;}
-}
-</style>
- <!--End popup Code--> 
  
-<style>
-#first{ height:500px;}
-</style>
-<!--Login Header Code End-->
 
-<!--Code for Text on image-->
- <style>
-    .carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      min-height: 200px;
-    }
-.carousel-content {
-  position: absolute;
-  bottom: 10%;
-  left: 5%;
-  z-index: 20;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
-}
-h6 {
-  display: inline-block;
-  padding: 8px;
-  background: #B9121B;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-.p {
-  text-align: center;
-  padding-top: 40px;
-  font-size: 10px;
-}
- </style>
- <!--End of Code for Text on image-->
+
+
 
 </head>
 <body style="background-color: rgb(243,210,230);">
@@ -133,18 +49,12 @@ h6 {
 <div class="container">    
  <div class="row">
  
-  <div class="bs-example">
-   <ul class="nav nav-tabs">
-     <c:forEach var="i" begin="1" end="${roomCount}">
-        <li><a data-toggle="tab" href="#section${i}">Room ${i}</a></li>
-        </c:forEach>
-    </ul>    
-  </div>
+
     <!--Room 1 Section-->
     <div class="col-sm-5">
       <div class="tab-content">
-       <c:forEach items="${room}" var="room" varStatus="theCount">
-   		 <div id="section${theCount.count}" class="tab-pane fade in active">
+       
+   		
             <h3>Room Details</h3>
               <div class="w3-container">
          <table class="table">
@@ -190,62 +100,20 @@ h6 {
               </tr>
          </table>
  </div>
-</div>
-  </c:forEach> 
-  
+</div> 
 <!--End Room 1 Section-->
   </div>
 </div>
   
-   <!--Review Code-->
-<div class="col-sm-7">
- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-   <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <!-- Wrapper for slides -->
-     <div class="carousel-inner" >
-      <div class="item active">
-       <img src="images/roomInfoBackground.png" alt="Image" />
-       
-         <div class="carousel-content">
-          <div class="popup" >
-            <span class="popuptext" id="mypopup3" style="margin-left:80%; margin-bottom:-50%;">Available</span>
-             <img style="margin-left:100%;" src="images/roomInfo1.png" alt="image" height="50px" width="50px" onclick="bed3()" />
-          </div>
-        </div>
  
-         <div class="carousel-content">
-           <div class="popup" >
-            <span class="popuptext" id="mypopup1" style="margin-right:80%; margin-bottom:-50%;">bed1</span>		 
-             <img style="margin-left:1%;" src="images/roomInfo1.png" alt="image" height="50px" width="50px" onclick="bed1()" />
-          </div>
-         </div>
-            
-         <div class="carousel-content">
-           <div class="popup" >
-           <span class="popuptext" id="mypopup2" style="margin-top:50%; margin-bottom:-70%; margin-left:35%;">Not Available</span>
-             <img style="margin-bottom:50%; margin-left:50%;" src="images/roomInfo1.png" alt="image" width="20px" height="20px" onclick="bed2()" />
-           </div>
-         </div>
-      </div>
-    </div>
-    <!-- Left and right controls -->
-      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  <br>
-  <br>
-  </div>	 
- </div>
-</div>
- <hr>
- <!--End of Room Details--> 
+ <c:forEach items="${beds}" var="beds" varStatus="itr">
+ ${beds.bId}
+
+ </c:forEach>
+  
+ 
+ 
+ 
  
  <div class="container">
   <div class="row">
@@ -264,6 +132,8 @@ h6 {
 	    </div>
 			<hr>
 	   </div>
+        
+        
         
 	<div class="panel-body">
 	  <div class="row">
