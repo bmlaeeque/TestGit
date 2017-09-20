@@ -15,4 +15,6 @@ public interface RoomDAO {
 	public Long countRooms(Long hId);
 	public Long countBeds(Long rId);
 	public User getUser(Long bId);
+	public Room getRoom(Room room);
+	public void updateRoom(Room room);
 }

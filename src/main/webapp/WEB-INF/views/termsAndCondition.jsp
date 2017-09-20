@@ -42,25 +42,30 @@ padding-top: 10px;
 </style>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(243,210,230)">
+
+  <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header" >
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b><font color=#000000>DivaStays</font></a>
+      <a class="navbar-brand" href="showHome">DivaStays</a>
     </div>
-     <!-- Collect the nav links, forms, and other content for toggling -->
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-         <li><a href="showHelp"><font color=#000000>Help</font></a></li>
+    
+      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+       
+         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+</nav>
 
 <div class="container" style="background-color:rgb(243,210,230)">
   <div class="row">
@@ -123,12 +128,12 @@ Security / token deposit can be paid either by cash or online.</li>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     Cancellation and Refund Policy <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree" aria-expanded="true" style="background-color: rgb(243,210,230);">
+              <div id="collapseThree" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="background-color: rgb(243,210,230);">
                 <div class="panel-body">
                 <ul>
                   <p>
@@ -150,12 +155,12 @@ Security / token deposit can be paid either by cash or online.</li>
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingfour">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                     Move-in/Move-out Policies <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-              <div id="collapsefour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfour" aria-expanded="true" style="background-color: rgb(243,210,230);">
+              <div id="collapsefour" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfour" aria-expanded="false" style="background-color: rgb(243,210,230);">
                 <div class="panel-body">
               <ul>
                 <p><li>Move-in date can be rescheduled to any day as long as it is after license start date.</li>
@@ -176,12 +181,12 @@ Cash payments will be accepted for the security deposit or advance rent up to 48
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingfive">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="true" aria-controls="collapsefive">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
                     Security and Safety <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-           <div id="collapsefive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfive" aria-expanded="true" style="background-color: rgb(243,210,230);">
+           <div id="collapsefive" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfive" aria-expanded="false" style="background-color: rgb(243,210,230);">
              <div class="panel-body">
               <ul>
                <p><li>DivaStays houses are located in various cities across India in reputed society and safe locations. </li> <li>In order to maintain a peaceful environment of the society, nuisance or misconduct of any kind including but not limited to playing loud music beyond the permitted time limit, drinking/smoking in society corridors/ premises and consumption of illegal and banned substances are not allowed in DivaStays houses.</li>
@@ -199,12 +204,12 @@ Cash payments will be accepted for the security deposit or advance rent up to 48
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingsix">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="true" aria-controls="collapsesix">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="false" aria-controls="collapsesix">
                     Offers <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-           <div id="collapsesix" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingsix" aria-expanded="true" style="background-color: rgb(243,210,230);">
+           <div id="collapsesix" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingsix" aria-expanded="false" style="background-color: rgb(243,210,230);">
              <div class="panel-body">
                <ul>
                 <p><li>The offer is only applicable for bookings on last bed.</li>

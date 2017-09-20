@@ -36,5 +36,12 @@ public class OwnerServiceImpl implements OwnerService {
 	public Owner sendNewLink(Owner owner) {
 		return ownerDAO.sendNewLink(owner);
 	}
+	public Owner getOwner(Owner owner) {
+		return ownerDAO.getOwner(owner);
+	}
+	public void updateOwner(Owner owner) {
+		ownerDAO.updateOwner(owner);
+		
+	}
 
 }

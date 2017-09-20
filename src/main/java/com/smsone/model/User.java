@@ -43,8 +43,6 @@ public class User implements Serializable {
 	private String state;
 	@Column(nullable=false,length=20)
 	private String country;
-	@Column(length=6)
-	private String gender;
 	@Column(nullable=false,length=20)
 	private String motherTongue;
 	@Column(nullable=false,length=20)
@@ -62,7 +60,7 @@ public class User implements Serializable {
 	private House house;
 	@Column(name="userImg",columnDefinition = "LONGBLOB")
 	private byte[] userImg;
-	@Column(nullable=false,length=50)
+	@Column(nullable=true,length=50)
 	private String hashcode;
 	@Column(length=20)
 	private Long attempts;
@@ -139,12 +137,6 @@ public class User implements Serializable {
 	}
 	public void setCountry(String country) {
 		this.country = country;
-	}
-	public String getGender() {
-		return gender;
-	}
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 	public String getMotherTongue() {
 		return motherTongue;
@@ -243,7 +235,6 @@ public class User implements Serializable {
 		result = prime * result + ((emailResendTime == null) ? 0 : emailResendTime.hashCode());
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((foodPreference == null) ? 0 : foodPreference.hashCode());
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + ((hashcode == null) ? 0 : hashcode.hashCode());
 		result = prime * result + ((house == null) ? 0 : house.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
@@ -327,11 +318,6 @@ public class User implements Serializable {
 				return false;
 		} else if (!foodPreference.equals(other.foodPreference))
 			return false;
-		if (gender == null) {
-			if (other.gender != null)
-				return false;
-		} else if (!gender.equals(other.gender))
-			return false;
 		if (hashcode == null) {
 			if (other.hashcode != null)
 				return false;
@@ -395,17 +381,16 @@ public class User implements Serializable {
 	public String toString() {
 		return "User [uId=" + uId + ", aadharNumber=" + aadharNumber + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", contactNumber=" + contactNumber + ", email=" + email + ", address=" + address
-				+ ", pincode=" + pincode + ", city=" + city + ", state=" + state + ", country=" + country + ", gender="
-				+ gender + ", motherTongue=" + motherTongue + ", foodPreference=" + foodPreference + ", profession="
-				+ profession + ", area=" + area + ", password=" + password + ", RefId=" + RefId + ", house=" + house
-				+ ", userImg=" + Arrays.toString(userImg) + ", hashcode=" + hashcode + ", attempts=" + attempts
-				+ ", status=" + status + ", userCreation_date=" + userCreation_date + ", emailResendTime="
-				+ emailResendTime + "]";
+				+ ", pincode=" + pincode + ", city=" + city + ", state=" + state + ", country=" + country
+				+ ", motherTongue=" + motherTongue + ", foodPreference=" + foodPreference + ", profession=" + profession
+				+ ", area=" + area + ", password=" + password + ", RefId=" + RefId + ", house=" + house + ", userImg="
+				+ Arrays.toString(userImg) + ", hashcode=" + hashcode + ", attempts=" + attempts + ", status=" + status
+				+ ", userCreation_date=" + userCreation_date + ", emailResendTime=" + emailResendTime + "]";
 	}
 	public User(Long uId, Long aadharNumber, String firstName, String lastName, Long contactNumber, String email,
-			String address, Integer pincode, String city, String state, String country, String gender,
-			String motherTongue, String foodPreference, String profession, String area, String password, Long refId,
-			House house, byte[] userImg, String hashcode, Long attempts, String status, Date userCreation_date,
+			String address, Integer pincode, String city, String state, String country, String motherTongue,
+			String foodPreference, String profession, String area, String password, Long refId, House house,
+			byte[] userImg, String hashcode, Long attempts, String status, Date userCreation_date,
 			Date emailResendTime) {
 		super();
 		this.uId = uId;
@@ -419,7 +404,6 @@ public class User implements Serializable {
 		this.city = city;
 		this.state = state;
 		this.country = country;
-		this.gender = gender;
 		this.motherTongue = motherTongue;
 		this.foodPreference = foodPreference;
 		this.profession = profession;
@@ -436,10 +420,8 @@ public class User implements Serializable {
 	}
 	public User() {
 		super();
-		
+		// TODO Auto-generated constructor stub
 	}
-	
-	
 	
 	
 }

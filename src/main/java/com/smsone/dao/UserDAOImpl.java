@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.smsone.model.House;
 import com.smsone.model.User;
 @Repository
 public class UserDAOImpl implements UserDAO {
@@ -166,7 +167,7 @@ public class UserDAOImpl implements UserDAO {
 				Date emailResendDate=user1.getEmailResendTime();
 				long duration=date.getTime()-emailResendDate.getTime();
 
-				if(duration>60000)
+				if(duration>1200000)
 				{
 					user1.setStatus("Expired");
 				}
@@ -180,6 +181,20 @@ public class UserDAOImpl implements UserDAO {
 			session.close();
 			return user1;
 		}
+	}
+	public User getUser(User user) {
+		Session session=sessionFactory.openSession();
+		User user1=(User)session.load(User.class,user.getuId());
+		return user1;
+		
+	}
+	public void updateUser(User user) {
+		Session session=sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.saveOrUpdate(user);
+		tx.commit();
+	    session.close();		
+		
 	}
 
 }

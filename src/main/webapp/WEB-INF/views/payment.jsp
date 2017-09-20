@@ -74,7 +74,7 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                            <label for="name">NAME ON CARD</label>
-                              <input type="text" class="form-control" name="creditName" id="creditName" onBlur="CheckCreditName(); return false;" required autofocus/>
+                              <input type="text" class="form-control" name="creditName" id="creditName" onBlur="CheckCreditName(); return false;" required autocomplete="off"/>
                          </div>
                      </div>                        
                  </div>
@@ -84,7 +84,7 @@
                         <div class="form-group">
                            <label for="cardNumber">CARD NUMBER</label>
                               <div class="input-group">
-                                 <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" onBlur="creditCard(document.creditCardForm.cardNumber)" required />
+                                 <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" onBlur="creditCard(document.creditCardForm.cardNumber)" required autocomplete="off"/>
                                   <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                               </div>
                          </div>                            
@@ -135,7 +135,7 @@
                <div class="col-xs-4 col-md-4 pull-right">
                  <div class="form-group">
                     <label class="col-xs-5 control-label">CVC</label>
-                     <input  type="text" class="form-control" name="cardCVC" id="cardCVC" placeholder="CVC" required onBlur="CheckCVV(); return false;" />
+                     <input  type="text" class="form-control" name="cardCVC" id="cardCVC" placeholder="CVC" required onBlur="CheckCVV(); return false;" autocomplete="off"/>
                   </div>
                </div>
            </div>
@@ -338,7 +338,8 @@
                          
               <div class="form-row" style="float:left; width:50%;">  
                 <label>
-                 <input type="radio"  name="sameName" id="paytm" value="paytm"> &nbsp;<img src="images/paytm-logo.png"><br>
+                 <input type="radio"  name="sameName" id="paytm" value="paytm"> &nbsp;<img src="images/paytm-logo.png">
+                 &nbsp;
                  <input type="radio"  name="sameName" id="freecharge" value="freeCharge">&nbsp;&nbsp;<img src="images/freecharge_logo.png"><br>
                 </label>  
               </div>

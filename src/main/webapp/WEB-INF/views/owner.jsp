@@ -101,6 +101,10 @@ body {
       <c:choose>
     <c:when test="${sessionScope.owner!=null}">
        <li><a href="logoutOwner"><font color=#000000">Logout</font></a></li>
+       <li><a href="editOwnerProfile/${owner.oId}"><font color=#000000">Edit Your Profile</font></a></li>
+       <li><a href="ownerHouse"><font color=#000000">Your Homes</font></a></li>
+       <li><a href="showHouseReg"><font color=#000000">House Registration</font></a></li>
+       
     </c:when>    
     <c:otherwise>
       <li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -148,7 +152,7 @@ body {
 									</form>
 								</div>
 								<div class="bottom text-center">
-									New here ? <a href="showUserReg"><b><font
+									New here ? <a href="showOwnerReg"><b><font
 											color="#000000">Join Us</font></b></a>
 								</div>
 							</div>
@@ -263,7 +267,7 @@ body {
           </div>
           <div class="featureinfo">
             <h5 class="text-center"><b>On Demand Property showcasing</b></h4>
-            <h5 class="text-center">दिवा Stay arranges one of our trusted Area Managers to safely and easily show your property any time to interested prospects.
+            <h5 class="text-center">DivaStays arranges one of our trusted Area Managers to safely and easily show your property any time to interested prospects.
             </h5>
             <a class="btn btn-default btn-sm" href=""about.php#bottom"" role="button">More »</a>
           </div>
@@ -335,7 +339,7 @@ body {
 		    <div class="team-box">
 	          <div class="roles">
 				<h4><strong>
-				दिवा Stay Rental default gaurantee
+				DivaStays Rental default gaurantee
 				</strong></h4>
 				<p>Our rental default program is designed to protect you from a liability in case the tenant fails to pay the rent. Our program ensures that you continue to get your rent on time, without fail, like clockwork.</p>
 			 </div>
@@ -373,13 +377,13 @@ body {
               <div class="panel-heading" role="tab" id="headingOne">
                 <h4 class="panel-title">
                   <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="collapsed" >
-                    Q1. How long does it take to list a property on दिवा Stay? <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ></span>
+                    Q1. How long does it take to list a property on DivaStays? <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true" ></span>
                   </a>
                 </h4>
               </div>
               <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px;">
                 <div class="panel-body">
-                  <p><b><li>It typically takes 12-16 working days for a property to be listed on the दिवा Stay website</li></b></p>
+                  <p><b><li>It typically takes 12-16 working days for a property to be listed on the DivaStays website</li></b></p>
                 </div>
               </div>
             </div>         <!-- first Panel End Here -->
@@ -389,14 +393,14 @@ body {
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
                   <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                  Q2.Does दिवा Stay guarantee a fixed monthly rental?  <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
+                  Q2.Does DivaStays guarantee a fixed monthly rental?  <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
               <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
               <div class="panel-body">
                <ul>
-                <p><li><b>दिवा Stay is a home-rental marketplace which matches landlords with verified and committed tenants. The rental income a house can earn would depend on a number of factors, including the location, quality of construction, etc.</li> 
+                <p><li><b>DivaStays is a home-rental marketplace which matches landlords with verified and committed tenants. The rental income a house can earn would depend on a number of factors, including the location, quality of construction, etc.</li> 
                 <li>While we work hard to try and ensure that every listed property gets enough number of house-showings, Pg does NOT guarantee a fixed rental income.</li>
                 <li>That said, since PG works on a rental commission model, our success relies on ensuring that your property remains occupied through out the tenure. </b></li></p>
                </ul>
@@ -408,17 +412,17 @@ body {
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingThree">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                  Q3.How does दिवा Stay process monthly rental payments?
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  Q3.How does DivaStays process monthly rental payments?
 <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree" aria-expanded="true" style="">
+              <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="">
                 <div class="panel-body">
                 <ul>
-                  <p><b><li>दिवा Stay's payment system is designed to make transferring money between tenants and house owners as simple and reliable as possible. Here’s how it works:</li>
-                   <li>1. For or any given month, दिवा Stay deposits the monthly rent collected from the tenant in Owner’s bank account before (5th) fifth of the immediately succeeding month after deducting applicable the commission and charges.</li>
+                  <p><b><li>DivaStays payment system is designed to make transferring money between tenants and house owners as simple and reliable as possible. Here’s how it works:</li>
+                   <li>1. For or any given month,DivaStays deposits the monthly rent collected from the tenant in Owner’s bank account before (5th) fifth of the immediately succeeding month after deducting applicable the commission and charges.</li>
                    <li>2. This happens irrespective of the fact whether the rent has been collected from the tenant or not.</li></b>
                   </p>
                 </ul>
@@ -429,15 +433,15 @@ body {
            <div class="panel panel-default">
              <div class="panel-heading" role="tab" id="headingfour">
                <h4 class="panel-title">
-                 <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="true" aria-controls="collapsefour">
+                 <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
                    Q4.What are the service fees? <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                  </a>
                </h4>
              </div>
-             <div id="collapsefour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfour" aria-expanded="true" style="">
+             <div id="collapsefour" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfour" aria-expanded="false" style="">
                <div class="panel-body">
                <ul>
-                <p><li>दिवा Stay charges a commission of 12.5% of your monthly rental income. However, please note that this does not include the charges for furnishing, maintenance or any additional charges that may be applicable.</li></p>
+                <p><li>DivaStays charges a commission of 12.5% of your monthly rental income. However, please note that this does not include the charges for furnishing, maintenance or any additional charges that may be applicable.</li></p>
                </ul>
               </div>
               </div>
@@ -446,12 +450,12 @@ body {
             <div class="panel panel-default">
               <div class="panel-heading" role="tab" id="headingfive">
                 <h4 class="panel-title">
-                  <a class="" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="true" aria-controls="collapsefive">
+                  <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapsefive">
                     Q5.Who takes care of utilities? <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
               </div>
-              <div id="collapsefive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfive" aria-expanded="true" style="">
+              <div id="collapsefive" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingfive" aria-expanded="false" style="">
                 <div class="panel-body">
                 <ul>
                   <p><li>Utility bills are typically handled by the tenants residing at the property. House owners looking to list their house need to ensure that all previous dues have been settled before signing the agreement.</li></p>
@@ -467,52 +471,14 @@ body {
  </div>
 </section>
  <!--  from here get in touch -->
- <div class="container">
-   <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 text-center">
-         <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get in Touch</h2>
-         <hr class="primary">
-         <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
-      </div>
-       <div class="col-lg-10 col-lg-offset-1 text-center">
-         <form class="contact-form row" action="sendMail" method="post" >
-            <div class="col-md-4">
-               <label></label>
-                 <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Name" required>
-                    <span id="checkName" class="checkName"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label></label>
-                            <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
-                            <span id="checkEmail" class="checkEmail"></span>
-                        </div>
-                        <div class="col-md-4">
-                            <label></label>
-                            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone" required>
-                            
-                            <span id="checkPhoneNumber" class="checkPhoneNumber"></span>
-                        </div>
-                        <div class="col-md-12">
-                            <label></label>
-                            <textarea class="form-control" rows="8" placeholder="Your message here.." name="message" required></textarea>
-                        </div>
-                        <div class="col-md-3 col-md-offset-4">
-                            <label></label>
-                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" data-toggle="modal" data-target="#alertModal" class="btn btn-info" id="register" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT<i class="ion-android-arrow-forward"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
-                        </div>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-
+ <jsp:include page="Feedback.jsp"></jsp:include> 
    <jsp:include page="footer.jsp"></jsp:include>  
    
    <div class="mod" id="myModal11" style="color: black;">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header" style="background-color: white;">
-                <span class="close1">&times;</span>
+                <span class="close3">&times;</span>
                 <h4 class="modal-title" id="myModalLabel">
                     Login</h4>
             </div>
@@ -549,7 +515,7 @@ body {
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary btn-sm" style="color: black;">
                                             Submit</button>
-                                        <a href="javascript:;">Forgot your password?</a>
+                                        <a href="">Forgot your password?</a>
                                     </div>
                                 </div>
                                 </form>

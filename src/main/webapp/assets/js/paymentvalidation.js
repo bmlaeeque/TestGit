@@ -1,16 +1,12 @@
 //validate CreditCard 
 function creditCard(inputtxt)  
 {  
-  var americanExpressCredit = /^(?:3[47][0-9]{13})$/;  
-  var visaCreditCardCredit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; 
-  var masterCardCredit = /^(?:5[1-5][0-9]{14})$/;  
-  var discoverCardCredit = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-  var DinersClubCardCredit = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
-  var JCBCardCredit = /^(?:(?:2131|1800|35\d{3})\d{11})$/;  
-  
+  var americanExpressCredit = /^(?:3[47][0-9]{13})$/;  //start with 37 or 34 and require 15  digits
+  var visaCreditCardCredit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; //starts with 4 and require 13-16-19 digits
+  var masterCardCredit = /^(?:5[1-5][0-9]{14})$/;  //starts with 51, 52, 53, 54, 55 and require 14-16 digits
    var goodColor = "#33CC66";
   var badColor = "#ff6666";
-  if(inputtxt.value.match(americanExpressCredit) || inputtxt.value.match(visaCreditCardCredit) || inputtxt.value.match(masterCardCredit) || inputtxt.value.match(discoverCardCredit) || inputtxt.value.match(DinersClubCardCredit) || inputtxt.value.match(JCBCardCredit) )  
+  if(inputtxt.value.match(americanExpressCredit) || inputtxt.value.match(visaCreditCardCredit) || inputtxt.value.match(masterCardCredit) )  
         {   
         
 	   inputtxt.style.backgroundColor = goodColor;
@@ -18,24 +14,19 @@ function creditCard(inputtxt)
       else  
         { 
 		 inputtxt.style.backgroundColor = badColor;
-        alert("Not a valid  credit card number!");  
-       
+         
         }  
 }  
-
 //validate DebitCard 
 function debitCard(inputtxt1)  
 {  
-  var americanExpressDebit = /^(?:3[47][0-9]{13})$/;  
-  var visaCreditCardDebit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; 
-  var masterCardDebit = /^(?:5[1-5][0-9]{14})$/;  
-  var discoverCardDebit = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-  var DinersClubCardDebit = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
-  var JCBCardDebit = /^(?:(?:2131|1800|35\d{3})\d{11})$/;  
-  
+  var americanExpressDebit = /^(?:3[47][0-9]{13})$/;  //start with 37 or 34 and require 15  digits
+  var visaCreditCardDebit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; //starts with 4 and require 13-16-19 digits
+  var masterCardDebit = /^(?:5[1-5][0-9]{14})$/;  //starts with 51, 52, 53, 54, 55 and require 14-16 digits
+
    var goodColor = "#33CC66";
   var badColor = "#ff6666  ";
-  if(inputtxt1.value.match(americanExpressDebit) || inputtxt1.value.match(visaCreditCardDebit) || inputtxt1.value.match(masterCardDebit) || inputtxt1.value.match(discoverCardDebit) || inputtxt1.value.match(DinersClubCardDebit) || inputtxt1.value.match(JCBCardDebit) )  
+  if(inputtxt1.value.match(americanExpressDebit) || inputtxt1.value.match(visaCreditCardDebit) || inputtxt1.value.match(masterCardDebit)  )  
         {   
         
 	   inputtxt1.style.backgroundColor = goodColor;
@@ -43,36 +34,28 @@ function debitCard(inputtxt1)
       else  
         { 
 		 inputtxt1.style.backgroundColor = badColor;
-        alert("Not a valid debit card number!");  
        
         }  
 }  
-
 //validate CreditName
 function CheckCreditName()   
 {  
-  var creditName = document.getElementById('creditName');
-  
+  var creditName = document.getElementById('creditName');  
   var decimal=  /^[a-zA-Z ]{2,30}$/;
   var goodColor = "#33CC66";
   var badColor = "#ff6666  ";
 if(creditName.value.match(decimal))   
 {   
- creditName.style.backgroundColor = goodColor;
- 
+ creditName.style.backgroundColor = goodColor; 
 }  
 else  
 {   
 creditName.style.backgroundColor = badColor;
-
-
 }  
 }
-
 //validate DebitName
 function CheckDebitName()   
-{  
-  
+{   
   var debitName = document.getElementById('debitName');
   var decimal=  /^[a-zA-Z ]{2,30}$/;
   var goodColor = "#33CC66";
@@ -87,8 +70,6 @@ debitName.style.backgroundColor = badColor;
 
 }  
 }
-
-
 //validate cvv
 function CheckCVV()   
 {  
@@ -105,8 +86,6 @@ else
 cardCVC.style.backgroundColor = badColor;
 }  
 }
-
-
 //validate debit card cvv
 function CheckDebitCVV()   
 {  
@@ -128,22 +107,15 @@ debitcardCVC.style.backgroundColor = badColor;
 function CreditSubmit()
 {
 	var cardNumber= document.getElementById('cardNumber');
-	
 	var CreditName = document.getElementById('creditName');
     var decimalCreditName =  /^[a-zA-Z ]{2,30}$/;
-	
-	var CardCVC = document.getElementById('cardCVC');
+    var CardCVC = document.getElementById('cardCVC');
     var decimalCreditCVC=  /^[0-9]{3,4}$/;
-	
-	
-	 var americanExpressCredit = /^(?:3[47][0-9]{13})$/;  
+	var americanExpressCredit = /^(?:3[47][0-9]{13})$/;  
   var visaCreditCardCredit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; 
   var masterCardCredit = /^(?:5[1-5][0-9]{14})$/;  
-  var discoverCardCredit = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-  var DinersClubCardCredit = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
-  var JCBCardCredit = /^(?:(?:2131|1800|35\d{3})\d{11})$/;  
 	
-	if((cardNumber.value.match(americanExpressCredit) || cardNumber.value.match(visaCreditCardCredit) || cardNumber.value.match(masterCardCredit) || cardNumber.value.match(discoverCardCredit) || cardNumber.value.match(DinersClubCardCredit) || cardNumber.value.match(JCBCardCredit)) && CreditName.value.match(decimalCreditName) && CardCVC.value.match(decimalCreditCVC) )
+	if((cardNumber.value.match(americanExpressCredit) || cardNumber.value.match(visaCreditCardCredit) || cardNumber.value.match(masterCardCredit)) && CreditName.value.match(decimalCreditName) && CardCVC.value.match(decimalCreditCVC) )
 	{
 		return true;
 	}
@@ -153,28 +125,20 @@ function CreditSubmit()
 	}
 	
 }
-
-
 //validate  debit Submit
 function DebitSubmit()
 {
-	var debitcardNumber= document.getElementById('debitcardNumber');
-	
+	var debitcardNumber= document.getElementById('debitcardNumber');	
 	var DebitName = document.getElementById('debitName');
-    var decimalDebitName =  /^[a-zA-Z ]{2,30}$/;
-	
+    var decimalDebitName =  /^[a-zA-Z ]{2,30}$/;	
 	var DebitCardCVC = document.getElementById('debitcardCVC');
-    var decimalDebitCVC=  /^[0-9]{3,4}$/;
-	
-	
-	 var americanExpressDebit = /^(?:3[47][0-9]{13})$/;  
+	var decimalDebitCVC=  /^[0-9]{3,4}$/;
+	var americanExpressDebit = /^(?:3[47][0-9]{13})$/;  
   var visaCreditCardDebit = /^(?:4[0-9]{12}(?:[0-9]{3})?)$/; 
   var masterCardDebit = /^(?:5[1-5][0-9]{14})$/;  
-  var discoverCardDebit = /^(?:6(?:011|5[0-9][0-9])[0-9]{12})$/;
-  var DinersClubCardDebit = /^(?:3(?:0[0-5]|[68][0-9])[0-9]{11})$/;  
-  var JCBCardDebit = /^(?:(?:2131|1800|35\d{3})\d{11})$/;  
+ 
 	
-	if((debitcardNumber.value.match(americanExpressDebit) || debitcardNumber.value.match(visaCreditCardDebit) || debitcardNumber.value.match(masterCardDebit) || debitcardNumber.value.match(discoverCardDebit) || debitcardNumber.value.match(DinersClubCardDebit) || debitcardNumber.value.match(JCBCardDebit)) && DebitName.value.match(decimalDebitName) && DebitCardCVC.value.match(decimalDebitCVC) )
+	if((debitcardNumber.value.match(americanExpressDebit) || debitcardNumber.value.match(visaCreditCardDebit) || debitcardNumber.value.match(masterCardDebit) ) && DebitName.value.match(decimalDebitName) && DebitCardCVC.value.match(decimalDebitCVC) )
 	{
 		return true;
 	}
@@ -184,8 +148,6 @@ function DebitSubmit()
 	}
 	
 }
-
-
 //validate net banking
 function NetBanking()
 {
@@ -198,7 +160,6 @@ function NetBanking()
 		return false;
 	}
 }
-
 //validate wallets
 function Wallet()
 {
@@ -209,8 +170,6 @@ function Wallet()
 	else
 	{
 		return false;
-	}
-	
-	
+	}	
 }
 	

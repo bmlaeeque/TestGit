@@ -101,6 +101,31 @@
 </style>
 </head>
 <body style="background-color:rgb(243,210,230); color:#000000">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header" >
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="showHome">DivaStays</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    
+      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+       
+         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
 <!-- Carousel
 ================================================== -->
 <div id="myCarousel" class="carousel slide">
@@ -115,8 +140,8 @@
       <img src="images/bg1.png" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
-          <h1><font color=red>Diva Stays</font></h1>
-           <p><font color=red>With Diva Stays get nearest and best hostel.</font></p>
+          <h1><font color=red>DivaStays</font></h1>
+           <p><font color=red>With DivaStays get nearest and best hostel.</font></p>
           <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a>
         </p></pthis></div>
       </div>
@@ -125,8 +150,8 @@
       <img src="images/bg2.png" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
-          <h1>Diva Stays</h1>
-          <p>With Diva Stays get nearest and best hostel.</p>
+          <h1>DivaStays</h1>
+          <p>With DivaStays get nearest and best hostel.</p>
           <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a></p>
         </div>
       </div>
@@ -135,8 +160,8 @@
       <img src="images/bg3.png" class="img-responsive">
       <div class="container">
         <div class="carousel-caption">
-          <h1>Diva Stays</h1>
-          <p>With Diva Stays get nearest and best hostel.</p>
+          <h1>DivaStays</h1>
+          <p>With DivaStays get nearest and best hostel.</p>
           <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a></p>
         </div>
       </div>
@@ -163,12 +188,12 @@
         <!-- Features Section -->
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header" style="color:#000000">Diva Stays Features</h2>
+                <h2 class="page-header" style="color:#000000">DivaStays Features</h2>
             </div>
             <div class="col-md-6">
                 <p style="font-weight:100;"><b>Safe and Secure:</b></p>
                 
-                <p>Safe and Secure for girls.Diva Stays provide all type of sacurity for the girls, so that they will leave in a better environment.</p>
+                <p>Safe and Secure for girls.DivaStays provide all type of sacurity for the girls, so that they will leave in a better environment.</p>
                 <ul>
                  <li>Security</li>
                  <li>Lift</li>
@@ -195,7 +220,7 @@
             <div class="col-md-6">
                 <p><b>Clean:</b></p>
              
-                <p>All types of houses/rooms provided by Diva Stays maintains cleaning in rooms.No need to worry. Regular cleaning is maintained.</p>
+                <p>All types of houses/rooms provided by DivaStays maintains cleaning in rooms.No need to worry. Regular cleaning is maintained.</p>
                 <ul>
                   <li>Some Text</li>
                   <li>Some Text</li>
@@ -217,7 +242,7 @@
             <div class="col-md-6">
                 <p><b>Short Term/Long Term:</b></p>
                 
-                <p>Diva Stays provides short term and long term  Staying facility.Short Term includes the peoples who will  Stay for a number of days which include visitors.Long term includes the people who will  Stay for long period like students,employess.</p>
+                <p>DivaStays provides short term and long term  Staying facility.Short Term includes the peoples who will  Stay for a number of days which include visitors.Long term includes the people who will  Stay for long period like students,employess.</p>
             </div>
           
             <div class="col-md-6">
@@ -235,7 +260,7 @@
             <div class="col-md-6">
                 <p><b>Roommates:</b></p>
             
-                <p>Diva Stays hava a unique feature that you can choose your room partners as your wish.So that you will not face any problem about that.You can  Stay with the partners from your region/language/profession etc..</p>
+                <p>DivaStays hava a unique feature that you can choose your room partners as your wish.So that you will not face any problem about that.You can  Stay with the partners from your region/language/profession etc..</p>
               <ul>
                 <li>Some Text</li>
                  <li>Some Text</li>

@@ -40,6 +40,15 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.getUser(bId);
 	}
 
+	public Room getRoom(Room room) {
+		return roomDAO.getRoom(room);
+	}
+
+	public void updateRoom(Room room) {
+		roomDAO.updateRoom(room);
+		
+	}
+
 	
 	
 }

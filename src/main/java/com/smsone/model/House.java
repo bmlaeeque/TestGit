@@ -27,6 +27,8 @@ public class House implements Serializable
 	private Long hId;
 	@Column(nullable=false,length=20)
 	private Integer floorNumber;
+	@Column(nullable=false,length=6)
+	private Long pincode;
 	@Column(nullable=false,length=20)
 	private Double rent;
 	@Column(nullable=false,length=20)
@@ -79,6 +81,12 @@ public class House implements Serializable
 	}
 	public void setFloorNumber(Integer floorNumber) {
 		this.floorNumber = floorNumber;
+	}
+	public Long getPincode() {
+		return pincode;
+	}
+	public void setPincode(Long pincode) {
+		this.pincode = pincode;
 	}
 	public Double getRent() {
 		return rent;
@@ -203,37 +211,6 @@ public class House implements Serializable
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public House() {
-		super();
-	}
-	public House(Long hId, Integer floorNumber, Double rent, Double area, String tenancyType, Integer room,
-			String foodPreference, Double deposit, String houseName, String state, String locationArea, String country,
-			String city, String address, byte[] img1, byte[] img2, byte[] img3, List<User> user, List<Room> rooms,
-			Owner owner, Double latitude, Double longitude) {
-		super();
-		this.hId = hId;
-		this.floorNumber = floorNumber;
-		this.rent = rent;
-		this.area = area;
-		this.tenancyType = tenancyType;
-		this.room = room;
-		this.foodPreference = foodPreference;
-		this.deposit = deposit;
-		this.houseName = houseName;
-		this.state = state;
-		this.locationArea = locationArea;
-		this.country = country;
-		this.city = city;
-		this.address = address;
-		this.img1 = img1;
-		this.img2 = img2;
-		this.img3 = img3;
-		this.user = user;
-		this.rooms = rooms;
-		this.owner = owner;
-		this.latitude = latitude;
-		this.longitude = longitude;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -254,6 +231,7 @@ public class House implements Serializable
 		result = prime * result + ((locationArea == null) ? 0 : locationArea.hashCode());
 		result = prime * result + ((longitude == null) ? 0 : longitude.hashCode());
 		result = prime * result + ((owner == null) ? 0 : owner.hashCode());
+		result = prime * result + ((pincode == null) ? 0 : pincode.hashCode());
 		result = prime * result + ((rent == null) ? 0 : rent.hashCode());
 		result = prime * result + ((room == null) ? 0 : room.hashCode());
 		result = prime * result + ((rooms == null) ? 0 : rooms.hashCode());
@@ -342,6 +320,11 @@ public class House implements Serializable
 				return false;
 		} else if (!owner.equals(other.owner))
 			return false;
+		if (pincode == null) {
+			if (other.pincode != null)
+				return false;
+		} else if (!pincode.equals(other.pincode))
+			return false;
 		if (rent == null) {
 			if (other.rent != null)
 				return false;
@@ -376,14 +359,48 @@ public class House implements Serializable
 	}
 	@Override
 	public String toString() {
-		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", rent=" + rent + ", area=" + area
-				+ ", tenancyType=" + tenancyType + ", room=" + room + ", foodPreference=" + foodPreference
-				+ ", deposit=" + deposit + ", houseName=" + houseName + ", state=" + state + ", locationArea="
-				+ locationArea + ", country=" + country + ", city=" + city + ", address=" + address + ", img1="
-				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
-				+ ", user=" + user + ", rooms=" + rooms + ", owner=" + owner + ", latitude=" + latitude + ", longitude="
-				+ longitude + "]";
+		return "House [hId=" + hId + ", floorNumber=" + floorNumber + ", pincode=" + pincode + ", rent=" + rent
+				+ ", area=" + area + ", tenancyType=" + tenancyType + ", room=" + room + ", foodPreference="
+				+ foodPreference + ", deposit=" + deposit + ", houseName=" + houseName + ", state=" + state
+				+ ", locationArea=" + locationArea + ", country=" + country + ", city=" + city + ", address=" + address
+				+ ", img1=" + Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3="
+				+ Arrays.toString(img3) + ", user=" + user + ", rooms=" + rooms + ", owner=" + owner + ", latitude="
+				+ latitude + ", longitude=" + longitude + "]";
 	}
+	public House(Long hId, Integer floorNumber, Long pincode, Double rent, Double area, String tenancyType,
+			Integer room, String foodPreference, Double deposit, String houseName, String state, String locationArea,
+			String country, String city, String address, byte[] img1, byte[] img2, byte[] img3, List<User> user,
+			List<Room> rooms, Owner owner, Double latitude, Double longitude) {
+		super();
+		this.hId = hId;
+		this.floorNumber = floorNumber;
+		this.pincode = pincode;
+		this.rent = rent;
+		this.area = area;
+		this.tenancyType = tenancyType;
+		this.room = room;
+		this.foodPreference = foodPreference;
+		this.deposit = deposit;
+		this.houseName = houseName;
+		this.state = state;
+		this.locationArea = locationArea;
+		this.country = country;
+		this.city = city;
+		this.address = address;
+		this.img1 = img1;
+		this.img2 = img2;
+		this.img3 = img3;
+		this.user = user;
+		this.rooms = rooms;
+		this.owner = owner;
+		this.latitude = latitude;
+		this.longitude = longitude;
+	}
+	public House() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
 	
 	
 	}

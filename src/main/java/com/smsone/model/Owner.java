@@ -2,7 +2,7 @@ package com.smsone.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +38,7 @@ public class Owner implements Serializable
 	@Column(nullable=false,length=20)
 	private String password;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="owner")
-	private Set<House> house;
+	private List<House> house;
 	@Column(nullable=false,length=50)
 	private String ownerHashcode;
 	@Column(length=20)
@@ -93,10 +93,10 @@ public class Owner implements Serializable
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public Set<House> getHouse() {
+	public List<House> getHouse() {
 		return house;
 	}
-	public void setHouse(Set<House> house) {
+	public void setHouse(List<House> house) {
 		this.house = house;
 	}
 	public String getOwnerHashcode() {
@@ -131,6 +131,27 @@ public class Owner implements Serializable
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	public Owner() {
+		super();
+	}
+	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
+			String password, List<House> house, String ownerHashcode, Long attempts, String ownerStatus,
+			Date ownerCreation_date, Date emailResendTime) {
+		super();
+		this.oId = oId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.aadharNumber = aadharNumber;
+		this.contactNumber = contactNumber;
+		this.password = password;
+		this.house = house;
+		this.ownerHashcode = ownerHashcode;
+		this.attempts = attempts;
+		this.ownerStatus = ownerStatus;
+		this.ownerCreation_date = ownerCreation_date;
+		this.emailResendTime = emailResendTime;
 	}
 	@Override
 	public int hashCode() {
@@ -234,28 +255,6 @@ public class Owner implements Serializable
 				+ ", house=" + house + ", ownerHashcode=" + ownerHashcode + ", attempts=" + attempts + ", ownerStatus="
 				+ ownerStatus + ", ownerCreation_date=" + ownerCreation_date + ", emailResendTime=" + emailResendTime
 				+ "]";
-	}
-	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
-			String password, Set<House> house, String ownerHashcode, Long attempts, String ownerStatus,
-			Date ownerCreation_date, Date emailResendTime) {
-		super();
-		this.oId = oId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.aadharNumber = aadharNumber;
-		this.contactNumber = contactNumber;
-		this.password = password;
-		this.house = house;
-		this.ownerHashcode = ownerHashcode;
-		this.attempts = attempts;
-		this.ownerStatus = ownerStatus;
-		this.ownerCreation_date = ownerCreation_date;
-		this.emailResendTime = emailResendTime;
-	}
-	public Owner() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

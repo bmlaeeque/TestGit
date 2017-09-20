@@ -58,7 +58,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b><font color="#000000">Diva Stays</font></b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000">DivaStays</font></b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -121,7 +121,7 @@
 											color="#000000">Join Us</font></b></a>
 								</div>
 							</div>
-						</li>
+						</li>       
 
 					</ul></li>
     </c:otherwise>
@@ -156,7 +156,7 @@
         </div>
         
         
-<form class="form" role="form"  action="showFilter2">
+<form role="form"  action="applySorting">
    <div class="modal fade" id="myModal1" role="dialog">
    
     <div class="modal-dialog">
@@ -166,8 +166,9 @@
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"> Refine Your Search</h4>
+          </div>
                           <div class="panel-body">
-            		      <div class="list-group" style="background-color:white">
+            		      <div class="list-group" style="background-color:rgb(243,210,230)">
                     	<div class="radio">
                     	<div>
                       <label><input type="radio" name="priceSort" value="lowTohigh">? ?  Price - Low To High</label>
@@ -177,11 +178,13 @@
                     	</div>
                             
            <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-dismiss="modal">Apply</button>
+          <button type="submit" class="btn btn-success">Apply</button>
         </div>            
 	</div>
   </div>
     </div><!-- /.navbar-collapse -->
+    </div>
+    </div>
     </form>
   </div><!-- /.container-fluid -->
 </nav><!--main nav closed-->
@@ -405,7 +408,7 @@
     </div> <!--row closed-->
  </div><!--class well closed --></a>
  </c:forEach>
-       <tag:paginate max="15" offset="${offset}" count="${count}"
+       <tag:paginate max="5" offset="${offset}" count="${count}"
 			uri="${url}" next="&raquo;" previous="&laquo;" />
 			<div id="dvMap" style="width: 100%; height:500px;"></div>
 			<br><br>

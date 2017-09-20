@@ -1,18 +1,20 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>home</title>
+<title>Home Page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/styles.css" rel="stylesheet">
 <link href="css/default.css" rel="stylesheet">
 <link href="css/header.css" rel="stylesheet" />
 <link href="css/font-awesome.min.css" rel="stylesheet">
- <link href="css/popup.css" rel="stylesheet">
+<link href="css/popup.css" rel="stylesheet">
+
 </head>
 <body onLoad="initialize()">
 	<nav class="navbar navbar-default navbar-inverse" role="navigation"
@@ -29,76 +31,74 @@
 			<a class="navbar-brand" href="showHome"><b><font
 					color="#000000">DivaStays</font></b></a>
 		</div>
-
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
-
-
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="showOwnerPage"><font color="#000000">House
 							Owner</font></a></li>
-							
-	<c:choose>
-    <c:when test="${sessionScope.user!=null}">
-     <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-      <a href=logoutHome >Logout</a>
-    </c:when>    
-    <c:otherwise>
-      <li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
-						<span class="caret"></span></a>
-					<ul id="login-dp" class="dropdown-menu">
-						<li>
-							<div class="row">
-								<div class="col-md-12">
-									Login via
-									<div class="social-buttons">
-										<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
-											Facebook</a> <a href="#" class="btn btn-tw"><i
-											class="fa fa-twitter"></i> Twitter</a>
-									</div>
-									or
-
-									<form class="form" role="form" method="post" action="loginHome"
-										accept-charset="UTF-8" id="login-nav">
-										<div class="form-group">
-											<label class="sr-only" for="exampleInputEmail2">Email
-												address</label> <input type="email" name="email"
-												class="form-control" id="email" placeholder="Email address"
-												autocomplete="off" required>
-										</div>
-										<div class="form-group">
-											<label class="sr-only" for="exampleInputPassword2">Password</label>
-											<input type="password" name="password" class="form-control"
-												id="password" placeholder="Password" autocomplete="off"
-												required>
-											<div class="help-block text-right">
-												<a href="verificationlink">Forget the password ?</a>
+				<c:choose>
+					<c:when test="${sessionScope.user!=null}">
+						<img
+							src="<ui:image img='${sessionScope.user.userImg}'></ui:image>"
+							alt="..." style="height: 30px" />
+						<a href="logoutHome">Logout</a>
+						<a href="editUserDetails/${user.uId}">Edit Your Profile</a>
+					</c:when>
+					<c:otherwise>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown"><b><font color="#000000">Login</font></b>
+								<span class="caret"></span></a>
+							<ul id="login-dp" class="dropdown-menu">
+								<li>
+									<div class="row">
+										<div class="col-md-12">
+											Login via
+											<div class="social-buttons">
+												<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
+													Facebook</a> <a href="#" class="btn btn-tw"><i
+													class="fa fa-twitter"></i> Twitter</a>
 											</div>
-											<span id="empIdErr" class="errMsg"></span>
+											or
+											<form class="form" role="form" method="post"
+												action="loginHome" accept-charset="UTF-8" id="login-nav">
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputEmail2">Email
+														address</label> <input type="email" name="email"
+														class="form-control" id="email"
+														placeholder="Email address" autocomplete="off" required>
+												</div>
+												<div class="form-group">
+													<label class="sr-only" for="exampleInputPassword2">Password</label>
+													<input type="password" name="password" class="form-control"
+														id="password" placeholder="Password" autocomplete="off"
+														required>
+													<div class="help-block text-right">
+														<a href="verificationlink">Forget the password ?</a>
+													</div>
+													<span id="empIdErr" class="errMsg"></span>
+												</div>
+												<div class="form-group">
+													<button type="submit" class="btn btn-primary btn-block"
+														onclick="checkLogin();">Sign in</button>
+												</div>
+												<div class="checkbox">
+													<label> <input type="checkbox"> keep me
+														logged-in
+													</label>
+												</div>
+											</form>
 										</div>
-										<div class="form-group">
-											<button type="submit" class="btn btn-primary btn-block"
-												onclick="checkLogin();">Sign in</button>
+										<div class="bottom text-center">
+											New here ? <a href="showUserReg"><b><font
+													color="#000000">Join Us</font></b></a>
 										</div>
-										<div class="checkbox">
-											<label> <input type="checkbox"> keep me
-												logged-in
-											</label>
-										</div>
-									</form>
-								</div>
-								<div class="bottom text-center">
-									New here ? <a href="showUserReg"><b><font
-											color="#000000">Join Us</font></b></a>
-								</div>
-							</div>
-						</li>
-
-					</ul></li>
-    </c:otherwise>
-</c:choose>				<li><a href="showHelp"><font color="#000000">Help</font></a></li>
+									</div>
+								</li>
+							</ul></li>
+					</c:otherwise>
+				</c:choose>
+				<li><a href="showHelp"><font color="#000000">Help</font></a></li>
 			</ul>
 		</div>
 		<!-- /.navbar-collapse -->
@@ -121,18 +121,12 @@
 		<!--header .. align center class end here-->
 	</div>
 	<!--jumbotron class ends here --> <br>
-
-
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12 text-center">
 				<h2 class="service-title pad-bt15">Limited Deals</h2>
 				<hr class="bottom-line">
 			</div>
-
-
 			<div class="col-sm-4">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Pune</div>
@@ -166,8 +160,6 @@
 		</div>
 	</div>
 	<br>
-
-
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-4">
@@ -202,11 +194,8 @@
 			</div>
 		</div>
 	</div>
-
-
 	<div></div>
 	<div></div>
-
 	<sec></sec> <section id="three" class="no-padding">
 	<div class="container-fluid">
 		<div class="container">
@@ -217,7 +206,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="row no-gutter">
 			<div class="col-lg-4 col-sm-6">
 				<a href="#galleryModal" class="gallery-box" data-toggle="modal"
@@ -315,7 +303,6 @@
 		</div>
 	</div>
 	</section>
-
 	<div class="jumbotron">
 		<div class="container text-center">
 			<h2 class="margin-top-0 ">Best Places</h2>
@@ -378,7 +365,6 @@
 				</div>
 			</div>
 			<hr>
-
 			<div class="row">
 				<div class="media wow fadeInRight">
 					<h3>Unique</h3>
@@ -417,8 +403,6 @@
 		</div>
 	</div>
 	</section>
-
-
 	<div class="jumbotron">
 		<div class="container text-center">
 			<H2>As Spotted In</H2>
@@ -438,8 +422,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<div class="jumbotron">
 		<div class="container">
 			<div class="row">
@@ -447,7 +429,6 @@
 					<h2>Why People Love DivaStays?</h2>
 					<hr class="bottom-line">
 				</div>
-
 				<div class="feature-info">
 					<div class="fea">
 						<div class="col-md-2">
@@ -460,7 +441,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="fea">
 						<div class="col-md-2">
 							<div class="heading pull-right">
@@ -472,7 +452,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="fea">
 						<div class="col-md-2">
 							<div class="heading pull-right">
@@ -485,8 +464,6 @@
 							</div>
 						</div>
 					</div>
-
-
 					<div class="fea">
 						<div class="col-md-2">
 							<div class="heading pull-right">
@@ -498,9 +475,6 @@
 							</div>
 						</div>
 					</div>
-
-
-
 					<div class="fea">
 						<div class="col-md-3">
 							<div class="heading pull-right">
@@ -517,8 +491,6 @@
 			</div>
 		</div>
 	</div>
-
-
 	<div class="jumbotron">
 		<div class="container">
 			<div class=" row">
@@ -542,59 +514,10 @@
 		</div>
 	</div>
 	<div></div>
-
-
 	<!--  from here get in touch -->
-
-
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-8 col-lg-offset-2 text-center">
-				<h2 class="margin-top-0 wow fadeIn" style="margin-top: 10px">Get
-					In Touch</h2>
-				<hr class="primary">
-				<p>We love feedback. Fill out the form below and we'll get back
-					to you as soon as possible.</p>
-			</div>
-			<div class="col-lg-10 col-lg-offset-1 text-center">
-				<form class="contact-form row" action="sendMail" method="post">
-					<div class="col-md-4">
-						<label></label> <input type="text" class="form-control"
-							id="firstName" name="firstName" placeholder="Name" required>
-						<span id="checkName" class="checkName"></span>
-					</div>
-					<div class="col-md-4">
-						<label></label> <input type="text" class="form-control" id="email"
-							name="email" placeholder="Email" required> <span
-							id="checkEmail" class="checkEmail"></span>
-					</div>
-					<div class="col-md-4">
-						<label></label> <input type="text" class="form-control"
-							id="phoneNumber" name="phoneNumber" placeholder="Phone" required>
-
-						<span id="checkPhoneNumber" class="checkPhoneNumber"></span>
-					</div>
-					<div class="col-md-12">
-						<label></label>
-						<textarea class="form-control" rows="8"
-							placeholder="Your message here.." name="message" required cols=""></textarea>
-					</div>
-					<div class="col-md-3 col-md-offset-4">
-						<label></label>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<button type="submit" data-toggle="modal"
-							data-target="#alertModal" class="btn btn-info" id="register">
-							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT<i
-								class="ion-android-arrow-forward"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						</button>
-						<br>
-					</div>
-				</form>
-
-			</div>
-		</div>
-	</div>
-<jsp:include page="footer.jsp"></jsp:include> <!--Popup  for invalid username and password-->
+	<jsp:include page="Feedback.jsp"></jsp:include> 
+	<jsp:include page="footer.jsp"></jsp:include> 
+	<!--Popup  for invalid username and password-->
 	<div class="mod" id="myModal11" style="color: black;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
@@ -609,11 +532,9 @@
 							<!-- Nav tabs -->
 							<ul class="nav nav-tabs">
 								<li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-
 							</ul>
 							<!-- Tab panes -->
 							<div class="tab-content">
-
 								<form role="form" class="form-horizontal" method="post"
 									action="login">
 									<div class="form-group">
@@ -642,19 +563,16 @@
 										</div>
 									</div>
 								</form>
-
 							</div>
-
 						</div>
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-     <!--  Expired user email-verification link Popup code-->
+	<!--  Expired user email-verification link Popup code-->
 	<div class="mod" id="userEmailExpire" style="color: black;">
-		<div class="modal-dialog modal-md">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header" style="background-color: white;">
 					<span class="close1">&times;</span>
@@ -662,7 +580,7 @@
 						Verification</h4>
 				</div>
 				<div class="modal-body" style="background-color: white;">
-					<h3 style="color: red">Your Email Activation link is expired..</h3>
+					<h5 style="color: red">Your Email Activation link is expired..</h5>
 					<div class="row">
 						<div class="col-md-6">
 
@@ -674,7 +592,6 @@
 									<div class="col-sm-2"></div>
 									<div class="col-sm-10">
 										<button type="submit" value="Submit">Resend</button>
-
 									</div>
 								</div>
 							</form>
@@ -686,15 +603,15 @@
 	</div>
 	<!--  End of email-verification link expired popup code--> <!--  Expired owner email-verification link Popup code-->
 	<div class="mod" id="ownerEmailExpire" style="color: black;">
-		<div class="modal-dialog modal-md">
+		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
 				<div class="modal-header" style="background-color: white;">
-					<span class="close1">&times;</span>
+					<span class="close2">&times;</span>
 					<h4 class="modal-title" id="myModalLabel">Owner Email
 						Verification</h4>
 				</div>
 				<div class="modal-body" style="background-color: white;">
-					<h3 style="color: red">Your Email Activation link is expired..</h3>
+					<h5 style="color: red">Your Email Activation link is expired..</h5>
 					<div class="row">
 						<div class="col-md-6">
 							<form role="form" class="form-horizontal" method="post"
@@ -714,57 +631,67 @@
 			</div>
 		</div>
 	</div>
-	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>	
-	 <script src="js/bootstrap.min.js" type="text/javascript"></script> 
-	<script src="js/cbpHorizontalMenu.js" type="text/javascript"></script>
-	<script src="js/userFormVerify.js" type="text/javascript"></script> 
-	<script src="js/popup.js"></script>
-	 <script
-		type="text/javascript">
-			$(function() {
-				cbpHorizontalMenu.init();
-			});
-		</script> 
-		 
+	</nav>
+	<!--  End of email-verification link expired popup code-->
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="js/cbpHorizontalMenu.js" type="text/javascript"></script>	
+	<script src="js/popup.js" type="text/javascript"></script>
+	<script src="js/registrationForm.js" type="text/javascript"></script>  
+	<script type="text/javascript">
+		$(function() {
+			cbpHorizontalMenu.init();
+		});
+	</script>
 
-  <c:set var="status"
-		value="${status}" /> <%
- 	//	String status="${status}";
- 	String status = (String) pageContext.getAttribute("status");
- 	if (status != null) {
- 		if (status.equals("Activated")) {
- %> <script type="text/javascript">
-			alert("Your account is activated");
-		</script> <%
- 	} else if (status.equals("Expired")) {
- %> <script type="text/javascript">
-			emailExpirePopup();
-		</script> <%
- 	}
- 	}
- %> <!--  User email popup code end     --> <!-- Owner email popup code -->
-	<c:set var="ownerStatus" value="${ownerStatus}" /> <%
- 	String ownerStatus = (String) pageContext.getAttribute("ownerStatus");
- 	if (ownerStatus != null) {
- 		if (ownerStatus.equals("Activated")) {
- %> <script type="text/javascript">
-			alert("Your account is activated");
-		</script> <%
- 	} else if (ownerStatus.equals("Expired")) {
- %> <script type="text/javascript">
-			ownerEmailExpirePopup();
-		</script> <%
- 	}
- 	}
- %> <!--  Owner email popup code end     --> </nav>
- 
- <!--  popup call from jsp    -->
-<c:if test="${invalid==400}">
- <script type="text/javascript">
-  popup();
-  </script>
-</c:if>
- 
- 
+	<!-- User email popup code -->
+	<c:set var="status" value="${status}" />
+	<%
+		//	String status="${status}";
+		String status = (String) pageContext.getAttribute("status");
+		if (status != null) {
+			if (status.equals("Activated")) {
+	%>
+	<script type="text/javascript">
+		alert("Your account is activated");
+	</script>
+	<%
+		} else if (status.equals("Expired")) {
+	%>
+	<script type="text/javascript">
+		emailExpirePopup1();
+	</script>
+	<%
+		}
+		}
+	%>
+	<!--  User email popup code end -->
+	<!-- Owner email popup code -->
+	<c:set var="ownerStatus" value="${ownerStatus}" />
+	<%
+		String ownerStatus = (String) pageContext.getAttribute("ownerStatus");
+		if (ownerStatus != null) {
+			if (ownerStatus.equals("Activated")) {
+	%>
+	<script type="text/javascript">
+		alert("Your account is activated");
+	</script>
+	<%
+		} else if (ownerStatus.equals("Expired")) {
+	%>
+	<script type="text/javascript">
+		ownerEmailExpirePopup1();
+	</script>
+	<%
+		}
+		}
+	%>
+	<!--  Owner email popup code end -->
+	<!--  popup call from jsp    -->
+	<c:if test="${invalid==400}">
+		<script type="text/javascript">
+			popup();
+		</script>
+	</c:if>
 </body>
 </html>

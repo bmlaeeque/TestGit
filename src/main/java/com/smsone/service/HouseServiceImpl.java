@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.smsone.dao.HouseDAO;
 import com.smsone.model.Beds;
 import com.smsone.model.House;
+import com.smsone.model.Room;
 import com.smsone.model.User;
 
 @Service
@@ -48,5 +49,22 @@ public class HouseServiceImpl implements HouseService {
 	public void saveBed(Beds beds,Long rid) {
 		houseDAO.saveBed(beds,rid);
 		
+	}
+	public void updateHouse(House house) {
+		houseDAO.updateHouse(house);
+		
+	}
+	public void deleteHouse(House house) {
+		houseDAO.deleteHouse(house);
+		
+	}
+	public List<House> remainingOwnerHouse(Long oId) {
+		return houseDAO.remainingOwnerHouse(oId);
+	}
+	public List<Room> getRooms(House house) {
+		return houseDAO.getRooms(house);
+	}
+	public List<House> applySorting(House house,User user) {
+		return houseDAO.applySorting(house,user);
 	}
 }

@@ -3,6 +3,7 @@ package com.smsone.service;
 import java.util.List;
 
 import com.smsone.model.Beds;
+import com.smsone.model.House;
 import com.smsone.model.Room;
 import com.smsone.model.User;
 
@@ -13,7 +14,7 @@ public interface RoomService {
 	public Long countRooms(Long hId);
 	public Long countBeds(Long rId);
 	public User getUser(Long bId);
-	
-
+	public Room getRoom(Room room);
+	public void updateRoom(Room room);
 
 }

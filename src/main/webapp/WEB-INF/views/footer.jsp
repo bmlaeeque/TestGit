@@ -4,6 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/footer.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Footer</title>
 </head>
 <body>
@@ -53,5 +54,28 @@
             <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">DivaStays</a> ©2017 smsone.co.in</span>
         </div>
     </footer>
+    <style>
+    .element {
+position: relative;
+}
+
+/*replace the content value with the
+corresponding value from the list below*/
+
+.element:before {
+content: "\f000";
+font-family: FontAwesome;
+font-style: normal;
+font-weight: normal;
+text-decoration: inherit;
+/*--adjust as necessary--*/
+color: #000;
+font-size: 18px;
+padding-right: 0.5em;
+position: absolute;
+top: 10px;
+left: 0;
+}
+    </style>
 </body>
 </html>

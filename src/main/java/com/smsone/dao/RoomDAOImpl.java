@@ -1,9 +1,15 @@
 package com.smsone.dao;
 
 import java.util.List;
+
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -82,7 +88,7 @@ public class RoomDAOImpl implements RoomDAO {
 	
 	public User getUser(Long bId) {
 		Session session=sessionFactory.openSession();
-		Beds beds=(Beds)session.load(Beds.class,bId);
+		Beds beds=(Beds)session.get(Beds.class,bId);
 		User user1=beds.getUser();
 		if(user1!=null)
 		{
@@ -91,10 +97,37 @@ public class RoomDAOImpl implements RoomDAO {
 		else
 		{
 			return null;
-		}
+		}	
+	}
+	public Room getRoom(Room room) {
+		Session session=sessionFactory.openSession();
+		Criteria cr = session.createCriteria(Room.class)
+			    .setProjection(Projections.projectionList()
+			      .add(Projections.property("rId"), "rId")
+			      .add(Projections.property("roomtype"), "roomtype")
+			      .add(Projections.property("ac"), "ac")
+			      .add(Projections.property("wifi"), "wifi")
+			      .add(Projections.property("bathroom"), "bathroom")
+			      .add(Projections.property("geyser"), "geyser")
+			      .add(Projections.property("bed"), "bed")
+			      .add(Projections.property("swimmingPool"), "swimmingPool")
+			      .add(Projections.property("gym"), "gym")
+			      .add(Projections.property("numberOfBed"), "numberOfBed")
+			      .add(Projections.property("foodAvailability"), "foodAvailability")
+			      .add(Projections.property("img1"), "img1")
+			      .add(Projections.property("img2"), "img2")
+			      .add(Projections.property("img3"), "img3"))
+			    .setResultTransformer(new AliasToBeanResultTransformer(Room.class));
+		cr.add(Restrictions.eq("rId",room.getrId()));
+		List room1=cr.list();
+		return (Room) room1;
 		
 	}
-	
-	
-	
+	public void updateRoom(Room room) {
+		Session session=sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.saveOrUpdate(room);
+		tx.commit();
+	    session.close();		 		
+	}	
 }

@@ -1,5 +1,4 @@
 package com.smsone.dao;
-
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
@@ -18,17 +17,12 @@ import com.smsone.model.User;
 public class OwnerDAOImpl implements OwnerDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-	@Autowired
-	private MailSender mailSender;
-
 	//save owner
 	public void saveOwner(Owner owner) {
 		Session session=sessionFactory.openSession();
 		session.save(owner);
 		session.close();
-
 	}
-
 	public boolean checkContactNumber(Owner owner) {
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(Owner.class);
@@ -44,9 +38,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 		{
 		return true;
 		}
-
 	}
-
 	public boolean checkAadharNumber(Owner owner) {
 			Session session=sessionFactory.openSession();
 			Criteria crit=session.createCriteria(Owner.class);
@@ -63,8 +55,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 			return true;
 			}
 		}
-
-	public boolean checkEmail(Owner owner) {
+    public boolean checkEmail(Owner owner) {
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(Owner.class);
 		Criterion c1=Restrictions.eq("email",owner.getEmail());
@@ -79,8 +70,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 		{
 		return true;
 		}
-	}
-	
+	}	
 	public Owner checkOwnerLogin(Owner owner) {
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(Owner.class);
@@ -98,10 +88,8 @@ public class OwnerDAOImpl implements OwnerDAO {
 		{
 			owner=(Owner)list.get(0);
 		return owner;
-		}
-		
+		}		
 	}
-
 	public Owner verifyOwnerAccount(Owner owner) {
 		Date date=new Date(); 
 		Session session=sessionFactory.openSession();
@@ -135,8 +123,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 			   }
 			}
 			else if(status.equals("Activated"))
-			{
-				
+			{	
 			}
 			else
 			{
@@ -148,7 +135,6 @@ public class OwnerDAOImpl implements OwnerDAO {
 			return owner;
 		}
 	}
-
 	public Owner sendNewLink(Owner owner) {
 		Date date=new Date();
 		Session session=sessionFactory.openSession();
@@ -167,7 +153,6 @@ public class OwnerDAOImpl implements OwnerDAO {
 			Transaction tx=session.beginTransaction();
 			if(owner.getEmailResendTime()!=null)
 			{
-
 				owner1.setOwnerHashcode(owner.getOwnerHashcode());
 				owner1.setEmailResendTime(owner.getEmailResendTime());
 			}
@@ -191,6 +176,17 @@ public class OwnerDAOImpl implements OwnerDAO {
 			return owner1;
 		}
 	}
-
+	public Owner getOwner(Owner owner) {
+		Session session=sessionFactory.openSession();
+		Owner owner1=(Owner)session.load(Owner.class,owner.getoId());
+		return owner1;
+	}
+	public void updateOwner(Owner owner) {
+		Session session=sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.saveOrUpdate(owner);
+		tx.commit();
+	    session.close();		
+	}
 }
 

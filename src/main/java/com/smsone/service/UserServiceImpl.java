@@ -32,5 +32,12 @@ public class UserServiceImpl implements UserService {
 	public User sendNewLink(User user) {
 		return userDAO.sendNewLink(user);
 	}
+	public User getUser(User user) {
+		return userDAO.getUser(user);
+	}
+	public void updateUser(User user) {
+		userDAO.updateUser(user);
+		
+	}
 	
 }

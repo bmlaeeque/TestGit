@@ -1,9 +1,9 @@
 // JavaScript Document
-//validate name
+//validate name-contain more than one characters only
 function CheckName()   
 {  
   var firstName = document.getElementById('firstName');
-  var decimal=  /^[a-zA-Z ]{2,30}$/;
+  var decimal=  /^[a-zA-Z ]{3,30}$/;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C  ";
 if(firstName.value.match(decimal))   
@@ -16,11 +16,11 @@ firstName.style.backgroundColor = badColor;
 }  
 }
 
-//validate last name
+//validate last name-contain more than one characters only
 function CheckLastName()   
 {  
   var lastName = document.getElementById('lastName');
-  var decimal=  /^[a-zA-Z ]{2,30}$/;
+  var decimal=  /^[a-zA-Z ]{3,30}$/;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C  ";
 if(lastName.value.match(decimal))   
@@ -33,7 +33,7 @@ lastName.style.backgroundColor = badColor;
 }  
 }
 
-//validate Mobile
+//validate Mobile-only 10 digits
 function CheckPhoneNumber()   
 {  
   var phoneNumber = document.getElementById('contact');
@@ -50,7 +50,7 @@ phoneNumber.style.backgroundColor = badColor;
 }  
 }  
 
-//validate email
+//validate email-contain characters,symbols and numbers & must match email format
 function CheckEmail()   
 {  
   var email = document.getElementById('email');
@@ -67,7 +67,7 @@ email.style.backgroundColor = badColor;
 }  
 }  
 
-//validate password
+//validate password-Must start with a capital letter,minimum 8 character including symbols and numbers.
 function CheckPassword()   
 {  
   var pass1 = document.getElementById('password1');
@@ -83,8 +83,7 @@ else
 pass1.style.backgroundColor = badColor;
 }  
 }  
-
-//confirm password
+//confirm password-Must start with a capital letter,minimum 8 character including symbols and numbers.
 function CheckPass()
 {
     
@@ -107,9 +106,7 @@ function CheckPass()
         pass2.style.backgroundColor = badColor;
       }
 }  
-
-
-//validate aadhar
+//validate aadhar-contains 12 digits
 function CheckAadhar()   
 {  
   var aadhar = document.getElementById('aadharNumber');
@@ -125,7 +122,6 @@ else
 aadhar.style.backgroundColor = badColor;
 }  
 }  
-
 //validate tenancy
 function CheckTenancy()   
 {  
@@ -143,7 +139,7 @@ tenancy.style.backgroundColor = badColor;
 }  
 }
 
-//validate floor
+//validate floor-start with 0 considering ground floor and allows 2 digits only
 function CheckFloor()   
 {  
   var floor1 = document.getElementById('floorNumber');
@@ -159,9 +155,7 @@ else
 floor1.style.backgroundColor = badColor;
 }  
 }  
-
-
-//validate No of Room
+//validate No of Room-start with 1 only two digits
 function CheckRoom()   
 {  
   var room = document.getElementById('room');
@@ -177,25 +171,6 @@ else
  room.style.backgroundColor = badColor;
 }  
 }  
-
-
-//validate accomodation
-function CheckAccomodation()   
-{  
-  var accomodation = document.getElementById('accomodation');
-  var decimal=  /^[a-zA-Z ]{2,30}$/;
-  var goodColor = "#82E0AA";
-  var badColor = "#E74C3C";
-if(accomodation.value.match(decimal))   
-{   
-accomodation.style.backgroundColor = goodColor;
-}  
-else  
-{   
-accomodation.style.backgroundColor = badColor;
-}  
-}
-
 //validate food preference
 function CheckFoodPreference()   
 {  
@@ -212,8 +187,7 @@ else
 food.style.backgroundColor = badColor;
 }  
 }
-
-//validate rent
+//validate rent-contain only 4-5 digits
 function CheckRent()   
 {  
   var rent = document.getElementById('rent');
@@ -230,7 +204,7 @@ rent.style.backgroundColor = badColor;
 }  
 }  
 
-//validate Deposit
+//validate Deposit-contain only 4-5 digits
 function CheckDeposit()   
 {  
   var deposit = document.getElementById('deposit');
@@ -247,11 +221,11 @@ deposit.style.backgroundColor = badColor;
 }  
 }  
 
-//validate Area
+//validate Area-contain only 4-5 digits
 function CheckArea()   
 {  
   var area = document.getElementById('area');
-  var decimal= /^[1-9]{3,5}(\.\d{2})?$/;
+  var decimal= /^[0-9]{3,5}(\.\d{2})?$/;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
 if(area.value.match(decimal))   
@@ -264,7 +238,7 @@ area.style.backgroundColor = badColor;
 }  
 }  
 
-//validate Address
+//validate Address-contains symbols,characters and numbers
 function CheckAddress()   
 {  
   var address = document.getElementById('address');
@@ -281,8 +255,24 @@ address.style.backgroundColor = badColor;
 }  
 }  
 
+//validate feedback message-contains character,symbols and numbers
+function CheckMessage()   
+{  
+  var message = document.getElementById('message');
+  var decimal= /.*\S.*/;
+  var goodColor = "#82E0AA";
+  var badColor = "#E74C3C";
+if(message.value.match(decimal))   
+{   
+	message.style.backgroundColor = goodColor;
+}  
+else  
+{   
+	message.style.backgroundColor = badColor;
+}  
+}  
 
-//validate pincode
+//validate pincode-six digits only
 function CheckPincode()   
 {  
   var pincode = document.getElementById('pincode');
@@ -384,148 +374,7 @@ else
 state.style.backgroundColor = badColor;
 }  
 }
-
-//validate gender
-function CheckGender()   
-{  
-  var gender = document.getElementById('gender');
-  var decimal=  /^[a-zA-Z ]{2,30}$/;
-  var goodColor = "#66cc66";
-  var badColor = "#ff6666";
-if(gender.value.match(decimal))   
-{   
- gender.style.backgroundColor = goodColor;
-}  
-else  
-{   
-gender.style.backgroundColor = badColor;
-}  
-}
-
-
-
-
-
-
-//Validate Submit
-function Submit()
-{
-	 var firstName = document.getElementById('firstName').value;
-	 var decimalname =  /^[a-zA-Z ]{2,30}$/;
-	 var lastName = document.getElementById('lastName').value;
-	 var decimallname =  /^[a-zA-Z ]{2,30}$/;
-	 var contact = document.getElementById('contact').value;
-	 var decimalContact = /^\d{4}\d{4}\d{2}$/g;
-	 var email = document.getElementById('email').value;
-	 var decimalmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	 var aadharNumber = document.getElementById('aadharNumber').value;
-	 var decimalAadhar =  /^\d{4}\d{4}\d{4}$/g;
-	 var Pass1 = document.getElementById('password1').value;
-     var Pass2 = document.getElementById('password2').value;
-	
-	
-    if (firstName != '' && lastName != '' && contact != '' && email != '' && aadharNumber != '' && Pass1 != '' && Pass2 != '')
-	{
-		if (firstName.match(decimalname) && lastName.match(decimallname) && contact.match(decimalContact) && email.match(decimalmail) && aadharNumber.match(decimalAadhar) && Pass1.value == Pass2.value)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-}
-}
-
-//validate HouseSubmit
-function HouseSubmit()
-{
-	
-	 var Floor = document.getElementById('floorNumber').value;
-     var decimalFloor = /^[0-9]{1,2}$/;
-	 var Room = document.getElementById('room').value;
-     var decimalRoom = /^[0-9]{1,2}$/;
-	 var Rent = document.getElementById('rent').value;
-     var decimalRent = /^[0-9]{4,5}$/;
-	 var Deposit = document.getElementById('deposit').value;
-     var decimalDeposit = /^[0-9]{4,5}$/;
-	 var Area = document.getElementById('area').value;
-     var decimalArea = /^[1-9]{3,5}(\.\d{2})?$/;
-	 var Address = document.getElementById('address').value;
-     var decimalAddress = /.*\S.*/;
-	 var aadhar1 = document.getElementById('aadharNumber').value;
-     var decimalaadhar1 =  /^\d{4}\d{4}\d{4}$/g;
-	 
-	 var img1 = document.getElementById('img1').value;
-	 var img2 = document.getElementById('img2').value;
-	 var img3 = document.getElementById('img3').value;
-     var decimalImage = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/;
-	 
-	  var houseName = document.getElementById('houseName').value;
-      var decimalHouseName = /.*\S.*/;
-	 
-    //images size validation
-      var imgSize1= document.getElementById("img1");
- 	  var imgSize2= document.getElementById("img2");
- 	  var imgSize3= document.getElementById("img3");
- 	  var fileSize1 =imgSize1.files[0].size;
- 	  var fileSize2 =imgSize2.files[0].size;
- 	  var fileSize3 =imgSize3.files[0].size;	
-	 
-	 if (aadhar1 != '' && Floor != '' && Room != '' && Rent != '' && Deposit != '' && Area != '' && Address != '' && img1 != '' && img2 != '' && img3 != '' && houseName != '' )
-	{
-		if (aadhar1.match(decimalaadhar1) && Floor.match(decimalFloor) && Room.match(decimalRoom) && Rent.match(decimalRent) && Deposit.match(decimalDeposit) && Area.match(decimalArea) && Address.match(decimalAddress) && img1.match(decimalImage) && img2.match(decimalImage) && img3.match(decimalImage) && houseName.match(decimalHouseName) && fileSize1 <= 1048576 && fileSize2 <= 1048576 && fileSize3 <= 1048576 )
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-    }
-	 
-}
-
-//Validate UserSubmit
-function UserSubmit()
-{
-	 var FirstName = document.getElementById('firstName').value;
-	 var decimalFirstName =  /^[a-zA-Z ]{2,30}$/;
-	 var LastName = document.getElementById('lastName').value;
-	 var decimalLastName =  /^[a-zA-Z ]{2,30}$/;
-	 var Contact = document.getElementById('contact').value;
-	 var decimalContactNumber = /^\d{4}\d{4}\d{2}$/g;
-	 var Email = document.getElementById('email').value;
-	 var decimalEmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-	 var AadharNumber = document.getElementById('aadharNumber').value;
-	 var decimalAadharNumber =  /^\d{4}\d{4}\d{4}$/g;
-	 var Pincode = document.getElementById('pincode');
-     var decimalPincode =  /^\d{2}\d{2}\d{2}$/g;
-	 var Address1 = document.getElementById('address');
-     var decimalAddress1 = /.*\S.*/;
-	 
-	 var Password1 = document.getElementById('password1').value;
-     var Password2 = document.getElementById('password2').value;
-     var userImg = document.getElementById('userImg').value;
-     var decimalUserImage = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/;
-     var UserImgSize1= document.getElementById("userImg");
-     var UserImgSize =UserImgSize1.files[0].size;
-     
-    if (FirstName != '' && LastName != '' && Contact != '' && Email != '' && AadharNumber != '' && Pincode != '' && Address1 != '' && Password1 != '' && Password2 != '' && userImg != '')
-	{
-		if (FirstName.match(decimalFirstName) && LastName.match(decimalLastName) && Contact.match(decimalContactNumber) && Email.match(decimalEmail) && AadharNumber.match(decimalAadharNumber) && Pincode.match(decimalPincode) && Address1.match(decimalAddress1) && Password1.value == Password2.value && userImg.match(decimalUserImage))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-}
-}
-
-
-//House Form
+//House Form-contains digits and character
 function CheckHouseName()
 {
   var houseName = document.getElementById('houseName');
@@ -541,7 +390,6 @@ else
  houseName.style.backgroundColor = badColor;
 }  
 }
-
 //House Form
 function CheckImg1()   
 {  
@@ -560,7 +408,6 @@ else
  img1.style.backgroundColor = badColor;
 }  
 }  
-
 //House Form
 function CheckImg2()   
 {  
@@ -578,7 +425,6 @@ else
  img2.style.backgroundColor = badColor;
 }  
 }  
-
 //House Form
 function CheckImg3()   
 {  
@@ -596,7 +442,6 @@ else
  img3.style.backgroundColor = badColor;
 }  
 }  
-
 //Upload User Photo 
 function CheckUserImg()   
 {  
@@ -614,5 +459,142 @@ else
 	userImg.style.backgroundColor = badColor;
 }  
 }  
+//Validate Submit
+function Submit()
+{
+	 var firstName = document.getElementById('firstName').value;
+	 var decimalname =  /^[a-zA-Z ]{2,30}$/;
+	 var lastName = document.getElementById('lastName').value;
+	 var decimallname =  /^[a-zA-Z ]{2,30}$/;
+	 var contact = document.getElementById('contact').value;
+	 var decimalContact = /^\d{4}\d{4}\d{2}$/g;
+	 var email = document.getElementById('email').value;
+	 var decimalmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	 var aadharNumber = document.getElementById('aadharNumber').value;
+	 var decimalAadhar =  /^\d{4}\d{4}\d{4}$/g;
+	 var Pass1 = document.getElementById('password1').value;
+     var Pass2 = document.getElementById('password2').value;
+	
+	
+    if (firstName !== null && lastName !== null && contact !== null && email !== null && aadharNumber !== null && Pass1 !== null  && Pass2 !== null)
+	{
+		if (firstName.match(decimalname) && lastName.match(decimallname) && contact.match(decimalContact) && email.match(decimalmail) && aadharNumber.match(decimalAadhar) && Pass1.value == Pass2.value)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+}
+}
 
+//validate HouseSubmit
+function HouseSubmit()
+{
+	 var Floor = document.getElementById('floorNumber').value;
+     var decimalFloor = /^[0-9]{1,2}$/;
+	 var Room = document.getElementById('room').value;
+     var decimalRoom = /^[0-9]{1,2}$/;
+	 var Rent = document.getElementById('rent').value;
+     var decimalRent = /^[0-9]{4,5}$/;
+	 var Deposit = document.getElementById('deposit').value;
+     var decimalDeposit = /^[0-9]{4,5}$/;
+	 var Area = document.getElementById('area').value;
+     var decimalArea = /^[1-9]{3,5}(\.\d{2})?$/;
+	 var Address = document.getElementById('address').value;
+     var decimalAddress = /.*\S.*/;
+	 var aadhar1 = document.getElementById('aadharNumber').value;
+     var decimalaadhar1 =  /^\d{4}\d{4}\d{4}$/g;	 
+	 var img1 = document.getElementById('img1').value;
+	 var img2 = document.getElementById('img2').value;
+	 var img3 = document.getElementById('img3').value;
+     var decimalImage = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/; 
+	 var houseName = document.getElementById('houseName').value;
+     var decimalHouseName = /.*\S.*/; 
+     var pincode = document.getElementById('pincode').value;
+     var decimalpincode = /^\d{2}\d{2}\d{2}$/g; 
+    //images size validation
+      var imgSize1= document.getElementById("img1");
+ 	  var imgSize2= document.getElementById("img2");
+ 	  var imgSize3= document.getElementById("img3");
+ 	  var fileSize1 =imgSize1.files[0].size;
+ 	  var fileSize2 =imgSize2.files[0].size;
+ 	  var fileSize3 =imgSize3.files[0].size;		 
+	 if (aadhar1 !== null && Floor !== null && Room !== null && Rent !== null && Deposit !== null && Area !== null && Address !== null && img1 !== null && img2 !== null && img3 !== null && houseName !== null && pincode !== null)
+	{
+		if (aadhar1.match(decimalaadhar1) && pincode.match(decimalpincode) && Floor.match(decimalFloor) && Room.match(decimalRoom) && Rent.match(decimalRent) && Deposit.match(decimalDeposit) && Area.match(decimalArea) && Address.match(decimalAddress) && img1.match(decimalImage) && img2.match(decimalImage) && img3.match(decimalImage) && houseName.match(decimalHouseName) && fileSize1 <= 1048576 && fileSize2 <= 1048576 && fileSize3 <= 1048576 )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+    }
+	 
+}
+//Validate UserSubmit
+function UserSubmit()
+{
+	 var FirstName = document.getElementById('firstName').value;
+	 var decimalFirstName =  /^[a-zA-Z ]{2,30}$/;
+	 var LastName = document.getElementById('lastName').value;
+	 var decimalLastName =  /^[a-zA-Z ]{2,30}$/;
+	 var Contact = document.getElementById('contact').value;
+	 var decimalContactNumber = /^\d{4}\d{4}\d{2}$/g;
+	 var Email = document.getElementById('email').value;
+	 var decimalEmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	 var AadharNumber = document.getElementById('aadharNumber').value;
+	 var decimalAadharNumber =  /^\d{4}\d{4}\d{4}$/g;
+	 var Pincode = document.getElementById('pincode');
+     var decimalPincode =  /^\d{2}\d{2}\d{2}$/g;
+	 var Address1 = document.getElementById('address');
+     var decimalAddress1 = /.*\S.*/;	 
+	 var Password1 = document.getElementById('password1').value;
+     var Password2 = document.getElementById('password2').value;
+     var userImg = document.getElementById('userImg').value;
+     var decimalUserImage = /([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.gif)$/;
+     var UserImgSize1= document.getElementById("userImg");
+     var UserImgSize =UserImgSize1.files[0].size;    
+    if (FirstName !== null && LastName !== null && Contact !== null && Email !== null && AadharNumber !== null && Pincode !== null && Address1 !== null && Password1 !== null && Password2 !== null && userImg !== null)
+	{
+		
+    	if (FirstName.match(decimalFirstName) && LastName.match(decimalLastName) && Contact.match(decimalContactNumber) && Email.match(decimalEmail) && AadharNumber.match(decimalAadharNumber) && Pincode.match(decimalPincode) && Address1.match(decimalAddress1) && Password1.value == Password2.value && userImg.match(decimalUserImage) && UserImgSize <= 1048576)
+		{
+    		return true;
+		
+		}
+		else
+		{
+			
+			return false;
+		}
+}
+}
+//submit feedback validation
+function submitFeedback()
+{
+	 var firstName = document.getElementById('firstName').value;
+	 var decimalname =  /^[a-zA-Z ]{2,30}$/;
+	 var contact = document.getElementById('contact').value;
+	 var decimalContact = /^\d{4}\d{4}\d{2}$/g;
+	 var email = document.getElementById('email').value;
+	 var decimalmail= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+	 var message = document.getElementById('message').value;
+     var decimalmessage = /.*\S.*/;
+	
+	
+    if (firstName !== null && contact !== null && email !== null && message !== null)
+	{
+		if (firstName.match(decimalname) && contact.match(decimalContact) && email.match(decimalmail) && message.match(decimalmessage) )
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+}
+}
 

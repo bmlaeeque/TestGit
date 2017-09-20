@@ -9,7 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
    
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -152,24 +152,24 @@
 	</div>
   </form>
   
-	<form id="register-form"  role="form" style="display: none;">
+	<form id="register-form"  role="form" style="display: none;" onclick="return submitVisit();">
 		<div class="form-group">
-			<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="" onBlur=  					                "CheckName(); return false;" required>
+			<input type="text" name="name" id="name" tabindex="1" class="form-control" placeholder="Name" value="" onBlur="CheckName(); return false;" required>
                       <span id="checkName" class="checkName"></span>
 			</div>
 		<div class="form-group">
-			<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value=""                 onBlur="CheckEmail(); return false;" required> 
+			<input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" onBlur="CheckEmail(); return false;" required> 
                        <span id="checkEmail" class="checkEmail"></span>
 			</div>
 		<div class="form-group">
-			<input type="text" name="phone" id="phone" tabindex="2" class="form-control" placeholder="Phone" onBlur="CheckPhone();                  return false;" required>
+			<input type="text" name="phone" id="phone" tabindex="2" class="form-control" placeholder="Phone" onBlur="CheckPhone(); return false;" required>
                        <span id="checkPhone" class="checkPhone"></span>
 			</div>
 								
 		<div class="form-group">
 			<div class="row">
 				<div class="col-sm-6 col-sm-offset-3">
-	         <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register"                 value="Visit Now" style="color:#FF0000" onClick="Submit();">
+	         <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Visit Now" style="color:#FF0000">
 				</div>
 			</div>
 		</div>
@@ -477,55 +477,8 @@
          </div> 
          <hr>   
  <!-- End Things to keep in Mind-->
- <!--Footer-->   
-    <footer id="footer">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-6 col-sm-3 column">
-                    <h4>Information</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="">Products</a></li>
-                        <li><a href="">Services</a></li>
-                        <li><a href="">Benefits</a></li>
-                        <li><a href="">Developers</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 col-sm-3 column">
-                    <h4>About</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms &amp; Conditions</a></li>
-                    </ul>
-                </div>
-                <div class="col-xs-12 col-sm-3 column">
-                    <h4>Stay Posted</h4>
-                    <form>
-                        <div class="form-group">
-                          <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
-                        </div>
-                        <div class="form-group">
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
-                        </div>
-                    </form>
-                </div>
-               <div class="col-xs-12 col-sm-3 column">
-                 <h4>Follow Us</h4>
-							<ul class="social-icon">
-								<li class="bglight-blue"><i class="fa fa-facebook"></i></li>
-								<li class="bgred"><i class="fa fa-google-plus"></i></li>
-								<li class="bgdark-blue"><i class="fa fa-linkedin"></i></li>
-								<li class="bglight-blue"><i class="fa fa-twitter"></i></li>
-							</ul>
-						</div>
-                    </div>
-                 <br/>
-           <span class="pull-right text-muted small"><a href="http://www.bootstrapzero.com">PG Hostel</a> ©2017 smsone.co.in</span>
-        </div>
-    </footer>
-  <!--End Of Footer-->
-  
+ 
+  <jsp:include page="footer.jsp"></jsp:include>
   <div class="mod" id="myModal11" >
     <div class="modal-dialog modal-sm" >
         <div class="modal-content">

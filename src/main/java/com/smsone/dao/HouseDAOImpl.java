@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
@@ -139,17 +140,6 @@ public class HouseDAOImpl implements HouseDAO {
 		public void saveHouse(House house,Long oId) {
 			Session session=sessionFactory.openSession();
 			Owner owner=(Owner)session.load(Owner.class,oId);
-			//Criteria crit=session.createCriteria(Owner.class);
-			//Criterion c1=Restrictions.eq("aadharNumber",house.getAadharNumber());
-			//crit.add(c1);
-			//@SuppressWarnings("unchecked")
-			//List<Owner> list=crit.list();
-			//Owner owner=(Owner)list.get(0);
-			//Owner owner=(Owner)session.load(Owner.class,(Long)1);
-			//System.out.println(owner);
-			//Set<House> houses=new HashSet<House>();
-			//houses.add(house);
-			//owner.setHouse(houses);
 			house.setOwner(owner);
 			session.save(house);
 			session.close();
@@ -192,25 +182,56 @@ public class HouseDAOImpl implements HouseDAO {
 			@SuppressWarnings("unchecked")
 			List<House> house1 = criteria.list();
 			return house1;
-		}
-		
+		}		
 		public List<House> listHouseByadvancedFilter(House house, User user, Integer offset, Integer maxResults,
 				String[] facilities) {
 			Session session=sessionFactory.openSession();
 			Criteria criteria = session.createCriteria(House.class);
 			criteria.setFirstResult(offset!=null?offset:0);
 			criteria.setMaxResults(maxResults!=null?maxResults:10);
-			Criterion c1=Restrictions.eq("locationArea",house.getLocationArea());
-			
+			Criterion c1=Restrictions.eq("locationArea",house.getLocationArea());			
 			return null;
 		}
-
 		public void saveBed(Beds beds,Long rid) {
 			Session session=sessionFactory.openSession();
 			Room room=(Room)session.load(Room.class,rid);
 			beds.setRoom(room);
 			session.save(beds);
-			session.close();
+			session.close();	
+		}
+		public void updateHouse(House house) 
+		{			
+			Session session=sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			session.saveOrUpdate(house);
+			tx.commit();
+		    session.close();		 	
+		}
+		public void deleteHouse(House house) {
+			Session session=sessionFactory.openSession();
+			Transaction tx = session.beginTransaction();
+			House house1=(House)session.load(House.class,house.gethId());
+			session.delete(house1);
+			tx.commit();
+			session.close();		 
+		}
+		public List<House> remainingOwnerHouse(Long oId) {
+			Session session=sessionFactory.openSession();
+			@SuppressWarnings("unchecked")
+			Owner owner=(Owner)session.load(Owner.class,oId);
+			List<House> house1=owner.getHouse();
+			return house1;
+		}
+
+		public List<Room> getRooms(House house) {
+			Session session=sessionFactory.openSession();
+			House house1=(House)session.load(House.class,house.gethId());
+			List<Room> room=house1.getRooms();
+			return room;
+		}
+
+		public List<House> applySorting(House house,User user) {
 			
+			return null;
 		}
 }

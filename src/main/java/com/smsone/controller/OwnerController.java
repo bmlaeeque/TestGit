@@ -1,6 +1,7 @@
 package com.smsone.controller;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
@@ -10,13 +11,16 @@ import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.smsone.model.House;
 import com.smsone.model.Owner;
+import com.smsone.model.Room;
 import com.smsone.service.OwnerService;
 
 @Controller
@@ -30,8 +34,36 @@ public class OwnerController {
 	@RequestMapping(value = "/showOwnerPage")
 	public String showOwnerPage()
 	{
+		
 		return "owner";
 	}
+	//edit Owner details
+		@RequestMapping(value = "/editOwnerProfile/{oId}")
+		public String editOwnerProfile(@PathVariable("oId") Long oId,RedirectAttributes ra)
+		{
+			ra.addAttribute("oId", oId);
+			return "redirect:/editOwnerRegistration1";
+		}
+		@RequestMapping(value = "/editOwnerRegistration1")
+		public String editOwnerRegistration1(@RequestParam("oId") Long oId,Model model)
+		{
+			Owner owner=new Owner();
+			owner.setoId(oId);
+			model.addAttribute("owner", ownerService.getOwner(owner));
+			return "editOwnerRegistration";
+		}
+	//show Owner Houses
+		@RequestMapping(value = "/ownerHouse")
+		public String ownerHouse(Model model,HttpSession session)
+		{
+			Owner owner=(Owner)session.getAttribute("owner");
+			if(owner!=null)
+			{	
+					List<House> house=owner.getHouse();	
+					model.addAttribute("house",house);		
+			}
+			return "ownerHomes";	
+		}
 	@RequestMapping(value = "/showOwnerPage1")
 	public String showOwnerPage1(@RequestParam("invalid") Long invalid,Model model)
 	{
@@ -66,10 +98,43 @@ public class OwnerController {
 		ownerService.saveOwner(owner);
 		String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
-		//sendDivastaysMail(email,msg,"Divastays Email Activation Link");
+		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
     	model.addAttribute("oId",owner.getoId());
 		return "success";
 	}
+	//save edited owner
+		@RequestMapping(value = "/saveEditedOwner", method = RequestMethod.POST)
+		public String saveEditedOwner(@RequestParam("oId") Long oId,@RequestParam("firstName") String firstName,@RequestParam("contactNumber")Long contactNumber,@RequestParam("password1") String password,
+				@RequestParam("aadharNumber") Long aadharNumber,@RequestParam("lastName") String lastName,@RequestParam("email") String email,Model model,HttpSession session)
+		{
+			Date date=new Date();
+			Owner owner=new Owner();
+			owner.setoId(oId);
+			owner.setFirstName(firstName);
+			owner.setLastName(lastName);
+			owner.setContactNumber(contactNumber);
+			owner.setEmail(email);
+			owner.setAadharNumber(aadharNumber);
+			owner.setPassword(password);
+			Owner owner1=ownerService.getOwner(owner);
+			if(owner1.getEmail().equals(email))
+			{
+				owner.setOwnerHashcode(owner1.getOwnerHashcode());
+				owner.setOwnerCreation_date(owner1.getOwnerCreation_date());
+				owner.setOwnerStatus(owner1.getOwnerStatus());
+			}
+			else
+			{
+				String ownerHashcode = UUID.randomUUID().toString();
+				owner.setOwnerHashcode(ownerHashcode);
+				owner.setOwnerCreation_date(date);
+				String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
+				String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
+				sendDivastaysMail(email,msg,"Divastays Email Activation Link");
+			}	
+			ownerService.updateOwner(owner);
+			return "success";
+		}
 	public String sendDivastaysMail(String email,String message,String subject)
 	{
 		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
@@ -222,7 +287,10 @@ public class OwnerController {
 		else
 		{
 			ra.addAttribute("invalid",0000);
+			Long oId=owner.getoId();
+			ra.addAttribute("oId", oId);
 			session.setAttribute("owner",owner);
+			session.setAttribute("oId", owner.getoId());
 
 		}
 		return "redirect:/showOwnerPage1";
