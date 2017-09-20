@@ -85,7 +85,7 @@ public class UserController {
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
 		String link="http://localhost:2018/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
-		//sendDivastaysMail(email,link,"Divastays Email Activation Link");
+		sendDivastaysMail(email,link,"Divastays Email Activation Link");
 		return "success";
 	}
 	public String sendDivastaysMail(String email,String message,String subject)
