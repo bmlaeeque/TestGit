@@ -10,14 +10,9 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  
-  
-
+  <!-- bedpop link -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
  
-
-
-
-
 </head>
 <body style="background-color: rgb(243,210,230);">
 <!--Header-->
@@ -46,16 +41,13 @@
 </nav>
 <!--End of Header-->
 <!--Room details Start-->
+
 <div class="container">    
  <div class="row">
- 
-
-    <!--Room 1 Section-->
+ <!--Room 1 Section-->
     <div class="col-sm-5">
       <div class="tab-content">
-       
-   		
-            <h3>Room Details</h3>
+       <h3>Room Details</h3>
               <div class="w3-container">
          <table class="table">
            <thead>
@@ -74,7 +66,13 @@
              </tr>
              <tr class="w3-hover-green">
                 <td>Facilities</td>
-                <td>Sofa<br>Television<br>Wifi<br>Attached Bathroom<br>Geyser</td>
+                <td>      AC          : ${room.ac}<br>
+                         Wifi         : ${room.wifi}
+                <br>     Bathroom     : ${room.bathroom}
+                <br>     Geyser       :  ${room.geyser}
+                
+                <br>     Gym          :${room.gym}
+                <br>     SwimmingPool :${room.swimmingPool} </td>
             </tr>
              <tr class="w3-hover-green">
                 <td>Roommates</td>
@@ -83,16 +81,14 @@
                       <li><a data-toggle="collapse" data-target="#bed1">Bed 1</a></li>
                        <div id="bed1" class="collapse">
                          <ol>
-                           <li>English</li>
-                           <li>non-Veg</li>
+                         <a class="btn" data-toggle="popover" title="Foodpreference : ${user.foodPreference} Profession : ${user.profession} MotherTounge : ${user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> 
                          </ol>
                        </div>    
          
                      <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
                         <div id="bed2" class="collapse">
                            <ol>
-                             <li>Hindi</li>
-                             <li>Veg</li>
+                             
                            </ol>   
                         </div>
                      </ul> 
@@ -103,17 +99,56 @@
 </div> 
 <!--End Room 1 Section-->
   </div>
-</div>
   
+      <div class="container">    
+ <div class="row">
  
- <c:forEach items="${beds}" var="beds" varStatus="itr">
- ${beds.bId}
+
+    <!--Room 1 Section-->
+    <div class="col-sm-5">
+      <div class="tab-content">
+   		
+     
+              <div class="w3-container">
+         <table class="table">
+           <thead>
+              <tr class="w3-light-grey w3-hover-red">
+                 
+                 <th></th>
+             </tr>
+           </thead>
+<c:forEach items="${beds}" var="beds" varStatus="itr">
+
+ 
+<tr class="w3-hover-green">
+                <td>Bed Info</td>
+                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${user.foodPreference} Profession : ${user.profession} MotherTounge : ${user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
+             </tr>
 
  </c:forEach>
-  
+ </table>
+ </div>
+ </div>
+ </div>
+ </div>
  
  
  
+ 
+ 
+ 
+ 
+<!-- script for bed popup -->
+ <script>
+$(document).ready(function() {
+   $('[data-toggle="popover"]').popover({
+      placement: 'right',
+      trigger: 'hover'
+   });
+});
+	
+</script>
+
  
  <div class="container">
   <div class="row">
@@ -182,7 +217,9 @@
      </div>
     <hr>
 </div>
-        
+     
+        	
+      
  <!--Script for book and view Code-->
 <script>
 $(function() {

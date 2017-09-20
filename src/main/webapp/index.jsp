@@ -6,7 +6,7 @@
 <title>DivaStay</title>
 </head>
 <body>
-<jsp:forward page="showPaymentPage"></jsp:forward>
+<jsp:forward page="showHome"></jsp:forward>
 
 </body>
 </html>
