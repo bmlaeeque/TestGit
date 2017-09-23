@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class BaseController {
-	//show home
 	@RequestMapping(value = "/showHome")
 	public String showHome()
 	{
@@ -94,8 +93,7 @@ public class BaseController {
 	
 	@RequestMapping(value = "/checkdate")
 	public String checkdate(@RequestParam("date")@DateTimeFormat(pattern="yyyy-MM-dd") Date date)
-	{
-				
+	{			
 		return "deal1";
 	}
 }

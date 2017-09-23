@@ -1,6 +1,5 @@
 package com.smsone.service;
 
-import com.smsone.model.House;
 import com.smsone.model.User;
 
 public interface UserService {
