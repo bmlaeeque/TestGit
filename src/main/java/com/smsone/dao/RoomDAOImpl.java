@@ -4,19 +4,18 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
-
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
-import org.hibernate.transform.AliasToBeanResultTransformer;
 import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.smsone.model.Beds;
 import com.smsone.model.House;
+import com.smsone.model.Owner;
 import com.smsone.model.Room;
 import com.smsone.model.User;
 @Repository
@@ -107,48 +106,44 @@ public class RoomDAOImpl implements RoomDAO {
 
 		return null;
 	}
-	public Room getRoom(Room room) {
-		Session session=sessionFactory.openSession();
-		Criteria cr = session.createCriteria(Room.class)
-			    .setProjection(Projections.projectionList()
-			      .add(Projections.property("rId"), "rId")
-			      .add(Projections.property("roomtype"), "roomtype")
-			      .add(Projections.property("ac"), "ac")
-			      .add(Projections.property("wifi"), "wifi")
-			      .add(Projections.property("bathroom"), "bathroom")
-			      .add(Projections.property("geyser"), "geyser")
-			      .add(Projections.property("bed"), "bed")
-			      .add(Projections.property("swimmingPool"), "swimmingPool")
-			      .add(Projections.property("gym"), "gym")
-			      .add(Projections.property("numberOfBed"), "numberOfBed")
-			      .add(Projections.property("foodAvailability"), "foodAvailability")
-			      .add(Projections.property("img1"), "img1")
-			      .add(Projections.property("img2"), "img2")
-			      .add(Projections.property("img3"), "img3"))
-			    .setResultTransformer(new AliasToBeanResultTransformer(Room.class));
-		cr.add(Restrictions.eq("rId",room.getrId()));
-		List room1=cr.list();
-		return (Room) room1;
-		
-		
+	
 
-	}
-
-	public void updateRoom(Room room) {
+	public void updateRoom(Room room,House house) {
 		Session session=sessionFactory.openSession();
+	House house1=(House) session.load(House.class, house.gethId());
 		Transaction tx = session.beginTransaction();
+		room.setHouse(house1);
 		session.saveOrUpdate(room);
 		tx.commit();
 	    session.close();		 		
 	}	
+	@SuppressWarnings("unchecked")
 	public Room getRoom(Long rId) {
 		Session session=sessionFactory.openSession();
-		Room room=(Room)session.load(Room.class,rId);
-		return room;
+		
+		return null;
 	}
 	public User getUser(Long bId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public void deleteRoom(Room room) {
+		Session session=sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		Room room1=(Room)session.load(Room.class,room.getrId());
+		
+		session.delete(room1);
+		tx.commit();
+		session.close();
+		
+	}
+	public List<Room> remainingRoom(Long hId) {
+		System.out.println("byyyyyyyyyyyyyyyyy");
+		Session session=sessionFactory.openSession();
+		@SuppressWarnings("unchecked")
+		House house=(House)session.load(House.class,hId);
+		List<Room> room1=house.getRooms();
+		return room1;
 	}
 
 }

@@ -16,8 +16,10 @@ public interface RoomService {
 	public Long countBeds(Long rId);
 	
 	public User getUser(Long bId);
-	public Room getRoom(Room room);
-	public void updateRoom(Room room);
+	
+	public void updateRoom(Room room,House house);
+	public void deleteRoom(Room room);
+	public List<Room> remainingRoom(Long hId);
 	public List<User> getUsers(List<Beds> beds);
 	public Room getRoom(Long rId);
 	public List<Beds> getAllBedDetails(Long rId);

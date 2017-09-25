@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.smsone.dao.RoomDAO;
 import com.smsone.model.Beds;
+import com.smsone.model.House;
 import com.smsone.model.Room;
 import com.smsone.model.User;
 @Service
@@ -39,12 +40,10 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.getUsers(beds);
 	}
 
-	public Room getRoom(Room room) {
-		return roomDAO.getRoom(room);
-	}
 
-	public void updateRoom(Room room) {
-		roomDAO.updateRoom(room);
+
+	public void updateRoom(Room room,House house) {
+		roomDAO.updateRoom(room,house);
 		
 	}
 
@@ -59,6 +58,15 @@ public class RoomServiceImpl implements RoomService {
 	public User getUser(Long bId) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	public void deleteRoom(Room room) {
+		roomDAO.deleteRoom(room);
+		
+	}
+
+	public List<Room> remainingRoom(Long hId) {
+		return roomDAO.remainingRoom(hId);
 	}
 
 	

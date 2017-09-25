@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,19 +48,66 @@ public class RoomController {
 	//	model.addAttribute("users",users);
 		return "roomInfo";
 	}
-	@RequestMapping(value = "/editRoom/{rId}")
-	public String editRoom(@PathVariable("rId") Long rId,RedirectAttributes ra)
+	/*@RequestMapping(value = "/deleteRoom")
+	public String deleteRoom(@PathVariable("rId") Long rId,RedirectAttributes ra)
 	{
+		System.out.println("hiiiiiiiiiiiiiiiiii");
         ra.addAttribute("rId",rId);
-		return "redirect:/editRoom1";
+        //ra.addAttribute("hId",hId);
+        //System.out.println(hId);
+		return "redirect:/deleteRoom1";
      
-	}
-	@RequestMapping(value = "/editRoom1")
-	public String editRoom1(@RequestParam("rId") Long rId,Model model)
+	}*/
+	@RequestMapping(value = "/deleteRoom")
+	public String deleteRoom1(@RequestParam("rId") Long rId,@RequestParam("hId") Long hId,RedirectAttributes ra)
 	{
 		Room room=new Room();
-		room.setrId(rId);
-	    model.addAttribute("room",roomService.getRoom(room));
+	    room.setrId(rId);
+	    roomService.deleteRoom(room);
+	    System.out.println(hId);
+		List<Room> room2= roomService.remainingRoom(hId);
+		ra.addAttribute("room", room2);
+			return "ownerRooms";
+		
+	}
+	@RequestMapping(value = "/editRoom1")
+	public String editRoom(@RequestParam("rId") Long rId,@RequestParam("hId") Long hId,Model model)
+	{
+		House house=new House();
+		house.sethId(hId);
+		Room r1=new Room();
+	    house=houseService.getHouse(house);
+	    List<Room> room=house.getRooms();
+	    for(Room r:room)
+	    {
+	    	if(r.getrId()==rId)
+	    	{
+	    		//r1.setHouse(r.getHouse());
+	    		r1.setRoomId(r.getRoomId());
+	    		r1.setRoomtype(r.getRoomtype());
+	    		r1.setNumberOfBed(r.getNumberOfBed());
+	    		r1.setFoodAvailability(r.getFoodAvailability());
+	    		r1.setImg1(r.getImg1());
+	    		r1.setImg2(r.getImg2());
+	    		r1.setImg3(r.getImg3());
+	    		r1.setrId(r.getrId());
+	    	}
+	    	else
+	    	{
+	    		
+	    	}
+
+	    }
+	    
+	    model.addAttribute("room",r1);
+	    model.addAttribute("hId", house.gethId());
+	    return "editRoomDetails";  
+     
+	}
+	@RequestMapping(value = "/editRoom")
+	public String editRoom1(@RequestParam("room") Room room,Model model)
+	{
+	    model.addAttribute("room",room);
 		return "editRoomDetails";  
 	}
 	@RequestMapping(value="/showHouseInfo/showRoomInfo/{rId}")
@@ -160,9 +208,12 @@ public class RoomController {
 		
 	//save edited room details
 	@RequestMapping(value = "/saveEditedRoom", method = RequestMethod.POST)
-	public String saveEditedRoom(@RequestParam("rId")Long rId,@RequestParam("roomId")Long roomId,@RequestParam("roomType")String roomType,@RequestParam("numberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model,HttpSession session) throws IOException
+	public String saveEditedRoom(@RequestParam("houseId")Long houseId,@RequestParam("rId")Long rId,@RequestParam("roomId")Long roomId,@RequestParam("roomType")String roomType,@RequestParam("numberOfBed")Integer numberOfBed,@RequestParam("foodAvailability")String foodAvailability,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("img3")MultipartFile img3,Model model,HttpSession session) throws IOException
 	{
 		Room room=new Room();
+		House house=new House();
+		house.sethId(houseId);
+		room.setHouse(house);
 		room.setrId(rId);
 		room.setRoomId(roomId);
 		room.setRoomtype(roomType);	
@@ -174,7 +225,7 @@ public class RoomController {
 		room.setImg1(img11);
 		room.setImg2(img12);
 		room.setImg3(img13);
-		roomService.updateRoom(room);
+		roomService.updateRoom(room,house);
 		return "success";
 	}
 

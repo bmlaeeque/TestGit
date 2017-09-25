@@ -1,5 +1,5 @@
 
-	 <!-- user email expire popup function-->
+	 <!-- user email expire popup-->
 	
 		function emailExpirePopup1() {
 			var modal = document.getElementById('userEmailExpire');
@@ -11,7 +11,7 @@
 		}
 	
 <!--end user email expire popup code --> 
-	<!-- owner email expire popup function-->
+	<!-- owner email expire popup-->
 
 		function ownerEmailExpirePopup1() {
 			var modal = document.getElementById('ownerEmailExpire');
@@ -23,7 +23,7 @@
 		}
 
  <!--end owner email expire popup code --> 
- <!--User Login popup function-->
+ <!--User Login popup -->
 
 		function popup() {
 			var modal = document.getElementById('myModal11');

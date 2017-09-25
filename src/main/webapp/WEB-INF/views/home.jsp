@@ -584,7 +584,7 @@
 					<div class="row">
 						<div class="col-md-6">
 
-							<form role="form" class="form-horizontal" method="post"
+							<form  class="form-horizontal" method="post"
 								action="emailExpirePopup">
 
 								<input type="hidden" name="email" id="email" value="${email}">
@@ -601,7 +601,8 @@
 			</div>
 		</div>
 	</div>
-	<!--  End of email-verification link expired popup code--> <!--  Expired owner email-verification link Popup code-->
+	<!--  End of email-verification link expired popup code-->
+	 <!--  Expired owner email-verification link Popup code-->
 	<div class="mod" id="ownerEmailExpire" style="color: black;">
 		<div class="modal-dialog modal-sm">
 			<div class="modal-content">
@@ -659,7 +660,7 @@
 		} else if (status.equals("Expired")) {
 	%>
 	<script type="text/javascript">
-		emailExpirePopup1();
+	emailExpirePopup1();
 	</script>
 	<%
 		}

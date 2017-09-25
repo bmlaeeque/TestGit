@@ -91,10 +91,17 @@
                     <span>Deposit</span>
                     <input type="text" name="deposit" id="deposit" placeholder="Deposit"  onBlur="getLatLong();CheckDeposit(); return false;" autocomplete="off" required>
                 </label>  
+                    
                  <label>
-                   <span>Upload Photo 2</span>                  
-                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
-                </label>                   
+                    <span>Accommodation Type</span>
+                    <select name="accommodationType" id="accommodationType" class="form-control selectpicker" required>
+                        <option value="">Select Accommodation Type</option>
+                        <option value="shortTerm">Short Term</option>
+                        <option value="longTerm">Long Term</option>
+                        <option value="both">Both</option>
+                       
+                    </select>
+                </label>     
                <br>
                <br>
                <br>
@@ -149,31 +156,20 @@
                    <span>Upload Photo 1</span>               
                   <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" required >
                 </label>
-<<<<<<< HEAD
-                   <label>
+
+                               
+                        <label>
+                   <span>Upload Photo 2</span>                  
+                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
+                </label>              
+       <label>
                    <span>Upload Photo 3</span>                 
                  <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;" required>
-                </label>                 
-                           
-              <input type="hidden" name="latitude" id="latitude" value="">
-=======
+                </label>    
                 <br>
-                <label>
-                   <span>Upload Photo 3</span>
-                 <input type="file" name="img3" id="img3" onBlur="CheckImg3(); return false;" autocomplete="off"  required>
-                </label>
-                 <label>
-                    <span>Accommodation Type</span>
-                    <select name="accommodationType" id="accommodationType" class="form-control selectpicker" required>
-                        <option value="">Select Accommodation Type</option>
-                        <option value="shortTerm">Short Term</option>
-                        <option value="longTerm">Long Term</option>
-                        <option value="both">Both</option>
-                       
-                    </select>
-                </label>
+               
                 <input type="hidden" name="latitude" id="latitude" value="">
->>>>>>> branch 'master' of https://github.com/divastays70/divastays.git
+
                <input type="hidden" name="longitude" id="longitude" value="">
           
             </div>
@@ -184,10 +180,7 @@
         </form>       
 </div>
 <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
-<<<<<<< HEAD
-=======
- 
->>>>>>> branch 'master' of https://github.com/divastays70/divastays.git
+
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAae9SU_6aO359OSvLrFEx27cs4ervdYDU&callback=initMap"></script>
      <script>
         function getLatLong() {

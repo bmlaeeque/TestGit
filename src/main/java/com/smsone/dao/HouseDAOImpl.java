@@ -44,7 +44,9 @@ public class HouseDAOImpl implements HouseDAO {
 	public House getHouse(House house) {
 		Session session=sessionFactory.openSession();
 		House loadHouse=(House)session.load(House.class,house.gethId());
+	
 		return loadHouse;
+	
 	}
 	public boolean checkAadharNumber(House house) {
 			Session session=sessionFactory.openSession();
@@ -204,7 +206,6 @@ public class HouseDAOImpl implements HouseDAO {
 		}
 		public List<House> remainingOwnerHouse(Long oId) {
 			Session session=sessionFactory.openSession();
-			@SuppressWarnings("unchecked")
 			Owner owner=(Owner)session.load(Owner.class,oId);
 			List<House> house1=owner.getHouse();
 			return house1;
@@ -214,6 +215,7 @@ public class HouseDAOImpl implements HouseDAO {
 			Session session=sessionFactory.openSession();
 			House house1=(House)session.load(House.class,house.gethId());
 			List<Room> room=house1.getRooms();
+			
 			return room;
 		}
 

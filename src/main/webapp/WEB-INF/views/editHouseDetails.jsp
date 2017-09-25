@@ -108,23 +108,30 @@
                     <span>Rent</span>                
                     <input type="text" name="rent" id="rent" placeholder="Rent" value="${house.rent}" onBlur="CheckRent(); return false;" autocomplete="off" required>
                 </label>
-                  <label>
-                   <span>Upload Photo 1</span>
-                 <img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" />
-                  <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" >
+                 <label>
+                    <span>Accommodation Type</span>
+                    <select name="accommodationType" id="accommodationType" class="form-control selectpicker" required>
+                        <option value="${house.accommodationType}">${house.accommodationType}</option>
+                        <option value="shortTerm">Short Term</option>
+                        <option value="longTerm">Long Term</option>
+                        <option value="both">Both</option>
+                       
+                    </select>
+                </label>  
+                     
+               <br>
+               <br>
+               <br>
+               <br>
+                <br>
+                <br>   
+                 <label>
+                   <span>Upload Photo 2</span>
+                   <img src="<ui:image img='${house.img2}'></ui:image>" alt="..." style="height:90px" />
+                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;">
                 </label>
-                   <label>
-                   <span>Upload Photo 3</span>
-                    <img src="<ui:image img='${house.img3}'></ui:image>" alt="..." style="height:90px" />
-                 <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;">
-                </label>    
-                    
-               <br>
-               <br>
-               <br>
-               <br>
-                <br>
-                <br>
+                  
+               
               
                              
              </div>
@@ -178,11 +185,16 @@
                 </label> 
                 <br>
                 <br>
-                <label>
-                   <span>Upload Photo 2</span>
-                   <img src="<ui:image img='${house.img2}'></ui:image>" alt="..." style="height:90px" />
-                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;">
+                 <label>
+                   <span>Upload Photo 1</span>
+                 <img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" />
+                  <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" >
                 </label>
+                 <label>
+                   <span>Upload Photo 3</span>
+                    <img src="<ui:image img='${house.img3}'></ui:image>" alt="..." style="height:90px" />
+                 <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;">
+                </label>    
               <input type="hidden" name="latitude" id="latitude" value="">
                <input type="hidden" name="longitude" id="longitude" value="">
             </div>
