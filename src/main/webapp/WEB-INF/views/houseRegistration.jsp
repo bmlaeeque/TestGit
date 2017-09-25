@@ -155,17 +155,19 @@
                <label>
                    <span>Upload Photo 1</span>               
                   <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" required >
-                </label>
-
-                               
+                </label>                              
                         <label>
                    <span>Upload Photo 2</span>                  
                  <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
                 </label>              
-       <label>
+      
+                   <label>
+
                    <span>Upload Photo 3</span>                 
                  <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;" required>
+
                 </label>    
+
                 <br>
                
                 <input type="hidden" name="latitude" id="latitude" value="">

@@ -84,6 +84,7 @@ public class UserController {
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
+
 		String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 		sendDivastaysMail(email,msg,"Divastays Email Activation Link");

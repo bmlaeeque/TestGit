@@ -45,6 +45,16 @@ public class RoomController {
 		//{
 			//users.add(beds1.getUser());
 		//}
+		
+		 List<Beds> beds=r.getBeds();
+	       java.util.Iterator<Beds> itr1=beds.iterator();
+			while(itr1.hasNext())
+			{
+				Beds b1=itr1.next();
+				
+				User user=b1.getUser();
+				model.addAttribute("user",user);
+			}
 	//	model.addAttribute("users",users);
 		return "roomInfo";
 	}
