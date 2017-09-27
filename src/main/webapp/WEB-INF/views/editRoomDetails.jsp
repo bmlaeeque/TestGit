@@ -57,12 +57,13 @@
        <h1>Room Details</h1>
     </div>
    <div class="form-row" style="float:left; width:50%;">
-   <!--
+   
     <label>
         <span>House ID</span>
-            <input type="text" name="houseId" id="houseId" value="${room.house}">
+            <input type="text" name="houseId" id="houseId" value="${hId}">
+            <input type="hidden" name="rId" id="rId" value="${room.rId}">  
      </label>
-       -->
+       
      <label>
             <span>Room Type</span>
                <select name="roomType" class="form-control selectpicker" id="roomType" required>
@@ -90,42 +91,43 @@
       <tbody style="background-color: rgb(243,210,230);">
           <tr>
            <td>AC</td>
-           <td><input type="radio" name="ac" value="ac"><span>Yes&nbsp;&nbsp;&nbsp;</span></td>
-           <td><input type="radio" name="ac" value="not available"><span>No</span></td>
+           
+           <td><input type="radio" name="ac" required><span>Yes&nbsp;&nbsp;&nbsp;</span></td>
+           <td><input type="radio" name="ac" ><span>No</span></td>
           </tr>
          <tr>
            <td>Wifi</td>
-           <td><input type="radio" name="wifi" ><span>Yes</span></td>
+           <td><input type="radio" name="wifi" required><span>Yes</span></td>
            <td><input type="radio" name="wifi" ><span>No</span></td>
           </tr>
          <tr>
            <td>Bathroom</td>
-           <td><input type="radio" name="bathroom"  ><span>Yes</span></td>
+           <td><input type="radio" name="bathroom"  required><span>Yes</span></td>
            <td><input type="radio" name="bathroom" ><span>No</span></td>
         </tr>
          <tr>
            <td>Geyser</td>
-           <td><input type="radio" name="geyser" ><span>Yes</span></td>
+           <td><input type="radio" name="geyser" required><span>Yes</span></td>
            <td><input type="radio" name="geyser" ><span>No</span></td>
          </tr>
          <tr>
            <td>Bed</td>
-           <td><input type="radio" name="bed"  ><span>Yes</span></td>
+           <td><input type="radio" name="bed"  required><span>Yes</span></td>
            <td><input type="radio" name="bed" ><span>No</span></td>
          </tr>
          <tr>
            <td>Swimming Pool&nbsp;&nbsp;&nbsp;&nbsp;</td>
-           <td><input type="radio" name="swimmingPool"  ><span>Yes</span></td>
+           <td><input type="radio" name="swimmingPool"  required><span>Yes</span></td>
            <td><input type="radio" name="swimmingPool" ><span>No</span></td>
          </tr>
           <tr>
            <td>Parking</td>
-           <td><input type="radio" name="parking"  ><span>Yes</span></td>
+           <td><input type="radio" name="parking"  required><span>Yes</span></td>
            <td><input type="radio" name="parking" ><span>No</span></td>
          </tr>
           <tr>
            <td>Gym</td>
-           <td><input type="radio" name="gym"  ><span>Yes</span></td>
+           <td><input type="radio" name="gym"  required><span>Yes</span></td>
            <td><input type="radio" name="gym" ><span>No</span></td>
           </tr>
      </tbody>
@@ -148,13 +150,14 @@
            <label>
              <span>Upload Photo 1</span>
              <img src="<ui:image img='${room.img1}'></ui:image>" alt="..." style="height:90px" />
-               <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" >
+               <input type="file" name="img1" id="img1" src="${room.img1}" onBlur="CheckImg1(); return false;" >
            </label>
            <label>
              <span>Upload Photo 2</span>
              <img src="<ui:image img='${room.img2}'></ui:image>" alt="..." style="height:90px" />
               <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;">
            </label>
+            
            <label>
             <span>Upload Photo 3</span>
             <img src="<ui:image img='${room.img3}'></ui:image>" alt="..." style="height:90px" />
@@ -164,7 +167,7 @@
             <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">
                 <button type="submit" value="Submit" >Submit</button>
             </div>		   
-            <input type="hidden" name="rId" id="rId" value="${room.rId}">         
+                  
         </form>
 </div>
 <script src="js/room.js" type="text/javascript"></script>  

@@ -37,6 +37,11 @@ table, th, td {
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+<c:choose>
+    <c:when test="${room.isEmpty()}">
+     <h3>Oops..!You don't have any Rooms.</h3>
+    </c:when>    
+    <c:otherwise>  
  <div class="main-content">
   <form class="form-basic" method="post" action=""  enctype="multipart/form-data" style="background-color: rgb(243,210,230);" style="background-image:url(images/formBackground.jpg)">
     <div class="form-title-row">
@@ -56,9 +61,9 @@ table, th, td {
           <tr>
            <td>${room.rId}</td>
             <td><img src="<ui:image img='${room.img1}'></ui:image>" alt="..." style="height:90px" /></td>   
-            <td><a href="editRoom/${room.rId}">Edit</a><br>
-            <a href="deleteRoom/${room.rId}">Delete</a>
-          
+            <td><a href="editRoom1?rId=${room.rId}&hId=${room.house.hId}">Edit</a><br>
+            <a href="deleteRoom?rId=${room.rId}&hId=${room.house.hId}">Delete</a>
+
             </td>
           </tr>
           </c:forEach>
@@ -66,7 +71,7 @@ table, th, td {
 </table>
    </div>
  <div class="form-row" style="float:left; width:50%;">
-         
+        
            </div>
             <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">
                 <button type="submit" value="Submit" >Submit</button>
@@ -74,6 +79,8 @@ table, th, td {
           
         </form>
 </div>
+</c:otherwise>
+</c:choose>
 <script src="js/room.js" type="text/javascript"></script>  
 
 </body>

@@ -89,7 +89,7 @@ public class HouseController {
 		return "editHouseDetails";  
 	}
 	@RequestMapping(value = "/deleteHouse/{hId}")
-	public String deleteHouse(@PathVariable("hId") Long hId,Model model,HttpSession session,RedirectAttributes ra)
+	public String deleteHouse(@PathVariable("hId") Long hId,RedirectAttributes ra)
 	{
         ra.addAttribute("hId",hId);
 		return "redirect:/deleteHouse1";
@@ -100,8 +100,7 @@ public class HouseController {
 		House house=new House();
 		house.sethId(hId);
 		Long oId= (Long)session.getAttribute("oId");
-		houseService.deleteHouse(house);
-		//model.addAttribute("house",houseService.remainingOwnerHouse(oId));
+		houseService.deleteHouse(house);		
 		List<House> house2= houseService.remainingOwnerHouse(oId);
 			ra.addAttribute("house", house2);
 			return "ownerHomes";
@@ -127,12 +126,13 @@ public class HouseController {
 		//save house
 	//save house
 			@RequestMapping(value = "/saveHouse",method = RequestMethod.POST)
-			public String saveHouse(@RequestParam("ownerId")Long oId,@RequestParam("accommodationType")String accommodationType,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
+			public String saveHouse(@RequestParam("ownerId")Long oId,@RequestParam("pincode")Long pincode,@RequestParam("accommodationType")String accommodationType,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
 			@RequestParam("address")String address,@RequestParam("subcategory")String locationArea,@RequestParam("subcategory2")String country,@RequestParam("deposit")Double deposit,@RequestParam("foodPreference")String foodPreference,@RequestParam("latitude")Double latitude,@RequestParam("longitude")Double longitude,@RequestParam("img3")MultipartFile img3,Model model,HttpSession session) throws IOException,SerialException
 			{
 				House house=new House();
 				house.setAddress(address);
 				house.setArea(area);
+				house.setPincode(pincode);
 				house.setDeposit(deposit);
 				house.setFloorNumber(floorNumber);
 				house.setFoodPreference(foodPreference);
@@ -169,13 +169,14 @@ public class HouseController {
 			}	
 		//save house
 				@RequestMapping(value = "/saveEditedHouse",method = RequestMethod.POST)
-				public String saveEditedHouse(@RequestParam("houseId")Long hId,@RequestParam("ownerId")Long oId,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("pincode")Long pincode,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
+				public String saveEditedHouse(@RequestParam("houseId")Long hId,@RequestParam("accommodationType")String accommodationType,@RequestParam("ownerId")Long oId,@RequestParam("tenancyType")String tenancyType,@RequestParam("room")Integer room,@RequestParam("pincode")Long pincode,@RequestParam("city")String city,@RequestParam("subcategory1")String state,@RequestParam("rent")Double rent,@RequestParam("area")Double area,@RequestParam("img1")MultipartFile img1,@RequestParam("img2")MultipartFile img2,@RequestParam("houseName")String houseName,@RequestParam("floorNumber")Integer floorNumber,
 				@RequestParam("address")String address,@RequestParam("subcategory")String locationArea,@RequestParam("subcategory2")String country,@RequestParam("deposit")Double deposit,@RequestParam("foodPreference")String foodPreference,@RequestParam("img3")MultipartFile img3,Model model,HttpSession session,@RequestParam("latitude")Double latitude,@RequestParam("longitude")Double longitude) throws IOException,SerialException
 				{
 					House house=new House();
 					Owner owner=new Owner();
 					owner.setoId(oId);
 					house.sethId(hId);
+					house.setAccommodationType(accommodationType);
 					house.setOwner(owner);	
 					house.setAddress(address);
 					house.setArea(area);

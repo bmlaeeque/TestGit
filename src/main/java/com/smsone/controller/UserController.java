@@ -93,8 +93,10 @@ public class UserController {
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
-		String link="http://localhost:2018/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
-		sendDivastaysMail(email,link,"Divastays Email Activation Link");
+
+		String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
+		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
+		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
 		return "success";
 	}
 	public String sendDivastaysMail(String email,String message,String subject)
@@ -172,7 +174,7 @@ public class UserController {
 						String hashcode = UUID.randomUUID().toString();
 						user.setHashcode(hashcode);
 						user.setUserCreation_date(date);
-						String link="http://localhost:2018/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
+						String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
 						String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 						sendDivastaysMail(email,msg,"Divastays Email Activation Link");
 					}	
@@ -222,7 +224,7 @@ public class UserController {
 			user.setHashcode(hashcode);
 		    user.setEmail(email);
 		    user=userService.sendNewLink(user);
-			String newLink="http://localhost:2018/PGHOSTEL/resendEmailVerify"+"?hashcode="+hashcode+"&email="+email;	
+			String newLink="http://localhost:8080/PGHOSTEL/resendEmailVerify"+"?hashcode="+hashcode+"&email="+email;	
 			String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+newLink;
 			sendDivastaysMail(email, msg," Divastays Email Verification Link");
 			return "home";

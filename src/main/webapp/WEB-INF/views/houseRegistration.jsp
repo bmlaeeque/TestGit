@@ -91,10 +91,17 @@
                     <span>Deposit</span>
                     <input type="text" name="deposit" id="deposit" placeholder="Deposit"  onBlur="getLatLong();CheckDeposit(); return false;" autocomplete="off" required>
                 </label>  
+                    
                  <label>
-                   <span>Upload Photo 2</span>                  
-                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
-                </label>                   
+                    <span>Accommodation Type</span>
+                    <select name="accommodationType" id="accommodationType" class="form-control selectpicker" required>
+                        <option value="">Select Accommodation Type</option>
+                        <option value="shortTerm">Short Term</option>
+                        <option value="longTerm">Long Term</option>
+                        <option value="both">Both</option>
+                       
+                    </select>
+                </label>     
                <br>
                <br>
                <br>
@@ -148,29 +155,21 @@
                <label>
                    <span>Upload Photo 1</span>               
                   <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" required >
-                </label>
-
+                </label>                              
+                        <label>
+                   <span>Upload Photo 2</span>                  
+                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
+                </label>              
+      
                    <label>
+
                    <span>Upload Photo 3</span>                 
                  <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;" required>
-                </label>                 
-                           
-      
+
+                </label>    
+
                 <br>
-                <label>
-                   <span>Upload Photo 3</span>
-                 <input type="file" name="img3" id="img3" onBlur="CheckImg3(); return false;" autocomplete="off"  required>
-                </label>
-                 <label>
-                    <span>Accommodation Type</span>
-                    <select name="accommodationType" id="accommodationType" class="form-control selectpicker" required>
-                        <option value="">Select Accommodation Type</option>
-                        <option value="shortTerm">Short Term</option>
-                        <option value="longTerm">Long Term</option>
-                        <option value="both">Both</option>
-                       
-                    </select>
-                </label>
+               
                 <input type="hidden" name="latitude" id="latitude" value="">
 
                <input type="hidden" name="longitude" id="longitude" value="">

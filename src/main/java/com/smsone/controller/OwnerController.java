@@ -96,7 +96,7 @@ public class OwnerController {
 		owner.setOwnerHashcode(ownerHashcode);
 		owner.setOwnerCreation_date(date);
 		ownerService.saveOwner(owner);
-		String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
+		String link="http://localhost:8080/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
     	model.addAttribute("oId",owner.getoId());
@@ -128,7 +128,7 @@ public class OwnerController {
 				String ownerHashcode = UUID.randomUUID().toString();
 				owner.setOwnerHashcode(ownerHashcode);
 				owner.setOwnerCreation_date(date);
-				String link="http://localhost:2018/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
+				String link="http://localhost:8080/PGHOSTEL/ownerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;
 				String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 				sendDivastaysMail(email,msg,"Divastays Email Activation Link");
 			}	
@@ -208,7 +208,7 @@ public class OwnerController {
 		owner.setOwnerHashcode(ownerHashcode);
 		owner.setEmail(email);
 		owner=ownerService.sendNewLink(owner);
-		String newLink="http://localhost:2018/PGHOSTEL/resendOwnerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;	
+		String newLink="http://localhost:8080/PGHOSTEL/resendOwnerEmailVerify"+"?ownerHashcode="+ownerHashcode+"&email="+email;	
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+newLink;
 		sendDivastaysMail(email, msg," Divastays Email Verification Link");
 		return "home";

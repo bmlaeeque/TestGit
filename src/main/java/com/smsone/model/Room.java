@@ -39,7 +39,7 @@ public class Room implements Serializable {
 	private byte[] img2;
 	@Column(name="img3",columnDefinition = "LONGBLOB")
 	private byte[] img3;
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.LAZY)
+	@ManyToOne 
     @JoinColumn(name = "hId")
 	private House house;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="room")
