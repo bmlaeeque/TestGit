@@ -305,10 +305,10 @@
   <div id="demo" class="collapse">
        <table class="table">
        			<tbody>
-       			   <c:forEach items="${room}" var="room" varStatus="theCount">
+       			   <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
                      <tr>
-                           <td><a href="showRoomInfo/${room.rId}">${room.roomId}</a></td>
-                          <td><a href="showRoomInfo/${room.rId}"><img src="<ui:image img='${room.img1}'></ui:image>" alt="Image" style="height:50px";/></a></td>
+                           <td><a href="showRoomInfo/${rooms.rId}">${rooms.roomId}</a></td>
+                          <td><a href="showRoomInfo/${rooms.rId}"><img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" style="height:50px ;"/></a></td>
                       </tr> 
                        </c:forEach>
                   </tbody>
