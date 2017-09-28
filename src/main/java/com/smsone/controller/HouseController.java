@@ -218,7 +218,6 @@ public class HouseController {
 			house.sethId(hId);
 			house=houseService.getHouse(house);
 			model.addAttribute("house",house);
-			model.addAttribute("room",house.getRooms());
 			return "houseInfo";
 		}
 		else

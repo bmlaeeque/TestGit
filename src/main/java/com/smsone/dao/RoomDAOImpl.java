@@ -122,7 +122,6 @@ public class RoomDAOImpl implements RoomDAO {
 		Session session=sessionFactory.openSession();
 		Room room=(Room)session.load(Room.class, rId);
 		return room;
-		
 	}
 	public User getUser(Long bId) {
 		// TODO Auto-generated method stub

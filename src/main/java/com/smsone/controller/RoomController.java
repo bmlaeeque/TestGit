@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,8 +32,10 @@ public class RoomController {
 	@Autowired
 	private HouseService houseService;
 	//show room info
-	@RequestMapping(value="/showRoomInfo/{rId}")
-	public String showRoominfo(@PathVariable("rId") Long rId,Model model)
+
+	
+	@RequestMapping(value="/showRoomInfo")
+	public String showRoominfo(@RequestParam("rId") Long rId,Model model)
 	{
 		Room r=roomService.getRoom(rId);
 		model.addAttribute("room",r);
