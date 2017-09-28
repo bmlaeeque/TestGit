@@ -42,16 +42,7 @@ public class RoomController {
 		
 		return "roomInfo";
 	}
-	/*@RequestMapping(value = "/deleteRoom")
-	public String deleteRoom(@PathVariable("rId") Long rId,RedirectAttributes ra)
-	{
-		System.out.println("hiiiiiiiiiiiiiiiiii");
-        ra.addAttribute("rId",rId);
-        //ra.addAttribute("hId",hId);
-        //System.out.println(hId);
-		return "redirect:/deleteRoom1";
-     
-	}*/
+	
 	@RequestMapping(value = "/deleteRoom")
 	public String deleteRoom1(@RequestParam("rId") Long rId,@RequestParam("hId") Long hId,RedirectAttributes ra)
 	{

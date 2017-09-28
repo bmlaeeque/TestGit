@@ -121,7 +121,7 @@
  
 <tr class="w3-hover-green">
                 <td>Bed Info</td>
-                <td><a class="btn" data-toggle="popover" title=Foodpreference : data-content="${beds.user.foodPreference}"  title= Profession : data-content="${beds.user.profession}"}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
+                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
              </tr>
              
 
@@ -135,7 +135,7 @@
  
  
  <style>
- {
+ .popover {
     font-weight:900;
 }
  </style>
