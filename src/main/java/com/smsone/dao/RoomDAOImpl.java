@@ -120,8 +120,9 @@ public class RoomDAOImpl implements RoomDAO {
 	@SuppressWarnings("unchecked")
 	public Room getRoom(Long rId) {
 		Session session=sessionFactory.openSession();
+		Room room=(Room)session.load(Room.class, rId);
+		return room;
 		
-		return null;
 	}
 	public User getUser(Long bId) {
 		// TODO Auto-generated method stub
