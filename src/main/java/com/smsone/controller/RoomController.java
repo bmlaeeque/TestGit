@@ -6,7 +6,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.springframework.aop.target.HotSwappableTargetSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -33,6 +32,7 @@ public class RoomController {
 	@Autowired
 	private HouseService houseService;
 	//show room info
+
 	
 	@RequestMapping(value="/showRoomInfo")
 	public String showRoominfo(@RequestParam("rId") Long rId,Model model)
@@ -43,6 +43,17 @@ public class RoomController {
 		return "roomInfo";
 	}
 	
+
+	/*@RequestMapping(value = "/deleteRoom")
+	public String deleteRoom(@PathVariable("rId") Long rId,RedirectAttributes ra)
+	{
+		System.out.println("hiiiiiiiiiiiiiiiiii");
+        ra.addAttribute("rId",rId);
+        //ra.addAttribute("hId",hId);
+        //System.out.println(hId);
+		return "redirect:/deleteRoom1";
+     
+	}*/
 	@RequestMapping(value = "/deleteRoom")
 	public String deleteRoom1(@RequestParam("rId") Long rId,@RequestParam("hId") Long hId,RedirectAttributes ra)
 	{

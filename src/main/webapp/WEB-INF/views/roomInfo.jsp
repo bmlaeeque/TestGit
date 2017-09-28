@@ -135,8 +135,10 @@
  
  
  <style>
- .popover {
-    font-weight:900;
+ .data-toggle{
+ width:400px;
+ height:300px;
+ font-weight:900;
 }
  </style>
  
@@ -148,8 +150,10 @@ $(document).ready(function() {
 	
 	
    $('[data-toggle="popover"]').popover({
+	   
       placement: 'right',
-      trigger: 'hover'
+      trigger: 'hover',
+      
     	 
   		
    });
