@@ -204,7 +204,7 @@
        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><!--4)main panel start drom here-->
 <form class="form" role="form"  action="mainFilter" accept-charset="UTF-8">
             <!-- first Panel start Here -->
-        <div class="well" style="background-color:rgb(243,210,230)">  <!--5)class well-->
+        <div class="well" style="background-color:rgb(243,210,230)">  <!-- 5)class well-->
         <strong>Profession</strong> 
         
            <div class="form-group">
@@ -227,7 +227,6 @@
                               <option value="panjabi">ਪੰਜਾਬੀ (panjabi)</option>
                               <option value="kannad">ಕನ್ನಡ್ (Kannad)</option>
                               <option value="urdu">اردو (urdu)</option>
-                              
                           </select>
     		</div><!--form group-->
 			<div class="form-group">
@@ -362,22 +361,17 @@
                 <tbody height="25">
                 
                           <tr>
-                             <td ><h5 style="color:#000000">Accomodation For</h5></td>
+                             <td ><h5 style="color:#000000">Accomodation For :</h5></td>
                               <td><h5 style="color:#000000">Girls</h5></td>
                           </tr>
                             <tr>
-                             <td><h5 style="color:#000000">Area</h5></td>
-                             <td><h5 style="color:#000000">${house.address} ${house.city}</h5></td>
+                             <td><h5 style="color:#000000">Address :</h5></td>
+                             <td><h5 style="color:#000000">${house.address}, ${house.locationArea}, ${house.city}</h5></td>
                           </tr>
                             <tr>
-                              <td><h5 style="color:#000000">Avalability</h5></td>
+                              <td><h5 style="color:#000000">Avalability :</h5></td>
                               <td><h5 style="color:#000000">2 bed availble</h5></td>
                            </tr>
-                              <tr>
-                                <td><h5 style="color:#000000">Food Preference</h5></td>
-                                <td><h5 style="color:#000000">${house.foodPreference}</h5></td>
-                             </tr>
-                            
                          </tbody>
                          </table>
                 </div><!--col 4 is closed-->
@@ -386,7 +380,7 @@
   				<div class="active item">
   			<img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" />
      			 <div class="carousel-content">
-        			<h4><strong>${house.hId}&nbsp;${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
+        			<h4><strong>${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
                     	</div><!--carousel content class closed-->
                     	<div class="caption">
   <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}/bed</strong></p>
@@ -553,10 +547,17 @@ window.onload = dynamicdropdown("${address}");
   popup();
   </script>
 </c:if>
-<script>
-function submitForm1() {
-    document.getElementById("house").submit();
-}
-</script>
+
+<c:choose>
+    <c:when test="${sessionScope.user!=null}">
+    </c:when>    
+    <c:otherwise>
+	    <script>
+			document.getElementById("showHouse").addEventListener("click", function(event){
+		    event.preventDefault()
+			});
+		</script>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>

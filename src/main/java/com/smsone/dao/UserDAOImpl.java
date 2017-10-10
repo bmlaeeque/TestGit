@@ -11,7 +11,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.smsone.model.House;
 import com.smsone.model.User;
 @Repository
 public class UserDAOImpl implements UserDAO {

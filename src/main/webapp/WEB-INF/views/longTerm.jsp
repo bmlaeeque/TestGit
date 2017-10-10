@@ -145,9 +145,11 @@
         
    <c:choose>
     <c:when test="${sessionScope.user!=null}">
-     <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-      <a href=logoutLongTerm>Logout</a>
-    </c:when>    
+						<img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>"
+							alt="..." style="height: 30px" />
+							<li><a href="logoutLongTerm"><font color="#000000">Logout</font></a></li>
+						<li><a href="editUserDetails/${user.uId}"><font color="#000000">Edit Your Profile</font></a></li>
+					</c:when> 
     <c:otherwise>
       <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
@@ -178,7 +180,7 @@
 												id="password" placeholder="Password" autocomplete="off"
 												required>
 											<div class="help-block text-right">
-												<a href="verificationlink">Forget the password ?</a>
+												<a href="verificationlink"><font color="#337ab7;">Forget the password ?</font></a>
 											</div>
 											<span id="empIdErr" class="errMsg"></span>
 										</div>
@@ -514,7 +516,7 @@
                             <textarea class="form-control" rows="8" name="message" placeholder="Your message here.." required></textarea>
                         </div>
                         <div class="col-md-3 col-md-offset-4">
-                            <label></label>
+                            <br><br>
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" data-toggle="modal" data-target="#alertModal" class="btn btn-info" id="register" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT<i class="ion-android-arrow-forward"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
                         </div>
                     </form>

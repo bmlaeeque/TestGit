@@ -116,9 +116,7 @@
                  <th></th>
              </tr>
            </thead>
-<c:forEach items="${room.beds}" var="beds" varStatus="itr">
-
- 
+<c:forEach items="${room.beds}" var="beds" varStatus="itr"> 
 <tr class="w3-hover-green">
                 <td>Bed Info</td>
                 <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference} Profession : ${beds.user.profession} MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>

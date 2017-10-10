@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Repository;
 
 import com.smsone.model.Beds;
 import com.smsone.model.House;
-import com.smsone.model.Owner;
 import com.smsone.model.Room;
 import com.smsone.model.User;
 @Repository

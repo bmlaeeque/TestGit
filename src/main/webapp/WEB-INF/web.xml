@@ -52,6 +52,8 @@
   <url-pattern>/showPaymentPage</url-pattern>
   <url-pattern>/logoutOwner</url-pattern>
   <url-pattern>/showHouseReg</url-pattern>
-  <url-pattern>/showRoomReg</url-pattern>
+  <url-pattern>/showHome1</url-pattern>
+  <url-pattern>/showShortTerm1</url-pattern>
+  <url-pattern>/showLongTerm1</url-pattern>
  </filter-mapping>
 </web-app>

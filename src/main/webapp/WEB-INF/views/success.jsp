@@ -7,10 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="assignBed">
-uId<input type="text" name="uId"><br>
-bId<input type="text" name="bId">
-<input type="submit" value="submit">
-</form>
+success
 </body>
 </html>

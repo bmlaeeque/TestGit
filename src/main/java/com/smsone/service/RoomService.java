@@ -1,6 +1,5 @@
 package com.smsone.service;
 
-import java.util.Date;
 import java.util.List;
 
 import com.smsone.model.Beds;

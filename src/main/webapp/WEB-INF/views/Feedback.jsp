@@ -37,8 +37,9 @@
 							placeholder="Your message here.." name="message" id="message" required cols="" onblur="CheckMessage(); return false;"></textarea>
 					</div>
 					<div class="col-md-3 col-md-offset-4">
-						<label></label>
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<br>
+						<br>
 						<button type="submit" data-toggle="modal"
 							data-target="#alertModal" class="btn btn-info" id="register">
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT<i

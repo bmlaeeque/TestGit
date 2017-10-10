@@ -321,7 +321,7 @@ public class HouseController {
 				model.addAttribute("count", houseService.count());
 				model.addAttribute("offset", offset);
 				model.addAttribute("url", "showFilter");
-				return "h";
+				return "filter";
 			}
 			
 			//filter page response with filter

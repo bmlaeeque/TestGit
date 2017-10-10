@@ -40,10 +40,12 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
       <c:choose>
-    <c:when test="${sessionScope.user!=null}">
-     <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
-      <a href=logoutShortTerm >Logout</a>
-    </c:when>    
+   <c:when test="${sessionScope.user!=null}">
+						<img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>"
+							alt="..." style="height: 30px" />
+							<li><a href="logoutShortTerm"><font color="#000000">Logout</font></a></li>
+						<li><a href="editUserDetails/${user.uId}"><font color="#000000">Edit Your Profile</font></a></li>
+					</c:when>
     <c:otherwise>
       <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
@@ -74,7 +76,7 @@
 												id="password" placeholder="Password" autocomplete="off"
 												required>
 											<div class="help-block text-right">
-												<a href="verificationlink">Forget the password ?</a>
+												<a href="verificationlink"><font color="#337ab7;">Forget the password ?</font></a>
 											</div>
 											<span id="empIdErr" class="errMsg"></span>
 										</div>
@@ -141,7 +143,7 @@
        						 </div>
        				 		 <input class="form-control" id="date" name="checkIn" placeholder="check In" type="date"/>
       					 </div>
-      				</div>&nbsp;&nbsp;
+      				</div>
                       <div class="col-md-2">
        					<div class="input-group">
        						 <div class="input-group-addon">
@@ -155,7 +157,9 @@
                
                       <div class="col-md-2">
                       <button class="btn btn-info">Search</button>
-                            <!--<button type="submit" class="btn btn-default btn-primary">Search</button>-->
+                       
+                      
+                       <!--<button type="submit" class="btn btn-default btn-primary">Search</button>-->
                       </div>
                       </form>
       
@@ -391,7 +395,7 @@
                             <textarea class="form-control" rows="8" placeholder="Your message here.." name="message" required></textarea>
                         </div>
                         <div class="col-md-3 col-md-offset-4">
-                            <label></label>
+                            <br><br>
                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" data-toggle="modal" data-target="#alertModal" class="btn btn-info" id="register" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SUBMIT<i class="ion-android-arrow-forward"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button><br>
                         </div>
                     </form>
@@ -469,27 +473,12 @@
 <script src="js/jquery-ui.js"></script>
 <script src="js/popup.js"></script>
 
-<!--  jQuery -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-
-<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
-<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
-
-<!-- Bootstrap Date-Picker Plugin -->
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-
-
-
-<!--  Check in,check-out calender-->
-
-	<script>
-		$(function() {
-			cbpHorizontalMenu.init();
-		});
-	</script>
-	
+		<script>
+			$(function() {
+				cbpHorizontalMenu.init();
+			});
+		</script>
+		
 		
 <!---get in touch validation-->
 

@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smsone.model.House;
 import com.smsone.model.Owner;
-import com.smsone.model.Room;
 import com.smsone.service.OwnerService;
 
 @Controller
