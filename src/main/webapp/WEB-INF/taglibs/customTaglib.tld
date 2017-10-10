@@ -8,7 +8,6 @@
     <name>paginate</name>
     <tag-class>com.smsone.taglib.PaginationTaglib</tag-class>
     <body-content>empty</body-content>
-    
     <attribute>
       <name>next</name>
       <rtexprvalue>true</rtexprvalue>

@@ -40,7 +40,6 @@ public class UserDAOImpl implements UserDAO {
 		}
 	}
 	public boolean checkContactNumber(User user) {
-
 		Session session=sessionFactory.openSession();
 		Criteria crit=session.createCriteria(User.class);
 		Criterion c1=Restrictions.eq("contactNumber",user.getContactNumber());
@@ -90,9 +89,7 @@ public class UserDAOImpl implements UserDAO {
 			user=(User)list.get(0);
 			return user;
 		}
-
-	}
-	
+	}	
 	public User verifyUserAccount(User user) {
 		Date date=new Date(); 
 		Session session=sessionFactory.openSession();
@@ -139,7 +136,6 @@ public class UserDAOImpl implements UserDAO {
 			return user;
 		}
 	}
-
 	public User sendNewLink(User user) {
 		Date date=new Date();
 		Session session=sessionFactory.openSession();
@@ -158,7 +154,6 @@ public class UserDAOImpl implements UserDAO {
 			Transaction tx=session.beginTransaction();
 			if(user.getEmailResendTime()!=null)
 			{
-
 				user1.setHashcode(user.getHashcode());
 				user1.setEmailResendTime(user.getEmailResendTime());
 			}
@@ -166,7 +161,6 @@ public class UserDAOImpl implements UserDAO {
 			{
 				Date emailResendDate=user1.getEmailResendTime();
 				long duration=date.getTime()-emailResendDate.getTime();
-
 				if(duration>1200000)
 				{
 					user1.setStatus("Expired");
@@ -185,16 +179,13 @@ public class UserDAOImpl implements UserDAO {
 	public User getUser(User user) {
 		Session session=sessionFactory.openSession();
 		User user1=(User)session.load(User.class,user.getuId());
-		return user1;
-		
+		return user1;		
 	}
 	public void updateUser(User user) {
 		Session session=sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(user);
 		tx.commit();
-	    session.close();		
-		
+	    session.close();				
 	}
-
 }

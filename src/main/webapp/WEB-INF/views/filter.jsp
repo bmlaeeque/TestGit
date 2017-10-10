@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+ <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -60,12 +60,9 @@
       </button>
       <a class="navbar-brand" href="showHome"><b><font color="#000000">DivaStays</font></b></a>
     </div>
-
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-   
-      <ul class="nav navbar-nav navbar-right">
-     
+      <ul class="nav navbar-nav navbar-right">  
     <c:choose>
     <c:when test="${sessionScope.user!=null}">
      <img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>" alt="..." style="height:30px" />
@@ -86,7 +83,6 @@
 											class="fa fa-twitter"></i> Twitter</a>
 									</div>
 									or
-
 									<form class="form" role="form" method="post" action="loginFilter"
 										accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
@@ -122,7 +118,6 @@
 								</div>
 							</div>
 						</li>       
-
 					</ul></li>
     </c:otherwise>
 </c:choose>	      <li><a href="showHelp"><font color="#000000">Help</font></a></li>
@@ -130,7 +125,6 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 <hr>
-
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
      <div class="navbar-header">
@@ -139,29 +133,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-      </button>
-      
+      </button>      
     </div>
- 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
-      <ul class="nav navbar-nav navbar-right">
-      
+      <ul class="nav navbar-nav navbar-right">    
         <li>
           <a href="#" ><span class="fa fa-filter" aria-hidden="true"  data-toggle="modal" data-target="#myModal">&nbsp;<b><span>Filter</b></span></a>
-        </li>
-    
+        </li> 
         <li><a href="#"><span class="fa fa-sort" aria-hidden="true"  data-toggle="modal" data-target="#myModal1">&nbsp;<b>Sort</b></span></a></li>
         </ul>
-        </div>
-        
-        
-<form role="form"  action="applySorting">
-   <div class="modal fade" id="myModal1" role="dialog">
-   
+        </div>      
+<form role="form"  action="${sort}">
+   <div class="modal fade" id="myModal1" role="dialog">   
     <div class="modal-dialog">
 <!-- Modal content-->
-
       <div class="modal-content" style="background-color:rgb(243,210,230)">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -175,8 +161,7 @@
                     	</div>
                     	<div class="radio">
                       <label><input type="radio" name="priceSort" value="highToLow">? ?  Price - High To Low</label>
-                    	</div>
-                            
+                    	</div>                         
            <div class="modal-footer">
           <button type="submit" class="btn btn-success">Apply</button>
         </div>            
@@ -188,7 +173,6 @@
     </form>
   </div><!-- /.container-fluid -->
 </nav><!--main nav closed-->
-
 <div class="container"><!--1)main container for filter-->
 	<div class="row"><!--2)row -->
 	<form class="form" role="form" id="house" action="showFilterShortTerm" accept-charset="UTF-8">
@@ -205,20 +189,19 @@
 <form class="form" role="form"  action="mainFilter" accept-charset="UTF-8">
             <!-- first Panel start Here -->
         <div class="well" style="background-color:rgb(243,210,230)">  <!--5)class well-->
-        <strong>Profession</strong> 
-        
+        <strong>Profession</strong>      
            <div class="form-group">
       		<select name="profession" id="profession" class="form-control">
         	<option value="Student">Student</option>
   			<option value="Employee">Employee</option>
       		</select>
-			</div><!--form closed -->
-        
+			</div><!--form closed -->      
        		 <div class="form-group">
       		<label>Mother Toung</label>
        		<select id="motherTongue" name="motherTongue" class="form-control">
                               <option value="hindi">हिंदी (hindi)</option>
                               <option value="marathi">मराठी (marathi)</option>
+                                <option value="bengali">বাংলা</option>
                               <option value="english">English</option>
                               	<option value="gujrati">ગુરારથી  (gujarati)</option>
                                <option value="malayalam">മലയാളം (malayalam)</option>
@@ -226,8 +209,7 @@
                               <option value="tamil">தமிழ் (tamil)</option>
                               <option value="panjabi">ਪੰਜਾਬੀ (panjabi)</option>
                               <option value="kannad">ಕನ್ನಡ್ (Kannad)</option>
-                              <option value="urdu">اردو (urdu)</option>
-                              
+                              <option value="urdu">اردو (urdu)</option>                            
                           </select>
     		</div><!--form group-->
 			<div class="form-group">
@@ -236,7 +218,6 @@
                 document.write('<select name="subcategory" id="subcategory" class="form-control"><option value="">Please select Area</option></select>')
             </script>
     </div><!--form group-->
-   
     		<div class="form-group">
       <label>Food Type</label>
       <select id="foodPreference" class="form-control" name="foodPreference">
@@ -245,7 +226,6 @@
         <option value="Non-Veg">non-veg</option>
       </select>
     </div><!--form-group closed-->
-    
     		<div class="panel panel-default"><!--panel class start for the price -->
               <div class="panel-heading" role="tab" id="headingTwo">
                 <h4 class="panel-title">
@@ -253,8 +233,7 @@
                     Price <span class="glyphicon glyphicon-plus pull-right" aria-hidden="true"></span>
                   </a>
                 </h4>
-              </div>
-              
+              </div>            
               	<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px;">
                 <div class="panel-body">
                   <div class="list-group">
@@ -275,16 +254,13 @@
 					</div>
               </div>
                    </div>
-				 </div>
-           
-           
+				 </div>          
             </div><!--panel class closed for price -->
             <br>
 		<div class align="center"><button type="submit" class="btn btn-info" style="">Search</button>
 		</div><br>
           <button type="reset" class="btn btn-info">Reset All</button>&nbsp;&nbsp;&nbsp;
-          </form>    
-                
+          </form>                 
      <form action="showFilterWithFacilities" role="form">   
           <button type="button" data-toggle="modal" data-target="#myModal" >Advance Filter</button>
           <!--modal class start here for the  Adv filter and also for the filter-->  
@@ -342,25 +318,17 @@
 	</div><!--modal-content closed-->
      </div><!--modal dialog closed-->
       </div><!--main modal closed for adv filter-->
-    
- 
      </div><!--5)-->
      </div><!--4)-->
      </div><!--3)-->
-     
-    
   <div id ="showHouse" class="col-md-9" style="height:20px">
       <c:forEach items="${house}" var="house" varStatus="itr">
- 		<a href="showHouseInfo/${house.hId}" > <div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">
- 		 
+ 		<a href="showHouseInfo/${house.hId}" > <div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">	 
            <div class="row">
    				<div class="media col-md-4">
- 	<h4><font color="#FF0000">Home Details</font></h4>
-			
-			 <table class="table small" >
-       			
-                <tbody height="25">
-                
+ 	<h4><font color="#FF0000">Home Details</font></h4>			
+			 <table class="table small" >    			
+                <tbody height="25">             
                           <tr>
                              <td ><h5 style="color:#000000">Accomodation For</h5></td>
                               <td><h5 style="color:#000000">Girls</h5></td>
@@ -376,8 +344,7 @@
                               <tr>
                                 <td><h5 style="color:#000000">Food Preference</h5></td>
                                 <td><h5 style="color:#000000">${house.foodPreference}</h5></td>
-                             </tr>
-                            
+                             </tr>                         
                          </tbody>
                          </table>
                 </div><!--col 4 is closed-->
@@ -390,10 +357,7 @@
                     	</div><!--carousel content class closed-->
                     	<div class="caption">
   <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}/bed</strong></p>
-        </div>
-
-      
-  
+        </div> 
       </div><!--active item class closed-->
     </div><!--carousel inner class closed-->
   		      
@@ -409,7 +373,12 @@
  </div><!--2)-->
      </div><!--1)-->
         <!-- /.sidebar column end here -->
-          
+       <script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" ></script>
+<script src="js/dynamicdropdownfilter.js" type="text/javascript"></script>
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="js/popup.js"></script>   
  <script type="text/javascript">
  var markers = [
 	 <c:forEach var="s" items="${house}">
@@ -429,7 +398,6 @@
 	    },
 	    </c:forEach>
 	];
-
  window.onload = function () {
 	    var mapOptions = {
 	        center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
@@ -461,15 +429,6 @@
 	    }
 	 }
  </script>    
-        
-   
-
-<script src="js/jquery.min.js" type="text/javascript"></script>
-<script src="js/bootstrap.min.js" type="text/javascript" ></script>
-<script src="js/dynamicdropdownfilter.js" type="text/javascript"></script>
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="js/popup.js"></script>
 <script>
 		$(function() {
 			$("#address").autocomplete({
@@ -487,10 +446,8 @@
 			});
 		});
 	</script>
-
  <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyAae9SU_6aO359OSvLrFEx27cs4ervdYDU&callback=initMap"></script>
 <!-- Large modal -->
-
 <div class="mod" id="myModal11" >
     <div class="modal-dialog modal-lg" >
         <div class="modal-content">
@@ -504,12 +461,10 @@
                     <div class="col-md-6">
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>
-                         
+                            <li class="active"><a href="#Login" data-toggle="tab">Login</a></li>                      
                         </ul>
                         <!-- Tab panes -->
-                        <div class="tab-content">
-                       
+                        <div class="tab-content">                     
                                 <form role="form" class="form-horizontal" method="post" action="loginFilter">
                                 <div class="form-group">
                                     <label for="email" class="col-sm-2 control-label">
@@ -534,12 +489,9 @@
                                         <a href="javascript:;">Forgot your password?</a>
                                     </div>
                                 </div>
-                                </form>
-                          
-                        </div>
-                    
-                    </div>
-                  
+                                </form>                        
+                        </div>                   
+                    </div>                 
                 </div>
             </div>
         </div>

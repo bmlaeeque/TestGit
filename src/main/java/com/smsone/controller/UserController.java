@@ -1,6 +1,5 @@
 
 package com.smsone.controller;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -84,7 +83,6 @@ public class UserController {
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
-
 		String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
@@ -172,11 +170,6 @@ public class UserController {
 					userService.updateUser(user);
 					return "success";
 				}
-		
-		
-		
-		
-	
 		@RequestMapping(value = "/resendEmailVerify")
 		public String resendEmailVerify(@RequestParam(required = false, defaultValue = "hashcode", value="hashcode") String hashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
 		{
@@ -220,10 +213,6 @@ public class UserController {
 			sendDivastaysMail(email, msg," Divastays Email Verification Link");
 			return "home";
 		}
-		
-	
-	
-	
 	@RequestMapping(value = "/showUserReg")
 	public String showUserRegistration()
 	{
@@ -237,8 +226,7 @@ public class UserController {
 	}
 	@RequestMapping(value = "/editUserDetails1")
 	public String editUserDetails1(@RequestParam("uId") Long uId,Model model)
-	{
-		
+	{	
 		User user=new User();
 		user.setuId(uId);
 		model.addAttribute("user",userService.getUser(user));
@@ -304,11 +292,9 @@ public class UserController {
 		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
 		simpleMailMessage.setTo("randivemayuri123@gmail.com");
 		simpleMailMessage.setFrom("mayurandive3@gmail.com");
-		simpleMailMessage.setSubject("for contact us");
-	
+		simpleMailMessage.setSubject("for contact us");	
 		simpleMailMessage.setText("first name:"+firstName+" email:"+email+" phoneNumber:"+phoneNumber+" message:"+message);
-		mailSender.send(simpleMailMessage);
-		
+		mailSender.send(simpleMailMessage);		
 		return "redirect:/showHome";
 	}
 	// user logout
@@ -337,7 +323,6 @@ public class UserController {
 		{
 			return "redirect:/showHome";
 		}
-
 	}	
 	//login check
 	@RequestMapping(value ={"/loginHome","/loginShortTerm","/loginLongTerm","/loginFilter"}, method = RequestMethod.POST)
@@ -378,48 +363,32 @@ public class UserController {
 		{
 			return "redirect:/showHome1";
 		}
-
-	}
-	
-	
-	
+	}	
 	public String readEmail()
 	{
-		 Properties props = new Properties();
-		 
+		 Properties props = new Properties();		 
 	        try {
 	            props.load(new FileInputStream(new File("D:\\smtp.properties")));
-	            Session session = Session.getDefaultInstance(props, null);
-	 
+	            Session session = Session.getDefaultInstance(props, null);	 
 	            Store store = session.getStore("imaps");
-	            store.connect("smtp.gmail.com", "mayurandive3@gmail.com", "mayu@1994");
-	 
+	            store.connect("smtp.gmail.com", "mayurandive3@gmail.com", "mayu@1994");	 
 	            Folder inbox = store.getFolder("inbox");
 	            inbox.open(Folder.READ_ONLY);
-	            int messageCount = inbox.getMessageCount();
-	 
-	            System.out.println("Total Messages:- " + messageCount);
-	 
+	            int messageCount = inbox.getMessageCount();	 
 	            Message[] messages = inbox.getMessages();
-	            System.out.println("------------------------------");
-	 
 	            for (int i = 0; i < messages.length; i++) {
 	               System.out.println("Mail Subject:- " + messages[i].getSubject());
 	                System.out.println("Text: " + messages[i].getContent().toString());
 	            	 System.out.println("From: " + messages[i].getFrom()[0]); 
 	            	   System.out.println("To: " + messages[i].getDescription());
 	            }
-	 
 	            inbox.close(true);
 	            store.close();
 	 
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	        }
-	    
-		  
-		return null;
-		
+	        }		  
+		return null;		
 	}	
 	@RequestMapping(value = "/getemaildata")
 	public String email2() throws MessagingException
@@ -435,23 +404,19 @@ public class UserController {
 	      String to = "uncer@gmail.com";//some invalid address
 	      String bounceAddr = "mayurandive3@gmail.com";//change accordingly
 	      String body = "Test: get message to bounce to a separate email address";
-
 	      Properties props = new Properties();
-
 	      props.put("mail.smtp.auth", "true");
 	      props.put("mail.smtp.starttls.enable", "true");
 	      props.put("mail.smtp.host", smtpServer);
 	      props.put("mail.smtp.port", "587");
 	      props.put("mail.transport.protocol", "smtp");
 	      props.put("mail.smtp.from", bounceAddr);
-
 	      Session mailSession = Session.getInstance(props,
 	         new javax.mail.Authenticator() {
 	            protected PasswordAuthentication getPasswordAuthentication() {
 	               return new PasswordAuthentication(userid, password);
 	            }
 	         });
-
 	      MimeMessage message = new MimeMessage(mailSession);
 	      message.addFrom(InternetAddress.parse(from));
 	      message.setRecipients(Message.RecipientType.TO, to);
@@ -462,7 +427,6 @@ public class UserController {
 			e1.printStackTrace();
 		}
 	      message.setContent(body, contentType);
-
 	      Transport transport = mailSession.getTransport();
 	      try {
 	         System.out.println("Sending ....");
@@ -473,18 +437,8 @@ public class UserController {
 	      } catch (Exception e) {
 	         System.err.println("Error Sending: ");
 	         e.printStackTrace();
-
 	      }
-	      transport.close();
-		
-		
-		
+	      transport.close();	
 		return null;
-	}
-	
+	}	
 }
-
-
-
-
-
