@@ -66,13 +66,14 @@
              </tr>
              <tr class="w3-hover-green">
                 <td>Facilities</td>
-                <td>      AC          : ${room.ac}<br>
+                <td>      AC          : ${room.ac}
+                <br>
                          Wifi         : ${room.wifi}
                 <br>     Bathroom     : ${room.bathroom}
-                <br>     Geyser       :  ${room.geyser}
+                <br>     Geyser       : ${room.geyser}
                 
-                <br>     Gym          :${room.gym}
-                <br>     SwimmingPool :${room.swimmingPool} </td>
+                <br>     Gym          : ${room.gym}
+                <br>     SwimmingPool : ${room.swimmingPool} </td>
             </tr>
              <tr class="w3-hover-green">
                 <td>Roommates</td>
@@ -80,9 +81,7 @@
                      <ul>
                       <li><a data-toggle="collapse" data-target="#bed1">Bed 1</a></li>
                        <div id="bed1" class="collapse">
-                         <ol>
-                         <a class="btn" data-toggle="popover" title="Foodpreference : ${user.foodPreference} Profession : ${user.profession} MotherTounge : ${user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> 
-                         </ol>
+                         
                        </div>    
          
                      <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
@@ -117,13 +116,14 @@
                  <th></th>
              </tr>
            </thead>
-<c:forEach items="${beds}" var="beds" varStatus="itr">
+<c:forEach items="${room.beds}" var="beds" varStatus="itr">
 
  
 <tr class="w3-hover-green">
                 <td>Bed Info</td>
-                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${user.foodPreference} Profession : ${user.profession} MotherTounge : ${user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
+                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
              </tr>
+             
 
  </c:forEach>
  </table>
@@ -134,16 +134,28 @@
  
  
  
+ <style>
+ .data-toggle{
+ width:400px;
+ height:300px;
+ font-weight:900;
+}
+ </style>
  
  
  
- 
-<!-- script for bed popup -->
+<!-- script for bed popup-->
  <script>
 $(document).ready(function() {
+	
+	
    $('[data-toggle="popover"]').popover({
+	   
       placement: 'right',
-      trigger: 'hover'
+      trigger: 'hover',
+      
+    	 
+  		
    });
 });
 	

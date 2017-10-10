@@ -43,7 +43,7 @@ public class Room implements Serializable {
     @JoinColumn(name = "hId")
 	private House house;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="room")
-	private List<Beds> Beds;
+	private List<Beds> beds;
 	public Long getrId() {
 		return rId;
 	}
@@ -141,10 +141,10 @@ public class Room implements Serializable {
 		this.house = house;
 	}
 	public List<Beds> getBeds() {
-		return Beds;
+		return beds;
 	}
 	public void setBeds(List<Beds> beds) {
-		Beds = beds;
+		this.beds = beds;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -154,7 +154,7 @@ public class Room implements Serializable {
 	}
 	public Room(Long rId, Long roomId, String roomtype, String ac, String wifi, String bathroom, String geyser,
 			String bed, String swimmingPool, String gym, Integer numberOfBed, String foodAvailability, byte[] img1,
-			byte[] img2, byte[] img3, House house, List<com.smsone.model.Beds> beds) {
+			byte[] img2, byte[] img3, House house, List<Beds> beds) {
 		super();
 		this.rId = rId;
 		this.roomId = roomId;
@@ -172,24 +172,16 @@ public class Room implements Serializable {
 		this.img2 = img2;
 		this.img3 = img3;
 		this.house = house;
-		Beds = beds;
-	}
-	@Override
-	public String toString() {
-		return "Room [rId=" + rId + ", roomId=" + roomId + ", roomtype=" + roomtype + ", ac=" + ac + ", wifi=" + wifi
-				+ ", bathroom=" + bathroom + ", geyser=" + geyser + ", bed=" + bed + ", swimmingPool=" + swimmingPool
-				+ ", gym=" + gym + ", numberOfBed=" + numberOfBed + ", foodAvailability=" + foodAvailability + ", img1="
-				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
-				+ ", house=" + house + ", Beds=" + Beds + "]";
+		this.beds = beds;
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Beds == null) ? 0 : Beds.hashCode());
 		result = prime * result + ((ac == null) ? 0 : ac.hashCode());
 		result = prime * result + ((bathroom == null) ? 0 : bathroom.hashCode());
 		result = prime * result + ((bed == null) ? 0 : bed.hashCode());
+		result = prime * result + ((beds == null) ? 0 : beds.hashCode());
 		result = prime * result + ((foodAvailability == null) ? 0 : foodAvailability.hashCode());
 		result = prime * result + ((geyser == null) ? 0 : geyser.hashCode());
 		result = prime * result + ((gym == null) ? 0 : gym.hashCode());
@@ -214,11 +206,6 @@ public class Room implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Room other = (Room) obj;
-		if (Beds == null) {
-			if (other.Beds != null)
-				return false;
-		} else if (!Beds.equals(other.Beds))
-			return false;
 		if (ac == null) {
 			if (other.ac != null)
 				return false;
@@ -233,6 +220,11 @@ public class Room implements Serializable {
 			if (other.bed != null)
 				return false;
 		} else if (!bed.equals(other.bed))
+			return false;
+		if (beds == null) {
+			if (other.beds != null)
+				return false;
+		} else if (!beds.equals(other.beds))
 			return false;
 		if (foodAvailability == null) {
 			if (other.foodAvailability != null)
@@ -292,6 +284,16 @@ public class Room implements Serializable {
 			return false;
 		return true;
 	}
+	@Override
+	public String toString() {
+		return "Room [rId=" + rId + ", roomId=" + roomId + ", roomtype=" + roomtype + ", ac=" + ac + ", wifi=" + wifi
+				+ ", bathroom=" + bathroom + ", geyser=" + geyser + ", bed=" + bed + ", swimmingPool=" + swimmingPool
+				+ ", gym=" + gym + ", numberOfBed=" + numberOfBed + ", foodAvailability=" + foodAvailability + ", img1="
+				+ Arrays.toString(img1) + ", img2=" + Arrays.toString(img2) + ", img3=" + Arrays.toString(img3)
+				+ ", house=" + house + ", beds=" + beds + "]";
+	}
+	
+	
 
 	
 	

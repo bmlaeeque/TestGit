@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class BaseController {
-	//show home
 	@RequestMapping(value = "/showHome")
 	public String showHome()
 	{
