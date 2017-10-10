@@ -1,6 +1,5 @@
 
 package com.smsone.controller;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -93,7 +92,6 @@ public class UserController {
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
 		userService.saveUser(user);		
-
 		String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
@@ -181,11 +179,6 @@ public class UserController {
 					userService.updateUser(user);
 					return "success";
 				}
-		
-		
-		
-		
-	
 		@RequestMapping(value = "/resendEmailVerify")
 		public String resendEmailVerify(@RequestParam(required = false, defaultValue = "hashcode", value="hashcode") String hashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
 		{
@@ -229,10 +222,6 @@ public class UserController {
 			sendDivastaysMail(email, msg," Divastays Email Verification Link");
 			return "home";
 		}
-		
-	
-	
-	
 	@RequestMapping(value = "/showUserReg")
 	public String showUserRegistration()
 	{
@@ -246,8 +235,7 @@ public class UserController {
 	}
 	@RequestMapping(value = "/editUserDetails1")
 	public String editUserDetails1(@RequestParam("uId") Long uId,Model model)
-	{
-		
+	{	
 		User user=new User();
 		user.setuId(uId);
 		model.addAttribute("user",userService.getUser(user));
@@ -313,11 +301,9 @@ public class UserController {
 		SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
 		simpleMailMessage.setTo("randivemayuri123@gmail.com");
 		simpleMailMessage.setFrom("mayurandive3@gmail.com");
-		simpleMailMessage.setSubject("for contact us");
-	
+		simpleMailMessage.setSubject("for contact us");	
 		simpleMailMessage.setText("first name:"+firstName+" email:"+email+" phoneNumber:"+phoneNumber+" message:"+message);
-		mailSender.send(simpleMailMessage);
-		
+		mailSender.send(simpleMailMessage);		
 		return "redirect:/showHome";
 	}
 	// user logout
@@ -346,7 +332,6 @@ public class UserController {
 		{
 			return "redirect:/showHome";
 		}
-
 	}	
 	//login check
 	@RequestMapping(value ={"/loginHome","/loginShortTerm","/loginLongTerm","/loginFilter"}, method = RequestMethod.POST)
@@ -387,241 +372,179 @@ public class UserController {
 		{
 			return "redirect:/showHome1";
 		}
-
-	}
-	
-	
-	
+	}	
 	public String readEmail()
 	{
-		 Properties props = new Properties();
-		 
+		 Properties props = new Properties();		 
 	        try {
 	            props.load(new FileInputStream(new File("D:\\smtp.properties")));
-	            Session session = Session.getDefaultInstance(props, null);
-	 
+	            Session session = Session.getDefaultInstance(props, null);	 
 	            Store store = session.getStore("imaps");
-	            store.connect("smtp.gmail.com", "mayurandive3@gmail.com", "mayu@1994");
-	 
+	            store.connect("smtp.gmail.com", "mayurandive3@gmail.com", "mayu@1994");	 
 	            Folder inbox = store.getFolder("inbox");
 	            inbox.open(Folder.READ_ONLY);
-	            int messageCount = inbox.getMessageCount();
-	 
-	            System.out.println("Total Messages:- " + messageCount);
-	 
+	            int messageCount = inbox.getMessageCount();	 
 	            Message[] messages = inbox.getMessages();
-	            System.out.println("------------------------------");
-	 
 	            for (int i = 0; i < messages.length; i++) {
 	               System.out.println("Mail Subject:- " + messages[i].getSubject());
 	                System.out.println("Text: " + messages[i].getContent().toString());
 	            	 System.out.println("From: " + messages[i].getFrom()[0]); 
 	            	   System.out.println("To: " + messages[i].getDescription());
 	            }
-	 
 	            inbox.close(true);
 	            store.close();
 	 
 	        } catch (Exception e) {
 	            e.printStackTrace();
-	        }
-	    
-		  
-		return null;
-		
+	        }		  
+		return null;		
 	}	
-	@RequestMapping(value = "/getemaildata")
-	public String email2() throws MessagingException
-	{
-		String smtpServer = "smtp.gmail.com";
-	      int port = 587;
-	      final String userid = "mayurandive3@gmail.com";//change accordingly
-	      final String password = "mayu@1994";//change accordingly
-	      String contentType = "text/html";
-	      String subject = "test: bounce an email to a different address " +
-					"from the sender";
-	      String from = "mayurandive3@gmail.com";
-	      String to = "uncer@gmail.com";//some invalid address
-	      String bounceAddr = "mayurandive3@gmail.com";//change accordingly
-	      String body = "Test: get message to bounce to a separate email address";
-
-	      Properties props = new Properties();
-
-	      props.put("mail.smtp.auth", "true");
-	      props.put("mail.smtp.starttls.enable", "true");
-	      props.put("mail.smtp.host", smtpServer);
-	      props.put("mail.smtp.port", "587");
-	      props.put("mail.transport.protocol", "smtp");
-	      props.put("mail.smtp.from", bounceAddr);
-
-	      Session mailSession = Session.getInstance(props,
-	         new javax.mail.Authenticator() {
-	            protected PasswordAuthentication getPasswordAuthentication() {
-	               return new PasswordAuthentication(userid, password);
-	            }
-	         });
-
-	      MimeMessage message = new MimeMessage(mailSession);
-	      message.addFrom(InternetAddress.parse(from));
-	      message.setRecipients(Message.RecipientType.TO, to);
-	      try {
-			message.setSubject(subject);
-		} catch (MessagingException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-	      message.setContent(body, contentType);
-
-	      Transport transport = mailSession.getTransport();
-	      try {
-	         System.out.println("Sending ....");
-	         transport.connect(smtpServer, port, userid, password);
-	         transport.sendMessage(message,
-	            message.getRecipients(Message.RecipientType.TO));
-	         System.out.println("Sending done ...");
-	      } catch (Exception e) {
-	         System.err.println("Error Sending: ");
-	         e.printStackTrace();
-
-	      }
-	      transport.close();
-		
-		
-		
-		return null;
-	}
 	
-	
-	
-	//autofill script
-	
-		 public List<User> getUserListFromExcel() {
-	        List<User> userList = new ArrayList<User>();
-	        FileInputStream fis = null;
-	        try {
-	           fis = new FileInputStream("D:/sample.xlsx");
 
-	            // Using XSSF for xlsx format, for xls use HSSF
-	            Workbook workbook = new XSSFWorkbook(fis);
+//autofill script
 
-	            int numberOfSheets = workbook.getNumberOfSheets();
+public List<User> getUserListFromExcel() {
+   List<User> userList = new ArrayList<User>();
+   FileInputStream fis = null;
+   try {
+      fis = new FileInputStream("D:/userdatasheet.xlsx");
 
-	            //looping over each workbook sheet
-	            for (int i = 0; i < numberOfSheets; i++) {
-	                Sheet sheet = workbook.getSheetAt(i);
-	                Iterator<?> rowIterator = sheet.iterator();
+       // Using XSSF for xlsx format, for xls use HSSF
+       Workbook workbook = new XSSFWorkbook(fis);
 
-	                //iterating over each row
-	                while (rowIterator.hasNext()) {
+       int numberOfSheets = workbook.getNumberOfSheets();
 
-	                    User user = new User();
-	                    Row row = (Row) rowIterator.next();
-	                    Iterator<?> cellIterator = row.cellIterator();
+       //looping over each workbook sheet
+       for (int i = 0; i < numberOfSheets; i++) {
+           Sheet sheet = workbook.getSheetAt(i);
+           Iterator<?> rowIterator = sheet.iterator();
 
-	                    //Iterating over each cell (column wise)  in a particular row.
-	                    while (cellIterator.hasNext()) {
+           //iterating over each row
+           while (rowIterator.hasNext()) {
 
-	                        Cell cell = (Cell) cellIterator.next();
-	                        if (Cell.CELL_TYPE_STRING == cell.getCellType())
-							{
-							
-								
-								if (cell.getColumnIndex() == 1)
-								{
-									user.setArea(cell.getStringCellValue());
-								}
-								 else if (cell.getColumnIndex() == 2) 
-								 {
-									 user.setAddress(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 3) 
-								 {
-									 user.setCity(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 5) 
-								 {
-									 user.setCountry(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 6) 
-								 {
-									 user.setEmail(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 8) 
-								 {
-									 user.setFirstName(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 9) 
-								 {
-									 user.setFoodPreference(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 10) 
-								 {
-									 user.setLastName(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() == 11) 
-								 {
-									 user.setMotherTongue(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() ==12) 
-								 {
-									 user.setPassword(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() ==15) 
-								 {
-									 user.setProfession(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() ==16) 
-								 {
-									 user.setState(cell.getStringCellValue());
-								 }
-								 else if (cell.getColumnIndex() ==18) 
-								 {
-									 user.setHashcode(cell.getStringCellValue());
-								 }
-	                           
-	                        }
-							else if (Cell.CELL_TYPE_NUMERIC == cell.getCellType())
-							{
+               User user = new User();
+               Row row = (Row) rowIterator.next();
+               Iterator<?> cellIterator = row.cellIterator();
 
-	                            if (cell.getColumnIndex() == 0) {
-	                                user.setAadharNumber(Long.valueOf((long) cell.getNumericCellValue()));
-	                            }
-	                            else if (cell.getColumnIndex() == 4) {
-	                            	user.setContactNumber((long) cell.getNumericCellValue());
-	                            }
-	                            else if (cell.getColumnIndex() ==14) {
-	                            	user.setPincode((int) cell.getNumericCellValue());
-	                               
-	                            }
-	                        }
-	                    }//while cellIterator end
-	                    userList.add(user);
-	                }//rowIterator end
-	            }//for end
+               //Iterating over each cell (column wise)  in a particular row.
+               while (cellIterator.hasNext()) {
 
-	            fis.close();
+                   Cell cell = (Cell) cellIterator.next();
+                   if (Cell.CELL_TYPE_STRING == cell.getCellType())
+					{
+					
+						
+						if (cell.getColumnIndex() == 1)
+						{
+							user.setArea(cell.getStringCellValue());
+						}
+						 else if (cell.getColumnIndex() == 2) 
+						 {
+							 user.setAddress(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 3) 
+						 {
+							 user.setCity(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 5) 
+						 {
+							 user.setCountry(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 6) 
+						 {
+							 user.setEmail(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 7) 
+						 {
+							 user.setFirstName(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 8) 
+						 {
+							 user.setFoodPreference(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 9) 
+						 {
+							 user.setLastName(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() == 10) 
+						 {
+							 user.setMotherTongue(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() ==11) 
+						 {
+							 user.setPassword(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() ==12) 
+						 {
+							 user.setProfession(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() ==13) 
+						 {
+							 user.setState(cell.getStringCellValue());
+						 }
+						 else if (cell.getColumnIndex() ==15) 
+						 {
+							 user.setHashcode(cell.getStringCellValue());
+						 }
+                      
+                   }
+					else if (Cell.CELL_TYPE_NUMERIC == cell.getCellType())
+					{
 
-	        } catch (FileNotFoundException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	        System.out.println(userList);
-	        return userList;
-	    }
-			
-		 public void saveUsersThrowScript()
-		 {
-			List<User> user =getUserListFromExcel();
-			for (User user1 : user) {
-				userService.saveUser(user1);
-			   
-			}
-			
-		 }
+                       if (cell.getColumnIndex() == 0) {
+                           user.setAadharNumber(Long.valueOf((long) cell.getNumericCellValue()));
+                       }
+                       else if (cell.getColumnIndex() == 4) {
+                       	user.setContactNumber((long) cell.getNumericCellValue());
+                       }
+                       else if (cell.getColumnIndex() ==14) {
+                       	user.setPincode((int) cell.getNumericCellValue());
+                          
+                       }
+                   }
+               }//while cellIterator end
+               userList.add(user);
+           }//rowIterator end
+       }//for end
 
+       fis.close();
+
+   } catch (FileNotFoundException e) {
+       e.printStackTrace();
+   } catch (IOException e) {
+       e.printStackTrace();
+   }
+   System.out.println(userList);
+   return userList;
 	
 }
+
+		 
+			
+		 
+
+	
+
+	@RequestMapping(value = "/showHome")
+public void saveUsersThrowScript()
+{
+	List<User> user =getUserListFromExcel();
+	for (User user1 : user) {
+		userService.saveUser(user1);
+	   
+	}
+
+}
+
+
+
+}
+
+
+
+
+
+
 
 
 

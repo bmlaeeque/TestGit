@@ -28,14 +28,14 @@ public class HouseServiceImpl implements HouseService {
 	public House getHouse(House house) {
 		return houseDAO.getHouse(house);
 	}
-	public List<House> listHouseByAddressLongTerm(House house, Integer offset, Integer maxResults) {
-		return houseDAO.listHouseByAddressLongTerm(house,offset, maxResults);
+	public List<House> listHouseByAddressLongTerm(House house, Integer offset, Integer maxResults,String priceSort) {
+		return houseDAO.listHouseByAddressLongTerm(house,offset, maxResults,priceSort);
 	}
 	public boolean checkAadharNumber(House house) {
 		return houseDAO.checkAadharNumber(house);
 	}
-	public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults) {
-		return houseDAO.listHouseByMainFilter(house,user, offset, maxResults);
+	public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults,String priceSort) {
+		return houseDAO.listHouseByMainFilter(house,user, offset, maxResults,priceSort);
 	}
 	public Long countByFilter(House house) {
 		return houseDAO.countByFilter(house);
@@ -43,8 +43,8 @@ public class HouseServiceImpl implements HouseService {
 	public List<House> listHouseByFilters(House house, Integer offset, Integer maxResults) {
 		return houseDAO.listHouseByFilters(house, offset, maxResults);
 	}
-	public List<House> listHouseByadvancedFilter(House house,User user,String[] facilities,Integer offset, Integer maxResults) {
-		return houseDAO.listHouseByadvancedFilter(house,user,facilities,maxResults,offset);
+	public List<House> listHouseByadvancedFilter(House house,User user,String[] facilities,Integer offset, Integer maxResults,String priceSort) {
+		return houseDAO.listHouseByadvancedFilter(house,user,facilities,maxResults,offset,priceSort);
 	}
 	public void saveBed(Beds beds,Long rid) {
 		houseDAO.saveBed(beds,rid);
@@ -68,8 +68,8 @@ public class HouseServiceImpl implements HouseService {
 	public Long countHouseByAddressLongTerm(House house) {
 		return houseDAO.countHouseByAddressLongTerm(house);
 	}
-	public List<House> listHouseByAddressShortTerm(House house, Integer offset, Integer maxResults) {
-		return houseDAO.listHouseByAddressShortTerm(house, offset, maxResults);
+	public List<House> listHouseByAddressShortTerm(House house, Integer offset, Integer maxResults,String priceSort) {
+		return houseDAO.listHouseByAddressShortTerm(house, offset, maxResults,priceSort);
 	}
 	public Long listHouseByadvancedFilterCount(House house, User user, String[] facilities) {
 		return houseDAO.listHouseByadvancedFilterCount(house, user, facilities);
@@ -77,4 +77,9 @@ public class HouseServiceImpl implements HouseService {
 	public Long listHouseByMainFilterCount(House house, User user) {
 		return houseDAO.listHouseByMainFilterCount(house, user);
 }
+	public List<House> applySorting(House house,Integer offset, Integer maxResults,String priceSort) {
+		return houseDAO.applySorting(house,offset,maxResults,priceSort);
+		
+	}
+	
 }

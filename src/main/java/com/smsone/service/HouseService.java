@@ -26,12 +26,13 @@ public interface HouseService {
 	public void saveBed(Beds beds,Long rid);
 
 	
-	public List<House> listHouseByAddressLongTerm(House house,Integer offset, Integer maxResults);
+	public List<House> listHouseByAddressLongTerm(House house,Integer offset, Integer maxResults,String priceSort);
 	public Long countHouseByAddressLongTerm(House house);
-	public List<House> listHouseByAddressShortTerm(House house,Integer offset, Integer maxResults);
-	public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults);
-	public List<House> listHouseByadvancedFilter(House house,User user,String[] facilities,Integer offset, Integer maxResults);
+	public List<House> listHouseByAddressShortTerm(House house,Integer offset, Integer maxResults,String priceSort);
+	public List<House> listHouseByMainFilter(House house,User user,Integer offset, Integer maxResults,String priceSort);
+	public List<House> listHouseByadvancedFilter(House house,User user,String[] facilities,Integer offset, Integer maxResults,String priceSort);
 	public Long listHouseByadvancedFilterCount(House house,User user,String[] facilities);
 	public Long listHouseByMainFilterCount(House house,User user);
+	public List<House> applySorting(House house,Integer offset, Integer maxResults,String priceSort);
 
 }

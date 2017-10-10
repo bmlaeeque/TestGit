@@ -43,6 +43,7 @@ public class RoomController {
 		return "roomInfo";
 	}
 	
+
 	/*@RequestMapping(value = "/deleteRoom")
 	public String deleteRoom(@PathVariable("rId") Long rId,RedirectAttributes ra)
 	{

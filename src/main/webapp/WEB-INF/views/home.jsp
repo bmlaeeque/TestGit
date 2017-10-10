@@ -85,7 +85,7 @@
 													<label> <input type="checkbox"> keep me
 														logged-in
 													</label>
-												</div>
+											</div>
 											</form>
 										</div>
 										<div class="bottom text-center">

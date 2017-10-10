@@ -421,7 +421,5 @@ public class User implements Serializable {
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
-	}
-	
-	
+	}	
 }

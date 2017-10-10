@@ -1,14 +1,12 @@
 
 package com.smsone.controller;
-
 import java.util.Date;
-
+import javax.servlet.http.HttpSession;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 @Controller
 public class BaseController {
 	@RequestMapping(value = "/showHome")
@@ -25,8 +23,9 @@ public class BaseController {
 	}
 	//show short term
 	@RequestMapping(value = "/showShortTerm")
-	public String showShortTerm()
-	{
+	public String showShortTerm(HttpSession session)
+	{		
+		session.setAttribute("accommodationType", "shortTerm");
 		return "shortTerm";
 	}
 	@RequestMapping(value = "/showShortTerm1")
@@ -37,8 +36,9 @@ public class BaseController {
 	}
 	//show long term
 	@RequestMapping(value = "/showLongTerm")
-	public String showLongTerm()
+	public String showLongTerm(HttpSession session)
 	{
+		session.setAttribute("accommodationType", "longTerm");
 		return "longTerm";
 	}
 	@RequestMapping(value = "/showLongTerm1")
@@ -88,9 +88,7 @@ public class BaseController {
 	public String showDeal1()
 	{
 		return "deal1";
-	}
-	
-	
+	}	
 	@RequestMapping(value = "/checkdate")
 	public String checkdate(@RequestParam("date")@DateTimeFormat(pattern="yyyy-MM-dd") Date date)
 	{			

@@ -119,8 +119,9 @@
 <c:forEach items="${room.beds}" var="beds" varStatus="itr"> 
 <tr class="w3-hover-green">
                 <td>Bed Info</td>
-                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference} Profession : ${beds.user.profession} MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
+                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
              </tr>
+             
 
  </c:forEach>
  </table>
@@ -131,16 +132,28 @@
  
  
  
- 
+ <style>
+ .data-toggle{
+ width:400px;
+ height:300px;
+ font-weight:900;
+}
+ </style>
  
  
  
 <!-- script for bed popup-->
  <script>
 $(document).ready(function() {
+	
+	
    $('[data-toggle="popover"]').popover({
+	   
       placement: 'right',
-      trigger: 'hover'
+      trigger: 'hover',
+      
+    	 
+  		
    });
 });
 	
