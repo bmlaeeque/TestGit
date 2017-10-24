@@ -12,3 +12,4 @@ public interface OwnerService {
 	public Owner sendNewLink(Owner owner);
 	public Owner getOwner(Owner owner);
 }
+ 

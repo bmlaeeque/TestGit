@@ -24,13 +24,13 @@ public class User implements Serializable {
 	@Column(nullable=false,unique = true)
 	private Long uId;
 	@Column(nullable=false,length=12,unique = true)
-	private Long aadharNumber;
+	private Long aadharNumber; 
 	@Column(nullable=false,length=20)
-	private String firstName;
-	@Column(nullable=false,length=20)
-	private String lastName;
-	@Column(nullable=false,length=10)
-	private Long contactNumber;
+	private String firstName; 
+	@Column(nullable=false,length=20) 
+	private String lastName; 
+	@Column(nullable=false,length=10) 
+	private Long contactNumber; 
 	@Column(nullable=false,length=30,unique = true)
 	private String email;
 	@Column(nullable=false,length=100)

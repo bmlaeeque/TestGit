@@ -22,7 +22,7 @@ public class FetchMail{
 
    Folder emailFolder = emailStore.getFolder("INBOX");
    emailFolder.open(Folder.READ_ONLY);
-
+ 
    Message[] messages = emailFolder.getMessages();
    for (int i = 0; i < messages.length; i++) {
 	Message message = messages[i];

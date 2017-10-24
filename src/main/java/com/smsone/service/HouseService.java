@@ -14,7 +14,7 @@ public interface HouseService {
 	public void deleteHouse(House house);
 	public List<House> remainingOwnerHouse(Long oId);
 	public List<Room> getRooms(House house);
-	public List<House> list(Integer offset, Integer maxResults);
+	public List<House> list(Integer offset, Integer maxResults); 
 	public Long count();
 	public House getHouse(House house);
 

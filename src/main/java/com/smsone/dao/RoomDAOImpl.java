@@ -36,7 +36,7 @@ public class RoomDAOImpl implements RoomDAO {
 			beds.setRoom(room1);
 			session.save(beds);
 		}
-		session.close();
+		session.close(); 
 	}
 	public void assignBed(User user, Beds beds) {
 		Session session=sessionFactory.openSession();

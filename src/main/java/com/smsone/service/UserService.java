@@ -13,3 +13,4 @@ public interface UserService {
 	public User sendNewLink(User user);
 	public User getUser(User user);
 }
+ 

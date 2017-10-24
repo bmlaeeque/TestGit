@@ -26,7 +26,7 @@ public class House implements Serializable
 	private Long hId;
 	@Column(nullable=false,length=20)
 	private Integer floorNumber;
-	@Column(nullable=false,length=6)
+	@Column(nullable=false,length=6) 
 	private Long pincode;
 	@Column(nullable=false,length=20)
 	private Double rent;

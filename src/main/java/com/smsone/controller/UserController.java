@@ -55,7 +55,7 @@ public class UserController {
 		User user=new User();
 		user.setFirstName(firstName);
 		user.setContactNumber(contactNumber);
-		user.setAddress(address);
+		user.setAddress(address); 
 		user.setPincode(pincode);
 		user.setCountry(country);
 		user.setMotherTongue(motherTongue);

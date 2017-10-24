@@ -14,3 +14,4 @@ public interface OwnerDAO {
 	public Owner sendNewLink(Owner owner);
 	public Owner getOwner(Owner owner);
 }
+ 

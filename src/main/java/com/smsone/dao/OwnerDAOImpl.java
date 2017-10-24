@@ -32,7 +32,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 		if(list.isEmpty())
 		{
 			return false;
-		}
+		} 
 		else
 		{
 		return true;

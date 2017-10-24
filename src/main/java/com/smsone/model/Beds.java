@@ -26,7 +26,7 @@ public class Beds implements Serializable {
     @JoinColumn(name = "uId")
 	private User user;
 	@ManyToOne
-    @JoinColumn(name = "rId")
+    @JoinColumn(name = "rId") 
 	private Room room;
 	@Temporal(TemporalType.DATE)
 	private Date checkIn ;

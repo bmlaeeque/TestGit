@@ -28,7 +28,7 @@ import com.smsone.model.User;
 public class HouseDAOImpl implements HouseDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
-	//save house
+	//save house 
 	/*public void saveHouse(House house,Long oId) {
 		Session session=sessionFactory.openSession();
 		session.save(house);

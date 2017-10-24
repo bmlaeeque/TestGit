@@ -40,7 +40,7 @@ public class RoomController {
 		Room r=roomService.getRoom(rId);
 		model.addAttribute("room",r);
 		
-		return "roomInfo";
+		return "roomInfo"; 
 	}
 	
 

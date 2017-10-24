@@ -20,7 +20,7 @@ public class PlacesUtility {
 	@SuppressWarnings("unchecked")
 	public static List<String> getData(String query) throws IOException {
 		// locations list to return
-		List<String> matched = new ArrayList<String>();
+		 List<String> matched = new ArrayList<String>();
 		// Build API URL
 		StringBuilder sb = new StringBuilder(API_URL_1).append(query).append(API_URL_2).append(API_KEY);
 		URL url = new URL(sb.toString());

@@ -33,7 +33,7 @@ public class OwnerController {
 	@RequestMapping(value = "/showOwnerPage")
 	public String showOwnerPage()
 	{
-		
+		 
 		return "owner";
 	}
 	//edit Owner details

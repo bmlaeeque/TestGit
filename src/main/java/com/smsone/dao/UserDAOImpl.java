@@ -32,7 +32,7 @@ public class UserDAOImpl implements UserDAO {
 		if(list.isEmpty())
 		{
 			return false;
-		}
+		} 
 		else
 		{
 			return true;

@@ -28,7 +28,7 @@ public class Owner implements Serializable
 	@Column(nullable=false,length=20)
 	private String firstName;
 	@Column(nullable=false,length=20)
-	private String lastName;
+	private String lastName; 
 	@Column(nullable=false,length=30)
 	private String email;
 	@Column(nullable=false,length=12,unique = true)

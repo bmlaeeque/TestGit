@@ -16,7 +16,7 @@ public class HouseServiceImpl implements HouseService {
 	@Autowired
 	HouseDAO houseDAO;
 	public void saveHouse(House house,Long oId)
-   	{
+   	{ 
 		houseDAO.saveHouse(house,oId);
 	}
 	public List<House> list(Integer offset, Integer maxResults) {

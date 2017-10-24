@@ -23,7 +23,7 @@ public class Room implements Serializable {
 	private Long rId;
 	private Long roomId;
 	private String roomtype;
-	private String ac;
+	private String ac; 
 	private String wifi;
 	private String bathroom;
 	private String geyser;

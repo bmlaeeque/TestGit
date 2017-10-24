@@ -27,7 +27,7 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.getAllRoomDetails(hId);
 	}
 
-	public Long countRooms(Long hId) {
+	public Long countRooms(Long hId) { 
 		return roomDAO.countRooms(hId);
 	}
 

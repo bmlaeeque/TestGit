@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 	public void saveUser(User user)
 	{
-		userDAO.saveUser(user);
+		userDAO.saveUser(user); 
 	}
-	public boolean checkEmail(User user) {
+	public boolean checkEmail(User user) { 
 		return userDAO.checkEmail(user);
 	}
 	public boolean checkContactNumber(User user) {

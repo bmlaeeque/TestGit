@@ -5,7 +5,7 @@ import com.smsone.model.Beds;
 import com.smsone.model.House;
 import com.smsone.model.Room;
 import com.smsone.model.User;
-public interface HouseDAO {
+public interface HouseDAO { 
 	public void saveHouse(House house,Long oId);
 	public void updateHouse(House house);
 	public void deleteHouse(House house);

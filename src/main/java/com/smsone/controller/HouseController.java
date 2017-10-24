@@ -45,7 +45,7 @@ public class HouseController {
 		house.setAddress("pune");
 		house.setAccommodationType(accommodationType);		
 	    house.setRent(rent);
-	    house.setLocationArea(locationArea);
+	    house.setLocationArea(locationArea); 
 		User user=new User();
 		user.setProfession(profession);
 		user.setMotherTongue(motherTongue);

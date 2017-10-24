@@ -14,7 +14,7 @@ public class OwnerServiceImpl implements OwnerService {
 	{
 		ownerDAO.saveOwner(owner);
 		
-		
+		 
 	}
 	public boolean checkContactNumber(Owner owner) {
 		return ownerDAO.checkContactNumber(owner);

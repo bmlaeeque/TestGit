@@ -13,3 +13,4 @@ public interface UserDAO {
 	public User sendNewLink(User user);
 	public User getUser(User user);
 }
+ 

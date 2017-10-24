@@ -15,7 +15,7 @@ public class ImageTag extends SimpleTagSupport {
         this.img = img;
     }
 
-@Override
+@Override 
     public void doTag() throws JspException, IOException {
         try {
             JspWriter out = getJspContext().getOut();
