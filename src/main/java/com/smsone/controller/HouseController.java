@@ -8,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.sql.rowset.serial.SerialException;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,6 +27,7 @@ import com.smsone.model.House;
 import com.smsone.model.Owner;
 import com.smsone.model.User;
 import com.smsone.service.HouseService;
+
 
 @Controller
 public class HouseController {
@@ -255,22 +258,22 @@ public class HouseController {
 				}				
 	//show house info
 	@RequestMapping(value = "/showHouseInfo/{hId}")
-	public String showHouseInfo(@PathVariable("hId") Long hId,Model model,HttpSession session)
+	public String showHouseInfo(@PathVariable("hId") Long hId,Model model)
 	{
-		User user=(User)session.getAttribute("user");
+		/*User user=(User)session.getAttribute("user");
 		if(user!=null)
-		{
+		{*/
 			House house=new House();
 			house.sethId(hId);
 			house=houseService.getHouse(house);
 			model.addAttribute("house",house);
 			return "houseInfo";
-		}
+		/*}
 		else
-		{
-			return "redirect:/showFilter";
+		{*/
+			/*return "redirect:/showFilter";*/
 		}		
-	}	
+/*	}	*/
 			//filter page response with filter
 			@RequestMapping(value="/showFilter3")
 			public String listHouseByFilters(@RequestParam("food") String food,Model model, Integer offset, Integer maxResults,HttpSession session){
@@ -294,13 +297,29 @@ public class HouseController {
 			@RequestMapping(value = "/showHouseInfo/showPaymentPage")
 			public String showPaymentPage1()
 			{
+				
 				return "redirect:/showPaymentPage";
 				
 			}
+		
 			@RequestMapping(value = "showPaymentPage")
-			public String showPaymentPage()
+			public String showPaymentPage(HttpSession session)
 			{
+				User user=(User)session.getAttribute("user");
+				if(user!=null)
+				{
 				return "payment";
+				}
+				else
+				{
+					
+					JOptionPane optionPane = new JOptionPane("Please,Login First",JOptionPane.WARNING_MESSAGE);
+					JDialog dialog = optionPane.createDialog("Warning!");
+					dialog.setAlwaysOnTop(true); // to show top of all other application
+					dialog.setVisible(true);// to visible the dialog
+			         
+					return "home";
+				}
 				
 			}	
 			//show filter based on requirements

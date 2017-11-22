@@ -53,7 +53,7 @@
  <div class="main-content">
   <form class="form-basic" method="post" action="saveRoom" onSubmit="return RoomSubmit()" enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
     <div class="form-title-row">
-       <h1>Room Details</h1>
+       <h1>Details Of Room NO.${i}</h1>
     </div>
    <div class="form-row" style="float:left; width:50%;">
     <label>
@@ -138,6 +138,7 @@
                     <span>Number Of Bed</span>
                  <select name="numberOfBed" id="numberOfBed" class="form-control selectpicker" required>
                         <option value="">Select Your Bed</option>
+                          <option value="0">0</option>
                          <option value="1">1</option>
                         <option value="2">2</option>
                   </select>
@@ -146,15 +147,15 @@
          
            <label>
              <span>Upload Photo 1</span>
-               <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" autocomplete="off"  required>
+               <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" autocomplete="off">
            </label>
            <label>
              <span>Upload Photo 2</span>
-              <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" autocomplete="off"  required>
+              <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" autocomplete="off">
            </label>
            <label>
             <span>Upload Photo 3</span>
-              <input type="file" name="img3" id="img3" onBlur="CheckImg3(); return false;" autocomplete="off"  required>
+              <input type="file" name="img3" id="img3" onBlur="CheckImg3(); return false;" autocomplete="off">
            </label>
         </div>
             <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">

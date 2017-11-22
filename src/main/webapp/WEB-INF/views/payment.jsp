@@ -68,13 +68,14 @@
                     </div>                    
                 </div>
                <div class="panel-body">
-               <form class="form-basic" role="form" id="creditCardForm" method="POST" action="save" name="creditCardForm" onSubmit="return CreditSubmit();" >
+               <form class="form-basic" role="form" id="creditCardForm" method="POST" action="saveBooking" name="creditCardForm" onSubmit="return CreditSubmit();" >
                
                  <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
                            <label for="name">NAME ON CARD</label>
-                              <input type="text" class="form-control" name="creditName" id="creditName" onBlur="CheckCreditName(); return false;" required autocomplete="off"/>
+                             <!--  <input type="text" class="form-control" name="creditName" id="creditName" onBlur="CheckCreditName(); return false;" required autocomplete="off"/> -->
+                         <input type="text" class="form-control" name="creditName" id="creditName" required autocomplete="off"/>
                          </div>
                      </div>                        
                  </div>
@@ -84,7 +85,8 @@
                         <div class="form-group">
                            <label for="cardNumber">CARD NUMBER</label>
                               <div class="input-group">
-                                 <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" onBlur="creditCard(document.creditCardForm.cardNumber)" required autocomplete="off"/>
+                               <!--   <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number" onBlur="creditCard(document.creditCardForm.cardNumber)" required autocomplete="off"/> -->
+                                   <input type="text" class="form-control" name="cardNumber" id="cardNumber" placeholder="Valid Card Number"  required autocomplete="off"/>
                                   <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>
                               </div>
                          </div>                            
@@ -96,7 +98,7 @@
                           <div class="form-group">
                      <label>Expiration</label>
                      <br>
-                <select required >
+                <select name="exmonth">
                     <option value="">Month</option>
                     <option value="01">January</option>
                     <option value="02">February </option>
@@ -112,7 +114,7 @@
                     <option value="12">December</option>
                 </select> 
               
-                <select required>
+                <select name="exyear">
                     <option value="">Year</option>
                     <option value="17"> 2017</option>
                     <option value="18"> 2018</option>
@@ -135,14 +137,15 @@
                <div class="col-xs-4 col-md-4 pull-right">
                  <div class="form-group">
                     <label class="col-xs-5 control-label">CVC</label>
-                     <input  type="text" class="form-control" name="cardCVC" id="cardCVC" placeholder="CVC" required onBlur="CheckCVV(); return false;" autocomplete="off"/>
+                    <!--  <input  type="text" class="form-control" name="cardCVC" id="cardCVC" placeholder="CVC" required onBlur="CheckCVV(); return false;" autocomplete="off"/> -->
+                   <input type="text" class="form-control" name="cvcnumber" id="cardNumber" placeholder="Valid Card Number"  required autocomplete="off"/>
                   </div>
                </div>
            </div>
               
                <div class="row">
                   <div class="col-xs-12">
-                     <button type="submit" value="Submit">Submit</button>
+                    <a href="showPaymentPage"> <button type="submit" value="Submit">Submit</button></a>
                   </div>
                </div>
                   </form>
@@ -172,7 +175,7 @@
               </div>
                 
           <div class="panel-body">
-            <form class="form-basic" role="form" id="debitCardForm" method="POST" action="save" name="debitCardForm" onSubmit="return DebitSubmit();">
+            <form class="form-basic" role="form" id="debitCardForm" method="POST" action="saveBed" name="debitCardForm" onSubmit="return DebitSubmit();">
               <div class="row">
                 <div class="col-xs-12">
                    <div class="form-group">
@@ -271,7 +274,7 @@
                 </div>                    
                </div>
          <div class="panel-body">
-           <form class="form-basic" role="form"  method="POST" action="save" name="netBanking" onSubmit="return NetBanking();">
+           <form class="form-basic" role="form"  method="POST" action="saveBed" name="netBanking" onSubmit="return NetBanking();">
              <h4 align="center">Net Banking</h4>
                <div class="form-row" style="float:left; width:50%;">  
                 <label>
@@ -333,8 +336,9 @@
                     </div>                    
                 </div>
            <div class="panel-body">
-            <form role="form" class="form-basic" id="wallet" name="wallet" method="POST" action="save" onSubmit="return Wallet();">
+            <form role="form" class="form-basic" id="wallet" name="wallet" method="POST" action="saveBed" onSubmit="return Wallet();">
                          <h4 align="center">Select Your Wallet</h4>
+                         
                          
               <div class="form-row" style="float:left; width:50%;">  
                 <label>

@@ -10,10 +10,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
+ 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--Code for text on image-->
+  
+  
+  
   <style>
     .carousel-inner img {
       width: 100%; /* Set width to 100% */
@@ -25,13 +28,73 @@
   left: 5%;
   z-index: 20;
   color: white;
-  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);  
 }
- </style>
+</style>
+
  <style>
 
 #first{ height:500px;}
 </style>
+<style type="text/css">
+.column {
+    float: left;
+    width: 40%;
+    padding: 10px;
+}
+
+.column img {
+    margin-top: 12px;
+    
+    
+    .row1:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+}
+
+
+</style>
+<style>
+#imgZoom {
+    height: 300;
+}
+img#imgZoom:hover {
+    position: relative;
+    -webkit-transform: scale(5.5);
+    -ms-transform: scale(5.5);
+    -o-transform: scale(5.5);
+    transform: scale(5.5);
+    z-index: 1000;
+}
+* {
+    -webkit-transition: all 1.5s ease-in-out;
+    -moz-transition: all 1.5s ease-in-out;
+    -ms-transition: all 1.5s ease-in-out;
+    -o-transition: all 1.5s ease-in-out;
+    transition: all 1.5s ease-in-out;
+}
+
+#overlay {
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width:20%;
+    height:20%;
+    padding: 25px;
+    border: 5px solid gray;
+    background-color: white;
+    opacity:0.4;
+    text-align:center;
+    z-index: 1000;
+}
+
+
+</style>
+
+
 
 </head>
 <body style="background-color: rgb(243,210,230);">
@@ -62,12 +125,69 @@
 <!--End of Header-->
 
 <!--Image Sliding code-->
-<div class="container">
-<div class="row">
 
-  <div class="col-md-8">
-  <p>3 BHK Sharing Rooms for Men at ₹6000 in Wakad, Pune</p>
+<div class="container">
+<%--  <c:forEach items="${house}" var="house" varStatus="itr"> --%>
+<div class="row">
+<div class="col-md-5">
+  
+  <%-- <p>3 BHK Sharing Rooms for Men at ₹6000 in Wakad, Pune</p>
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <!--   <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li> -->
+      </ol>
+		
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+     <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
+       <div class="item active">
+       
+       <img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" />
+      
+    </div>
+    
+   
+        <div class="item">
+           <img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" />
+                  <div class="carousel-content">
+      	 <h6>From</h6>
+             <i class="fa fa-inr"></i> ${house.rent}
+          <p>Security Deposit</p>
+      </div>
+        </div>
+        
+       <div class="item">
+          <img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" />
+                  <div class="carousel-content">
+      	 <h6>From</h6>
+            <i class="fa fa-inr"></i> ${house.rent}
+          <p>Security Deposit</p>
+      </div>
+        </div> 
+      
+       <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+  </c:forEach>
+    </div>
+  
+ </div> --%>
+
+ 		<div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">	 
+           <div class="row">
+                    <div class="media col-md-8">
+               		<div class="carousel-inner">
+  				 <div class="item active">
+  				    <div id="myCarousel" class="carousel slide" data-ride="carousel">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -78,31 +198,31 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner" >
      
-       <div class="item active">
+      <div class="item active">
        <img src="<ui:image img='${house.img1}'></ui:image>" alt="Image" />
-           <div class="carousel-content">
+          <%--  <div class="carousel-content">
       	 <h6>From</h6>
             <i class="fa fa-inr"></i> ${house.rent}
           <p>Security Deposit</p>
-      </div>
+      </div> --%>
      </div>
      
       <div class="item">
            <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" />
-                  <div class="carousel-content">
+                  <%-- <div class="carousel-content">
       	 <h6>From</h6>
              <i class="fa fa-inr"></i> ${house.rent}
           <p>Security Deposit</p>
-      </div>
+      </div> --%>
         </div>
         
        <div class="item">
           <img src="<ui:image img='${house.img3}'></ui:image>" alt="Image" />
-                  <div class="carousel-content">
+                 <%--  <div class="carousel-content">
       	 <h6>From</h6>
             <i class="fa fa-inr"></i> ${house.rent}
           <p>Security Deposit</p>
-      </div>
+      </div> --%>
         </div>
         
       </div>
@@ -116,28 +236,102 @@
         <span class="sr-only">Next</span>
       </a>
     </div>
-  </div>
+  	
+  			<%-- <img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" /> --%>
+     			<%--  <div class="carousel-content">
+        			<h4><strong>${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
+                    	</div><!--carousel content class closed--> --%>
+                    	<%-- <div class="caption">
+  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}</strong></p>
+  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.deposit}</strong></p>
+        </div>  --%>
+      </div><!--active item class closed-->
+    </div><!--carousel inner class closed-->
+  		      
+      </div><!--colm 8 class  closed-->
+      </div>
+      </div>
+     
   
+  
+
+ </div> 
   <!--Image code end-->
-     <div class="col-md-4">
+     <div class="col-md-7">
 		<div class="panel panel-login" style="background-color: rgb(243,210,230);">
         
 			<div class="panel-heading row">
 				<div class="row">
 					<div class="col-xs-6 text-center">
-						<a href="#" class="active" id="book">Book</a>
+						<!-- <a href="#" id="visit">Visit</a> -->
+						<!-- <a href="#" class="active" id="book">Book</a> -->
 					</div>
-					<div class="col-xs-6 text-center">
+				<div class="col-xs-6 text-center">
 						<a href="#" id="visit">Visit</a>
-					</div>
+					</div> 
+ 				
+					  <h4><font color="#FF0000">Rooms details</font></h4>
+ <p>Apart from rent, the following are additional expenses you may incur every month when living in this house.</p>
+  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
+  <div id="demo" class="collapse">
+       
+       <table class="table">
+       			<tbody>
+       			
+       			   <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
+                     <tr>
+                       <%--  <td><a href="showRoomInfo/${rooms.rId}">BOOK Room ID:${rooms.rId} </a></td>  --%>
+                         
+                        <%--  <a href="#" class="btn" data-toggle="popover" title="Total Bed : ${rooms.numberOfBed}  Room Type : ${rooms.roomtype} FoodAvailability:${rooms.foodAvailability} Facilities:AC: ${rooms.ac}   Wifi: ${rooms.wifi}  Bathroom     : ${rooms.bathroom}
+                     Geyser: ${rooms.geyser} Gym: ${rooms.gym} SwimmingPool : ${rooms.swimmingPool} "><!-- <i class="fa fa-bed fa-5x"></i> --> <img  width="100px" height="100px"  src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image"></a>
+                    --%>
+                     <!--  <li class="dropdown"> --><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" title="Total Bed : ${rooms.numberOfBed}  Room Type : ${rooms.roomtype} FoodAvailability:${rooms.foodAvailability} Facilities:AC: ${rooms.ac}   Wifi: ${rooms.wifi}  Bathroom     : ${rooms.bathroom}
+                     Geyser: ${rooms.geyser} Gym: ${rooms.gym} SwimmingPool : ${rooms.swimmingPool}" > <img  width="100px" height="100px"  src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image">
+                   
+                     <!--  <span class="caret"></span> --></a>
+				<!-- <ul id="" class="dropdown-menu"> -->
+						<!-- <li> -->
+									<!--   <div class="row">
+										<div class="col-md-12"> 
+										 -->
+										
+										
+										  <c:forEach items="${rooms.beds}" var="beds" varStatus="itr"> 
+										  <a href="showPaymentPage" class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a>
+										  
+										  
+										  
+										 </c:forEach>
+										
+							
+									
+									<!-- 	</div>
+										
+									 </div> -->
+								<!-- </li> -->
+                            
+						<!--  </ul> -->
+                         
+               
+                      </tr> 
+                       </c:forEach>
+                       
+                  </tbody>
+         </table>
+        
+			</div>
+					
+					
 				</div>
-			<hr>
+			
+			<!-- <hr> -->
 		</div>
        
 	<div class="panel-body">
 	  <div class="row">
 		<div class="col-lg-12">
-			<form id="login-form" role="form" style="display: block;">
+			<!-- <form id="login-form" role="form" style="display: block;">
                  <h6>
                     To Book, you need to pay a token amount and the remaining before move-in.</h6>
                  <br>
@@ -150,7 +344,7 @@
 			</div>
 		</div> 
 	</div>
-  </form>
+  </form> -->
   
 	<form id="register-form"  role="form" style="display: none;" onclick="return submitVisit();">
 		<div class="form-group">
@@ -182,23 +376,24 @@
                   </div>
                   
                </div>
-                <hr>
+               <!--  <hr> -->
+              
 	       </div>
         
   <!--Offer,Refer  & Earn Code-->
       <div class ="container">
          <div class="row">
     		<div class="col-md-6">
-    			<h4><font color="red">Offers</font></h4>
+    			<!-- <h4><font color="red">Offers</font></h4>
     				<p><strong>Book directly & get off RS.500</strong></p>
                        <a href="showTermsAndCondition">
    					     <button type="Terms & Conditions" class="btn btn-theme pull-left">Terms & Conditions</button></a>
-           </div>  
+ -->           </div>  
      		<div class="col-md-6">
-				 <h4><font color="red">Refer</font></h4>
+				 <!-- <h4><font color="red">Refer</font></h4>
    					 <p><strong>Book directly & get off RS.500</strong></p>
                          <a href="showKnowMore">
-   						 <button type="Know Mores" class="btn btn-theme pull-center">Know More</button></a>
+   						 <button type="Know Mores" class="btn btn-theme pull-center">Know More</button></a> -->
 			</div>
          </div>
       </div>   
@@ -209,20 +404,20 @@
 <div class="container">    
  <div class="row">
     <div class="col-md-8">
-   			<h4><font color="#FF0000">Home Details</font></h4>
+   			<%-- <h4><font color="#FF0000">Home Details</font></h4>
                     	<table class="table">
        		                <tbody>
                                <tr>
                                   <td><h5 style="color:#000000">Type</h5></td>
                                   <td><h5 style="color:#000000">${house.tenancyType}</h5></td>
                                </tr>
-           					   <tr>
-               				     <td><h5 style="color:#000000">For</h5></td>
-               				     <td><h5 style="color:#000000">Girls</h5></td>
+           					    <tr>
+               				     <td><h5 style="color:#000000">Rent</h5></td>
+               				     <td><h5 style="color:#000000">${house.rent }</h5></td>
                                </tr>
                                <tr>
-                                 <td><h5 style="color:#000000">House Area</h5></td>
-                                 <td><h5 style="color:#000000">${house.area}</h5></td>
+                                 <td><h5 style="color:#000000">Deposit</h5></td>
+                                 <td><h5 style="color:#000000">${house.deposit}</h5></td>
                               </tr>
                                <tr>
                                  <td><h5 style="color:#000000">No.Of Room</h5></td>
@@ -238,14 +433,61 @@
                              </tr>
                             
                            </tbody>
-                      </table>
-                      <div>
-                      <form action="showRoomInfo">
+                      </table> --%>
+                     <%--  <div>
+                       <form action="showRoomInfo">
                       <input type="hidden" name="hId" value="${house.hId}">
                       <button type="RoomDetails" class="btn btn-theme pull-left">Room Details</button>
-                      </form>
+                      </form> 
                       </div>
-                     
+                      --%>
+                      <h4><font color="#FF0000">Home Amenties</font></h4>
+            	<div class="row">
+            	<div class="col-md-4">
+                 <h5>Living Room</h5>
+                	 <h6><span class="glyphicon glyphicon-bed"> Sofa</h6>
+ 					 <h6><span class="glyphicon glyphicon-blackboard"> Television</h6>
+                     <h6>Washing Machine</h6>
+                     <h6>Dish TV</h6>
+                 </div>
+                <div class="col-md-4">
+                	<h5>Kitchen</h5>
+                	 <h6>Dining Table</h6>
+ 					 <h6>Fridge</h6>
+					 <h6>Gas Stove</h6>
+					 <h6>Crockery Set</h6>
+                 </div>
+                  <div class="col-md-4">
+                <h4><font color="#FF0000">Security Amenties</font></h4>
+                 <h6>Security</h6>
+                        <h6>Lift</h6>
+                 
+                  </div>
+                </div>
+                <div class="row">
+                <div class="col-md-4">
+                     <h5>Bathroom</h5>
+                	 <h6>Attached Bathroom</h6>
+ 					 <h6>Geyser</h6>
+					 <h6>Western Toilet</h6>
+			     </div>
+                 <div class="col-md-4">
+                     <h5>Bedroom</h5>
+                </div>
+                </div>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
                       
    </div>
      
@@ -292,35 +534,33 @@
      </div>	  
    </div>
  </div>
- <hr>
+<!--  <hr> -->
   
  
  <!--Monthly Expenses code-->
- <div class="container">
+<!--  <div class="container">
  	<div class="row">
-    	<div class="col-md-8">
-  <h4><font color="#FF0000">Rooms details</font></h4>
-  <p>Apart from rent, the following are additional expenses you may incur every month when living in this house.</p>
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
-  <div id="demo" class="collapse">
-       <table class="table">
-       			<tbody>
-       			   <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
-                     <tr>
-                           <td><a href="showRoomInfo/${rooms.rId}">${rooms.roomId}</a></td>
-                          <td><a href="showRoomInfo/${rooms.rId}"><img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" style="height:50px ;"/></a></td>
-                      </tr> 
-                       </c:forEach>
-                  </tbody>
-         </table>
-			</div>
+    	<div class="col-md-4">
+			<h4><font color="red">Offers</font></h4>
+    				<p><strong>Book directly & get off RS.500</strong></p>
+                       <a href="showTermsAndCondition">
+   					     <button type="Terms & Conditions" class="btn btn-theme pull-left">Terms & Conditions</button></a>
+			
 		</div>
+		<div class="col-md-4">
+		<h4><font color="red">Refer</font></h4>
+   					 <p><strong>Book directly & get off RS.500</strong></p>
+                         <a href="showKnowMore">
+   						 <button type="Know Mores" class="btn btn-theme pull-center">Know More</button></a>
+		
+		</div>
+		
 	</div>
 <hr>
-</div>
+</div> -->
 
 <!--Home Amenties-->
-	<div class="container">
+	<!-- <div class="container">
     	<div class="row">
         	<div class="col-md-8">
             		<h4><font color="#FF0000">Home Amenties</font></h4>
@@ -339,6 +579,12 @@
 					 <h6>Gas Stove</h6>
 					 <h6>Crockery Set</h6>
                  </div>
+                  <div class="col-md-4">
+                <h4><font color="#FF0000">Security Amenties</font></h4>
+                 <h6>Security</h6>
+                        <h6>Lift</h6>
+                 
+                  </div>
                 </div>
                 <div class="row">
                 <div class="col-md-4">
@@ -353,11 +599,11 @@
                 </div>
           </div>
        </div>
-    </div>   
+    </div>    -->
   <hr>
 <!-- End Home Amenties-->
 <!--Society Amenties-->
-        	<div class="container">
+        	<!-- <div class="container">
             	<div class="row">
                 		<h4><font color="#FF0000">Security Amenties</font></h4>
                 	<div class="col-md-8">
@@ -365,8 +611,8 @@
                         <h6>Lift</h6>
                     </div>
                  </div>
-              </div>      
-        	<hr>
+              </div>       -->
+        	<!-- <hr> -->
 <!--End Society Amenties-->
 <div class="container">    
     <div class="row">
@@ -440,20 +686,29 @@
  <!--Things to keep in Mind-->
       <div class="container">
           <div class="row">
-              <h4><font color="#FF0000">Core Principles</font></h4>   
-                  <div class="col-md-12">
-                     <div class="col-md-4">
-                        <h4>Sixth Months Lock-In</h4>
-                            <p>If you move out before 6 months, you will need to pay a month’s rent as fee.</p>
+             <!--  <h4><font color="#FF0000">Core Principles</font></h4>  -->  
+                 <div class="col-md-12">
+                     <div class="col-md-6">
+                        <!-- <h4>Sixth Months Lock-In</h4>
+                            <p>If you move out before 6 months, you will need to pay a month’s rent as fee.</p> -->
+                        	<h4><font color="red">Offers</font></h4>
+    				<p><strong>Book directly & get off RS.500</strong></p>
+                       <a href="showTermsAndCondition">
+   					     <button type="Terms & Conditions" class="btn btn-theme pull-left">Terms & Conditions</button></a>
+                        
                         </div>
-                      <div class="col-md-4">
-                         <h4>Internet Availability</h4>
-                        	<p>Dependent on feasibility of Internet Service Providers in the area.</p>
+                      <div class="col-md-6">
+                        <!--  <h4>Internet Availability</h4>
+                        	<p>Dependent on feasibility of Internet Service Providers in the area.</p> -->
+                     <h4><font color="red">Refer</font></h4>
+   					 <p><strong>Book directly & get off RS.500</strong></p>
+                         <a href="showKnowMore">
+   						 <button type="Know Mores" class="btn btn-theme pull-center">Know More</button></a>
                       </div>
-                       <div class="col-md-4">
+                     <!--   <div class="col-md-4">
                            <h4>Home Services</h4>
                         	  <p>2 free service visits per home per month. Material used, if any, will be chargeable.</p>
-                       </div>
+                       </div> -->
                    </div> 
               </div> 
          </div> 
@@ -506,6 +761,44 @@
 	}
  }
  </script>
+ <script type="text/javascript">
+function zoomIn(event) {
+  var element = document.getElementById("overlay");
+  element.style.display = "inline-block";
+  var img = document.getElementById("imgZoom");
+  var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
+  var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
+  element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
+
+}
+
+function zoomOut() {
+  var element = document.getElementById("overlay");
+  element.style.display = "none";
+}
+</script>
+<!-- script for bed popup-->
+<script>
+$(document).ready(function() {
+	
+	
+   $('[data-toggle="popover"]').popover({
+	   
+      placement: 'right',
+      trigger: 'hover',
+      
+    	 
+  		
+   });
+});
+	
+</script>
+
+
+
+</body>
+</html>
+ 
   
   <!-- Book and view script code -->
  <script>
@@ -564,6 +857,7 @@ $(function() {
 }
 
 </style>   
+
 
 
 <script src="js/validate.js" type="text/javascript"></script>

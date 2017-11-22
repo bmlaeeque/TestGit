@@ -8,8 +8,8 @@
 </head>
 <body>
 <form action="saveBed">
-<input type="text" name="bed">
-<input type="text" name="rid" value="${rId}">
+Name<input type="text" name="bed">
+Room Id<input type="text" name="rid" value="${rId}">
 <input type="submit" value="submit">
 </form>
 
@@ -19,8 +19,8 @@
 </c:forEach>
 
 <form action="assignBed">
-<input type="text" name="uId">
-<input type="text" name="bId">
+User ID<input type="text" name="uId">
+Bed Id<input type="text" name="bId">
 <input type="submit" value="submit">
 </form>
 </body>

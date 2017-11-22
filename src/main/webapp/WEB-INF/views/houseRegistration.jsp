@@ -42,10 +42,10 @@
                 <h1>House Details</h1>
             </div>          
 			<div class="form-row" style="float:left; width:50%;">		
-                <label>
+                 <label>
                     <span>Owner ID</span>
                     <input type="text" name="ownerId" id="ownerId" value="${oId}">
-                </label>             	
+                </label>              	
                    <label>                  
                     <span>Tenancy Type</span>
                     <select name="tenancyType" class="form-control selectpicker" id="tenancyType" required>
@@ -112,7 +112,7 @@
             <div class="form-row" style="float:left; width:50%;">
                <label>
                <span>House Name</span>
-                    <input type="text" name="houseName" id="houseName" placeholder="Enter House Name" onBlur="getLatLong();CheckHouseName();" autocomplete="off" required>
+                    <input type="text" name="houseName" id="houseName" placeholder="Enter House Name"  autocomplete="off" required>
                </label>
              <label>
                     <span>Floor No.</span>
@@ -154,17 +154,17 @@
                 </label>
                <label>
                    <span>Upload Photo 1</span>               
-                  <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" required >
+                  <input type="file" name="img1" id="img1" onBlur="CheckImg1(); return false;" >
                 </label>                              
                         <label>
                    <span>Upload Photo 2</span>                  
-                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" required>
+                 <input type="file" name="img2" id="img2" onBlur="CheckImg2(); return false;" >
                 </label>              
       
                    <label>
 
                    <span>Upload Photo 3</span>                 
-                 <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;" required>
+                 <input type="file" name="img3" id="img3" onBlur="CheckImg3();  return false;" >
 
                 </label>    
 

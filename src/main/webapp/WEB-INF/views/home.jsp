@@ -63,13 +63,13 @@
 												action="loginHome" accept-charset="UTF-8" id="login-nav">
 												<div class="form-group">
 													<label class="sr-only" for="exampleInputEmail2">Email
-														address</label> <input type="email" name="email" value="swap1@gmail.com"
+														address</label> <input type="email" name="email" value=""
 														class="form-control" id="email"
 														placeholder="Email address" autocomplete="off" required>
 												</div>
 												<div class="form-group">
 													<label class="sr-only" for="exampleInputPassword2">Password</label>
-													<input type="password" name="password" class="form-control" value="Swapnil@70"
+													<input type="password" name="password" class="form-control" value=""
 														id="password" placeholder="Password" autocomplete="off"
 														required>
 													<div class="help-block text-right" style="color:#337ab7;">

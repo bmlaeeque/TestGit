@@ -191,7 +191,7 @@ food.style.backgroundColor = badColor;
 function CheckRent()   
 {  
   var rent = document.getElementById('rent');
-  var decimal= /^[0-9]{4,5}$/;
+  var decimal= /^[0-9]{4,10}$/;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
 if(rent.value.match(decimal))   
@@ -208,7 +208,7 @@ rent.style.backgroundColor = badColor;
 function CheckDeposit()   
 {  
   var deposit = document.getElementById('deposit');
-  var decimal= /^[0-9]{4,5}$/;
+  var decimal= /^[0-9]{4,10}$/;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
 if(deposit.value.match(decimal))   
@@ -399,7 +399,7 @@ function CheckImg1()
   var fileSize1 =img1.files[0].size;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
-if(img1 .value.match(decimal) && fileSize1 < 1048576)   
+if(img1 .value.match(decimal) && fileSize1 < 1048576658456489)   
 {   
  img1.style.backgroundColor = goodColor;
 }  
@@ -416,7 +416,7 @@ function CheckImg2()
    var fileSize2 =img2.files[0].size;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
-if(img2 .value.match(decimal) && fileSize2 < 1048576)   
+if(img2 .value.match(decimal) && fileSize2 < 1048576658456489)   
 {   
  img2.style.backgroundColor = goodColor;
 }  
@@ -450,7 +450,7 @@ function CheckUserImg()
     var UserImgSize =userImg.files[0].size;
   var goodColor = "#82E0AA";
   var badColor = "#E74C3C";
-if(userImg .value.match(decimal) && UserImgSize < 1048576)   
+if(userImg .value.match(decimal) && UserImgSize <1048576658456489)   
 {   
 	userImg.style.backgroundColor = goodColor;
 }  
@@ -497,9 +497,9 @@ function HouseSubmit()
 	 var Room = document.getElementById('room').value;
      var decimalRoom = /^[0-9]{1,2}$/;
 	 var Rent = document.getElementById('rent').value;
-     var decimalRent = /^[0-9]{4,5}$/;
+     var decimalRent = /^[0-9]{4,10}$/;
 	 var Deposit = document.getElementById('deposit').value;
-     var decimalDeposit = /^[0-9]{4,5}$/;
+     var decimalDeposit = /^[0-9]{4,10}$/;
 	 var Area = document.getElementById('area').value;
      var decimalArea = /^[1-9]{3,5}(\.\d{2})?$/;
 	 var Address = document.getElementById('address').value;

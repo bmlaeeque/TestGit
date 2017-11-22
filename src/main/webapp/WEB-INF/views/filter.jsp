@@ -13,14 +13,23 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" /> 
 <link href="css/header.css" rel="stylesheet" />  
  <link href="css/popup.css" rel="stylesheet">
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" /><!-- this is for the filter.etc icons-->
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <style>
 	.ui-autocomplete { font-size: 10px; }
 }
-</style>
+
 <!--this for the img-->
-<style>
+
+    .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      min-height: 200px;
+    }
 .carousel-content {
   position: absolute;
   bottom: 10%;
@@ -29,14 +38,9 @@
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
-<!--this for the img end here-->
-</style>
-<style>
-.carousel-inner img {
-      width: 100%; /* Set width to 100% */
-      min-height: 200px;
-    }
+ 
 
+#first{ height:500px;}
 .carousel-content {
   position: absolute;
   bottom: 10%;
@@ -321,47 +325,111 @@
      </div><!--5)-->
      </div><!--4)-->
      </div><!--3)-->
-  <div id ="showHouse" class="col-md-9" style="height:20px">
-      <c:forEach items="${house}" var="house" varStatus="itr">
+  <div id ="showHouseInfo" class="col-md-9" style="height:20px">
+  <c:forEach items="${house}" var="house" varStatus="itr">
  		<a href="showHouseInfo/${house.hId}" > <div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">	 
            <div class="row">
+                    <div class="media col-md-8">
+               		<div class="carousel-inner">
+  				 <div class="item active">
+  				    <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      Indicators
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol> -->
+		
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" >
+     
+      <div class="item active">
+       <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" />
+          <%--  <div class="carousel-content">
+      	 <h6>From</h6>
+            <i class="fa fa-inr"></i> ${house.rent}
+          <p>Security Deposit</p>
+      </div> --%>
+     </div>
+     
+     <%--  <div class="item">
+           <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" />
+                  <div class="carousel-content">
+      	 <h6>From</h6>
+             <i class="fa fa-inr"></i> ${house.rent}
+          <p>Security Deposit</p>
+      </div>
+        </div> --%>
+        
+     <%--   <div class="item">
+          <img src="<ui:image img='${house.img3}'></ui:image>" alt="Image" />
+                  <div class="carousel-content">
+      	 <h6>From</h6>
+            <i class="fa fa-inr"></i> ${house.rent}
+          <p>Security Deposit</p>
+      </div>
+        </div>
+ --%>        
+      </div>
+       <!-- Left and right controls -->
+     <!--  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  	 -->
+  			<%-- <img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" /> --%>
+     			<%--  <div class="carousel-content">
+        			<h4><strong>${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
+                    	</div><!--carousel content class closed--> --%>
+                    	<%-- <div class="caption">
+  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}</strong></p>
+  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.deposit}</strong></p>
+        </div>  --%>
+      </div><!--active item class closed-->
+    </div><!--carousel inner class closed-->
+  		      
+      </div><!--colm 8 class  closed-->
+           
+           
+        
    				<div class="media col-md-4">
  	<h4><font color="#FF0000">Home Details</font></h4>			
 			 <table class="table small" >    			
-                <tbody height="25">             
+                <tbody height="25">    
+                        <tr>
+                              <td><h5 style="color:#000000">Name:</h5></td>
+                              <td><h5 style="color:#000000">${house.houseName}</h5></td> 
+                           </tr>               
+                         
                           <tr>
-                             <td ><h5 style="color:#000000">Accomodation For :</h5></td>
-                              <td><h5 style="color:#000000">Girls</h5></td>
+                             <td ><h5 style="color:#000000">Tenancy Type:</h5></td>
+                              <td><h5 style="color:#000000">${house.tenancyType}</h5></td>
                           </tr>
                             <tr>
                              <td><h5 style="color:#000000">Address :</h5></td>
                              <td><h5 style="color:#000000">${house.address}, ${house.locationArea}, ${house.city}</h5></td>
                           </tr>
-                            <tr>
-                              <td><h5 style="color:#000000">Avalability :</h5></td>
-                              <td><h5 style="color:#000000">2 bed availble</h5></td>
-                           </tr>
-
+                             <tr>
+                             <th><h5 style="color:#990000">Rent<br><h4>${house.rent }</h4></h5></th>
+                              <th><h5 style="color:#990000">Security Deposit<br><h4>${house.deposit}</h4></h5></th>
+                         <%-- <tr> <td ><b>${house.rent }</b></td>
+                           
+                             <td><h2>${house.deposit }</h2></td></tr> --%>
+                          </tr>
+                            
+ 
                          </tbody>
                          </table>
                 </div><!--col 4 is closed-->
-                <div class="media col-md-8">
-               		<div class="carousel-inner">
-  				<div class="active item">
-  			<img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" />
-     			 <div class="carousel-content">
-        			<h4><strong>${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
-                    	</div><!--carousel content class closed-->
-                    	<div class="caption">
-  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}/bed</strong></p>
-        </div> 
-      </div><!--active item class closed-->
-    </div><!--carousel inner class closed-->
-  		      
-      </div><!--colm 8 class  closed-->
+    
     </div> <!--row closed-->
  </div><!--class well closed --></a>
- </c:forEach>
+  </c:forEach> 
        <tag:paginate max="5" offset="${offset}" count="${count}"
 			uri="${url}" next="&raquo;" previous="&laquo;" />
 			<div id="dvMap" style="width: 100%; height:500px;"></div>
@@ -377,7 +445,7 @@
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script src="js/popup.js"></script>   
  <script type="text/javascript">
- var markers = [
+  var markers = [
 	 <c:forEach var="s" items="${house}">
 	    {
 	        "label":"${s.rent}",
@@ -395,6 +463,9 @@
 	    },
 	    </c:forEach>
 	];
+	
+	
+	
  window.onload = function () {
 	    var mapOptions = {
 	        center: new google.maps.LatLng(markers[0].lat, markers[0].lng),

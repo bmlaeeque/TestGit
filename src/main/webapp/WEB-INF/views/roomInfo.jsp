@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
+  
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="/WEB-INF/taglibs/image.tld" prefix="ui"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,8 +11,47 @@
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  
   <!-- bedpop link -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <style>
+#imgZoom {
+    height: 100;
+}
+img#imgZoom:hover {
+    position: relative;
+    -webkit-transform: scale(4.0);
+    -ms-transform: scale(4.0);
+    -o-transform: scale(4.0);
+    transform: scale(4.0);
+    z-index: 1000;
+}
+* {
+    -webkit-transition: all 1.0s ease-in-out;
+    -moz-transition: all 1.0s ease-in-out;
+    -ms-transition: all 1.0s ease-in-out;
+    -o-transition: all 1.0s ease-in-out;
+    transition: all 1.0s ease-in-out;
+}
+
+#overlay {
+    visibility: hidden;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width:10%;
+    height:10%;
+    padding-top:30%;
+    border: 5px solid gray;
+    background-color: white;
+    opacity:0.4;
+    text-align:center;
+    z-index: 1000;
+}
+
+
+</style>
+  
  
 </head>
 <body style="background-color: rgb(243,210,230);">
@@ -46,9 +86,11 @@
  <div class="row">
  <!--Room 1 Section-->
     <div class="col-sm-5">
+      
       <div class="tab-content">
-       <h3>Room Details</h3>
-              <div class="w3-container">
+      
+       <h3>Details of Room</h3>
+          <div class="w3-container">
          <table class="table">
            <thead>
               <tr class="w3-light-grey w3-hover-red">
@@ -61,7 +103,7 @@
                 <td>${room.roomtype}</td>
              </tr>
              <tr class="w3-hover-green">
-                <td>foodAvailability</td>
+                <td>FoodAvailability</td>
                 <td>${room.foodAvailability}</td>
              </tr>
              <tr class="w3-hover-green">
@@ -76,28 +118,32 @@
                 <br>     SwimmingPool : ${room.swimmingPool} </td>
             </tr>
              <tr class="w3-hover-green">
-                <td>Roommates</td>
+                <td>Total Bed</td>
                 <td>
-                     <ul>
-                      <li><a data-toggle="collapse" data-target="#bed1">Bed 1</a></li>
+                    <ul>
+                      <li><a data-toggle="collapse" data-target="#bed1">${room.numberOfBed} </a></li>
                        <div id="bed1" class="collapse">
                          
                        </div>    
          
-                     <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
+                    <!--  <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
                         <div id="bed2" class="collapse">
                            <ol>
                              
-                           </ol>   
+                           </ol>    -->
+                            
                         </div>
                      </ul> 
                 </td>
+                
               </tr>
          </table>
  </div>
 </div> 
 <!--End Room 1 Section-->
+   
   </div>
+  
   
       <div class="container">    
  <div class="row">
@@ -118,7 +164,29 @@
            </thead>
 <c:forEach items="${room.beds}" var="beds" varStatus="itr"> 
 <tr class="w3-hover-green">
-                <td>Bed Info</td>
+                <td> <form id="login-form" action="showPaymentPage" method="post" role="form" style="display: block;">
+          <!--  <p>
+             To Book, you need to pay a token amount and the remaining before move-in.</p> -->
+            <br>
+            <br>
+            <div class="form-group">
+	         <div class="row">
+	          <div class="col-sm-6 col-sm-offset-3">
+		        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Book Now" style="color:#FF0000">
+	          <!--  <form role="form" class="form-vertical">
+                               
+                                  <p  style="text-align:center" display="inline-block">
+     <a class = "btn navbar-btn btn-default" href = "showPaymentPage" style="width:100%" >Self</a>
+     <a class = "btn navbar-btn btn-default" href = "showUserReg" style="width:100%" >Other</a>
+                                 </p>
+                              
+                                </form>
+	          -->
+	         
+	          </div>
+	        </div> 
+	      </div>
+         </form></td>
                 <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
              </tr>
              
@@ -129,7 +197,7 @@
  </div>
  </div>
  </div>
- 
+</div>
  
  
  <style>
@@ -168,12 +236,26 @@ $(document).ready(function() {
 	<div class="panel panel-login" style="background-color: rgb(243,210,230);">
       <div class="panel-heading row">
 	    <div class="row">
-		  <div class="col-xs-6 text-center">
-			<a href="#" class="active" id="book">Book</a>
-		  </div>
-		  <div class="col-xs-6 text-center">
-			<a href="#" id="visit">Visit</a>
-		  </div>
+		   <div class="col-xs-6 text-center">
+			<!-- <a href="#" class="active" id="book">Book</a> --></div>
+			<table style="margin-top: 0px;">
+			<tr><td>
+			<img  id="imgZoom" width="100px" height="80px" onmousemove="zoomIn(event)" onmouseout="zoomOut()"  src="<ui:image img='${room.img1}'></ui:image>" alt="Image"></td>
+		  <div id="overlay" onmousemove="zoomIn(event)"></div>
+		<td><ul style="list-style-type:circle"></td>
+		 <td>
+		 <!-- <a href="#" id="visit">Visit</a> -->
+		 	<img  id="imgZoom" width="100px" height="80px" onmousemove="zoomIn(event)" onmouseout="zoomOut()"  src="<ui:image img='${room.img2}'></ui:image>" alt="Image">
+			</td>
+		  
+		  		<td><ul style="list-style-type:circle"></td>  
+		  		 <td>
+		  		    	<img  id="imgZoom" width="100px" height="80px" onmousemove="zoomIn(event)" onmouseout="zoomOut()"  src="<ui:image img='${room.img3}'></ui:image>" alt="Image">
+		  		</td></tr> </table>
+  </div>
+  </div>
+  </div>
+ 
 	    </div>
 			<hr>
 	   </div>
@@ -183,7 +265,7 @@ $(document).ready(function() {
 	<div class="panel-body">
 	  <div class="row">
 		<div class="col-lg-12">
-		  <form id="login-form" action="showPaymentPage" method="post" role="form" style="display: block;">
+		 <!--  <form id="login-form" action="showPaymentPage" method="post" role="form" style="display: block;">
            <p>
              To Book, you need to pay a token amount and the remaining before move-in.</p>
             <br>
@@ -195,7 +277,7 @@ $(document).ready(function() {
 	          </div>
 	        </div> 
 	      </div>
-         </form>
+         </form> -->
   
   <form id="register-form" action="" method="post" role="form" style="display: none;">
    <div class="form-group">
@@ -228,6 +310,7 @@ $(document).ready(function() {
     <hr>
 </div>
      
+     
         	
       
  <!--Script for book and view Code-->
@@ -251,7 +334,7 @@ $(function() {
 
 });
 </script>
-<!--End of Script-->
+
  <script src="js/validate.js" type="text/javascript"></script>
  <script>
 // When the user clicks on bed, open the popup
@@ -277,5 +360,23 @@ $(function() {
 	popup1.classList.toggle("show");
 	}	
 </script>
+<script type="text/javascript">
+function zoomIn(event) {
+  var element = document.getElementById("overlay");
+  element.style.display = "inline-block";
+  var img = document.getElementById("imgZoom");
+  var posX = event.offsetX ? (event.offsetX) : event.pageX - img.offsetLeft;
+  var posY = event.offsetY ? (event.offsetY) : event.pageY - img.offsetTop;
+  element.style.backgroundPosition = (-posX * 4) + "px " + (-posY * 4) + "px";
+
+}
+
+function zoomOut() {
+  var element = document.getElementById("overlay");
+  element.style.display = "none";
+}
+</script>
+
+
 </body>
 </html>

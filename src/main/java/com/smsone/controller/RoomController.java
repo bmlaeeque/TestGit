@@ -18,10 +18,12 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.smsone.model.Beds;
+import com.smsone.model.Booking;
 import com.smsone.model.House;
 import com.smsone.model.Owner;
 import com.smsone.model.Room;
 import com.smsone.model.User;
+import com.smsone.service.BookingService;
 import com.smsone.service.HouseService;
 import com.smsone.service.RoomService;
 import com.smsone.util.PlacesUtility;
@@ -32,12 +34,14 @@ public class RoomController {
 	@Autowired
 	private HouseService houseService;
 	//show room info
-
+@Autowired
+private BookingService bookingService;
 	
 	@RequestMapping(value="/showRoomInfo")
 	public String showRoominfo(@RequestParam("rId") Long rId,Model model)
 	{
 		Room r=roomService.getRoom(rId);
+		
 		model.addAttribute("room",r);
 		
 		return "roomInfo"; 
@@ -107,10 +111,11 @@ public class RoomController {
 		return "editRoomDetails";  
 	}
 	@RequestMapping(value="/showHouseInfo/showRoomInfo/{rId}")
-	public String showRoomDetails(@PathVariable("rId")Long rId,RedirectAttributes ra)
+	public String showRoomDetails(@PathVariable("rId")Long rId ,RedirectAttributes ra)
 
 	{
 		 ra.addAttribute("rId",rId);
+	
 		 return "redirect:/showRoomInfo";
 	}
 	@RequestMapping(value="/saveBed")
@@ -224,5 +229,29 @@ public class RoomController {
 		roomService.updateRoom(room,house);
 		return "success";
 	}
+	
+	
+	//save Booking Bed details
+	@RequestMapping(value = "/saveBooking", method = RequestMethod.POST)
+	public String saveBooking(@RequestParam("creditName")String Name,@RequestParam("cardNumber")Integer CardNumber,@RequestParam("exmonth")String month, @RequestParam("exyear")Integer year,@RequestParam("cvcnumber")Integer cvc ,Model model,HttpSession session) throws IOException
+	{
+		Booking booking=new Booking();
+		booking.setName(Name);
+		booking.setCardNumber(CardNumber);
+		booking.setMonth(month);
+		booking.setYear(year);
+		booking.setCvc(cvc);
+		bookingService.saveBooking(booking);
+		return month;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
