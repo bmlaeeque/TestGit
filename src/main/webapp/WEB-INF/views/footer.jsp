@@ -11,7 +11,7 @@
    <footer id="footer" style="background-color: rgb(243,210,230);">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-xs-6 col-sm-3 column">
+               <!--  <div class="col-xs-6 col-sm-3 column">
                     <h4>Information</h4>
                     <ul class="list-unstyled">
                         <li><a href="">Products</a></li>
@@ -28,7 +28,7 @@
                         <li><a href="#">Privacy Policy</a></li>
                         <li><a href="#">Terms &amp; Conditions</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="col-xs-12 col-sm-3 column">
                     <h4>Stay Posted</h4>
                     <form>

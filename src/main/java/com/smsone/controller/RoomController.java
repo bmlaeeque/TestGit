@@ -34,8 +34,8 @@ public class RoomController {
 	@Autowired
 	private HouseService houseService;
 	//show room info
-@Autowired
-private BookingService bookingService;
+/*@Autowired
+private BookingService bookingService;*/
 	
 	@RequestMapping(value="/showRoomInfo")
 	public String showRoominfo(@RequestParam("rId") Long rId,Model model)
@@ -231,7 +231,7 @@ private BookingService bookingService;
 	}
 	
 	
-	//save Booking Bed details
+	/*//save Booking Bed details
 	@RequestMapping(value = "/saveBooking", method = RequestMethod.POST)
 	public String saveBooking(@RequestParam("creditName")String Name,@RequestParam("cardNumber")Integer CardNumber,@RequestParam("exmonth")String month, @RequestParam("exyear")Integer year,@RequestParam("cvcnumber")Integer cvc ,Model model,HttpSession session) throws IOException
 	{
@@ -244,7 +244,7 @@ private BookingService bookingService;
 		bookingService.saveBooking(booking);
 		return month;
 		
-	}
+	}*/
 	
 	
 	

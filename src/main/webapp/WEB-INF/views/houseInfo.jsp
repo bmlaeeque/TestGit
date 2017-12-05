@@ -7,16 +7,18 @@
  <title>Info Page</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+ 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!--Code for text on image-->
-  
-  
-  
+ 
   <style>
     .carousel-inner img {
       width: 100%; /* Set width to 100% */
@@ -29,6 +31,32 @@
   z-index: 20;
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);  
+}
+</style>
+
+<style>
+ /*button color code*/
+ .form-basic button{
+   
+    border-radius: 2px;
+    background-color:#66CC66;
+    color: #ffffff;
+    font-weight: bold;
+    box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08); 
+    padding-right: 5px 32px;
+    border: 0;
+    margin: 10px 110px 0;
+	}
+	
+	/*select design code*/
+	.form-basic select{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 5px 5px 5px 5px;
+    height: 35px;
+    margin: 0 0 0 10px;
+    padding-right: 5px;
+ 
 }
 </style>
 
@@ -272,61 +300,153 @@ img#imgZoom:hover {
  				
 					  <h4><font color="#FF0000">Rooms details</font></h4>
  <p>Apart from rent, the following are additional expenses you may incur every month when living in this house.</p>
-  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
+ <!--  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
   <div id="demo" class="collapse">
-       
-       <table class="table">
+        --> 
+      <table class="table">
        			<tbody>
-       			
        			   <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
                      <tr>
-                       <%--  <td><a href="showRoomInfo/${rooms.rId}">BOOK Room ID:${rooms.rId} </a></td>  --%>
-                         
-                        <%--  <a href="#" class="btn" data-toggle="popover" title="Total Bed : ${rooms.numberOfBed}  Room Type : ${rooms.roomtype} FoodAvailability:${rooms.foodAvailability} Facilities:AC: ${rooms.ac}   Wifi: ${rooms.wifi}  Bathroom     : ${rooms.bathroom}
-                     Geyser: ${rooms.geyser} Gym: ${rooms.gym} SwimmingPool : ${rooms.swimmingPool} "><!-- <i class="fa fa-bed fa-5x"></i> --> <img  width="100px" height="100px"  src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image"></a>
-                    --%>
-                     <!--  <li class="dropdown"> --><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" title="Total Bed : ${rooms.numberOfBed}  Room Type : ${rooms.roomtype} FoodAvailability:${rooms.foodAvailability} Facilities:AC: ${rooms.ac}   Wifi: ${rooms.wifi}  Bathroom     : ${rooms.bathroom}
-                     Geyser: ${rooms.geyser} Gym: ${rooms.gym} SwimmingPool : ${rooms.swimmingPool}" > <img  width="100px" height="100px"  src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image">
-                   
-                     <!--  <span class="caret"></span> --></a>
-				<!-- <ul id="" class="dropdown-menu"> -->
-						<!-- <li> -->
-									<!--   <div class="row">
-										<div class="col-md-12"> 
-										 -->
-										
-										
-										  <c:forEach items="${rooms.beds}" var="beds" varStatus="itr"> 
-										  <a href="showPaymentPage" class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a>
-										  
-										  
-										  
-										 </c:forEach>
-										
-							
-									
-									<!-- 	</div>
-										
-									 </div> -->
-								<!-- </li> -->
-                            
-						<!--  </ul> -->
-                         
-               
-                      </tr> 
-                       </c:forEach>
-                       
-                  </tbody>
-         </table>
-        
-			</div>
-					
-					
-				</div>
+                          
+      <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"><img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" style="height:100px;width:100px;"/>
+                     
+                  </button>
+                  </tr>
 			
-			<!-- <hr> -->
+				</tbody>
+				</table>
+         
+                    				
+				 <div id="id01" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2>Modal Header</h2>
+      </header>
+      
+                      
+                  <!--    <ul id="login-dp" class="dropdown-menu" style="width:700px;"> -->
+                     <div class="w3-container">
+                     <div class="col-sm-5">
+      
+      <div class="tab-content" style="padding-top:10px;">
+     
+       <h3>Details of Room</h3>
+          <div class="w3-container">
+         <table class="table">
+           <thead>
+              <tr class="w3-light-grey w3-hover-red">
+                 <th>Things</th>
+                 <th>Details</th>
+             </tr>
+           </thead>
+             <tr class="w3-hover-green">
+                <td>Type of Room</td>
+                <td>${rooms.roomtype}</td>
+             </tr>
+             <tr class="w3-hover-green">
+                <td>FoodAvailability</td>
+                <td>${rooms.foodAvailability}</td>
+             </tr>
+            <%--  <tr class="w3-hover-green">
+                <td>Facilities</td>
+                <td>      AC          : ${rooms.ac}
+                <br>
+                         Wifi         : ${rooms.wifi}
+                <br>     Bathroom     : ${rooms.bathroom}
+                <br>     Geyser       : ${rooms.geyser}
+                
+                <br>     Gym          : ${rooms.gym}
+                <br>     SwimmingPool : ${rooms.swimmingPool} </td>
+            </tr> --%>
+             <%-- <tr class="w3-hover-green">
+                <td>Total Bed</td>
+                <td>
+                    <ul>
+                      <li><a data-toggle="collapse" data-target="#bed1">${rooms.numberOfBed} </a></li>
+                       <div id="bed1" class="collapse">
+                         
+                       </div>     --%>
+         
+                    <!--  <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
+                        <div id="bed2" class="collapse">
+                           <ol>
+                             
+                           </ol>    -->
+                            
+                     <!--  </div>  -->
+                         
+                     </ul> 
+                </td>
+                
+              </tr>
+         </table>
+ 
+ </div>
+ 
+</div> 
+<!--End Room 1 Section-->
+   
+  </div> 
+ 
+    <div class="col-sm-5">
+      <div class="tab-content">
+   		
+     
+              <div class="w3-container">
+         <table class="table">
+           <thead>
+              <tr class="w3-light-grey w3-hover-red">
+                 
+                 <th></th>
+             </tr>
+           </thead>
+<c:forEach items="${rooms.beds}" var="beds" varStatus="itr"> 
+<tr class="w3-hover-green">
+               <td></td>
+                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
+             </tr>
+             
+
+ </c:forEach>
+ 
+ </table>
+ 
+ </div>
+   
+ </div>
+
+                     
+                   
+ </div>
+   
+    <!-- </ul> -->
+                     
+             
+              
+           
+			
+					
+	
+	</div>
+	
+	
 		</div>
+		</div>
+						
+									
+									
+             
+                 
+		<!-- 	</div> -->
+				  	
+				
+				</div>
+				
+		</c:forEach>	
+		</div>
+      
        
 	<div class="panel-body">
 	  <div class="row">
@@ -859,6 +979,7 @@ $(function() {
 </style>   
 
 
+<script src="js/paymentvalidation.js" type="text/javascript"></script>
 
 <script src="js/validate.js" type="text/javascript"></script>
 </body>
