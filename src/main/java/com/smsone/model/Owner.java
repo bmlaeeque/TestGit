@@ -45,8 +45,10 @@ public class Owner implements Serializable
 	private Long contactNumber;
 	@Column(nullable=false,length=20)
 	private String password;
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="owner")
 	private List<House> house;
+	
 	@Column(nullable=false,length=50)
 	private String ownerHashcode;
 	@Column(length=20)

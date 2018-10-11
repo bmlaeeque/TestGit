@@ -24,9 +24,11 @@ public class Beds implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long bId;
 	private Long bedId;
+	
 	@OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "uId")
 	private User user;
+	
 	@ManyToOne
     @JoinColumn(name = "rId") 
 	private Room room;

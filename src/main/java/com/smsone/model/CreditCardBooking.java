@@ -31,6 +31,7 @@ public class CreditCardBooking implements Serializable {
 	private Long exyear;
 	@Column(nullable=false,length=10)
 	private Long cvcnumber;
+	
 	public  Long getCdId_bookedBed() {
 		return cdId_bookedBed;
 	}

@@ -69,8 +69,10 @@ public class UserController {
 		user.setFoodPreference(foodPreference);
 		user.setAadharNumber(aadharNumber);
 		user.setArea(area);
+		
 		byte[] userImg1 = userImg.getBytes();
 		user.setUserImg(userImg1);
+		
 		//user reference
 		User user1=(User)session.getAttribute("user");
 		if(user1!=null)
@@ -85,11 +87,14 @@ public class UserController {
 		String hashcode = UUID.randomUUID().toString();
 		user.setHashcode(hashcode);
 		user.setUserCreation_date(date);
+		
 		userService.saveUser(user);		
+		
 		String link="http://localhost:8080/PGHOSTEL/emailVerify"+"?hashcode="+hashcode+"&email="+email;
 		String msg="Thank You For Your Interest..\r\n"+ "Your account"+" " +email+" " +"will be activated..\r\n"+" Please click on the below link.\r\n\r\n"+" "+link;
 		sendDivastaysMail(email,msg,"Divastays Email Activation Link");
-		return "success";
+		
+		return "success";//here i am calling to success.jsp page
 	}
 	public String sendDivastaysMail(String email,String message,String subject)
 	{

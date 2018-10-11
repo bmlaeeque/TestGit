@@ -38,12 +38,11 @@ public class HouseDAOImpl implements HouseDAO {
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<House> list(Integer offset, Integer maxResults) {
-		return sessionFactory.openSession()
-				.createCriteria(House.class)
-				.setFirstResult(offset!=null?offset:0)
-				.setMaxResults(maxResults!=null?maxResults:10)
-				.list();
+		return sessionFactory.openSession().createCriteria(House.class).setFirstResult(offset!=null?offset:0).setMaxResults(maxResults!=null?maxResults:10).list();
 	}	
+	/**
+	 * 
+	 */
 	public House getHouse(House house) {
 		Session session=sessionFactory.openSession();
 		House loadHouse=(House)session.load(House.class,house.gethId());	
@@ -64,18 +63,16 @@ public class HouseDAOImpl implements HouseDAO {
 			{
 			return true;
 			}
-		}	
-	//counting house
+		}
+		/**
+		 * 	counting house
+		 */
 		public Long count(){
-			return (Long)sessionFactory.openSession()
-					.createCriteria(House.class)
-					.setProjection(Projections.rowCount())
-					.uniqueResult();
+			return (Long)sessionFactory.openSession().createCriteria(House.class).setProjection(Projections.rowCount()).uniqueResult();
 		}
 		public Long countByFilter(House house) {
 			Session session=sessionFactory.openSession();
-			Query query = session.createQuery(
-			        "select count(*) from House h where h.address=:address");
+			Query query = session.createQuery("select count(*) from House h where h.address=:address");
 			query.setString("address",house.getAddress());
 			Long count = (Long)query.uniqueResult();
 			return count;
@@ -168,8 +165,7 @@ public class HouseDAOImpl implements HouseDAO {
 			List<House> house1 = criteria.list();
 			return house1;
 		}		
-		public List<House> listHouseByadvancedFilter(House house, User user, Integer offset, Integer maxResults,
-				String[] facilities) {
+		public List<House> listHouseByadvancedFilter(House house, User user, Integer offset, Integer maxResults,String[] facilities) {
 			Session session=sessionFactory.openSession();
 			Criteria criteria = session.createCriteria(House.class);
 			criteria.setFirstResult(offset!=null?offset:0);

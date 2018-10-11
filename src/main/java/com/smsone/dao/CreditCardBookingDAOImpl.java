@@ -31,9 +31,11 @@ public class CreditCardBookingDAOImpl implements  CreditCardBookingDAO{
 
 	public boolean checkBed(CreditCardBooking creditcardbooking) {
 		Session session=sessionFactory.openSession();
+		
 		Criteria crit=session.createCriteria(CreditCardBooking.class);
 		Criterion c1=Restrictions.eq("cdId_bookedBed",creditcardbooking.getCdId_bookedBed());
 		crit.add(c1);
+		
 		@SuppressWarnings("unchecked")
 		List<User> list=crit.list();
 		if(list.isEmpty())

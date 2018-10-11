@@ -38,14 +38,19 @@ public class CreditCardBookingController {
 		@RequestMapping(value = "/saveCreditCardBookingHere", method = RequestMethod.POST)
 	  	public String saveCreditCardBooking(HttpSession httpSession,@RequestParam("creditName") String creditName,@RequestParam("cardNumber") String cardNumber,@RequestParam("exmonth") String exmonth,@RequestParam("exyear") Long exyear,@RequestParam("cvcnumber") Long cvcnumber,Model model,HttpSession session)
 	  	{
-	  		
+	  		/**
+	  		 * Set credit card details
+	  		 */
 	    	CreditCardBooking creditcardbooking = new CreditCardBooking();
+	    	
 	    	creditcardbooking.setCreditName(creditName);
 	    	creditcardbooking.setCardNumber(cardNumber);
 	  		creditcardbooking.setExmonth(exmonth);
 	  		creditcardbooking.setExyear(exyear);
 	  		creditcardbooking.setCvcnumber(cvcnumber);	  			  	
-	  		
+	  		/**
+	  		 * 
+	  		 */
 	  		creditcardbookingservice.saveCreditCardBooking(creditcardbooking);
 	  		
 	  		int hId=(Integer)session.getAttribute("hId");

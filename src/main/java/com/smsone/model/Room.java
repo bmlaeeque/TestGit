@@ -39,11 +39,14 @@ public class Room implements Serializable {
 	private byte[] img2;
 	@Column(name="img3",columnDefinition = "LONGBLOB")
 	private byte[] img3;
+	
 	@ManyToOne 
     @JoinColumn(name = "hId")
 	private House house;
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="room")
 	private List<Beds> beds;
+	
 	public Long getrId() {
 		return rId;
 	}

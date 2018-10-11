@@ -60,13 +60,16 @@ public class House implements Serializable
 	private byte[] img2;
 	@Column(name="img3",columnDefinition = "LONGBLOB")
 	private byte[] img3;
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="house")
 	private List<User> user;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.LAZY,mappedBy="house")
 	private List<Room> rooms;
+	
 	@ManyToOne
     @JoinColumn(name = "oId")
 	private Owner owner;
+	
 	@Column(name="latitude",columnDefinition = "Decimal(9,6)")
 	private Double latitude;
 	@Column(name="longitude",columnDefinition = "Decimal(9,6)")

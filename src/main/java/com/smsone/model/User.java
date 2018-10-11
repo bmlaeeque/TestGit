@@ -55,9 +55,11 @@ public class User implements Serializable {
 	private String password;
 	@Column(nullable=true)
 	private Long RefId;
+	
 	@ManyToOne
     @JoinColumn(name = "hId")
 	private House house;
+	
 	@Column(name="userImg",columnDefinition = "LONGBLOB")
 	private byte[] userImg;
 	@Column(nullable=true,length=50)

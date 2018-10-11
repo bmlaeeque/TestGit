@@ -15,14 +15,20 @@ import com.smsone.model.User;
 @Controller
 public class BaseController {
 	private MailSender mailSender;
-
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/showHome")
 	public String showHome()
 	{
 		return "home";
 	}
 	
-	
+	/**
+	 * 
+	 * @return
+	 */
 	@RequestMapping(value = "/showHome1")
 	public String showHome1(@RequestParam("invalid") Long invalid,Model model)
 	{
@@ -30,6 +36,10 @@ public class BaseController {
 		model.addAttribute("LoginMsg","Please enter valid email and password");
 		return "home";
 	}
+	/**
+	 * 
+	 * @return
+	 */
 	//show short term
 	@RequestMapping(value = "/showShortTerm")
 	public String showShortTerm(HttpSession session)
@@ -117,7 +127,7 @@ public class BaseController {
 		public String VerificationLink(@RequestParam("email") String email,String message,String subject,Model model)
 		{
 	    	User user=new User();
-	    	System.out.println("Hii");
+	    	//System.out.println("Hii");
 			SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
 			
 			simpleMailMessage.setTo(email);
