@@ -101,7 +101,8 @@ public class UserController {
 		return "success";
 	}
 	@RequestMapping(value = "/emailVerify")
-	public String emailVerify(@RequestParam(required = false, defaultValue = "hashcode", value="hashcode") String hashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
+	public String emailVerify(@RequestParam(required = false, defaultValue = "hashcode", value="hashcode") 
+	String hashcode,@RequestParam(required = false, defaultValue = "email", value="email") String email,Model model)
 	{
 		User user=new User();
 		user.setHashcode(hashcode);
@@ -395,7 +396,7 @@ public class UserController {
 	}	
 	
 
-//autofill script
+
 
 
 

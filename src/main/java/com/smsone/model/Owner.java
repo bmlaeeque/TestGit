@@ -11,22 +11,30 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
+@Entity(name="OWNER")
 @Table
 public class Owner implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	 /*@ManyToOne
+	    @JoinColumn(name = "mId")
+	    private Member member;
+*/
 	@Column(nullable=false,unique = true)
 	private Long oId;
 	@Column(nullable=false,length=20)
 	private String firstName;
+	@Column(nullable=false,length=20)
+	private Long mId;
 	@Column(nullable=false,length=20)
 	private String lastName; 
 	@Column(nullable=false,length=30)
@@ -62,6 +70,12 @@ public class Owner implements Serializable
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
+	}
+	public Long getmId() {
+		return mId;
+	}
+	public void setmId(Long mId) {
+		this.mId = mId;
 	}
 	public String getLastName() {
 		return lastName;
@@ -132,27 +146,6 @@ public class Owner implements Serializable
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	public Owner() {
-		super();
-	}
-	public Owner(Long oId, String firstName, String lastName, String email, Long aadharNumber, Long contactNumber,
-			String password, List<House> house, String ownerHashcode, Long attempts, String ownerStatus,
-			Date ownerCreation_date, Date emailResendTime) {
-		super();
-		this.oId = oId;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.aadharNumber = aadharNumber;
-		this.contactNumber = contactNumber;
-		this.password = password;
-		this.house = house;
-		this.ownerHashcode = ownerHashcode;
-		this.attempts = attempts;
-		this.ownerStatus = ownerStatus;
-		this.ownerCreation_date = ownerCreation_date;
-		this.emailResendTime = emailResendTime;
-	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -165,6 +158,7 @@ public class Owner implements Serializable
 		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
 		result = prime * result + ((house == null) ? 0 : house.hashCode());
 		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((mId == null) ? 0 : mId.hashCode());
 		result = prime * result + ((oId == null) ? 0 : oId.hashCode());
 		result = prime * result + ((ownerCreation_date == null) ? 0 : ownerCreation_date.hashCode());
 		result = prime * result + ((ownerHashcode == null) ? 0 : ownerHashcode.hashCode());
@@ -221,6 +215,11 @@ public class Owner implements Serializable
 				return false;
 		} else if (!lastName.equals(other.lastName))
 			return false;
+		if (mId == null) {
+			if (other.mId != null)
+				return false;
+		} else if (!mId.equals(other.mId))
+			return false;
 		if (oId == null) {
 			if (other.oId != null)
 				return false;
@@ -250,12 +249,13 @@ public class Owner implements Serializable
 	}
 	@Override
 	public String toString() {
-		return "Owner [oId=" + oId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", aadharNumber=" + aadharNumber + ", contactNumber=" + contactNumber + ", password=" + password
-				+ ", house=" + house + ", ownerHashcode=" + ownerHashcode + ", attempts=" + attempts + ", ownerStatus="
-				+ ownerStatus + ", ownerCreation_date=" + ownerCreation_date + ", emailResendTime=" + emailResendTime
-				+ "]";
+		return "Owner [oId=" + oId + ", firstName=" + firstName + ", mId=" + mId + ", lastName=" + lastName + ", email="
+				+ email + ", aadharNumber=" + aadharNumber + ", contactNumber=" + contactNumber + ", password="
+				+ password + ", house=" + house + ", ownerHashcode=" + ownerHashcode + ", attempts=" + attempts
+				+ ", ownerStatus=" + ownerStatus + ", ownerCreation_date=" + ownerCreation_date + ", emailResendTime="
+				+ emailResendTime + "]";
 	}
 	
+		
 	
 }

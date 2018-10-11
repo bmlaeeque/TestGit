@@ -11,11 +11,36 @@
 <link href="css/registrationForm.css" rel="stylesheet"/>
   <link href="css/bootstrap.min.css" rel="stylesheet">  
 <link href="css/header.css" rel="stylesheet"/>
+<link href="css/btninfo.css" rel="stylesheet">
+<link href="css/styles.css" rel="stylesheet">
 	 
+<style>
+
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+
+</style>
+
 </head>
 <body style="background-image:url(images/formBackground.png)">
 
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); height:105px; border-color: white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -25,15 +50,16 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome">  <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
+     
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
-        	 <li><a href="logoutOwner" ><b style="color:#000000;">Logout</b></a></li> 
-         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+      <ul class="nav navbar-nav navbar-right">
+        	 <li><a href="logoutOwner" class="astext"><b>Logout</b></a></li> 
+         <li><a href="showHelp" class="astext" ><b style="color:rgb(245,126,182);">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -199,7 +225,10 @@
                <input type="hidden" name="longitude" id="longitude" value="">
             </div>
             <div class="form-row" style="width:50%;">
-                <button type="submit" value="Submit" id="btn" >Submit</button>
+            
+<!--                 <a><button class="button btn-info" type="submit" value="Submit" id="btn" >Submit</button></a> -->
+                
+               <center> <button type="submit" name="submit" value="Submit" id="submit" style="background-color: #00B0B9; color: black; border-radius: 25px">Submit</button></center>
             </div>	           
         </form>
         

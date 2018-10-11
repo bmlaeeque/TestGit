@@ -24,6 +24,7 @@
       width: 100%; /* Set width to 100% */
       min-height: 200px;
     }
+ 
 .carousel-content {
   position: absolute;
   bottom: 10%;
@@ -46,6 +47,13 @@
     padding-right: 5px 32px;
     border: 0;
     margin: 10px 110px 0;
+    
+    
+    width:100px;
+    height:100px;
+    float: left;
+    margin-left:5px;
+    
 	}
 	
 	/*select design code*/
@@ -122,7 +130,30 @@ img#imgZoom:hover {
 
 </style>
 
+<style>
 
+#tile_div a {
+    display: block;
+    float: left;
+    height: 50px;
+    width: 100px;
+    margin-right: 5px;
+    background-image: url(./images/button_left.png);
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+}
+
+#title_div a.last {
+    margin-right: 0;
+}
+
+#clear {
+    clear: both;
+}
+
+
+</style>
 
 </head>
 <body style="background-color: rgb(243,210,230);">
@@ -298,173 +329,106 @@ img#imgZoom:hover {
 						<a href="#" id="visit">Visit</a>
 					</div> 
  				
-					  <h4><font color="#FF0000">Rooms details</font></h4>
+					  <h4><font color="#FF0000">Rooms Details ${hostelId}</font></h4>
+					  
  <p>Apart from rent, the following are additional expenses you may incur every month when living in this house.</p>
- <!--  <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Show Details</button>
-  <div id="demo" class="collapse">
-        --> 
-      <table class="table">
-       			<tbody>
-       			   <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
-                     <tr>
-                          
-      <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black"><img src="<ui:image img='${rooms.img1}'></ui:image>" alt="Image" style="height:100px;width:100px;"/>
-                     
-                  </button>
-                  </tr>
-			
-				</tbody>
-				</table>
-         
-                    				
-				 <div id="id01" class="w3-modal w3-animate-opacity">
-    <div class="w3-modal-content w3-card-4">
-      <header class="w3-container w3-teal"> 
-        <span onclick="document.getElementById('id01').style.display='none'" 
+ 
+ <c:forEach items="${house.rooms}" var="rooms" varStatus="theCount">
+ <br><button onclick="document.getElementById('id01_${rooms.rId}').style.display='block'" type="button" class="button btn-info btn-xl">Room ${rooms.rId}</button>
+<p></p>				
+                 				
+<div id="id01_${rooms.rId}" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content w3-card-4" style="width: 40%; height:300px;">
+     
+        <span onclick="document.getElementById('id01_${rooms.rId}').style.display='none'" 
         class="w3-button w3-large w3-display-topright">&times;</span>
-        <h2>Modal Header</h2>
-      </header>
-      
-                      
-                  <!--    <ul id="login-dp" class="dropdown-menu" style="width:700px;"> -->
-                     <div class="w3-container">
-                     <div class="col-sm-5">
-      
-      <div class="tab-content" style="padding-top:10px;">
-     
-       <h3>Details of Room</h3>
-          <div class="w3-container">
-         <table class="table">
-           <thead>
-              <tr class="w3-light-grey w3-hover-red">
-                 <th>Things</th>
-                 <th>Details</th>
-             </tr>
-           </thead>
-             <tr class="w3-hover-green">
-                <td>Type of Room</td>
-                <td>${rooms.roomtype}</td>
-             </tr>
-             <tr class="w3-hover-green">
-                <td>FoodAvailability</td>
-                <td>${rooms.foodAvailability}</td>
-             </tr>
-            <%--  <tr class="w3-hover-green">
-                <td>Facilities</td>
-                <td>      AC          : ${rooms.ac}
-                <br>
-                         Wifi         : ${rooms.wifi}
-                <br>     Bathroom     : ${rooms.bathroom}
-                <br>     Geyser       : ${rooms.geyser}
-                
-                <br>     Gym          : ${rooms.gym}
-                <br>     SwimmingPool : ${rooms.swimmingPool} </td>
-            </tr> --%>
-             <%-- <tr class="w3-hover-green">
-                <td>Total Bed</td>
-                <td>
-                    <ul>
-                      <li><a data-toggle="collapse" data-target="#bed1">${rooms.numberOfBed} </a></li>
-                       <div id="bed1" class="collapse">
-                         
-                       </div>     --%>
-         
-                    <!--  <li><a data-toggle="collapse" data-target="#bed2">Bed 2</a></li>
-                        <div id="bed2" class="collapse">
-                           <ol>
-                             
-                           </ol>    -->
-                            
-                     <!--  </div>  -->
-                         
-                     </ul> 
-                </td>
-                
-              </tr>
-         </table>
- 
- </div>
- 
-</div> 
-<!--End Room 1 Section-->
-   
-  </div> 
- 
-    <div class="col-sm-5">
-      <div class="tab-content">
-   		
-     
-              <div class="w3-container">
-         <table class="table">
-           <thead>
-              <tr class="w3-light-grey w3-hover-red">
-                 
-                 <th></th>
-             </tr>
-           </thead>
-<c:forEach items="${rooms.beds}" var="beds" varStatus="itr"> 
-<tr class="w3-hover-green">
-               <td></td>
-                <td><a class="btn" data-toggle="popover" title="Foodpreference : ${beds.user.foodPreference}   Profession : ${beds.user.profession}  MotherTounge : ${beds.user.motherTongue}"><i class="fa fa-bed fa-5x"></i></a> </td>
-             </tr>
-             
-
- </c:forEach>
- 
- </table>
- 
- </div>
-   
- </div>
-
-                     
-                   
- </div>
-   
-    <!-- </ul> -->
-                     
-             
-              
            
-			
-					
-	
-	</div>
-	
-	
-		</div>
-		</div>
-						
-									
-									
-             
-                 
-		<!-- 	</div> -->
-				  	
-				
-				</div>
-				
-		</c:forEach>	
-		</div>
+   
+	    <div class="w3-container" style="width: 500px;">
+         <div class="col-sm-12" style="width: 500px">      
+      		<div class="tab-content" style="padding-top:10px;">
+                <div class="w3-container" style="width: 100%;"> 
+                <table class="table">
+           		<thead>
+              		<tr class="w3-light-green">                 
+	                 	<th>Bed Details</th>
+    	         	</tr>
+           		</thead>
+          </table>
+           	 	
+                <div>
+                
+  <table style="float: left">
+    <tr>
+      <td>
+             <c:forEach items="${rooms.beds}" var="beds">
+				  	<c:if test="${ beds.status==1 }">
+<tr>
+
+    <td><a class="btn" data-toggle="popover" title=
+           "Foodpreference : ${beds.user.foodPreference}.............                                 
+           Profession : ${beds.user.profession}............
+	       MotherTounge : ${beds.user.motherTongue}">
+	        	
+	       <i class="fa fa-bed fa-5x" style="color:red" onclick="BookNowButton" ></i></a>  	
+				  	</c:if>
+				  	 <c:if test="${ beds.status==1 }">
+                    <span style="color:red"><b><i>SOLD OUT</i></b></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	   				</c:if>	
+      </td>
+    </tr>
+  </table>
+         
+  <table style="float: left">  
+    <tr>
+      <td>
+      <c:if test="${ beds.status!=1 }">
+      
+<tr>
+                  <td>
+                		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                		
+                		<i class="fa fa-bed fa-5x" style="color:blue"></i></a> 
+                		
+                	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                		</td>                
+                	
+				  	</c:if>
+				  	                		
+				 <tr>
+	   					<td>
+	   					  	<form method="post" action="<%=request.getContextPath()%>/showHouseInfo/showPaymentPage">
+	   					   		<input name="hid" type="hidden" value="${hostelId}" />	
+	   					   		<input name="rid" type="hidden" value="${rooms.rId}" />	
+	   					   		<input name="bid" type="hidden" value="${beds.bedId}" />
+	   					   		<c:if test="${ beds.status!=1 }">
+	   					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	   					   		
+	   			<button class="button btn-info" id="checkbedhere" type="submit">Book Now</button>
+	   					   		</c:if>	  					   		
+	   					   	</form>
+	   					</td> 
+	   					               
+                     </tr>          	
+      
+  </table>
+</div>
+            
+ 		  </c:forEach> 
+       </div>
+ 	</div>                                     
+   </div>                                      						
+  </div>	
+ </div>
+</div>								
+</c:forEach>	
+</div>
       
        
 	<div class="panel-body">
 	  <div class="row">
 		<div class="col-lg-12">
-			<!-- <form id="login-form" role="form" style="display: block;">
-                 <h6>
-                    To Book, you need to pay a token amount and the remaining before move-in.</h6>
-                 <br>
-                <br>
-                
-	<div class="form-group"> 
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3">
-			<button type="submit" class="form-control btn btn-login"  style="color:#FF0000" onclick="popup(); return false;">Book</button>
-			</div>
-		</div> 
-	</div>
-  </form> -->
+			
   
 	<form id="register-form"  role="form" style="display: none;" onclick="return submitVisit();">
 		<div class="form-group">
@@ -611,17 +575,17 @@ img#imgZoom:hover {
                       
    </div>
      
-  
-   <!--Review Code-->
+  <!-- 
+   Review Code
    <div class="col-md-4">
    	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <!-- Indicators -->
+      Indicators
       <ol class="carousel-indicators">
         <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
         <li data-target="#myCarousel" data-slide-to="1"></li>
         <li data-target="#myCarousel" data-slide-to="2"></li>
       </ol>
-      <!-- Wrapper for slides -->
+      Wrapper for slides
       <div class="carousel-inner" >
         <div class="item active">
           <img src="images/review_img.png" alt="Image">
@@ -633,7 +597,7 @@ img#imgZoom:hover {
           <img src="images/review_img.png" alt="Image">
           </div> 
         </div>
-    <!-- Left and right controls -->
+    Left and right controls
       <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -642,7 +606,7 @@ img#imgZoom:hover {
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
       </a>
-  </div>
+  </div> -->
   <br>
   <br>
     <h4 style="color:#FF0000">Reviews</h4>
@@ -982,5 +946,28 @@ $(function() {
 <script src="js/paymentvalidation.js" type="text/javascript"></script>
 
 <script src="js/validate.js" type="text/javascript"></script>
+
+<!--  <script>
+    function checkBed()
+    {
+    	 var checkbedhere = document.getElementById( "checkbedhere" ).value;
+    	 $.ajax({
+    			url:"checkBed",
+    			data:{cdId_bookedBed:$("#checkbedhere").val()},
+    			success:function(resText){
+    				if(resText!="")
+    					{
+    				alert(resText);
+    					}
+    				if(resText!=""){
+    					$("#checkbedhere").val("");
+    					$("#checkbedhere").focus();
+    				}
+    			}
+    			
+    		});
+    }
+    
+    </script> -->
 </body>
 </html>

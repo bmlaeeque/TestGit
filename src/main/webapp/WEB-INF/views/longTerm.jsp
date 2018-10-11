@@ -14,6 +14,7 @@
   <link href="css/header.css" rel="stylesheet">
    <link href="css/popup.css" rel="stylesheet">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <link href="css/btninfo.css" rel="stylesheet">
   <!-- for google api-->
   <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 
@@ -124,7 +125,7 @@
 </head>
 <body>
 	
-    <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+    <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -134,7 +135,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b><font color="#000000">DivaStays</font></b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></font></b></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -222,7 +223,7 @@
           <br>
           <br>
             <br>
-		   <div class="container text-center" style="background-color:rgb(243,210,230)" >    
+		   <div class="container text-center" style="background-color:rgb(245,126,182)" >    
   				<h3 align="center" style="color:#000000;">Stay with us and enjoy life</h3>
   					
                     
@@ -277,7 +278,7 @@
              		<div>
              		   
            			<div class="map">
-           <h2 class="service-title pad-bt15">Hostels In Pune</h2>
+           <h2 class="service-title pad-bt15"><b>Hostels In Pune</b></h2>
            <hr class="bottom-line">
 				<div id="google-map">
         		
@@ -298,7 +299,7 @@
 <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="service-title pad-bt15">Limited Deals</h2>
+            <h2 class="service-title pad-bt15"><b>Limited Deals</b></h2>
             <hr class="bottom-line">
           </div>
       
@@ -306,25 +307,25 @@
   		<a href="showDeal1"><div class="col-sm-4">
       		<div class="panel panel-primary">
        
-      	 	 	<div class="panel-heading">Hinjewadi</div>
+      	 	 	<div class="panel-heading" style="background-color: #00B0B9;"><center>Hinjewadi</center></div>
        			 <div class="panel-body"><img src="images/longterm_deal_hinjewadi.png" class="img-responsive" style="width:100%" alt="Image"></div>
-       	 		<div class="panel-footer" style="color:#000000">best deal</div>
+       	 		<div class="panel-footer" style="color:#000000"><center>Get more discounts</center> </div>
        	 		
       	</div>
     </div>
 		</a>
         <div class="col-sm-4"> 
       	<div class="panel panel-primary">
-      	 	 <div class="panel-heading">Shivaji Nagar</div>
+      	 	 <div class="panel-heading" style="background-color: #00B0B9;"><center>Shivaji Nagar</center></div>
        		 <div class="panel-body"><img src="images/longterm_shivajinagar.png" class="img-responsive" style="width:100%" alt="Image"></div>
-       		 <div class="panel-footer" style="color:#000000">best deal</div>
+       		 <div class="panel-footer" style="color:#000000"><center>Homes with travelling allowance</center></div>
       </div>
       </div>
       <div class="col-sm-4"> 
       		<div class="panel panel-primary">
-        	<div class="panel-heading">Chinchwad</div>
+        	<div class="panel-heading" style="background-color: #00B0B9;"><center>Chinchwad</center></div>
         	<div class="panel-body"><img src="images/longterm_chinchwad.png" class="img-responsive" style="width:100%" alt="Image"></div>
-        	<div class="panel-footer" style="color:#000000">best deal</div>
+        	<div class="panel-footer" style="color:#000000"><center> Grab discounts on meals </center></div>
       </div>
     	</div>
       
@@ -341,7 +342,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="margin-top-0 ">DivaStays For All Your Needs</h2>
+                    <h2 class="margin-top-0 "><b>DivaStays For All Your Needs</b></h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -489,7 +490,7 @@
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get In Touch</h2>
+                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px"><b>Get In Touch</b></h2>
                     <hr class="primary">
                     <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
                 </div>

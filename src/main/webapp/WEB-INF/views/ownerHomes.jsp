@@ -17,9 +17,35 @@ table, th, td {
 	<link rel="stylesheet" href="css/registrationForm.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">  
 <link href="css/header.css" rel="stylesheet"/>
+<link href="css/btninfo.css" rel="stylesheet">
+
+<style>
+
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+</style>
+
+
+
 </head>
 <body >
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);height:105px; border-color: white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -29,10 +55,14 @@ table, th, td {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right" >
+     
+         <li><a href="showHelp" class="astext"><b><font color="#000000">Help</font></b></a></li> 	
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -42,7 +72,7 @@ table, th, td {
     </c:when>    
     <c:otherwise>  
      <div class="main-content">
-  <form class="form-basic" method="post" action=""  enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
+  <form class="form-basic" method="post" action=""  enctype="multipart/form-data" style="background-color: rgb(245,126,182);">
     <div class="form-title-row">
        <h1>Home Details</h1>
     </div>
@@ -56,16 +86,16 @@ table, th, td {
             <th>Options</th>
           </tr>
         </thead>
-      <tbody style="background-color: rgb(243,210,230);">
+      <tbody style="background-color: rgb(245,126,182);">
        <c:forEach items="${house}" var="house" varStatus="itr">
           <tr>
            <td>${house.hId}</td>
            <td>${house.houseName}</td>        
             <td><img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" /></td>
      
-            <td><a href="showEditHouseDetails/${house.hId}">Edit</a><br>
-            <a href="deleteHouse/${house.hId}">Delete</a>
-            <a href="editRoomDetails/${house.hId}">Edit Room Details</a>
+            <td><a href="showEditHouseDetails/${house.hId}" style="color: black;">Edit</a><br>
+            <a href="deleteHouse/${house.hId}"style="color: black;">Delete</a>
+            <a href="editRoomDetails/${house.hId}" style="color: black;">Edit Room Details</a>
             </td>
           </tr>
           </c:forEach>
@@ -75,7 +105,7 @@ table, th, td {
  <div class="form-row" style="float:left; width:50%;">        
            </div>
             <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">
-                <button type="submit" value="Submit" >Submit</button>
+               <center> <button type="submit" value="Submit" id="submit" >Submit</button> </center>
             </div>		         
         </form>
 </div>

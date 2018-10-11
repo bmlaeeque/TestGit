@@ -12,5 +12,6 @@ public interface UserDAO {
 	public User verifyUserAccount(User user);
 	public User sendNewLink(User user);
 	public User getUser(User user);
+	public User VerificationLink(User user);
 }
  

@@ -2,6 +2,7 @@ package com.smsone.dao;
 import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -60,7 +61,7 @@ public class OwnerDAOImpl implements OwnerDAO {
 		Criterion c1=Restrictions.eq("email",owner.getEmail());
 		crit.add(c1);
 		@SuppressWarnings("unchecked")
-		List<User> list=crit.list();
+		List<Owner> list=crit.list();
 		if(list.isEmpty())
 		{
 			return false;
@@ -187,5 +188,39 @@ public class OwnerDAOImpl implements OwnerDAO {
 		tx.commit();
 	    session.close();		
 	}
-}
+	
+
+		
+	}		
+	/*public boolean checkOwnerMember(Owner owner) {
+		Session session=sessionFactory.openSession();
+		Criteria crit=session.createCriteria(Owner.class);
+		Criterion c1=Restrictions.eq("MemberId",owner.getMemberId());
+		crit.add(c1);
+		@SuppressWarnings("unchecked")
+		List<Owner> list=crit.list();
+		if(list.isEmpty())
+		{
+			return false;
+		}
+		else
+		{
+		return true;
+		}
+	*/
+	
+
+	/*public void updateOwnerMember(Owner owner) {
+		Session session = sessionFactory.openSession();
+		Transaction tx = session.beginTransaction();
+		String hql="UPDATE Owner SET Owner.mId = (SELECT Member.mId FROM Member WHERE m.id = o.id)";
+		Query query=sessionFactory.openSession().createQuery(hql);
+		query.executeUpdate();
+		tx.commit();
+		session.close();
+		
+	}*/
+	
+	
+
 

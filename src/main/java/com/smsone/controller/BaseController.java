@@ -3,17 +3,26 @@ package com.smsone.controller;
 import java.util.Date;
 import javax.servlet.http.HttpSession;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.smsone.model.User;
 @Controller
 public class BaseController {
+	private MailSender mailSender;
+
 	@RequestMapping(value = "/showHome")
 	public String showHome()
 	{
 		return "home";
 	}
+	
+	
 	@RequestMapping(value = "/showHome1")
 	public String showHome1(@RequestParam("invalid") Long invalid,Model model)
 	{
@@ -94,5 +103,27 @@ public class BaseController {
 	{			
 		return "deal1";
 	}
-	//show 
+	//forgot password
+	@RequestMapping(value = "/ForgotPassword1")
+	public String ForgotPassword1()
+	{
+		return "ForgotPassword";
+	}
+	
+	
+
+	//for verification Link
+	    @RequestMapping(value = "VerificationLink",method = RequestMethod.GET)
+		public String VerificationLink(@RequestParam("email") String email,String message,String subject,Model model)
+		{
+	    	User user=new User();
+	    	System.out.println("Hii");
+			SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
+			
+			simpleMailMessage.setTo(email);
+			simpleMailMessage.setSubject(subject);
+			simpleMailMessage.setText(message);
+			mailSender.send(simpleMailMessage);
+			return "success";
+		}
 }

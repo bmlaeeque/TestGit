@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -6,10 +7,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/btninfo.css" rel="stylesheet">
+  
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
  <style>
- /*button color code*/
  .form-basic button{
    
     border-radius: 2px;
@@ -51,13 +53,14 @@
    <div class="tab-content">
    
    <!--credit card code start-->
+   
      <div id="creditCard" class="tab-pane fade in active" >
        <div class="container">
    
          <div class="row">
            <div class="col-xs-12 col-md-5">
             <!-- CREDIT CARD FORM STARTS HERE -->
-            <div class="panel panel-default credit-card-box" style="background-color: rgb(243,210,230);">
+            <div class="panel panel-default credit-card-box" style="background-color: rgb(245,126,182);">
             
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
@@ -68,7 +71,9 @@
                     </div>                    
                 </div>
                <div class="panel-body">
-               <form class="form-basic" role="form" id="creditCardForm" method="POST" action="saveBooking" name="creditCardForm" onSubmit="return CreditSubmit();" >
+               <form class="form-basic" method="post"  action="saveCreditCardBookingHere"  onSubmit="return SubmitCredit()"  style="background-color: rgb(245,126,182);">
+ 
+               		
                
                  <div class="row">
                     <div class="col-xs-12">
@@ -98,7 +103,7 @@
                           <div class="form-group">
                      <label>Expiration</label>
                      <br>
-                <select name="exmonth">
+                <select name="exmonth" id="exmonth">
                     <option value="">Month</option>
                     <option value="01">January</option>
                     <option value="02">February </option>
@@ -114,7 +119,7 @@
                     <option value="12">December</option>
                 </select> 
               
-                <select name="exyear">
+                <select name="exyear" id="exyear">
                     <option value="">Year</option>
                     <option value="17"> 2017</option>
                     <option value="18"> 2018</option>
@@ -138,14 +143,15 @@
                  <div class="form-group">
                     <label class="col-xs-5 control-label">CVC</label>
                     <!--  <input  type="text" class="form-control" name="cardCVC" id="cardCVC" placeholder="CVC" required onBlur="CheckCVV(); return false;" autocomplete="off"/> -->
-                   <input type="text" class="form-control" name="cvcnumber" id="cardNumber" placeholder="Valid Card Number"  required autocomplete="off"/>
+                   <input type="text" class="form-control" name="cvcnumber" id="cvcnumber" placeholder="Valid Card Number"  required autocomplete="off"/>
                   </div>
                </div>
            </div>
               
                <div class="row">
                   <div class="col-xs-12">
-                    <a href="showPaymentPage"> <button type="submit" value="Submit">Submit</button></a>
+                  
+                 <center><button style="background-color:#00B0B9; border-radius: 25px; color: black;"  type="submit" value="SubmitCredit">Submit</button></center>  
                   </div>
                </div>
                   </form>
@@ -157,14 +163,16 @@
    </div>
 </div>
     <!--credit card code end-->
+   
     
      <!--debit card code start-->
+   
     <div id="debitCard" class="tab-pane">
       <div class="container">
        <div class="row">
          <div class="col-xs-12 col-md-5">
             <!-- DEBIT CARD FORM STARTS HERE -->
-           <div class="panel panel-default credit-card-box" style="background-color: rgb(243,210,230);">
+           <div class="panel panel-default credit-card-box" style="background-color: rgb(245,126,182);">
               <div class="panel-heading display-table" >
                  <div class="row display-tr" >
                     <h3 class="panel-title display-td" >Payment Details</h3>
@@ -175,7 +183,7 @@
               </div>
                 
           <div class="panel-body">
-            <form class="form-basic" role="form" id="debitCardForm" method="POST" action="saveBed" name="debitCardForm" onSubmit="return DebitSubmit();">
+	  <form class="form-basic" method="post" action="savedebitcardbooking" onSubmit="return SubmitDebit()" enctype="multipart/form-data" style="background-color: rgb(245,126,182);">	    
               <div class="row">
                 <div class="col-xs-12">
                    <div class="form-group">
@@ -201,7 +209,7 @@
                    <div class="form-group">
                      <label>Expiration</label>
                      <br>
-                <select required >
+                <select name="exmonth1" id="exmonth1" >
                     <option value="">Month</option>
                     <option value="01">January</option>
                     <option value="02">February </option>
@@ -216,7 +224,7 @@
                     <option value="11">November</option>
                     <option value="12">December</option>
                 </select > 
-               <select required>
+               <select name="exyear1" id="exyear1">
                     <option value="">Year</option>
                     <option value="17"> 2017</option>
                     <option value="18"> 2018</option>
@@ -245,7 +253,7 @@
              </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <button type="submit" value="Submit">Submit</button>
+                      <center><button style="background-color:#00B0B9; border-radius: 25px; color: black; type="submit" value="SubmitDebit">Submit</button></center>  
                      </div>
                 </div>
               </form>
@@ -264,7 +272,7 @@
             <div class="row">
               <div class="col-xs-12 col-md-5">
             <!-- NET BANKING STARTS HERE -->
-            <div class="panel panel-default credit-card-box" style="background-color: rgb(243,210,230);">
+            <div class="panel panel-default credit-card-box" style="background-color: rgb(245,126,182);">
               <div class="panel-heading display-table" >
                 <div class="row display-tr" >
                    <h3 class="panel-title display-td" >Payment Details</h3>
@@ -274,40 +282,40 @@
                 </div>                    
                </div>
          <div class="panel-body">
-           <form class="form-basic" role="form"  method="POST" action="saveBed" name="netBanking" onSubmit="return NetBanking();">
+           <form class="form-basic" role="form"  method="POST" action="saveNetBankingPaymenthere"  name="netBanking" onSubmit="return SubmitNetBanking();">
              <h4 align="center">Net Banking</h4>
                <div class="form-row" style="float:left; width:50%;">  
                 <label>
-                  <input type="radio"  name="sameName" id="andhraBank"  value="andhraBank" ><label>Andhra Bank</label><br>
-                  <input type="radio"  name="sameName" id="allahabadBank" value="allahabadBank"><label>Allahabad Bank</label><br>
-                  <input type="radio"  name="sameName" id="bankofBaroda" value="bankofBaroda"><label>Bank of Baroda</label><br>
-                  <input type="radio"  name="sameName" id="canaraBank" value="canaraBank"><label>Canara Bank</label><br>
-                  <input type="radio"  name="sameName" id="idbiBank" value="idbiBank"><label>IDBI Bank</label><br>
-                  <input type="radio"  name="sameName" id="iciciBank" value="iciciBank"><label>Icici Bank</label><br>
-                  <input type="radio"  name="sameName" id="indianOverseasBank" value="indianOverseasBank"><label>Indian Overseas Bank</label><br>
-                  <input type="radio"  name="sameName" id="punjabNationalBank" value="punjabNationalBank"><label>Punjab National Bank</label><br>
-                  <input type="radio"  name="sameName" id="southIndianBank" value="southIndianBank"><label>South Indian Bank</label><br>
-                  <input type="radio"  name="sameName" id="sbi"  value="sbi"><label>State Bank Of India</label><br>
+                  <input type="radio"  name="sameName" id="andhraBank"  value="andhraBank" >Andhra Bank<br>
+                  <input type="radio"  name="sameName" id="allahabadBank" value="allahabadBank">Allahabad Bank<br>
+                  <input type="radio"  name="sameName" id="bankofBaroda" value="bankofBaroda">Bank of Baroda<br>
+                  <input type="radio"  name="sameName" id="canaraBank" value="canaraBank">Canara Bank<br>
+                  <input type="radio"  name="sameName" id="idbiBank" value="idbiBank">IDBI Bank<br>
+                  <input type="radio"  name="sameName" id="iciciBank" value="iciciBank">Icici Bank<br>
+                  <input type="radio"  name="sameName" id="indianOverseasBank" value="indianOverseasBank">Indian Overseas Bank<br>
+                  <input type="radio"  name="sameName" id="punjabNationalBank" value="punjabNationalBank">Punjab National Bank<br>
+                  <input type="radio"  name="sameName" id="southIndianBank" value="southIndianBank">South Indian Bank<br>
+                  <input type="radio"  name="sameName" id="sbi"  value="sbi">State Bank Of India<br>
               </label>  
             </div>
             
            <div class="form-row" style="float:left; width:50%;">  
              <label>
-               <input type="radio" name="sameName" id="cityUnionBank"  value="cityUnionBank"><label>City Union Bank</label><br>
-               <input type="radio" name="sameName" id="hdfcBank" value="hdfcBank"><label>HDFC Bank</label><br>
-               <input type="radio" name="sameName" id="indusIndBank" value="indusIndBank"><label>IndusInd Bank</label><br>
-               <input type="radio" name="sameName" id="syndicateBank" value="syndicateBank"><label>Syndicate Bank</label><br>
-               <input type="radio" name="sameName" id="deutscheBank" value="deutscheBank"><label>Deutsche Bank</label><br>
-               <input type="radio" name="sameName" id="corporationBank" value="corporationBank"><label>Corporation Bank</label><br>
-               <input type="radio" name="sameName" id="ucoBank" value="ucoBank"><label>UCO Bank</label><br>
-               <input type="radio" name="sameName" id="indianBank" value="indianBank"><label>Indian Bank</label><br>
-               <input type="radio" name="sameName" id="fedralBank" value="fedralBank"><label>Federal Bank</label><br>
-               <input type="radio" name="sameName" id="ingVysya" value="ingVysya"><label>ING Vysya Bank</label><br>
+               <input type="radio" name="sameName" id="cityUnionBank"  value="cityUnionBank">City Union Bank<br>
+               <input type="radio" name="sameName" id="hdfcBank" value="hdfcBank">HDFC Bank<br>
+               <input type="radio" name="sameName" id="indusIndBank" value="indusIndBank">IndusInd Bank<br>
+               <input type="radio" name="sameName" id="syndicateBank" value="syndicateBank">Syndicate Bank<br>
+               <input type="radio" name="sameName" id="deutscheBank" value="deutscheBank">>Deutsche Bank<br>
+               <input type="radio" name="sameName" id="corporationBank" value="corporationBank">Corporation Bank<br>
+               <input type="radio" name="sameName" id="ucoBank" value="ucoBank">>UCO Bank<br>
+               <input type="radio" name="sameName" id="indianBank" value="indianBank">Indian Bank<br>
+               <input type="radio" name="sameName" id="fedralBank" value="fedralBank">Federal Bank<br>
+               <input type="radio" name="sameName" id="ingVysya" value="ingVysya">ING Vysya Bank<br>
               </label>  
             </div>
             <div class="row">
                <div class="col-xs-5">
-                   <button type="submit" value="Submit">Submit</button>
+                 <center><button style="background-color:#00B0B9; border-radius: 25px; color: black; type="submit" value="SubmitNetBanking">Submit</button></center>
                 </div>
             </div>
                 </form>
@@ -326,7 +334,7 @@
               <div class="row">
                  <div class="col-xs-12 col-md-5">
             <!-- WALLETS STARTS HERE -->
-            <div class="panel panel-default credit-card-box" style="background-color: rgb(243,210,230);">
+            <div class="panel panel-default credit-card-box" style="background-color: rgb(245,126,182);">
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
                         <h3 class="panel-title display-td" >Payment Details</h3>
@@ -336,7 +344,7 @@
                     </div>                    
                 </div>
            <div class="panel-body">
-            <form role="form" class="form-basic" id="wallet" name="wallet" method="POST" action="saveBed" onSubmit="return Wallet();">
+            <form role="form" class="form-basic" id="wallet" name="wallet" method="POST" action="savewalletbooking"  onSubmit="return SubmitWallet();">
                          <h4 align="center">Select Your Wallet</h4>
                          
                          
@@ -350,7 +358,7 @@
                      
            <div class="row">
                <div class="col-xs-12">
-                   <button type="submit" value="Submit">Submit</button>
+                   <center><button style="background-color:#00B0B9; border-radius: 25px; color: black; type="submit"value="SubmitWallet">Submit</button></center>
                 </div>
           </div>
                </form>

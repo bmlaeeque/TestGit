@@ -42,5 +42,12 @@ public class OwnerServiceImpl implements OwnerService {
 		ownerDAO.updateOwner(owner);
 		
 	}
-
+	/*public boolean checkOwnerMember(Owner owner) {
+		// TODO Auto-generated method stub
+		return ownerDAO.checkOwnerMember(owner);
+	}*/
+	/*public void updateOwnerMember(Owner owner) {
+        ownerDAO.updateOwnerMember(owner);		
+	}
+*/
 }

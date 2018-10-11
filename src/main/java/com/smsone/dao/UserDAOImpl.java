@@ -187,4 +187,23 @@ public class UserDAOImpl implements UserDAO {
 		tx.commit();
 	    session.close();				
 	}
+	public User VerificationLink(User user) {
+		// TODO Auto-generated method stub
+		Session session=sessionFactory.openSession();
+		Criteria crit=session.createCriteria(User.class);
+		Criterion c1=Restrictions.eq("email",user.getEmail());
+		Criterion c2=Restrictions.eq("hashcode",user.getHashcode());
+		Criterion c3=Restrictions.and(c1,c2);
+		crit.add(c3);
+		@SuppressWarnings("unchecked")
+		List<User> list=crit.list();
+		if(list.isEmpty())
+		{
+			return null;
+		} 
+		else
+		{
+			return null;
+		}
+	}
 }

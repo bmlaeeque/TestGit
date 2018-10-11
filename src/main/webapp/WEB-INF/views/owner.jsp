@@ -11,10 +11,11 @@
     <link rel="stylesheet" type="text/css" href="css/header.css">
     <script src="js/modernizr.custom.js"></script>
     <link href="css/popup.css" rel="stylesheet">
+    <link href="css/btninfo.css" rel="stylesheet">
     
  <style>
 body {
-  background-color: rgb(243,210,230);
+  background-color: rgb(255,255,255);
 }
 .iconcontainer {
   margin-top: 20px;
@@ -80,9 +81,10 @@ body {
  </style> 		
 </head>
 <body>
- <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(243,210,230)">
+<!-- 
+ <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); height: 90px;">
   <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
+    Brand and toggle get grouped for better mobile display
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -90,21 +92,41 @@ body {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><font color=#000000"><b>DivaStays</b></font></a>
+      <a class="navbar-brand" href="showHome"><font color=#000000"><b> <img src="images/DivaStays_Logo.jpg" width="80" height="50"></b></font></a>
     </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+    Collect the nav links, forms, and other content for toggling
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right"> -->
    
+   <nav class="navbar navbar-default navbar-inverse" role="navigation"
+		style="background-color: rgb(255,255,255); height:105px; border-color: white;">
+	<div class="container-fluid" style="border-color: white;">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="showHome"><!-- <b><font
+					color="#000000">DivaStays</font></b> -->
+			<img src="images/DivaStays_Logo.jpg" width="110" height="85">		
+					</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
       
       <c:choose>
     <c:when test="${sessionScope.owner!=null}">
     	
-       <li><a href="logoutOwner"><font color=#000000">Logout</font></a></li>
-       <li><a href="editOwnerProfile/${owner.oId}"><font color=#000000">Edit Your Profile</font></a></li>
-       <li><a href="ownerHouse"><font color=#000000">Your Homes</font></a></li>
-       <li><a href="showHouseReg"><font color=#000000">House Registration</font></a></li>
+       <li><a href="logoutOwner"><b><font color=#000000">Logout</font></b></a></li>
+       <li><a href="editOwnerProfile/${owner.oId}"><b><font color=#000000">Edit Your Profile</font></b></a></li>
+       <li><a href="ownerHouse"><b><font color=#000000">Your Homes</font></b></a></li>
+       <li><a href="showHouseReg"><b><font color=#000000">House Registration</font></b></a></li>
        
     </c:when>    
     <c:otherwise> 
@@ -123,7 +145,7 @@ body {
 									</div>
 									or
 
-									<form class="form" role="form" method="post" action="loginOwner"
+									<form class="form" role="form" method="post" action="loginMember"
 										accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											<label class="sr-only" for="exampleInputEmail2">Email
@@ -162,10 +184,15 @@ body {
 					</ul></li>
     </c:otherwise>
 </c:choose>	 		
-        <li><a href="showHelp"><font color=#000000">Help</font></a></li>
+        <li><a href="showHelp"><b><font color=#000000">Help</font></b></a></li>
+        
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
+<br>
+<jsp:include page="cityDropDown.jsp"></jsp:include>
+
+
 
 <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -179,21 +206,21 @@ body {
    </div>
  </div>
 </nav>
-  <img src="images/banner_img.png">         
+  <img src="images/banner_img1.jpeg" style="width: 100%; height:1000px;">         
  <div class="heading">
    <div class="header-section text-center">
      <div class="row section featured topspace">
-        <h4><strong>FEATURES</strong></h4>
+        <h2 class="margin-top-0 "><b>Features</b></h2>
         <hr class="primary">
 	</div>
   </div>
 </div>
- <div class="container">
-  <div class="iconcontainer">
+ <div class="container" >
+  <div class="iconcontainer" style="background-color: #D3D3D3;">
   
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="iconbox">
-            <div class="iconbox-icon">
+        <div class="iconbox" style="background-color: #D3D3D3;">
+            <div class="iconbox-icon" style="background-color: #D3D3D3;">
               <span class="glyphicon glyphicon-user"></span>
              </div>
             <div class="featureinfo">
@@ -206,12 +233,12 @@ body {
       </div>
       
      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-      <div class="iconbox">
-        <div class="iconbox-icon">
+      <div class="iconbox" style="background-color: #D3D3D3;">
+        <div class="iconbox-icon" style="background-color: #D3D3D3;">
           <span class="glyphicon glyphicon-user"></span>
         </div>
         <div class="featureinfo">
-          <h5 class="text-center"><b>Renatl default Gurantee</b></h4>
+          <h5 class="text-center"><b>Rental default Gurantee</b></h4>
           <h5 class="text-center">
           Irrespective of whether or not the rent has been paid by the tenants, you will receive your rent before the 5th of every month</h5>
           <a class="btn btn-default btn-sm" href=""about.php#bottom"" role="button">More »</a>
@@ -220,8 +247,8 @@ body {
      </div>
       
     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="iconbox">
-          <div class="iconbox-icon">
+        <div class="iconbox" style="background-color: #D3D3D3;">
+          <div class="iconbox-icon" style="background-color: #D3D3D3;">
             <span class="glyphicon glyphicon-user"></span>
           </div>
           <div class="featureinfo">
@@ -234,8 +261,8 @@ body {
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="iconbox">
-          <div class="iconbox-icon">
+        <div class="iconbox" style="background-color: #D3D3D3;">
+          <div class="iconbox-icon" style="background-color: #D3D3D3;">
             <span class="glyphicon glyphicon-user"></span>
           </div>
           <div class="featureinfo">
@@ -248,8 +275,8 @@ body {
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="iconbox">
-          <div class="iconbox-icon">
+        <div class="iconbox" style="background-color: #D3D3D3;">
+          <div class="iconbox-icon" style="background-color: #D3D3D3;">
             <span class="glyphicon glyphicon-user"></span>
           </div>
           <div class="featureinfo">
@@ -262,8 +289,8 @@ body {
       </div>
       
       <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
-        <div class="iconbox">
-          <div class="iconbox-icon">
+        <div class="iconbox" style="background-color: #D3D3D3;">
+          <div class="iconbox-icon" style="background-color: #D3D3D3;">
             <span class="glyphicon glyphicon-user"></span>
           </div>
           <div class="featureinfo">
@@ -278,24 +305,21 @@ body {
     </div>
   </div>
 
+<br>
+
 <section id="contact" class="section">
-<div class="container">
+<div class="container" style="background-color: #F57EB6; width: 100%; height: 220px;">
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
 		<div class="heading">
             <div class="header-section text-center">
-				<h4><strong>HOW IT WORKS</strong></h4>
+				<h2 class="margin-top-0 "><b>How it works??</b></h2>
 				 <hr class="primary">
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-<br>
-<br>
-<div id="feature">
-   <div class="container">
-      <div class="text-center">
+<div class="text-center">
 		 <div class="col-md-4">
 			<div class="hi-icon-wrap hi-icon-effect wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms" >
 				<i class="fa fa-book"></i>	
@@ -319,57 +343,80 @@ body {
 			</div>
 		</div>
 	  </div>
-	</div>
+
+</div>
 <br>
 <br>
+
 <section id="about" class="section">
-  <div class="container">
+  <%-- <div class="container">
 	<div class="row">
 		<div class="col-md-7 col-md-offset-2">
 		  <div class="heading">
 		    <div class="header-section text-center">
-              <h4><strong>WORRIED ABOUT PROPERTY DAMAGES? WE'VE GOT YOUR BACK!</strong></h4>
+            <center><h2 class="margin-top-0 "><b>Worried about property damages? We've got your back!</b></h2></center> 
                 <hr class="primary">
                 <br>
 			</div>
 		</div>
 	   </div>
+	</div> --%>
+	
+<div class="container">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="heading">
+            <div class="header-section text-center">
+				<h2 class="margin-top-0 "><b>Worried about property damages? We've got your back!</b></h2>
+				 <hr class="primary">
+			</div>
+		</div>
 	</div>
+</div>
+</div>
+	
+	
+	
 	<div class="row">
 		<div class="col-md-6">
 		    <div class="team-box">
 	          <div class="roles">
-				<h4><strong>
+			<center>	<h4><strong>
 				DivaStays Rental default gaurantee
-				</strong></h4>
-				<p>Our rental default program is designed to protect you from a liability in case the tenant fails to pay the rent. Our program ensures that you continue to get your rent on time, without fail, like clockwork.</p>
+				</strong></h4> </center>
+			<center><p>Our rental default program is designed to protect you from a liability in case the tenant fails to pay the rent. Our program ensures that you continue to get your rent on time, without fail, like clockwork.</p></center>	
 			 </div>
 			</div>
 		</div>
 		<div class="col-md-6">
 		  <div class="team-box">
 			<div class="roles">
-				<h4><strong>Structure & Content default issurance</strong></h4>
-				<p>Our insurance program, provided by TATA AIG, for NO additional charge, is a comprehensive package that protects your home and stuff from accidental damage.</p>
+			<center><h4><strong>Structure & Content default Issurance</strong></h4></center>	
+			<center><p>Our insurance program, provided by TATA AIG, for NO additional charge, is a comprehensive package that protects your home and stuff from accidental damage.</p></center>
 		   </div>
 		 </div>
 		</div>
 	</div>
 		</div>
 </section><br><br>
+
 <section id="about" class="section">
-<div class="container">
-	<div class="row">
-		<div class="col-md-7 col-md-offset-2">
-			<div class="heading">
-           	   <div class="header-section text-center">
-                  <h4><strong>FAQ's FOR HOUSE OWNERS</strong></h4>
-                  <hr class="primary">
-			  </div>
+
+	   
+<div class="container" style="background-color: #F57EB6; width: 100%">
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<div class="heading">
+            <div class="header-section text-center">
+				<h2 class="margin-top-0 "><b>FAQ's For House Owners</b></h2>
+				 <hr class="primary">
 			</div>
-	   </div>
-    <div class="container">
-	  <div class="row">
+		</div>
+	</div>
+</div>
+
+
+<div class="row">
 		<div class="col-md-12">
            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
            
@@ -469,10 +516,21 @@ body {
       </div>
     </div>
   </div><!-- /.sidebar column end here -->
- </div>
+
+</div>
+	
+	
+	
+	
+	
+<!-- 	   
+    <div class="container">
+	  
+ </div> -->
 </section>
  <!--  from here get in touch -->
  <jsp:include page="Feedback.jsp"></jsp:include> 
+ <br>
    <jsp:include page="footer.jsp"></jsp:include>  
    
    <div class="mod" id="myModal11" style="color: black;">

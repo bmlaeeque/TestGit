@@ -39,5 +39,9 @@ public class UserServiceImpl implements UserService {
 		userDAO.updateUser(user);
 		
 	}
+	public User VerificationLink(User user) {
+		// TODO Auto-generated method stub
+		return userDAO.VerificationLink(user);
+	}
 	
 }

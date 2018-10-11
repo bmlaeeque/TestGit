@@ -1,9 +1,12 @@
 package com.smsone.dao;
 
+import java.math.BigInteger;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,6 +41,7 @@ public class RoomDAOImpl implements RoomDAO {
 		}
 		session.close(); 
 	}
+	
 	public void assignBed(User user, Beds beds) {
 		Session session=sessionFactory.openSession();
 		Transaction tx=session.beginTransaction();
@@ -52,6 +56,36 @@ public class RoomDAOImpl implements RoomDAO {
 		tx.commit();
 		session.close();
 	}
+	
+	public void updateBids(User user,Beds beds) {
+		try {
+		Session session=sessionFactory.openSession();
+		Transaction tx=session.beginTransaction();
+		
+        Query query=session.getNamedQuery("getDetailsByBedId");
+		query.setParameter("bedId",beds.getBedId());
+		query.setParameter("rId",beds.getRoom().getrId());
+		query.setParameter("hId",beds.gethId());
+		
+    	Iterator<BigInteger> it=query.list().iterator();
+		BigInteger bid=BigInteger.valueOf(0);
+		if(it.hasNext()) {
+			bid=it.next();
+		}
+		System.out.println(bid.longValue());
+		beds.setbId(bid.longValue());	
+		System.out.println("before update");
+		
+		session.merge(beds);
+	    
+		tx.commit();
+		System.out.println("after update");
+		session.close();
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<Beds> getAllBedDetails(Long rId) {
 		Session session=sessionFactory.openSession();	
@@ -105,10 +139,9 @@ public class RoomDAOImpl implements RoomDAO {
 		return null;
 	}
 	
-
 	public void updateRoom(Room room,House house) {
 		Session session=sessionFactory.openSession();
-	House house1=(House) session.load(House.class, house.gethId());
+		House house1=(House) session.load(House.class, house.gethId());
 		Transaction tx = session.beginTransaction();
 		room.setHouse(house1);
 		session.saveOrUpdate(room);

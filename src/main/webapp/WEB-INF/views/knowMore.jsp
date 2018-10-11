@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Know_More</title>
 <link href="css/bootstrap.min.css"  rel="stylesheet"/>
+<link href="css/btninfo.css" rel="stylesheet">
 <style>
 .carousel {
   margin-bottom: 60px;
@@ -16,7 +17,7 @@
 
 /* Declare heights because of positioning of img element */
 .carousel .item {
-  height: 400px;
+  height: 600px;
   background-color:#555;
 }
 .carousel img {
@@ -98,10 +99,12 @@
   }
 
 }
+
+
 </style>
 </head>
-<body style="background-color:rgb(243,210,230); color:#000000">
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<body style="background-color:rgb(255,255,255); color:#000000">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); border-color:white; height:100px">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -111,13 +114,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+      <ul class="nav navbar-nav navbar-right">
        
          <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
@@ -126,9 +129,10 @@
 </nav>
 
 
+
 <!-- Carousel
 ================================================== -->
-<div id="myCarousel" class="carousel slide">
+<div id="myCarousel" class="carousel slide" style="height: 600px;">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -137,32 +141,32 @@
   </ol>
   <div class="carousel-inner">
     <div class="item active">
-      <img src="images/bg1.png" class="img-responsive">
+      <img src="images/girls_img1.jpg" class="img-responsive" style="height: 600px; width: 100%;">
       <div class="container">
         <div class="carousel-caption">
-          <h1><font color=red>DivaStays</font></h1>
-           <p><font color=red>With DivaStays get nearest and best hostel.</font></p>
-          <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a>
+          <h1><font color=white>DivaStays</font></h1>
+           <p><font color=white>With DivaStays get nearest and best hostel.</font></p>
+<!--           <p><a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link1</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link2</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link3</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link4</a> -->
         </p></pthis></div>
       </div>
     </div>
     <div class="item">
-      <img src="images/bg2.png" class="img-responsive">
+      <img src="images/bg2.png" class="img-responsive" style="height: 600px;">
       <div class="container">
         <div class="carousel-caption">
           <h1>DivaStays</h1>
           <p>With DivaStays get nearest and best hostel.</p>
-          <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a></p>
+     <!--  <p><a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link1</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link2</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link3</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link4</a></p>  -->    
         </div>
       </div>
     </div>
     <div class="item">
-      <img src="images/bg3.png" class="img-responsive">
+      <img src="images/bg3.png" class="img-responsive" style="height: 600px;">
       <div class="container">
         <div class="carousel-caption">
           <h1>DivaStays</h1>
           <p>With DivaStays get nearest and best hostel.</p>
-          <p><a class="btn btn-large btn-primary" href="#">link1</a> <a class="btn btn-large btn-primary" href="#">link2</a> <a class="btn btn-large btn-primary" href="#">link3</a> <a class="btn btn-large btn-primary" href="#">link4</a></p>
+       <!-- <p><a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link1</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link2</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link3</a> <a class="btn btn-large btn-primary" style="background-color:#00B0B9" href="#">link4</a></p> -->
         </div>
       </div>
     </div>
@@ -184,29 +188,26 @@
 <div class="container" > 
 	</div>
  <!-- Page Content -->
-    <div class="container" style="te">
+    <div class="container" style="te;" >
         <!-- Features Section -->
         <div class="row">
             <div class="col-lg-12">
                 <h2 class="page-header" style="color:#000000">DivaStays Features</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="background-color: rgb(245,126,182);">
                 <p style="font-weight:100;"><b>Safe and Secure:</b></p>
                 
                 <p>Safe and Secure for girls.DivaStays provide all type of sacurity for the girls, so that they will leave in a better environment.</p>
                 <ul>
                  <li>Security</li>
                  <li>Lift</li>
-                  <li>Some Text</li>
-                 <li>Some Text</li>
-                  <li>Some Text</li>
-                 <li>Some Text</li>
-                 <li>Some Text</li>
+                  <li>Intercom</li>
+                 
                
                  </ul>
             </div>
             <div class="col-md-6">
-                <img class="img-responsive" src="images/Security.png" alt="">
+                <img class="img-responsive" src="images/Security.png" alt="" style="width: 600px; height: 350px;">
             </div>
         </div>
         <!-- /.row -->
@@ -215,19 +216,20 @@
          <div class="row">
            
             <div class="col-md-6">
-                <img class="img-responsive" src="images/clean.png" alt="">
+                <img class="img-responsive" src="images/clean.png" alt="" style="width: 600px; height: 350px;">
             </div>
-            <div class="col-md-6">
+            
+            <div class="col-md-6" style="background-color: rgb(245,126,182);">
                 <p><b>Clean:</b></p>
              
                 <p>All types of houses/rooms provided by DivaStays maintains cleaning in rooms.No need to worry. Regular cleaning is maintained.</p>
                 <ul>
-                  <li>Some Text</li>
-                  <li>Some Text</li>
-                  <li>Some Text</li>
-                  <li>Some Text</li>
-                  <li>Some Text</li>
-                  <li>Some Text</li>
+                  <li>Daily room cleaning</li>
+                  <li>Weekly gardening</li>
+                  <li>Cleaning surroundings twice a week</li>
+                  <li>Monthly pest control</li>
+                  <li>Water tank cleaning</li>
+        
                  
                 </ul>
                 
@@ -238,33 +240,34 @@
 
         <hr>
      <div class="row">
-           
-            <div class="col-md-6">
+           <br>
+            <div class="col-md-6" style="background-color: rgb(245,126,182);">
                 <p><b>Short Term/Long Term:</b></p>
                 
                 <p>DivaStays provides short term and long term  Staying facility.Short Term includes the peoples who will  Stay for a number of days which include visitors.Long term includes the people who will  Stay for long period like students,employess.</p>
             </div>
           
             <div class="col-md-6">
-                <img class="img-responsive" src="images/shortTerm.png" alt="">
+                <img class="img-responsive" src="images/backpack.jpg" alt="" style="width: 600px; height: 350px;">
             </div>
         </div>
         <!-- /.row -->
 
         <hr>
          <div class="row">
-          
+          <br>
             <div class="col-md-6">
-                <img class="img-responsive" src="images/roommates.png" alt="">
+                <img class="img-responsive" src="images/roommates.png" alt="" style="width: 600px; height: 350px;">
             </div>
-            <div class="col-md-6">
+            
+            <div class="col-md-6" style="background-color: rgb(245,126,182);">
                 <p><b>Roommates:</b></p>
             
-                <p>DivaStays hava a unique feature that you can choose your room partners as your wish.So that you will not face any problem about that.You can  Stay with the partners from your region/language/profession etc..</p>
+                <p>DivaStays have a unique feature that you can choose your room partners as your wish.So that you will not face any problem about that.You can  Stay with the partners from your region/language/profession etc..</p>
               <ul>
-                <li>Some Text</li>
-                 <li>Some Text</li>
-                  <li>Some Text</li>
+                <li>As per your profession</li>
+                 <li>By your food preference</li>
+                  <li>From your hometown</li>
                 
                 </ul>
             </div>

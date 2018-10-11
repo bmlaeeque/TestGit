@@ -1,4 +1,4 @@
- <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="tag" uri="/WEB-INF/taglibs/customTaglib.tld"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -9,10 +9,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Filter_Search</title>
-<meta charset="utf-8">
-<link href="css/bootstrap.min.css" rel="stylesheet" /> 
-<link href="css/header.css" rel="stylesheet" />  
- <link href="css/popup.css" rel="stylesheet">
+<!-- <meta charset="utf-8"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/default.css" rel="stylesheet">
+  <link href="css/header.css" rel="stylesheet"/>
+  <link href="css/popup.css" rel="stylesheet">
+  <link href="css/btninfo.css" rel="stylesheet">
+ 
+ 
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,10 +55,18 @@
   color: white;
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
+
+#responsive-image { 
+width: 500px;
+height: 400px
+} 
+
+
  </style>
 </head>
-<body onload="javascript: dynamicdropdown('pune')">
-		<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(243,210,230)">
+<body>
+		
+<%--  <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color:rgb(245,126,182)">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -62,7 +76,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b><font color="#000000">DivaStays</font></b></a>
+      <a class="navbar-brand" href="showHome"><b><font color="#000000"> <img src="images/DivaStays_Logo.jpg" width="80" height="50"></font></b></a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -152,13 +166,13 @@
    <div class="modal fade" id="myModal1" role="dialog">   
     <div class="modal-dialog">
 <!-- Modal content-->
-      <div class="modal-content" style="background-color:rgb(243,210,230)">
+      <div class="modal-content" style="background-color:rgb(245,126,182)">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title"> Refine Your Search</h4>
           </div>
                           <div class="panel-body">
-            		      <div class="list-group" style="background-color:rgb(243,210,230)">
+            		      <div class="list-group" style="background-color:rgb(245,126,182)">
                     	<div class="radio">
                     	<div>
                       <label><input type="radio" name="priceSort" value="lowTohigh">? ?  Price - Low To High</label>
@@ -167,7 +181,7 @@
                       <label><input type="radio" name="priceSort" value="highToLow">? ?  Price - High To Low</label>
                     	</div>                         
            <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Apply</button>
+          <button type="submit" class="btn btn-success" style="background-color:#00B0B9; border-radius: 25px; color: black;">Apply</button>
         </div>            
 	</div>
   </div>
@@ -176,23 +190,176 @@
     </div>
     </form>
   </div><!-- /.container-fluid -->
+  <jsp:include page="cityDropDown.jsp"></jsp:include>
 </nav><!--main nav closed-->
-<div class="container"><!--1)main container for filter-->
+
+  --%>
+
+
+<!-- ----------------------------------------------------- -->
+
+  <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: white; height:110px; border-color:white;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="showHome"> 
+<!--        <b><font color="#000000">Diva Stays</font></b> -->
+      <img src="images/DivaStays_Logo.jpg" width="110" height="85">
+      </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav navbar-right">
+      <c:choose>
+   <c:when test="${sessionScope.user!=null}">
+						<img src="<ui:image img='${sessionScope.user.userImg}'></ui:image>"
+							alt="..." style="height: 30px" />
+							<li><a href="logoutShortTerm"><font color="#000000">Logout</font></a></li>
+						<li><a href="editUserDetails/${user.uId}"><font color="#000000">Edit Your Profile</font></a></li>
+					</c:when>
+    <%-- <c:otherwise>
+      <li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown"><b><font color="#000000">Login</font></b>
+						<span class="caret"></span></a>
+					<ul id="login-dp" class="dropdown-menu">
+						<li>
+							<div class="row">
+								<div class="col-md-12">
+									Login via
+									<div class="social-buttons">
+										<a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i>
+											Facebook</a> <a href="#" class="btn btn-tw"><i
+											class="fa fa-twitter"></i> Twitter</a>
+									</div>
+									or
+
+									<form class="form" role="form" method="post" action="loginShortTerm"
+										accept-charset="UTF-8" id="login-nav">
+										<div class="form-group">
+											<label class="sr-only" for="exampleInputEmail2">Email
+												address</label> <input type="email" name="email"
+												class="form-control" id="email" placeholder="Email address"
+												autocomplete="off" required>
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="exampleInputPassword2">Password</label>
+											<input type="password" name="password" class="form-control"
+												id="password" placeholder="Password" autocomplete="off"
+												required>
+											<div class="help-block text-right">
+												<a href="verificationlink"><font color="#337ab7;">Forget the password ?</font></a>
+											</div>
+											<span id="empIdErr" class="errMsg"></span>
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary btn-block"
+												onclick="checkLogin();">Sign in</button>
+										</div>
+										<div class="checkbox">
+											<label> <input type="checkbox"> keep me
+												logged-in
+											</label>
+										</div>
+									</form>
+								</div>
+								<div class="bottom text-center">
+									New here ? <a href="showUserReg"><b><font
+											color="#000000">Join Us</font></b></a>
+								</div>
+							</div>
+						</li>
+
+					</ul></li>
+    </c:otherwise> --%>
+</c:choose>          <li><a href="showHelp"><font color="#000000">Help</font></a></li>
+      </ul>
+
+
+<ul class="nav navbar-nav navbar-right">    
+        <!-- <li>
+          <a href="#" ><span class="fa fa-filter" aria-hidden="true"  data-toggle="modal" data-target="#myModal">&nbsp;<b><span>Filter</b></span></a>
+        </li>  -->
+<!--         <li><a href="#"><span class="fa fa-sort" aria-hidden="true"  data-toggle="modal" data-target="#myModal1">&nbsp;<b>Sort</b></span></a></li> -->
+</ul>
+        
+</div>      
+
+<form role="form"  action="${sort}">
+   <div class="modal fade" id="myModal1" role="dialog">   
+    <div class="modal-dialog">
+<!-- Modal content-->
+      <div class="modal-content" style="background-color:rgb(245,126,182)">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"> Refine Your Search</h4>
+          </div>
+                          <div class="panel-body" style="background-color: white;">
+            		      <div class="list-group" style="background-color:rgb(255,255,255)">
+                    	<div class="radio">
+                    	<div>
+                      <label><input type="radio" name="priceSort" value="lowTohigh">Price - Low To High</label>
+                    	</div>
+                    	<div class="radio">
+                      <label><input type="radio" name="priceSort" value="highToLow">Price - High To Low</label>
+                    	</div>                         
+           <div class="modal-footer">
+        <center><button type="submit" class="btn btn-success" style="background-color:#00B0B9; border-radius: 25px; color: black;">Apply</button></center>  
+        </div>            
+	</div>
+  </div>
+    </div><!-- /.navbar-collapse -->
+    </div>
+    </div>
+    </form>
+    
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+
+
+
+<%--  <jsp:include page="cityDropDown.jsp"></jsp:include> --%>
+  
+ 
+ </nav>
+
+ 
+<%--   <jsp:include page="header1.jsp"></jsp:include> --%>
+  
+  
+<div style="background-color: white;">
+<div class="container" style="background-color: white;"><!--1)main container for filter-->
 	<div class="row"><!--2)row -->
 	<form class="form" role="form" id="house" action="showFilterShortTerm" accept-charset="UTF-8">
 		<div class="col-md-3"><!--3)column for filter-->
-        	<div class="well" style="background-color:rgb(243,210,230)"><strong>Location</strong> 
+        	<div class="well" style="background-color:rgb(245,126,182)"><strong>Select Your City</strong> 
       
 	   	<div class="form-group">
-  			<input type="text" name="address"  placeholder="city" class="form-control" id="address" onBlur="javascript: dynamicdropdown(this.value);submitForm();"/>
+  			<input type="text" name="address"  placeholder="city" class="form-control" id="address" onBlur="javascript: dynamicdropdown(this.value);submitForm();" />
             </div><!--form group closed-->
-  	
+  	    
+  	    <div class="form-group">
+      		<label>Places</label>
+      	 <script type="text/javascript" language="JavaScript">
+                document.write('<select name="subcategory" id="subcategory" class="form-control"><option value="">Please select Area</option></select>')
+            </script>
+    </div>
+  	    
     	</div><!--well class closed-->
+    	
   </form>
        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true"><!--4)main panel start drom here-->
 <form class="form" role="form"  action="mainFilter" accept-charset="UTF-8">
             <!-- first Panel start Here -->
-        <div class="well" style="background-color:rgb(243,210,230)">  <!-- 5)class well-->
+        <div class="well" style="background-color:rgb(245,126,182)">  <!-- 5)class well-->
+        <h4><b>Choose your companion</b></h4>
+        <br>
         <strong>Profession</strong> 
            <div class="form-group">
       		<select name="profession" id="profession" class="form-control">
@@ -201,7 +368,7 @@
       		</select>
 			</div><!--form closed -->      
        		 <div class="form-group">
-      		<label>Mother Toung</label>
+      		<label>Mother Tongue</label>
        		<select id="motherTongue" name="motherTongue" class="form-control">
                               <option value="hindi">हिंदी (hindi)</option>
                               <option value="marathi">मराठी (marathi)</option>
@@ -216,12 +383,12 @@
                               <option value="urdu">اردو (urdu)</option>
                           </select>
     		</div><!--form group-->
-			<div class="form-group">
+			<!-- <div class="form-group">
       		<label>Places</label>
       	 <script type="text/javascript" language="JavaScript">
                 document.write('<select name="subcategory" id="subcategory" class="form-control"><option value="">Please select Area</option></select>')
             </script>
-    </div><!--form group-->
+    </div>form group -->
     		<div class="form-group">
       <label>Food Type</label>
       <select id="foodPreference" class="form-control" name="foodPreference">
@@ -261,18 +428,26 @@
 				 </div>          
             </div><!--panel class closed for price -->
             <br>
-		<div class align="center"><button type="submit" class="btn btn-info" style="">Search</button>
+            <div class="form-group">
+            <a href="#" style="color: black;"><h4><span class="fa fa-sort" aria-hidden="true"  data-toggle="modal" data-target="#myModal1">&nbsp;<b>Sort by</b></span></h4></a>
+            </div>
+         
+            <br>
+		<div align="center"><!-- <button type="submit" class="btn btn-info">Search</button> -->
+		<center><a><button type="submit" class="button btn-info" style="color: black;">Search</button></a></center>
 		</div><br>
-          <button type="reset" class="btn btn-info">Reset All</button>&nbsp;&nbsp;&nbsp;
+        <center><a><button type="reset" class="button btn-info" style="color: black;">Reset All</button></a></center>  
           </form>                 
-     <form action="showFilterWithFacilities" role="form">   
-          <button type="button" data-toggle="modal" data-target="#myModal" >Advance Filter</button>
+          
+    <!-- ---------------------------------------------------------- -->
+     <%-- <form action="showFilterWithFacilities" role="form">   
+          <button type="button" data-toggle="modal" data-target="#myModal" style="border-radius: 25px" >Advance Filter</button>
           <!--modal class start here for the  Adv filter and also for the filter-->  
     <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
 		 <!-- Modal content-->
-      	<div class="modal-content" style="background-color:rgb(243,210,230)">
-       		 <div class="modal-header" style="background-color:rgb(243,210,230)">
+      	<div class="modal-content" style="background-color:rgb(245,126,182)">
+       		 <div class="modal-header" style="background-color:rgb(245,126,182)">
         	  <button type="button" class="close" data-dismiss="modal">&times;</button>
           		<h4 class="modal-title"> Refine Your Search</h4>
         	</div><!--heder closed-->
@@ -287,7 +462,7 @@
                 </h4>
               </div><!--heading closed-->
               <div id="collapseThree" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingThree" aria-expanded="true" ><!--3)collapase class-->
-                <div class="panel-body" style="background-color: rgb(243,210,230);">
+                <div class="panel-body" style="background-color: rgb(245,126,182);">
                   <div class="list-group">
                     <div class="checkbox">
                       <label><input type="checkbox" name="facilities" value="swimmingPool">Swimming Pool</label>
@@ -315,81 +490,39 @@
                   </div><!--3)-->
                   </div><!--2)-->
 			  </div><!--1)main body closed-->
-           <div class="modal-footer" style="background-color: rgb(243,210,230);">
-          <button type="submit" class="btn btn-success">Apply</button>
+           <div class="modal-footer" style="background-color: rgb(245,126,182);">
+          <button type="submit" class="btn btn-success" style="background-color: #00B0B9; border-radius: 25px; color: black;">Apply</button>
       	  </div>
 	</form>		
 	</div><!--modal-content closed-->
      </div><!--modal dialog closed-->
-      </div><!--main modal closed for adv filter-->
+      </div><!--main modal closed for adv filter--> --%>
+     
      </div><!--5)-->
      </div><!--4)-->
      </div><!--3)-->
-  <div id ="showHouseInfo" class="col-md-9" style="height:20px">
+     
+   <!-- ------------------------------------------------------------- -->  
+     
+<div id ="showHouseInfo" class="col-md-9" style="height:20px">
   <c:forEach items="${house}" var="house" varStatus="itr">
- 		<a href="showHouseInfo/${house.hId}" > <div class="well"  style="background-color: rgb(243,210,230);" style="height:270px">	 
+ 		<a href="showHouseInfo/${house.hId}" > <div class="well"  style="background-color: rgb(245,126,182);" style="height:270px">	 
            <div class="row">
                     <div class="media col-md-8">
                		<div class="carousel-inner">
   				 <div class="item active">
-  				    <!-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      Indicators
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-      </ol> -->
+  				   
 		
       <!-- Wrapper for slides -->
       <div class="carousel-inner" >
      
       <div class="item active">
-       <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" />
-          <%--  <div class="carousel-content">
-      	 <h6>From</h6>
-            <i class="fa fa-inr"></i> ${house.rent}
-          <p>Security Deposit</p>
-      </div> --%>
+       <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" id="responsive-image" />
+         
      </div>
-     
-     <%--  <div class="item">
-           <img src="<ui:image img='${house.img2}'></ui:image>" alt="Image" />
-                  <div class="carousel-content">
-      	 <h6>From</h6>
-             <i class="fa fa-inr"></i> ${house.rent}
-          <p>Security Deposit</p>
+    
       </div>
-        </div> --%>
-        
-     <%--   <div class="item">
-          <img src="<ui:image img='${house.img3}'></ui:image>" alt="Image" />
-                  <div class="carousel-content">
-      	 <h6>From</h6>
-            <i class="fa fa-inr"></i> ${house.rent}
-          <p>Security Deposit</p>
-      </div>
-        </div>
- --%>        
-      </div>
-       <!-- Left and right controls -->
-     <!--  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  	 -->
-  			<%-- <img src="<ui:image img='${house.img1}'></ui:image>" alt="..." style="height:90px" /> --%>
-     			<%--  <div class="carousel-content">
-        			<h4><strong>${house.houseName}</strong>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;<strong>${house.tenancyType}</strong></h4>
-                    	</div><!--carousel content class closed--> --%>
-                    	<%-- <div class="caption">
-  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.rent}</strong></p>
-  <p style="color:#990000">Starting from &ensp;&ensp;<strong> ${house.deposit}</strong></p>
-        </div>  --%>
+      
       </div><!--active item class closed-->
     </div><!--carousel inner class closed-->
   		      
@@ -398,7 +531,7 @@
            
         
    				<div class="media col-md-4">
- 	<h4><font color="#FF0000">Home Details</font></h4>			
+ 	<h4><font color="#0000"><b>Home Details</b></font></h4>			
 			 <table class="table small" >    			
                 <tbody height="25">    
                         <tr>
@@ -415,11 +548,9 @@
                              <td><h5 style="color:#000000">${house.address}, ${house.locationArea}, ${house.city}</h5></td>
                           </tr>
                              <tr>
-                             <th><h5 style="color:#990000">Rent<br><h4>${house.rent }</h4></h5></th>
-                              <th><h5 style="color:#990000">Security Deposit<br><h4>${house.deposit}</h4></h5></th>
-                         <%-- <tr> <td ><b>${house.rent }</b></td>
-                           
-                             <td><h2>${house.deposit }</h2></td></tr> --%>
+                             <th><h5 style="color:black;"><b>Rent</b><br><h4>${house.rent }</h4></h5></th>
+                              <th><h5 style="color:black"><b>Security Deposit</b><br><h4>${house.deposit}</h4></h5></th>
+                       
                           </tr>
                             
  
@@ -435,15 +566,26 @@
 			<div id="dvMap" style="width: 100%; height:500px;"></div>
 			<br><br>
  </div><!--colm 9 closed-->
- </div><!--2)-->
-     </div><!--1)-->
+ 
+
+    
         <!-- /.sidebar column end here -->
        <script src="js/jquery.min.js" type="text/javascript"></script>
+       <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script src="js/bootstrap.min.js" type="text/javascript" ></script>
 <script src="js/dynamicdropdownfilter.js" type="text/javascript"></script>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-<script src="js/popup.js"></script>   
+<script src="js/cbpHorizontalMenu.js" type="text/javascript"></script>
+<script src="js/registrationForm.js" type="text/javascript"></script>
+<script src="js/popup.js"></script>  
+
+<script type="text/javascript">
+		$(function() {
+			cbpHorizontalMenu.init();
+		});
+	</script>
+ 
  <script type="text/javascript">
   var markers = [
 	 <c:forEach var="s" items="${house}">
@@ -552,7 +694,7 @@
                                     <div class="col-sm-2">
                                     </div>
                                     <div class="col-sm-10">
-                                        <button type="submit" class="btn btn-primary btn-sm">
+                                        <button type="submit" class="btn btn-primary btn-sm" style="background-color: #00B0B9; border-radius: 25px; color: black;">
                                             Submit</button>
                                         <a href="javascript:;">Forgot your password?</a>
                                     </div>

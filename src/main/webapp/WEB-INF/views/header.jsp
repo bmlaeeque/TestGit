@@ -5,12 +5,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 <link href="css/header.css" rel="stylesheet"/>
+<link href="css/btninfo.css" rel="stylesheet">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Header</title>
 
 </head>
 <body>
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -20,13 +21,13 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="80" height="50"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+      <ul class="nav navbar-nav navbar-right" style="background-color: #fffff;" >
        <% 
         String ownerEmail =  (String)session.getAttribute("ownerEmail");
         if(ownerEmail!=null)

@@ -9,6 +9,7 @@
 <title>Room Information</title>
  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link href="css/btninfo.css" rel="stylesheet">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   
@@ -49,14 +50,31 @@ img#imgZoom:hover {
     z-index: 1000;
 }
 
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
 
 </style>
   
  
 </head>
-<body style="background-color: rgb(243,210,230);">
+<body style="background-color: rgb(245,126,182);">
 <!--Header-->
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); height:105px; border-color: white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -66,7 +84,7 @@ img#imgZoom:hover {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -74,7 +92,7 @@ img#imgZoom:hover {
       
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="showHelp">Help</a></li>
+        <li><a href="showHelp" class="astext">Help</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -233,7 +251,7 @@ $(document).ready(function() {
    <div class="col-md-4">
   </div>
   <div class="col-md-4">
-	<div class="panel panel-login" style="background-color: rgb(243,210,230);">
+	<div class="panel panel-login" style="background-color: rgb(245,126,182);">
       <div class="panel-heading row">
 	    <div class="row">
 		   <div class="col-xs-6 text-center">

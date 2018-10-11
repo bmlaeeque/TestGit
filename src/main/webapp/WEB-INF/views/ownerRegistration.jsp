@@ -10,10 +10,35 @@
 	<link rel="stylesheet" href="css/registrationForm.css">
 	 <link href="css/header.css" rel="stylesheet"/>
 	 <link href="css/bootstrap.min.css" rel="stylesheet">
+	 <link href="css/btninfo.css" rel="stylesheet">
 	 
+	 
+<style>
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+
+
+
+</style>
 </head>
 <body style="background-image:url(images/formBackground.png)">
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); height:105px; border-color: white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -23,22 +48,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+      <ul class="nav navbar-nav navbar-right">
      
-         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+         <li><a href="showHelp" class="astext" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
     <div class="main-content">
    
-  <form class="form-basic" method="post" action="saveOwner" onSubmit="return Submit()" style="background-color: rgb(243,210,230);">
+  <form class="form-basic" method="post" action="saveOwner" onSubmit="return Submit()" style="background-color: rgb(245,126,182);">
    
 	 <div class="form-title-row">
                 <h1>Owner Registration Form</h1>
@@ -75,9 +100,22 @@
                     <input type="password" name="password2" id="password2" placeholder="Confirm Password" onBlur="CheckPass(); return false;" autocomplete="off" required>
                 </label>
               </div>
-
+        <span>Are You Member?</span>
+<label for="chkYes">
+    <input type="radio" id="chkYes" name="chkPassPort" />
+    Member
+</label>
+<label for="chkNo">
+    <input type="radio" id="chkNo" name="chkPassPort" />
+    Self
+</label>
+<hr/>
+<div id="dvPassport" style="display: none">
+    Enter MemberId:
+    <input type="text" name="mId" id="mId" onBlur="checmember();Checkmember(); return false;" autocomplete="off" placeholder="MemberId"/>
+</div>
          <div class="form-row" style="width:50%;">
-                <button type="submit" value="Submit">Submit</button>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button type="submit" value="Submit" id="submit">Submit</button> 
          </div>
       </form>
    </div>
@@ -103,6 +141,39 @@
     		});
     }
     </script>
+       <script type="text/javascript">
+    function checmember()
+    {
+    	 var mId=document.getElementById( "mId" ).value;
+    	 $.ajax({
+    			url:"checkMember",
+    			data:{mId:$("#mId").val()},
+    			success:function(resText){
+    				if(resText!="")
+    					{
+    				alert(resText);
+    					}
+    				if(resText!=""){
+    					$("#mId").val("");
+    					$("#mId").focus();
+    				}
+    			}
+    			
+    		});
+    }
+    </script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script type="text/javascript">
+    $(function () {
+        $("input[name='chkPassPort']").click(function () {
+            if ($("#chkYes").is(":checked")) {
+                $("#dvPassport").show();
+            } else {
+                $("#dvPassport").hide();
+            }
+        });
+    });
+</script>
     <script>
     function checkContactNumber()
     {

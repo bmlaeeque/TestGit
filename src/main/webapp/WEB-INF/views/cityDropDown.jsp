@@ -5,42 +5,43 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
  <link href="css/cityDropDown.css" rel="stylesheet"/>
  <link href="css/component.css" rel="stylesheet"/>
+ <link href="css/btninfo.css" rel="stylesheet">
  <title>City DropDown</title>
 </head>
 <body>
 <nav id="cbp-hrmenu" class="cbp-hrmenu">
 					<ul>
 						<li>
-							<a href="#">Pune</a>
+							<a href="#" style="color: black;">Pune</a>
 							<div class="cbp-hrsub" style="height:345px;">
 								<div class="cbp-hrsub-inner"> 
                                    <div>
 										<h3>DivaStays Near Airport</h3>
 										<ul>
-											<li><a href="#">DivaStays1</a></li>
-											<li><a href="#">DivaStays2</a></li>
-											<li><a href="#">DivaStays3</a></li>
+											<li><a href="#">Vimannagar</a></li>
+											<li><a href="#">Lohegaon</a></li>
+											<li><a href="#">Yerwada</a></li>
 									    </ul>
 									</div>
                                     <div>
 										<h3>DivaStays Near Railway Station</h3>
 										<ul>
-											<li><a href="#">DivaStays1</a></li>
-											<li><a href="#">DivaStays2</a></li>
-											<li><a href="#">DivaStays3</a></li>
+											<li><a href="#">Shivajinagar</a></li>
+											<li><a href="#">Chinchwad</a></li>
+											<li><a href="#">Kasarwadi</a></li>
 									    </ul>
 									</div>
 									<div>
 										<h3>DivaStays Near Colleges</h3>
 										<ul>
-											<li><a href="#">DivaStays1</a></li>
-											<li><a href="#">DivaStays2</a></li>
-											<li><a href="#">DivaStays3</a></li>
+											<li><a href="#">MIT,Kothrud</a></li>
+											<li><a href="#">Sinhgad College,Vadgaon</a></li>
+											<li><a href="#">COEP,Shivajinagar</a></li>
 										</ul>
 										<h3>DivaStays Near IT Compnies</h3>
 										<ul>
-											<li><a href="#">DivaStays1</a></li>
-											<li><a href="#">DivaStays2</a></li>
+											<li><a href="#">Hinjewadi IT Park</a></li>
+											<li><a href="#">Kharadi IT Hub</a></li>
                                        </ul>
 									</div>
                                 </div><!-- /cbp-hrsub-inner -->
@@ -48,11 +49,14 @@
 						  <!-- /cbp-hrsub -->
 						</li>
 						<li>
-							<a href="#">Mumbai</a>
-							<div class="cbp-hrsub" style="height:345px;">
-								<div class="cbp-hrsub-inner">
+							<a href="#" style="color: black;">Mumbai</a>
+							 <div class="cbp-hrsub" style="height:345px;background-color: white;">
+								<div class="cbp-hrsub-inner"> 
+								 
 									<div>
-										<h3>DivaStays Near Airport</h3>
+										<img alt="CommingSoon" src="images/comingsoon.jpg">
+									</div>
+									<!--  
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays2</a></li>
@@ -78,15 +82,17 @@
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays1</a></li>
 										</ul>
-									</div>
-                                 </div><!-- /cbp-hrsub-inner -->
+									</div> -->
+                                  </div>   <!--  /cbp-hrsub-inner -->
 							</div>
-						  <!-- /cbp-hrsub -->
-						</li>
+                             <!--  /cbp-hrsub -->
+						</li> 
 						<li>
-							<a href="#">Kolhapur</a>
-							<div class="cbp-hrsub" style="height:345px;">
+							<a href="#" style="color: black;">Kolhapur</a>
+							<div class="cbp-hrsub" style="height:345px;background-color: white;">
 								<div class="cbp-hrsub-inner">
+								     
+								    <!-- 
 									<div>
 										<h3>DivaStays Near Airport</h3>
 										<ul>
@@ -94,13 +100,19 @@
 											<li><a href="#">DivaStays2</a></li>
 											<li><a href="#">DivaStays3</a></li>
 										</ul>
+										
 										<h3>DivaStays Near Railway Station</h3>
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays2</a></li>
 										</ul>
+									</div> -->
+									
+									<div style="margin-left: 90px;">
+										<img alt="CommingSoon" src="images/comingsoon.jpg">
 									</div>
-                                    <div>
+									
+                                    <!-- <div>
 										<h3>DivaStays Near Colleges</h3>
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
@@ -114,16 +126,20 @@
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays1</a></li>
 										</ul>
-									</div>
+									</div> -->
                                    </div><!-- /cbp-hrsub-inner -->
 							</div>
 						  <!-- /cbp-hrsub -->
 						</li>
 						<li>
-							<a href="#">Kolkata</a>
-							<div class="cbp-hrsub" style="height:345px;">
+							<a href="#" style="color: black;">Kolkata</a>
+							<div class="cbp-hrsub" style="height:345px;background-color: white;">
 								<div class="cbp-hrsub-inner">
-									<div>
+								
+								    <div style="margin-left: 220px;">
+										<img alt="CommingSoon" src="images/comingsoon.jpg">
+									</div>
+									<!-- <div>
 										<h3>DivaStays Near Airport</h3>
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
@@ -150,17 +166,21 @@
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays1</a></li>
 									   </ul>
-									</div>
+									</div> -->
 								</div><!-- /cbp-hrsub-inner -->
 							</div>
 						  <!-- /cbp-hrsub -->
 						</li>
 						
 					<li>
-							<a href="#">GOA</a>
-							<div class="cbp-hrsub" style="height:345px;">
+							<a href="#" style="color: black;">GOA</a>
+							<div class="cbp-hrsub" style="height:345px;background-color: white;">
 								<div class="cbp-hrsub-inner">
-									<div>
+								   <div style="margin-left: 350px;">
+										<img alt="CommingSoon" src="images/comingsoon.jpg">
+									</div>
+								
+									<!-- <div>
 										<h3>DivaStays Near Airport</h3>
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
@@ -187,16 +207,20 @@
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays1</a></li>
 										</ul>
-									</div>
+									</div> -->
 								</div><!-- /cbp-hrsub-inner -->
 							</div>
 				    <!-- /cbp-hrsub -->
 						</li>
 						<li>
-							<a href="#">Delhi</a>
-							<div class="cbp-hrsub" style="height:345px;">
+							<a href="#" style="color: black;">Delhi</a>
+							<div class="cbp-hrsub" style="height:345px;background-color: white;">
 								<div class="cbp-hrsub-inner">
-									<div>
+								    <div style="margin-left: 480px;">
+										<img alt="CommingSoon" src="images/comingsoon.jpg">
+									</div>
+								
+									<!-- <div>
 										<h3>DivaStays Near Airport</h3>
 										<ul>
 											<li><a href="#">DivaStays1</a></li>
@@ -223,7 +247,7 @@
 											<li><a href="#">DivaStays1</a></li>
 											<li><a href="#">DivaStays1</a></li>
 										</ul>
-									</div>
+									</div> -->
 								</div><!-- /cbp-hrsub-inner -->
 							</div>
 						  <!-- /cbp-hrsub -->

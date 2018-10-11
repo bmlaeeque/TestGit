@@ -4,11 +4,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="css/footer.css" rel="stylesheet">
+<link href="css/btninfo.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Footer</title>
 </head>
 <body>
-   <footer id="footer" style="background-color: rgb(243,210,230);">
+   <footer id="footer" style="background-color: rgb(245,126,182);">
         <div class="container-fluid">
             <div class="row">
                <!--  <div class="col-xs-6 col-sm-3 column">
@@ -35,13 +36,13 @@
                         <div class="form-group">
                           <input type="text" class="form-control" title="No spam, we promise!" placeholder="Tell us your email">
                         </div>
-                        <div class="form-group">
-                          <button class="btn btn-info" data-toggle="modal" data-target="#alertModal" type="button">Subscribe for updates</button>
+                        <div class="form-group" align="left">
+                          <button class="btn btn-info" data-toggle="modal" data-target="#alertModal" type="button" style="background-color: #00B0B9; color: black; border-radius: 25px">Subscribe for updates</button>
                         </div>
                     </form>
                 </div>
-                <div class="col-xs-12 col-sm-3 column">
-                        <h4>Follow Us</h4>
+                <div class="col-xs-12 col-sm-3 column" align="right">
+                       <h4>Follow Us</h4>
 							<ul class="social-icon">
 								<li class="bglight-blue"><i class="fa fa-facebook"></i></li>
 								<li class="bgred"><i class="fa fa-google-plus"></i></li>

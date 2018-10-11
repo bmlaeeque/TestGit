@@ -46,6 +46,15 @@ public class Booking implements Serializable {
 		this.user = user;
 		this.room = room;
 	}
+	
+	public Booking(String name, Integer cardNumber, String month, Integer year, Integer cvc) {
+		super();
+		Name = name;
+		CardNumber = cardNumber;
+		this.month = month;
+		this.year = year;
+		this.cvc = cvc;
+	}
 	@Override
 	public String toString() {
 		return "Booking [pId=" + pId + ", Name=" + Name + ", CardNumber=" + CardNumber + ", month=" + month + ", year="

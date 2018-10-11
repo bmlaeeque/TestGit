@@ -21,7 +21,7 @@
 	<!-- background image -->
 	
 body { 
-  background: rgb(243,210,230) 
+  background: rgb(245,126,182) 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -102,7 +102,7 @@ padding: 25px;
 
 <body>
     <!-- Page Content -->
-    <div class="container" style="background-color:rgb(243,210,230)">
+    <div class="container" style="background-color:rgb(245,126,182)">
     		
              <!--banner-->
              <div id="myCarousel" class="carousel slide" data-ride="carousel">

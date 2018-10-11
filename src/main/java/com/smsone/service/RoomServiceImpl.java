@@ -11,6 +11,7 @@ import com.smsone.model.Room;
 import com.smsone.model.User;
 @Service
 public class RoomServiceImpl implements RoomService {
+	
 	@Autowired
 	RoomDAO roomDAO;
 
@@ -68,8 +69,13 @@ public class RoomServiceImpl implements RoomService {
 		return roomDAO.remainingRoom(hId);
 	}
 
-	
+	public void updateBids(User user, Beds beds) {
+		// TODO Auto-generated method stub
+		roomDAO.updateBids(user, beds);		
+	}
 
+	
+	
 	
 	
 }

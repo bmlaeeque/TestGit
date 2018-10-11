@@ -7,11 +7,23 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/registrationForm.css">
-	  <link href="css/bootstrap.min.css" rel="stylesheet">  
-<link href="css/header.css" rel="stylesheet"/>
+	<link href="css/bootstrap.min.css" rel="stylesheet">  
+    <link href="css/header.css" rel="stylesheet"/>
+    <link href="css/btninfo.css" rel="stylesheet">
+    
+ <style>
+ .astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+ 
+ </style>  
+    
 </head>
 <body style="background-image:url(images/formBackground.jpg)">
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -21,21 +33,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(255,255,255);" >
        
-         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+         <li><a href="showHelp" class="astext" ><b style="color:#000000;">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
    <div class="main-content">
-		<form class="form-basic" method="post" action="saveUser" onSubmit="return UserSubmit();" enctype="multipart/form-data" style="background-color: rgb(243,210,230);">
+		<form class="form-basic" method="post" action="saveUser" onSubmit="return UserSubmit();" enctype="multipart/form-data" style="background-color: rgb(245,126,182);">
 
             <div class="form-title-row">
                 <h1>User Registration Form</h1>

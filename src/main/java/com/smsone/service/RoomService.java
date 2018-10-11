@@ -23,7 +23,8 @@ public interface RoomService {
 	public Room getRoom(Long rId);
 	public List<Beds> getAllBedDetails(Long rId);
 	 
-	
+	public void updateBids(User user,Beds beds);
+
 	
 	
 

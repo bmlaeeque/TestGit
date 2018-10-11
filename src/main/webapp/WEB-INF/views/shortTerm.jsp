@@ -11,7 +11,8 @@
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/default.css" rel="stylesheet">
   <link href="css/header.css" rel="stylesheet"/>
-   <link href="css/popup.css" rel="stylesheet">
+  <link href="css/popup.css" rel="stylesheet">
+  <link href="css/btninfo.css" rel="stylesheet">
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
 <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
 <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -23,7 +24,7 @@
 </style> 
 </head>
 <body >
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -33,7 +34,10 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome"><b><font color="#000000">Diva Stays</font></b></a>
+      <a class="navbar-brand" href="showHome"> 
+<!--        <b><font color="#000000">Diva Stays</font></b> -->
+      <img src="images/DivaStays_Logo.jpg" width="110" height="85">
+      </a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -118,7 +122,7 @@
   <br>
   
   <div class="container text-center">
-  <div class="container text-center" style="background-color:rgb(243,210,230)">
+  <div class="container text-center" style="background-color:rgb(245,126,182)">
 		   		   
   				<h3 align="center" style="color:#000000">Stay with us and enjoy life</h3>
   				<br>
@@ -177,7 +181,7 @@
   <!-- search box start -->
  				
                    		<div class="col-md-12 text-center">
-            <h2 class="service-title pad-bt15">Hostels In Pune</h2>
+            <h2 class="service-title pad-bt15"><b>Hostels In Pune</b></h2>
             <hr class="bottom-line">
           </div>
                   
@@ -205,7 +209,7 @@
 <div class="container">
         <div class="row">
           <div class="col-md-12 text-center">
-            <h2 class="service-title pad-bt15">Limited Deals</h2>
+            <h2 class="service-title pad-bt15"><b>Limited Deals</b></h2>
             <hr class="bottom-line">
           </div>
       
@@ -269,7 +273,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="margin-top-0 ">DivaStays For All Your Needs</h2>
+                    <h2 class="margin-top-0 "><b>DivaStays For All Your Needs</b></h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -339,7 +343,7 @@
     
 <div class="jumbotron">
   <div class="container text-center">
-  <H2 style="color:#000000;">As Spotted In</H2>
+  <H2 style="color:#000000;"><b>As Spotted In</b></H2>
 	 <div class="row">
   		<div class="col-sm-4">
     		<H3>Times Of India</H3>
@@ -368,7 +372,7 @@
     <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px">Get In Touch</h2>
+                    <h2 class="margin-top-0 wow fadeIn" style="margin-top:10px"><b>Get In Touch</b></h2>
                     <hr class="primary">
                     <p>We love feedback. Fill out the form below and we'll get back to you as soon as possible.</p>
                 </div>

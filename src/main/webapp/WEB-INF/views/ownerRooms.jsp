@@ -8,7 +8,27 @@
 table, th, td {
    border: 1px solid black;
 }
+
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
 </style>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,9 +37,11 @@ table, th, td {
 		<link rel="stylesheet" href="css/registrationForm.css">
 		  <link href="css/bootstrap.min.css" rel="stylesheet">  
 <link href="css/header.css" rel="stylesheet"/>
+<link href="css/btninfo.css" rel="stylesheet">
+
 </head>
 <body >
-<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+<nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255);height:105px; border-color: white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -29,11 +51,17 @@ table, th, td {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+     
+     <ul class="nav navbar-nav navbar-right">
+     
+         <li><a href="showHelp" class="astext"><b><font color="#000000">Help</font></b></a></li> 	
+      </ul>
+    
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
@@ -43,7 +71,7 @@ table, th, td {
     </c:when>    
     <c:otherwise>  
  <div class="main-content">
-  <form class="form-basic" method="post" action=""  enctype="multipart/form-data" style="background-color: rgb(243,210,230);" style="background-image:url(images/formBackground.jpg)">
+  <form class="form-basic" method="post" action=""  enctype="multipart/form-data" style="background-color: rgb(245,126,182);" style="background-image:url(images/formBackground.jpg)">
     <div class="form-title-row">
        <h1>Room Details</h1>
     </div>
@@ -56,7 +84,7 @@ table, th, td {
             <th>Options</th>
           </tr>
         </thead>
-      <tbody style="background-color: rgb(243,210,230);">
+      <tbody style="background-color: rgb(245,126,182);">
        <c:forEach items="${room}" var="room" varStatus="itr">
           <tr>
            <td>${room.rId}</td>
@@ -74,7 +102,7 @@ table, th, td {
         
            </div>
             <div class="form-row" style="width:50%;"  style="background-color:#6caee0;">
-                <button type="submit" value="Submit" >Submit</button>
+            <center> <button type="submit" value="Submit" id="submit" >Submit</button> </center>   
             </div>		
           
         </form>

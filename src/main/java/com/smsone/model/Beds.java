@@ -10,12 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 @Entity
-@Table
+@Table(name="beds")
+@NamedNativeQuery(name="getDetailsByBedId", query="SELECT bId FROM `beds` WHERE bedId=:bedId AND rId=:rId AND hId=:hId")
 public class Beds implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
@@ -28,15 +30,32 @@ public class Beds implements Serializable {
 	@ManyToOne
     @JoinColumn(name = "rId") 
 	private Room room;
+	private String hId;
+	
 	@Temporal(TemporalType.DATE)
 	private Date checkIn ;
 	@Temporal(TemporalType.DATE)
 	private Date checkOut ;
+	private int status;
+		
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
 	public Long getbId() {
 		return bId;
 	}
 	public void setbId(Long bId) {
 		this.bId = bId;
+	}
+	
+	public String gethId() {
+		return hId;
+	}
+	public void sethId(String hId) {
+		this.hId = hId;
 	}
 	public Long getBedId() {
 		return bedId;
@@ -141,6 +160,7 @@ public class Beds implements Serializable {
 			return false;
 		return true;
 	}
+	
 	
 	
 	

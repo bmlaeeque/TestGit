@@ -22,8 +22,7 @@ public interface RoomDAO {
 	public List<Room> remainingRoom(Long hId);
 	public List<User> getUsers(List<Beds> beds);
 	public Room getRoom(Long rId);
-	
-	
+	public void updateBids(User user,Beds beds);
 	
 	 
 	

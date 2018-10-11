@@ -15,11 +15,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,7 +28,6 @@ import com.smsone.model.House;
 import com.smsone.model.Owner;
 import com.smsone.model.User;
 import com.smsone.service.HouseService;
-
 
 @Controller
 public class HouseController {
@@ -258,7 +258,7 @@ public class HouseController {
 				}				
 	//show house info
 	@RequestMapping(value = "/showHouseInfo/{hId}")
-	public String showHouseInfo(@PathVariable("hId") Long hId,Model model)
+	public String showHouseInfo(@PathVariable("hId") Long hId,ModelMap model)
 	{
 		/*User user=(User)session.getAttribute("user");
 		if(user!=null)
@@ -267,6 +267,7 @@ public class HouseController {
 			house.sethId(hId);
 			house=houseService.getHouse(house);
 			model.addAttribute("house",house);
+			model.put("hostelId",hId);
 			return "houseInfo";
 		/*}
 		else
@@ -294,21 +295,32 @@ public class HouseController {
 					return "filter";
 			}	
 			//show payment page
-			@RequestMapping(value = "/showHouseInfo/showPaymentPage")
-			public String showPaymentPage1()
+			@RequestMapping(value = "/showHouseInfo/showPaymentPage",method=RequestMethod.POST)
+			public String showPaymentPage1(ModelMap map,@RequestParam("hid") int hId,
+					@RequestParam("rid") int rId,@RequestParam("bid") int bId,HttpSession session)
 			{
+				session.setAttribute("hId", hId);
+				session.setAttribute("rId", rId);
+				session.setAttribute("bId", bId);
+				System.out.println(hId+" ,"+rId+", "+bId);
 				
 				return "redirect:/showPaymentPage";
 				
 			}
-		
-			@RequestMapping(value = "showPaymentPage")
+			
+			
+			@RequestMapping(value = "/showPaymentPage",method=RequestMethod.GET)
 			public String showPaymentPage(HttpSession session)
 			{
 				User user=(User)session.getAttribute("user");
+				
 				if(user!=null)
 				{
-				return "payment";
+					int hId=(Integer)session.getAttribute("hId");
+					int rId=(Integer)session.getAttribute("rId");
+					int bId=(Integer)session.getAttribute("bId");
+					System.out.println(hId+" ,"+rId+", "+bId);
+					return "payment";
 				}
 				else
 				{
@@ -436,5 +448,8 @@ public class HouseController {
 				model.addAttribute("offset", offset);
 				model.addAttribute("url", "showFilterWithFacilities");
 				return "filter";
-			}	
+
+			
+	}
+			
 }

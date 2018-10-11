@@ -3,6 +3,7 @@
 <html>
 <head>
 <link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="css/btninfo.css" rel="stylesheet">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Terms and condition</title>
 <style>
@@ -39,11 +40,29 @@ padding-top: 10px;
 .btn-product{
   width: 100%;
 }
+
+#submit {
+ color: black;
+ font-size: 10;
+ width: 120px;
+ height: 50px;
+ border-radius: 25px;
+ margin: 0;
+ padding: 0;
+ background:#00B0B9; 
+}
+
+.astext {
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+}
 </style>
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(243,210,230);">
+  <nav class="navbar navbar-default navbar-inverse" role="navigation" style="background-color: rgb(255,255,255); height:105px; border-color:white;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header" >
@@ -53,21 +72,26 @@ padding-top: 10px;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="showHome">DivaStays</a>
+      <a class="navbar-brand" href="showHome"> <img src="images/DivaStays_Logo.jpg" width="110" height="85"></a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     
-      <ul class="nav navbar-nav navbar-right" style="background-color: rgb(243,210,230);" >
+      <ul class="nav navbar-nav navbar-right">
        
-         <li><a href="showHelp" ><b style="color:#000000;">Help</b></a></li> 	
+         <li><a href="showHelp" class="astext"><b style="color:#000000;">Help</b></a></li> 	
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container" style="background-color:rgb(243,210,230)">
+
+<br>
+<br>
+<div class="container" style="background-color:rgb(245,126,182); width: 85%">
+<br>
+
   <div class="row">
     <div class="col-md-12">
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
@@ -81,7 +105,7 @@ padding-top: 10px;
                   </a>
                 </h4>
              </div>
-            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px; style="background-color: rgb(243,210,230);">
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false" style="height: 0px; style="background-color: rgb(245,126,182);">
               <div class="panel-body">
                 <ul>
 <p><li>Please read these Terms and Conditions ("Terms", "Terms and Conditions") carefully before using
@@ -107,7 +131,7 @@ with any part of the terms then you may not access the Service.</li></p>
                   </a>
                 </h4>
              </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px; style="background-color: rgb(243,210,230);">
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo" aria-expanded="false" style="height: 0px; style="background-color: rgb(245,126,182);">
               <div class="panel-body">
                 <ul>
                 <p><li>Tenant needs to pay two months of rent as security deposit.</li>
@@ -133,7 +157,7 @@ Security / token deposit can be paid either by cash or online.</li>
                   </a>
                 </h4>
               </div>
-              <div id="collapseThree" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="background-color: rgb(243,210,230);">
+              <div id="collapseThree" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingThree" aria-expanded="false" style="background-color: rgb(245,126,182);">
                 <div class="panel-body">
                 <ul>
                   <p>
@@ -160,7 +184,7 @@ Security / token deposit can be paid either by cash or online.</li>
                   </a>
                 </h4>
               </div>
-              <div id="collapsefour" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfour" aria-expanded="false" style="background-color: rgb(243,210,230);">
+              <div id="collapsefour" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfour" aria-expanded="false" style="background-color: rgb(245,126,182);">
                 <div class="panel-body">
               <ul>
                 <p><li>Move-in date can be rescheduled to any day as long as it is after license start date.</li>
@@ -186,7 +210,7 @@ Cash payments will be accepted for the security deposit or advance rent up to 48
                   </a>
                 </h4>
               </div>
-           <div id="collapsefive" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfive" aria-expanded="false" style="background-color: rgb(243,210,230);">
+           <div id="collapsefive" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingfive" aria-expanded="false" style="background-color: rgb(245,126,182);">
              <div class="panel-body">
               <ul>
                <p><li>DivaStays houses are located in various cities across India in reputed society and safe locations. </li> <li>In order to maintain a peaceful environment of the society, nuisance or misconduct of any kind including but not limited to playing loud music beyond the permitted time limit, drinking/smoking in society corridors/ premises and consumption of illegal and banned substances are not allowed in DivaStays houses.</li>
@@ -209,7 +233,7 @@ Cash payments will be accepted for the security deposit or advance rent up to 48
                   </a>
                 </h4>
               </div>
-           <div id="collapsesix" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingsix" aria-expanded="false" style="background-color: rgb(243,210,230);">
+           <div id="collapsesix" class="panel-collapse collapse " role="tabpanel" aria-labelledby="headingsix" aria-expanded="false" style="background-color: rgb(245,126,182);">
              <div class="panel-body">
                <ul>
                 <p><li>The offer is only applicable for bookings on last bed.</li>
@@ -230,6 +254,9 @@ Cash payments will be accepted for the security deposit or advance rent up to 48
     </div><!-- /.sidebar column end here -->
   </div>
 </div>
+<br>
+<br>
+<br>
        <jsp:include page="footer.jsp"></jsp:include>
 	
 <script src="js/jquery.min.js" type="text/javascript"></script>
